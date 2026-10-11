@@ -368,3 +368,47 @@ document.querySelectorAll('#mobileMenu a').forEach(function(link){
   });
   render();
 })();
+
+
+/* Caluler global navigation, theme and language controls */
+(function(){
+  const $1=(sel,ctx=document)=>ctx.querySelector(sel);
+  const translations={
+    en:{tools:'Tools',about:'About',contact:'Contact',privacy:'Privacy',open:'Open navigation',close:'Close navigation',search:'Search calculators…',calculate:'Calculate',related:'Related Tools',all:'All tools',language:'Language'},
+    ur:{tools:'ٹولز',about:'تعارف',contact:'رابطہ',privacy:'پرائیویسی',open:'مینو کھولیں',close:'مینو بند کریں',search:'کیلکولیٹر تلاش کریں…',calculate:'حساب کریں',related:'متعلقہ ٹولز',all:'تمام ٹولز',language:'زبان'}
+  };
+  function setTheme(theme){
+    const dark=theme==='dark'; document.documentElement.dataset.theme=dark?'dark':'light';
+    document.querySelectorAll('.theme-toggle').forEach(b=>{b.textContent=dark?'☀️':'🌙';b.setAttribute('aria-label',dark?'Switch to light mode':'Switch to dark mode');b.setAttribute('aria-pressed',String(dark));});
+    try{localStorage.setItem('caluler-theme',dark?'dark':'light')}catch(e){}
+  }
+  function setLanguage(lang){
+    lang=lang==='ur'?'ur':'en'; const t=translations[lang];
+    document.documentElement.lang=lang; document.documentElement.dir=lang==='ur'?'rtl':'ltr';
+    document.querySelectorAll('.language-select').forEach(s=>s.value=lang);
+    document.querySelectorAll('.nav-links a').forEach(a=>{const key=(a.getAttribute('href')||'').split('/').pop().replace('.html','');if(t[key])a.textContent=t[key]});
+    document.querySelectorAll('.menu-toggle').forEach(b=>{const open=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-label',open?t.close:t.open)});
+    document.querySelectorAll('.theme-toggle').forEach(b=>b.title=lang==='ur'?'ڈارک یا لائٹ موڈ تبدیل کریں':'Dark / light mode');
+    document.querySelectorAll('.related-tools h2, .related-tools h3, .related-tools-title').forEach(el=>el.textContent=t.related);
+    document.querySelectorAll('#toolSearch,#directorySearch').forEach(el=>{if(!el.dataset.originalPlaceholder)el.dataset.originalPlaceholder=el.placeholder;el.placeholder=lang==='ur'?t.search:el.dataset.originalPlaceholder});
+    try{localStorage.setItem('caluler-language',lang)}catch(e){}
+  }
+  document.addEventListener('click',function(e){
+    const btn=e.target.closest('.menu-toggle'); if(!btn)return;
+    e.preventDefault(); const menu=document.getElementById(btn.getAttribute('aria-controls')||'mobileMenu'); if(!menu)return;
+    const next=btn.getAttribute('aria-expanded')!=='true';
+    menu.setAttribute('data-open',String(next)); menu.classList.toggle('active',next);
+    btn.setAttribute('aria-expanded',String(next)); btn.setAttribute('aria-label',next?'Close navigation':'Open navigation'); btn.textContent=next?'✕':'☰';
+  });
+  document.addEventListener('click',function(e){
+    const b=e.target.closest('.theme-toggle'); if(b){const current=document.documentElement.dataset.theme||'light';setTheme(current==='dark'?'light':'dark')}
+  });
+  document.addEventListener('change',function(e){if(e.target.matches('.language-select'))setLanguage(e.target.value)});
+  document.addEventListener('click',function(e){const a=e.target.closest('#mobileMenu a');if(!a)return;const m=document.getElementById('mobileMenu'),b=document.querySelector('.menu-toggle');m?.setAttribute('data-open','false');m?.classList.remove('active');b?.setAttribute('aria-expanded','false');if(b)b.textContent='☰'});
+  document.addEventListener('DOMContentLoaded',function(){
+    let theme='light',lang='en';try{theme=localStorage.getItem('caluler-theme')||'light';lang=localStorage.getItem('caluler-language')||'en'}catch(e){}
+    setTheme(theme);setLanguage(lang);
+    // Repair stale empty/punctuation nodes inside the tool grid; only card anchors should remain.
+    document.querySelectorAll('.tools-grid').forEach(grid=>{[...grid.childNodes].forEach(node=>{if(node.nodeType===Node.TEXT_NODE&&node.textContent.trim()==='.')node.remove();if(node.nodeType===Node.ELEMENT_NODE&&!node.matches('.tool-card')){if(!node.textContent.trim()||node.textContent.trim()==='.')node.remove()}})});
+  });
+})();
