@@ -107,7 +107,7 @@ function searchTools(){
  });
  const heading=$('toolsHeading');
  if(heading && q) heading.textContent=`Search results for “${q}”`;
- else if(heading) heading.textContent='All 100 Tools';
+ else if(heading) heading.textContent=`All ${cards.length} Tools`;
  const no=$('noResults');
  if(no) no.hidden=visible!==0;
 }
@@ -154,7 +154,7 @@ function toggleMenu() {
    btn.textContent=next?'✕':'☰';
  }
 }
-document.querySelector('.menu-toggle')?.addEventListener('click', toggleMenu);
+
 // Keep the mobile menu closed on every fresh page load.
 (function(){
  const menu=document.getElementById('mobileMenu');
@@ -212,7 +212,7 @@ document.querySelectorAll('#mobileMenu a').forEach(function(link){
     if(heading){
       if(activeFilter!=='All' && !q) heading.textContent=activeFilter;
       else if(q) heading.textContent=`Search results for “${q}”`;
-      else heading.textContent='All 100 Tools';
+      else heading.textContent=`All ${cards.length} Tools`;
     }
     const no=document.getElementById('noResults');
     if(no) no.hidden=visible!==0;
