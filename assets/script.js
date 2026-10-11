@@ -97,7 +97,7 @@ function currencyCalc(){
 }
 function searchTools(){
  const q=($('toolSearch')?.value||'').trim().toLowerCase();
- const cards=[...document.querySelectorAll('.tool-card')];
+ const cards=[...document.querySelectorAll('.tools-grid .tool-card')];
  let visible=0;
  cards.forEach(card=>{
    const hay=(card.dataset.tool||'').toLowerCase();

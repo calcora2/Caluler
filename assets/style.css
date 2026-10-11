@@ -587,3 +587,24 @@ input:focus,select:focus,textarea:focus{border-color:var(--secondary);box-shadow
 .caluler-ad-slot {
   display: none !important;
 }
+
+
+/* Caluler final consistency pass: calculator pages, cards, category labels, and related tools */
+.tool-layout{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:24px;align-items:start}
+.tool-layout>main{min-width:0}
+.tool-category-badge{display:inline-flex;align-items:center;gap:8px;max-width:100%;width:max-content;white-space:normal;line-height:1.35;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:12px;letter-spacing:.04em;padding:8px 13px;text-transform:uppercase}
+.page-hero .tool-category{display:inline-flex;align-items:center;width:max-content;max-width:100%;white-space:normal;background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.2);padding:8px 13px;font-size:12px;line-height:1.35}
+.calculator h2{font-size:30px;line-height:1.25;font-weight:750;letter-spacing:-.45px;margin:0 0 24px;display:flex;align-items:center;gap:12px}
+.related{display:flex;flex-direction:column;gap:10px}
+.related a{display:flex;align-items:center;gap:10px;padding:13px 15px;border-radius:15px;background:#F8FAFC;border:1px solid var(--border);font-family:Inter,Arial,Helvetica,sans-serif;font-size:16px;line-height:1.35;font-weight:650;letter-spacing:-.15px;color:#0F172A;transition:background .18s,border-color .18s,color .18s}
+.related a:hover{background:#EFF6FF;border-color:#BFDBFE;color:var(--secondary)}
+.related-icon{display:inline-grid;place-items:center;flex:0 0 25px;width:25px;height:25px;font-size:18px}
+.sidebar-browse{margin:14px 0 0;font-size:14px;font-weight:650;color:var(--secondary)}
+.tool-faq{margin-top:26px;padding-top:8px;border-top:1px solid var(--border)}
+.tool-faq h3{margin:14px 0}
+.tool-faq details{padding:14px 0;border-bottom:1px solid var(--border)}
+.tool-faq summary{cursor:pointer;font-weight:650;color:var(--text);line-height:1.5}
+.tool-faq details p{margin:9px 0 0}
+.ad-slot{min-height:30px;color:#64748B;font-size:13px;padding:12px 2px;text-align:center}
+@media(max-width:900px){.tool-layout{grid-template-columns:1fr}.tool-sidebar{position:static}.sidebar-box{position:static}.calculator h2{font-size:26px}}
+@media(max-width:560px){.calculator{padding:20px}.calculator h2{font-size:23px}.related a{font-size:15px;padding:12px}.tool-category-badge{font-size:10px}}
