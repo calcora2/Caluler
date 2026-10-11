@@ -53,9 +53,19 @@ function loanCalc(){
 }
 const emiCalc=loanCalc;
 function unitConvert(){
- const v=n('value'), type=$('type').value; if(isNaN(v)) return show('result','Enter value.');
- const map={'kg-lb':[v*2.20462,'lb'],'lb-kg':[v/2.20462,'kg'],'km-mi':[v*.621371,'miles'],'mi-km':[v/.621371,'km'],'cm-in':[v*.393701,'inches'],'in-cm':[v/.393701,'cm'],'c-f':[v*9/5+32,'°F'],'f-c':[(v-32)*5/9,'°C']};
- let r=map[type]; show('result',`Result: <b>${r[0].toFixed(2)} ${r[1]}</b>`);
+ const v=n('value'), from=$('from')?.value, to=$('to')?.value;
+ if(!Number.isFinite(v)) return show('result','Enter a valid value.');
+ const groups={kg:'weight',lb:'weight',km:'distance',mi:'distance',cm:'length',in:'length',c:'temperature',f:'temperature'};
+ if(!groups[from]||groups[from]!==groups[to]) return show('result','Choose compatible units from the same group.');
+ const convert={
+  kg:x=>x, lb:x=>x/2.2046226218, km:x=>x, mi:x=>x/0.6213711922,
+  cm:x=>x, in:x=>x/0.3937007874, c:x=>x, f:x=>(x-32)*5/9
+ };
+ const fromBase=convert[from](v);
+ const back={kg:x=>x,lb:x=>x*2.2046226218,km:x=>x,mi:x=>x*0.6213711922,cm:x=>x,in:x=>x*0.3937007874,c:x=>x,f:x=>x*9/5+32};
+ const result=back[to](fromBase);
+ const labels={kg:'kg',lb:'lb',km:'km',mi:'mi',cm:'cm',in:'in',c:'°C',f:'°F'};
+ show('result',`${v} ${labels[from]} = <b>${Number(result.toPrecision(9)).toLocaleString(undefined,{maximumFractionDigits:8})} ${labels[to]}</b>`);
 }
 function wordCounter(){
  const text=$('text').value.trim(), words=text?text.split(/\s+/).length:0, chars=text.length, noSpace=text.replace(/\s/g,'').length;
@@ -92,9 +102,12 @@ function tipCalc(){
  const tipAmt=bill*tip/100, total=bill+tipAmt; show('result',`Tip: <b>${tipAmt.toFixed(2)}</b><br>Total: <b>${total.toFixed(2)}</b><br>Per person: <b>${(total/people).toFixed(2)}</b>`);
 }
 function currencyCalc(){
- const amount=n('amount'), rate=n('rate'); if(isNaN(amount)||isNaN(rate)) return show('result','Enter amount and exchange rate.');
- show('result',`Converted amount: <b>${(amount*rate).toFixed(2)}</b><br><small>Manual rate converter. For live rates, add an API later.</small>`);
+ const amount=n('amount'), rate=n('rate'), from=$('currencyFrom')?.value||'PKR', to=$('currencyTo')?.value||'USD';
+ if(!Number.isFinite(amount)||amount<0||!Number.isFinite(rate)||rate<=0) return show('result','Enter a valid amount and a positive exchange rate.');
+ show('result',`${amount.toLocaleString()} ${from} = <b>${(amount*rate).toLocaleString(undefined,{maximumFractionDigits:4})} ${to}</b><br><small>Manual rate: 1 ${from} = ${rate} ${to}. Rates are not live.</small>`);
 }
+function syncCurrencyRateLabel(){const from=$('currencyFrom')?.value||'PKR',to=$('currencyTo')?.value||'USD';if($('rateFrom'))$('rateFrom').textContent=from;if($('rateTo'))$('rateTo').textContent=to;}
+document.addEventListener('DOMContentLoaded',()=>{['currencyFrom','currencyTo'].forEach(id=>$(id)?.addEventListener('change',syncCurrencyRateLabel));syncCurrencyRateLabel();});
 function searchTools(){
  const q=($('toolSearch')?.value||'').trim().toLowerCase();
  const cards=[...document.querySelectorAll('.tools-grid .tool-card')];
