@@ -745,3 +745,12 @@ html[dir="rtl"] body{text-align:start}
 html[dir="rtl"] .nav-inner,html[dir="rtl"] .caluler-utility-controls{direction:rtl}
 html[dir="rtl"] .nav-links{direction:rtl}
 html[dir="rtl"] .tool-card,html[dir="rtl"] .calculator-card,html[dir="rtl"] .calculator-section{text-align:right}
+
+/* Keep language names in their native scripts when the page is translated. */
+.caluler-utility-controls.notranslate,
+.caluler-utility-controls.notranslate *,
+#calulerLanguage.notranslate,
+#calulerLanguage.notranslate option,
+#google_translate_element.notranslate { unicode-bidi: isolate; }
+.goog-te-banner-frame.skiptranslate { display: none !important; }
+body { top: 0 !important; }

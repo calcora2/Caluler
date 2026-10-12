@@ -428,10 +428,26 @@ document.querySelectorAll('#mobileMenu a').forEach(function(link){
     const themeBtn=document.getElementById('calulerThemeToggle');
     if(themeBtn&&!themeBtn.dataset.calulerBound){themeBtn.dataset.calulerBound='true';themeBtn.addEventListener('click',()=>applyTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark'));}
     const lang=document.getElementById('calulerLanguage'); const selected=read('caluler-language','en');
-    applyDirection(selected); if(lang){lang.value=selected;if(!lang.dataset.calulerBound){lang.dataset.calulerBound='true';lang.addEventListener('change',function(){applyLanguage(this.value,false);let tries=0;const timer=setInterval(()=>{tries++;if(setGoogleCombo(this.value)||tries>=30)clearInterval(timer);},250);});}}
+    applyDirection(selected); if(lang){lang.value=selected;if(!lang.dataset.calulerBound){lang.dataset.calulerBound='true';lang.addEventListener('change',function(){
+      const code=this.value;
+      applyLanguage(code,false);
+      let tries=0;
+      const timer=setInterval(()=>{
+        tries++;
+        if(setGoogleCombo(code)){clearInterval(timer);return;}
+        if(tries>=40){
+          clearInterval(timer);
+          // Reload lets Google Translate read the saved googtrans cookie on a fresh page.
+          if(code!=='en' && !sessionStorage.getItem('caluler-translate-reload')){
+            try{sessionStorage.setItem('caluler-translate-reload','1')}catch(e){}
+            location.reload();
+          }
+        }
+      },250);
+    });}}
     // If translation cookie was previously set, retain the selected language on every page.
     const comboTry=()=>{const code=read('caluler-language','en');if(code!=='en')setGoogleCombo(code);};
-    let tries=0;const timer=setInterval(()=>{tries++;comboTry();if(document.querySelector('.goog-te-combo')||tries>=30)clearInterval(timer);},300);
+    let tries=0;const timer=setInterval(()=>{tries++;comboTry();if(document.querySelector('.goog-te-combo')){try{sessionStorage.removeItem('caluler-translate-reload')}catch(e){}clearInterval(timer);}else if(tries>=30)clearInterval(timer);},300);
   }
   window.calulerGoogleTranslateInit=function(){
     try{new google.translate.TranslateElement({pageLanguage:'en',includedLanguages:'ur,ar,hi,es,fr,de,it,pt,ru,zh-CN,ja,ko,tr,id,bn,pa,fa,nl,ta',autoDisplay:false,layout:google.translate.TranslateElement.InlineLayout.SIMPLE},'google_translate_element');}
