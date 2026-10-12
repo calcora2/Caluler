@@ -370,24 +370,73 @@ document.querySelectorAll('#mobileMenu a').forEach(function(link){
 })();
 
 
-/* Caluler shared controls: reliable mobile navigation, theme persistence, whole-page translation. */
+/* Caluler shared controls: mobile navigation, persistent theme and whole-page translation. */
 (function(){
-  function initCalulerControls(){
+  const LANGS = ['en','ur','ar','hi','es','fr','de','it','pt','ru','zh-CN','ja','ko','tr','id','bn','pa','fa','nl','ta'];
+  const RTL_LANGS = new Set(['ur','ar','fa','pa']);
+  function read(key, fallback){try{return localStorage.getItem(key)||fallback}catch(e){return fallback}}
+  function write(key,value){try{localStorage.setItem(key,value)}catch(e){}}
+  function setCookie(name,value,days){
+    try{
+      const exp = days ? '; expires='+new Date(Date.now()+days*864e5).toUTCString() : '; expires=Thu, 01 Jan 1970 00:00:00 GMT';
+      document.cookie=name+'='+value+'; path=/; SameSite=Lax'+exp;
+      document.cookie=name+'='+value+'; domain='+location.hostname+'; path=/; SameSite=Lax'+exp;
+    }catch(e){}
+  }
+  function applyTheme(mode){
+    const dark=mode==='dark';
+    document.documentElement.setAttribute('data-theme',dark?'dark':'light');
+    document.documentElement.style.colorScheme=dark?'dark':'light';
+    document.body.classList.toggle('dark-mode',dark);
+    const btn=document.getElementById('calulerThemeToggle');
+    if(btn){btn.textContent=dark?'☀️':'🌙';btn.setAttribute('aria-pressed',String(dark));btn.setAttribute('aria-label',dark?'Switch to light mode':'Switch to dark mode');}
+    write('caluler-theme',dark?'dark':'light');
+  }
+  function applyDirection(code){
+    const rtl=RTL_LANGS.has(code);
+    document.documentElement.setAttribute('dir',rtl?'rtl':'ltr');
+    document.documentElement.setAttribute('lang',code==='zh-CN'?'zh-CN':code);
+    document.body.classList.toggle('caluler-rtl',rtl);
+  }
+  function setGoogleCombo(code){
+    const combo=document.querySelector('.goog-te-combo');
+    if(!combo) return false;
+    combo.value=code==='en'?'':code;
+    combo.dispatchEvent(new Event('change',{bubbles:true}));
+    return true;
+  }
+  function applyLanguage(code, reload){
+    if(!LANGS.includes(code)) code='en';
+    write('caluler-language',code); applyDirection(code);
+    const lang=document.getElementById('calulerLanguage'); if(lang) lang.value=code;
+    // Google Translate's own cookie is what persists its translation across static pages.
+    if(code==='en') setCookie('googtrans','',0); else setCookie('googtrans','/en/'+code,365);
+    if(setGoogleCombo(code)) return;
+    if(reload) location.reload();
+  }
+  function init(){
     const menu=document.getElementById('mobileMenu');
     const btn=document.querySelector('.menu-toggle');
+    if(menu){menu.setAttribute('data-open','false');menu.classList.remove('active');}
     if(btn && !btn.dataset.calulerBound){
       btn.dataset.calulerBound='true';
-      btn.addEventListener('click',function(ev){ev.preventDefault();ev.stopPropagation();const isOpen=menu && menu.getAttribute('data-open')==='true';if(menu){menu.setAttribute('data-open',String(!isOpen));menu.classList.toggle('active',!isOpen);}btn.setAttribute('aria-expanded',String(!isOpen));btn.setAttribute('aria-label',isOpen?'Open navigation':'Close navigation');btn.textContent=isOpen?'☰':'✕';});
+      btn.addEventListener('click',function(e){e.preventDefault();const open=menu && menu.getAttribute('data-open')==='true';if(menu){menu.setAttribute('data-open',String(!open));menu.classList.toggle('active',!open);}btn.setAttribute('aria-expanded',String(!open));btn.setAttribute('aria-label',open?'Open navigation':'Close navigation');btn.textContent=open?'☰':'✕';});
     }
+    document.querySelectorAll('#mobileMenu a').forEach(a=>a.addEventListener('click',()=>{if(menu)menu.setAttribute('data-open','false');menu?.classList.remove('active');if(btn){btn.textContent='☰';btn.setAttribute('aria-expanded','false');}}));
+    document.addEventListener('click',e=>{if(!menu||menu.getAttribute('data-open')!=='true')return;if(menu.contains(e.target)||btn?.contains(e.target))return;menu.setAttribute('data-open','false');menu.classList.remove('active');if(btn){btn.textContent='☰';btn.setAttribute('aria-expanded','false');}});
+    applyTheme(read('caluler-theme','light'));
     const themeBtn=document.getElementById('calulerThemeToggle');
-    const applyTheme=(dark)=>{document.documentElement.setAttribute('data-theme',dark?'dark':'light');document.body.classList.toggle('dark-mode',dark);if(themeBtn){themeBtn.textContent=dark?'☀️':'🌙';themeBtn.setAttribute('aria-pressed',String(dark));}try{localStorage.setItem('caluler-theme',dark?'dark':'light')}catch(e){}};
-    let saved='light';try{saved=localStorage.getItem('caluler-theme')||'light'}catch(e){} applyTheme(saved==='dark');
-    if(themeBtn&&!themeBtn.dataset.calulerBound){themeBtn.dataset.calulerBound='true';themeBtn.addEventListener('click',()=>applyTheme(document.documentElement.getAttribute('data-theme')!=='dark'));}
-    const lang=document.getElementById('calulerLanguage');let savedLang='en';try{savedLang=localStorage.getItem('caluler-language')||'en'}catch(e){};
-    const setTranslateCookie=(value)=>{try{const expires=value==='en'?'Thu, 01 Jan 1970 00:00:00 GMT':'';document.cookie='googtrans='+(value==='en'?'':('/en/'+value))+'; path=/; SameSite=Lax'+(expires?'; expires='+expires:'; max-age=31536000');document.cookie='googtrans='+(value==='en'?'':('/en/'+value))+'; domain='+location.hostname+'; path=/; SameSite=Lax'+(expires?'; expires='+expires:'; max-age=31536000');}catch(e){}};
-    if(savedLang==='en')setTranslateCookie('en');else setTranslateCookie(savedLang);
-    if(lang){if([...lang.options].some(o=>o.value===savedLang))lang.value=savedLang;if(!lang.dataset.calulerBound){lang.dataset.calulerBound='true';lang.addEventListener('change',function(){const value=this.value;try{localStorage.setItem('caluler-language',value)}catch(e){}setTranslateCookie(value);location.reload();});}}
+    if(themeBtn&&!themeBtn.dataset.calulerBound){themeBtn.dataset.calulerBound='true';themeBtn.addEventListener('click',()=>applyTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark'));}
+    const lang=document.getElementById('calulerLanguage'); const selected=read('caluler-language','en');
+    applyDirection(selected); if(lang){lang.value=selected;if(!lang.dataset.calulerBound){lang.dataset.calulerBound='true';lang.addEventListener('change',function(){applyLanguage(this.value,false);let tries=0;const timer=setInterval(()=>{tries++;if(setGoogleCombo(this.value)||tries>=30)clearInterval(timer);},250);});}}
+    // If translation cookie was previously set, retain the selected language on every page.
+    const comboTry=()=>{const code=read('caluler-language','en');if(code!=='en')setGoogleCombo(code);};
+    let tries=0;const timer=setInterval(()=>{tries++;comboTry();if(document.querySelector('.goog-te-combo')||tries>=30)clearInterval(timer);},300);
   }
-  window.calulerGoogleTranslateInit=function(){try{new google.translate.TranslateElement({pageLanguage:'en',includedLanguages:'ur,ar,hi,es,fr,de,it,pt,ru,zh-CN,ja,ko,tr,id,bn,pa,fa,nl,ta',autoDisplay:false},'google_translate_element');}catch(e){}}
-  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initCalulerControls);else initCalulerControls();
+  window.calulerGoogleTranslateInit=function(){
+    try{new google.translate.TranslateElement({pageLanguage:'en',includedLanguages:'ur,ar,hi,es,fr,de,it,pt,ru,zh-CN,ja,ko,tr,id,bn,pa,fa,nl,ta',autoDisplay:false,layout:google.translate.TranslateElement.InlineLayout.SIMPLE},'google_translate_element');}
+    catch(e){}
+    let tries=0;const timer=setInterval(()=>{tries++;const code=read('caluler-language','en');if(document.querySelector('.goog-te-combo')){if(code!=='en')setGoogleCombo(code);clearInterval(timer);}if(tries>=30)clearInterval(timer);},250);
+  };
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
