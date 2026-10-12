@@ -370,45 +370,22 @@ document.querySelectorAll('#mobileMenu a').forEach(function(link){
 })();
 
 
-/* Caluler global navigation, theme and language controls */
+/* Caluler shared controls: reliable mobile navigation, theme persistence, whole-page translation. */
 (function(){
-  const $1=(sel,ctx=document)=>ctx.querySelector(sel);
-  const translations={
-    en:{tools:'Tools',about:'About',contact:'Contact',privacy:'Privacy',open:'Open navigation',close:'Close navigation',search:'Search calculators…',calculate:'Calculate',related:'Related Tools',all:'All tools',language:'Language'},
-    ur:{tools:'ٹولز',about:'تعارف',contact:'رابطہ',privacy:'پرائیویسی',open:'مینو کھولیں',close:'مینو بند کریں',search:'کیلکولیٹر تلاش کریں…',calculate:'حساب کریں',related:'متعلقہ ٹولز',all:'تمام ٹولز',language:'زبان'}
-  };
-  function setTheme(theme){
-    const dark=theme==='dark'; document.documentElement.dataset.theme=dark?'dark':'light';
-    document.querySelectorAll('.theme-toggle').forEach(b=>{b.textContent=dark?'☀️':'🌙';b.setAttribute('aria-label',dark?'Switch to light mode':'Switch to dark mode');b.setAttribute('aria-pressed',String(dark));});
-    try{localStorage.setItem('caluler-theme',dark?'dark':'light')}catch(e){}
+  function initCalulerControls(){
+    const menu=document.getElementById('mobileMenu');
+    const btn=document.querySelector('.menu-toggle');
+    if(btn && !btn.dataset.calulerBound){
+      btn.dataset.calulerBound='true';
+      btn.addEventListener('click',function(ev){ev.preventDefault();ev.stopPropagation();const isOpen=menu && menu.getAttribute('data-open')==='true';if(menu){menu.setAttribute('data-open',String(!isOpen));menu.classList.toggle('active',!isOpen);}btn.setAttribute('aria-expanded',String(!isOpen));btn.setAttribute('aria-label',isOpen?'Open navigation':'Close navigation');btn.textContent=isOpen?'☰':'✕';});
+    }
+    const themeBtn=document.getElementById('calulerThemeToggle');
+    const applyTheme=(dark)=>{document.documentElement.setAttribute('data-theme',dark?'dark':'light');document.body.classList.toggle('dark-mode',dark);if(themeBtn){themeBtn.textContent=dark?'☀️':'🌙';themeBtn.setAttribute('aria-pressed',String(dark));}try{localStorage.setItem('caluler-theme',dark?'dark':'light')}catch(e){}};
+    let saved='light';try{saved=localStorage.getItem('caluler-theme')||'light'}catch(e){} applyTheme(saved==='dark');
+    if(themeBtn&&!themeBtn.dataset.calulerBound){themeBtn.dataset.calulerBound='true';themeBtn.addEventListener('click',()=>applyTheme(document.documentElement.getAttribute('data-theme')!=='dark'));}
+    const lang=document.getElementById('calulerLanguage');let savedLang='en';try{savedLang=localStorage.getItem('caluler-language')||'en'}catch(e){};
+    if(lang){if([...lang.options].some(o=>o.value===savedLang))lang.value=savedLang;if(!lang.dataset.calulerBound){lang.dataset.calulerBound='true';lang.addEventListener('change',function(){const value=this.value;try{localStorage.setItem('caluler-language',value)}catch(e){};const trySelect=()=>{const combo=document.querySelector('select.goog-te-combo');if(combo){combo.value=value;combo.dispatchEvent(new Event('change'));return true}return false};if(value==='en'){const combo=document.querySelector('select.goog-te-combo');if(combo){combo.value='';combo.dispatchEvent(new Event('change'));}else location.reload();}else if(!trySelect()){window.__calulerPendingLanguage=value;window.setTimeout(()=>{if(!trySelect()) {const msg=document.getElementById('calulerTranslateStatus');if(msg)msg.textContent='Translation service is loading. Please try again.';}},1200);} });}}
   }
-  function setLanguage(lang){
-    lang=lang==='ur'?'ur':'en'; const t=translations[lang];
-    document.documentElement.lang=lang; document.documentElement.dir=lang==='ur'?'rtl':'ltr';
-    document.querySelectorAll('.language-select').forEach(s=>s.value=lang);
-    document.querySelectorAll('.nav-links a').forEach(a=>{const key=(a.getAttribute('href')||'').split('/').pop().replace('.html','');if(t[key])a.textContent=t[key]});
-    document.querySelectorAll('.menu-toggle').forEach(b=>{const open=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-label',open?t.close:t.open)});
-    document.querySelectorAll('.theme-toggle').forEach(b=>b.title=lang==='ur'?'ڈارک یا لائٹ موڈ تبدیل کریں':'Dark / light mode');
-    document.querySelectorAll('.related-tools h2, .related-tools h3, .related-tools-title').forEach(el=>el.textContent=t.related);
-    document.querySelectorAll('#toolSearch,#directorySearch').forEach(el=>{if(!el.dataset.originalPlaceholder)el.dataset.originalPlaceholder=el.placeholder;el.placeholder=lang==='ur'?t.search:el.dataset.originalPlaceholder});
-    try{localStorage.setItem('caluler-language',lang)}catch(e){}
-  }
-  document.addEventListener('click',function(e){
-    const btn=e.target.closest('.menu-toggle'); if(!btn)return;
-    e.preventDefault(); const menu=document.getElementById(btn.getAttribute('aria-controls')||'mobileMenu'); if(!menu)return;
-    const next=btn.getAttribute('aria-expanded')!=='true';
-    menu.setAttribute('data-open',String(next)); menu.classList.toggle('active',next);
-    btn.setAttribute('aria-expanded',String(next)); btn.setAttribute('aria-label',next?'Close navigation':'Open navigation'); btn.textContent=next?'✕':'☰';
-  });
-  document.addEventListener('click',function(e){
-    const b=e.target.closest('.theme-toggle'); if(b){const current=document.documentElement.dataset.theme||'light';setTheme(current==='dark'?'light':'dark')}
-  });
-  document.addEventListener('change',function(e){if(e.target.matches('.language-select'))setLanguage(e.target.value)});
-  document.addEventListener('click',function(e){const a=e.target.closest('#mobileMenu a');if(!a)return;const m=document.getElementById('mobileMenu'),b=document.querySelector('.menu-toggle');m?.setAttribute('data-open','false');m?.classList.remove('active');b?.setAttribute('aria-expanded','false');if(b)b.textContent='☰'});
-  document.addEventListener('DOMContentLoaded',function(){
-    let theme='light',lang='en';try{theme=localStorage.getItem('caluler-theme')||'light';lang=localStorage.getItem('caluler-language')||'en'}catch(e){}
-    setTheme(theme);setLanguage(lang);
-    // Repair stale empty/punctuation nodes inside the tool grid; only card anchors should remain.
-    document.querySelectorAll('.tools-grid').forEach(grid=>{[...grid.childNodes].forEach(node=>{if(node.nodeType===Node.TEXT_NODE&&node.textContent.trim()==='.')node.remove();if(node.nodeType===Node.ELEMENT_NODE&&!node.matches('.tool-card')){if(!node.textContent.trim()||node.textContent.trim()==='.')node.remove()}})});
-  });
+  window.calulerGoogleTranslateInit=function(){try{new google.translate.TranslateElement({pageLanguage:'en',includedLanguages:'ur,ar,hi,es,fr,de,it,pt,ru,zh-CN,ja,ko,tr,id,bn,pa,fa,nl,ta',autoDisplay:false},'google_translate_element');const pending=window.__calulerPendingLanguage;if(pending){const combo=document.querySelector('select.goog-te-combo');if(combo){combo.value=pending;combo.dispatchEvent(new Event('change'));}}}catch(e){}}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initCalulerControls);else initCalulerControls();
 })();
