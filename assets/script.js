@@ -370,89 +370,64 @@ document.querySelectorAll('#mobileMenu a').forEach(function(link){
 })();
 
 
-/* Caluler shared controls: mobile navigation, persistent theme and whole-page translation. */
+/* Caluler shared controls: reliable cross-page language persistence, theme and mobile menu. */
 (function(){
-  const LANGS = ['en','ur','ar','hi','es','fr','de','it','pt','ru','zh-CN','ja','ko','tr','id','bn','pa','fa','nl','ta'];
-  const RTL_LANGS = new Set(['ur','ar','fa','pa']);
-  function read(key, fallback){try{return localStorage.getItem(key)||fallback}catch(e){return fallback}}
+  const LANGS=['en','ur','ar','hi','es','fr','de','it','pt','ru','zh-CN','ja','ko','tr','id','bn','pa','fa','nl','ta'];
+  const RTL_LANGS=new Set(['ur','ar','fa','pa']);
+  const $id=id=>document.getElementById(id);
+  function read(key,fallback){try{return localStorage.getItem(key)||fallback}catch(e){return fallback}}
   function write(key,value){try{localStorage.setItem(key,value)}catch(e){}}
   function setCookie(name,value,days){
-    try{
-      const exp = days ? '; expires='+new Date(Date.now()+days*864e5).toUTCString() : '; expires=Thu, 01 Jan 1970 00:00:00 GMT';
-      document.cookie=name+'='+value+'; path=/; SameSite=Lax'+exp;
-      document.cookie=name+'='+value+'; domain='+location.hostname+'; path=/; SameSite=Lax'+exp;
-    }catch(e){}
+    const exp=days?'; expires='+new Date(Date.now()+days*864e5).toUTCString(): '; expires=Thu, 01 Jan 1970 00:00:00 GMT';
+    const base=name+'='+value+'; path=/; SameSite=Lax'+exp;
+    try{document.cookie=base;document.cookie=base+'; domain='+location.hostname;document.cookie=base+'; domain=.caluler.work';document.cookie=base+'; domain=caluler.work'}catch(e){}
   }
   function applyTheme(mode){
-    const dark=mode==='dark';
-    document.documentElement.setAttribute('data-theme',dark?'dark':'light');
+    const dark=mode==='dark'; document.documentElement.setAttribute('data-theme',dark?'dark':'light');
     document.documentElement.style.colorScheme=dark?'dark':'light';
-    document.body.classList.toggle('dark-mode',dark);
-    const btn=document.getElementById('calulerThemeToggle');
-    if(btn){btn.textContent=dark?'☀️':'🌙';btn.setAttribute('aria-pressed',String(dark));btn.setAttribute('aria-label',dark?'Switch to light mode':'Switch to dark mode');}
+    if(document.body) document.body.classList.toggle('dark-mode',dark);
+    const btn=$id('calulerThemeToggle'); if(btn){btn.textContent=dark?'☀️':'🌙';btn.setAttribute('aria-pressed',String(dark));btn.setAttribute('aria-label',dark?'Switch to light mode':'Switch to dark mode')}
     write('caluler-theme',dark?'dark':'light');
   }
   function applyDirection(code){
-    const rtl=RTL_LANGS.has(code);
-    document.documentElement.setAttribute('dir',rtl?'rtl':'ltr');
-    document.documentElement.setAttribute('lang',code==='zh-CN'?'zh-CN':code);
-    document.body.classList.toggle('caluler-rtl',rtl);
+    const rtl=RTL_LANGS.has(code);document.documentElement.setAttribute('dir',rtl?'rtl':'ltr');document.documentElement.setAttribute('lang',code);
+    if(document.body)document.body.classList.toggle('caluler-rtl',rtl);
   }
   function setGoogleCombo(code){
-    const combo=document.querySelector('.goog-te-combo');
-    if(!combo) return false;
-    combo.value=code==='en'?'':code;
-    combo.dispatchEvent(new Event('change',{bubbles:true}));
-    return true;
+    const combo=document.querySelector('.goog-te-combo');if(!combo)return false;
+    const target=code==='en'?'':code; if(combo.value!==target){combo.value=target;combo.dispatchEvent(new Event('change',{bubbles:true}))} return true;
   }
-  function applyLanguage(code, reload){
-    if(!LANGS.includes(code)) code='en';
-    write('caluler-language',code); applyDirection(code);
-    const lang=document.getElementById('calulerLanguage'); if(lang) lang.value=code;
-    // Google Translate's own cookie is what persists its translation across static pages.
-    if(code==='en') setCookie('googtrans','',0); else setCookie('googtrans','/en/'+code,365);
-    if(setGoogleCombo(code)) return;
-    if(reload) location.reload();
+  function saveLanguage(code){
+    if(!LANGS.includes(code))code='en';write('caluler-language',code);applyDirection(code);
+    const select=$id('calulerLanguage');if(select&&select.value!==code)select.value=code;
+    if(code==='en'){
+      setCookie('googtrans','',0);setCookie('googtrans','/en/en',0);
+    }else setCookie('googtrans','/en/'+code,365);
+    return code;
+  }
+  function applyLanguage(code){
+    code=saveLanguage(code);
+    // Wait for Google's hidden selector to exist; do not force a page reload on selection.
+    let tries=0;const timer=setInterval(()=>{
+      tries++;
+      if(setGoogleCombo(code)){clearInterval(timer);return}
+      if(tries>=80){clearInterval(timer);if(!sessionStorage.getItem('caluler-language-reload')){try{sessionStorage.setItem('caluler-language-reload','1')}catch(e){}location.reload()}}
+    },250);
   }
   function init(){
-    const menu=document.getElementById('mobileMenu');
-    const btn=document.querySelector('.menu-toggle');
-    if(menu){menu.setAttribute('data-open','false');menu.classList.remove('active');}
-    if(btn && !btn.dataset.calulerBound){
-      btn.dataset.calulerBound='true';
-      btn.addEventListener('click',function(e){e.preventDefault();const open=menu && menu.getAttribute('data-open')==='true';if(menu){menu.setAttribute('data-open',String(!open));menu.classList.toggle('active',!open);}btn.setAttribute('aria-expanded',String(!open));btn.setAttribute('aria-label',open?'Open navigation':'Close navigation');btn.textContent=open?'☰':'✕';});
-    }
-    document.querySelectorAll('#mobileMenu a').forEach(a=>a.addEventListener('click',()=>{if(menu)menu.setAttribute('data-open','false');menu?.classList.remove('active');if(btn){btn.textContent='☰';btn.setAttribute('aria-expanded','false');}}));
-    document.addEventListener('click',e=>{if(!menu||menu.getAttribute('data-open')!=='true')return;if(menu.contains(e.target)||btn?.contains(e.target))return;menu.setAttribute('data-open','false');menu.classList.remove('active');if(btn){btn.textContent='☰';btn.setAttribute('aria-expanded','false');}});
+    const menu=$id('mobileMenu'),btn=document.querySelector('.menu-toggle');
+    if(menu&&btn&&!btn.dataset.calulerBound){btn.dataset.calulerBound='1';btn.addEventListener('click',e=>{e.preventDefault();const open=menu.getAttribute('data-open')==='true';menu.setAttribute('data-open',String(!open));menu.classList.toggle('active',!open);btn.setAttribute('aria-expanded',String(!open));btn.textContent=open?'☰':'✕'});}
+    if(menu){menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{menu.setAttribute('data-open','false');menu.classList.remove('active');if(btn){btn.textContent='☰';btn.setAttribute('aria-expanded','false')}}))}
     applyTheme(read('caluler-theme','light'));
-    const themeBtn=document.getElementById('calulerThemeToggle');
-    if(themeBtn&&!themeBtn.dataset.calulerBound){themeBtn.dataset.calulerBound='true';themeBtn.addEventListener('click',()=>applyTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark'));}
-    const lang=document.getElementById('calulerLanguage'); const selected=read('caluler-language','en');
-    applyDirection(selected); if(lang){lang.value=selected;if(!lang.dataset.calulerBound){lang.dataset.calulerBound='true';lang.addEventListener('change',function(){
-      const code=this.value;
-      applyLanguage(code,false);
-      let tries=0;
-      const timer=setInterval(()=>{
-        tries++;
-        if(setGoogleCombo(code)){clearInterval(timer);return;}
-        if(tries>=40){
-          clearInterval(timer);
-          // Reload lets Google Translate read the saved googtrans cookie on a fresh page.
-          if(code!=='en' && !sessionStorage.getItem('caluler-translate-reload')){
-            try{sessionStorage.setItem('caluler-translate-reload','1')}catch(e){}
-            location.reload();
-          }
-        }
-      },250);
-    });}}
-    // If translation cookie was previously set, retain the selected language on every page.
-    const comboTry=()=>{const code=read('caluler-language','en');if(code!=='en')setGoogleCombo(code);};
-    let tries=0;const timer=setInterval(()=>{tries++;comboTry();if(document.querySelector('.goog-te-combo')){try{sessionStorage.removeItem('caluler-translate-reload')}catch(e){}clearInterval(timer);}else if(tries>=30)clearInterval(timer);},300);
+    const theme=$id('calulerThemeToggle');if(theme&&!theme.dataset.calulerBound){theme.dataset.calulerBound='1';theme.addEventListener('click',()=>applyTheme(document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark'))}
+    const lang=$id('calulerLanguage');const selected=read('caluler-language','en');applyDirection(selected);
+    if(lang){lang.value=selected;if(!lang.dataset.calulerBound){lang.dataset.calulerBound='1';lang.addEventListener('change',()=>applyLanguage(lang.value))}}
+    // The callback can fire before or after DOMContentLoaded. Restore the selected language on each page.
+    let tries=0;const timer=setInterval(()=>{tries++;const code=read('caluler-language','en');if(setGoogleCombo(code)){try{sessionStorage.removeItem('caluler-language-reload')}catch(e){}clearInterval(timer)}else if(tries>=80)clearInterval(timer)},250);
   }
   window.calulerGoogleTranslateInit=function(){
-    try{new google.translate.TranslateElement({pageLanguage:'en',includedLanguages:'ur,ar,hi,es,fr,de,it,pt,ru,zh-CN,ja,ko,tr,id,bn,pa,fa,nl,ta',autoDisplay:false,layout:google.translate.TranslateElement.InlineLayout.SIMPLE},'google_translate_element');}
-    catch(e){}
-    let tries=0;const timer=setInterval(()=>{tries++;const code=read('caluler-language','en');if(document.querySelector('.goog-te-combo')){if(code!=='en')setGoogleCombo(code);clearInterval(timer);}if(tries>=30)clearInterval(timer);},250);
+    try{new google.translate.TranslateElement({pageLanguage:'en',includedLanguages:'ur,ar,hi,es,fr,de,it,pt,ru,zh-CN,ja,ko,tr,id,bn,pa,fa,nl,ta',autoDisplay:false,layout:google.translate.TranslateElement.InlineLayout.SIMPLE},'google_translate_element')}catch(e){}
+    let tries=0;const timer=setInterval(()=>{tries++;const code=read('caluler-language','en');if(setGoogleCombo(code)){clearInterval(timer)}else if(tries>=80)clearInterval(timer)},250);
   };
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
