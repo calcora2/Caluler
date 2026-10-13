@@ -331,12 +331,36 @@ document.querySelectorAll('#mobileMenu a').forEach(function(link){
     expression=start+(Number(m[1])*-1); render();
   }
   function memoryAction(type){
+    const formatMemory=value=>Number(value.toPrecision(12)).toString();
+    if(type==='MC'){
+      memory=0;
+      if(exprEl) exprEl.textContent='Memory cleared (0)';
+      return;
+    }
+    if(type==='MR'){
+      expression=String(memory);
+      justEvaluated=false;
+      render();
+      if(exprEl) exprEl.textContent='Memory recalled';
+      return;
+    }
     let current=0;
-    try{current=expression?Number(Function('"use strict"; return ('+cleanExpression(expression)+')')()):0;}catch(e){current=0;}
-    if(type==='MC') memory=0;
-    if(type==='MR'){expression=String(memory);justEvaluated=false;render();}
-    if(type==='M+') memory+=current;
-    if(type==='M−') memory-=current;
+    try{
+      current=expression?Number(Function('"use strict"; return ('+cleanExpression(expression)+')')()):0;
+      if(!Number.isFinite(current)) throw new Error('Invalid value');
+    }catch(e){
+      if(exprEl) exprEl.textContent='Cannot use memory with an invalid value';
+      return;
+    }
+    if(type==='M+'){
+      memory+=current;
+      if(exprEl) exprEl.textContent='Memory saved: '+formatMemory(memory);
+      return;
+    }
+    if(type==='M−'){
+      memory-=current;
+      if(exprEl) exprEl.textContent='Memory updated: '+formatMemory(memory);
+    }
   }
   function press(k){
     if(k==='AC') return clear();
