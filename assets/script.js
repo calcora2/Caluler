@@ -1,16 +1,15 @@
-
-const $ = (id)=>document.getElementById(id);
-function show(id, html){ const el=$(id); if(el) el.innerHTML=html; }
-function n(id){ return parseFloat($(id)?.value); }
+﻿const calulerGetElement = (id)=>document.getElementById(id);
+function show(id, html){ const el=calulerGetElement(id); if(el) el.innerHTML=html; }
+function n(id){ return parseFloat(calulerGetElement(id)?.value); }
 function calculateAge(){
- const dob=$('dob').value; if(!dob) return show('result','Please select your date of birth.');
+ const dob=calulerGetElement('dob').value; if(!dob) return show('result','Please select your date of birth.');
  const b=new Date(dob), t=new Date(); let y=t.getFullYear()-b.getFullYear(), m=t.getMonth()-b.getMonth(), d=t.getDate()-b.getDate();
  if(d<0){m--; d+=new Date(t.getFullYear(),t.getMonth(),0).getDate()} if(m<0){y--;m+=12}
  const days=Math.floor((t-b)/(1000*60*60*24));
  show('result',`You are <b>${y}</b> years, <b>${m}</b> months and <b>${d}</b> days old.<br>Total days lived: <b>${days.toLocaleString()}</b>`);
 }
 function calculateSleep(){
- const time=$('wake').value; if(!time) return show('result','Please choose wake-up time.');
+ const time=calulerGetElement('wake').value; if(!time) return show('result','Please choose wake-up time.');
  const [h,m]=time.split(':').map(Number); const wake=new Date(); wake.setHours(h,m,0,0);
  let out=[]; [6,5,4,3].forEach(c=>{let bed=new Date(wake.getTime()-c*90*60000-15*60000); out.push(`${c} cycles: <b>${bed.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})}</b>`)});
  show('result','Recommended bedtimes:<br>'+out.join('<br>'));
@@ -21,12 +20,12 @@ function calculateBMI(){
  show('result',`Your BMI is <b>${bmi.toFixed(1)}</b> — ${s}.`);
 }
 function calculateBMR(){
- const w=n('weight'), h=n('height'), age=n('age'), gender=$('gender').value; if(!w||!h||!age) return show('result','Please enter all values.');
+ const w=n('weight'), h=n('height'), age=n('age'), gender=calulerGetElement('gender').value; if(!w||!h||!age) return show('result','Please enter all values.');
  let bmr=10*w+6.25*h-5*age+(gender==='male'?5:-161);
  show('result',`Your estimated BMR is <b>${Math.round(bmr)}</b> calories/day.`);
 }
 function calculateCalorie(){
- const w=n('weight'), h=n('height'), age=n('age'), gender=$('gender').value, act=parseFloat($('activity').value); if(!w||!h||!age) return show('result','Please enter all values.');
+ const w=n('weight'), h=n('height'), age=n('age'), gender=calulerGetElement('gender').value, act=parseFloat(calulerGetElement('activity').value); if(!w||!h||!age) return show('result','Please enter all values.');
  let bmr=10*w+6.25*h-5*age+(gender==='male'?5:-161), cal=bmr*act;
  show('result',`Maintenance calories: <b>${Math.round(cal)}</b>/day.<br>Weight loss target: <b>${Math.round(cal-500)}</b>/day.`);
 }
@@ -53,7 +52,7 @@ function loanCalc(){
 }
 const emiCalc=loanCalc;
 function unitConvert(){
- const v=n('value'), from=$('from')?.value, to=$('to')?.value;
+ const v=n('value'), from=calulerGetElement('from')?.value, to=calulerGetElement('to')?.value;
  if(!Number.isFinite(v)) return show('result','Enter a valid value.');
  const groups={kg:'weight',lb:'weight',km:'distance',mi:'distance',cm:'length',in:'length',c:'temperature',f:'temperature'};
  if(!groups[from]||groups[from]!==groups[to]) return show('result','Choose compatible units from the same group.');
@@ -68,23 +67,23 @@ function unitConvert(){
  show('result',`${v} ${labels[from]} = <b>${Number(result.toPrecision(9)).toLocaleString(undefined,{maximumFractionDigits:8})} ${labels[to]}</b>`);
 }
 function wordCounter(){
- const text=$('text').value.trim(), words=text?text.split(/\s+/).length:0, chars=text.length, noSpace=text.replace(/\s/g,'').length;
+ const text=calulerGetElement('text').value.trim(), words=text?text.split(/\s+/).length:0, chars=text.length, noSpace=text.replace(/\s/g,'').length;
  show('result',`Words: <b>${words}</b><br>Characters: <b>${chars}</b><br>Characters without spaces: <b>${noSpace}</b>`);
 }
 function characterCounter(){ wordCounter(); }
 function caseConverter(mode){
- let text=$('text').value; if(mode==='upper') text=text.toUpperCase(); if(mode==='lower') text=text.toLowerCase();
+ let text=calulerGetElement('text').value; if(mode==='upper') text=text.toUpperCase(); if(mode==='lower') text=text.toLowerCase();
  if(mode==='title') text=text.toLowerCase().replace(/\b\w/g,c=>c.toUpperCase());
- $('text').value=text; show('result','Text converted successfully.');
+ calulerGetElement('text').value=text; show('result','Text converted successfully.');
 }
 function timeCalc(){
- const start=$('start').value, end=$('end').value; if(!start||!end) return show('result','Enter both times.');
+ const start=calulerGetElement('start').value, end=calulerGetElement('end').value; if(!start||!end) return show('result','Enter both times.');
  let [sh,sm]=start.split(':').map(Number), [eh,em]=end.split(':').map(Number);
  let s=sh*60+sm,e=eh*60+em;if(e<s)e+=1440; let diff=e-s;
  show('result',`Difference: <b>${Math.floor(diff/60)} hours ${diff%60} minutes</b>`);
 }
 function dateCalc(){
- const start=$('start').value, end=$('end').value; if(!start||!end) return show('result','Choose both dates.');
+ const start=calulerGetElement('start').value, end=calulerGetElement('end').value; if(!start||!end) return show('result','Choose both dates.');
  let d=Math.abs((new Date(end)-new Date(start))/(1000*60*60*24));
  show('result',`Difference: <b>${Math.round(d)}</b> days.`);
 }
@@ -102,14 +101,14 @@ function tipCalc(){
  const tipAmt=bill*tip/100, total=bill+tipAmt; show('result',`Tip: <b>${tipAmt.toFixed(2)}</b><br>Total: <b>${total.toFixed(2)}</b><br>Per person: <b>${(total/people).toFixed(2)}</b>`);
 }
 function currencyCalc(){
- const amount=n('amount'), rate=n('rate'), from=$('currencyFrom')?.value||'PKR', to=$('currencyTo')?.value||'USD';
+ const amount=n('amount'), rate=n('rate'), from=calulerGetElement('currencyFrom')?.value||'PKR', to=calulerGetElement('currencyTo')?.value||'USD';
  if(!Number.isFinite(amount)||amount<0||!Number.isFinite(rate)||rate<=0) return show('result','Enter a valid amount and a positive exchange rate.');
  show('result',`${amount.toLocaleString()} ${from} = <b>${(amount*rate).toLocaleString(undefined,{maximumFractionDigits:4})} ${to}</b><br><small>Manual rate: 1 ${from} = ${rate} ${to}. Rates are not live.</small>`);
 }
-function syncCurrencyRateLabel(){const from=$('currencyFrom')?.value||'PKR',to=$('currencyTo')?.value||'USD';if($('rateFrom'))$('rateFrom').textContent=from;if($('rateTo'))$('rateTo').textContent=to;}
-document.addEventListener('DOMContentLoaded',()=>{['currencyFrom','currencyTo'].forEach(id=>$(id)?.addEventListener('change',syncCurrencyRateLabel));syncCurrencyRateLabel();});
+function syncCurrencyRateLabel(){const from=calulerGetElement('currencyFrom')?.value||'PKR',to=calulerGetElement('currencyTo')?.value||'USD';if(calulerGetElement('rateFrom'))calulerGetElement('rateFrom').textContent=from;if(calulerGetElement('rateTo'))calulerGetElement('rateTo').textContent=to;}
+document.addEventListener('DOMContentLoaded',()=>{['currencyFrom','currencyTo'].forEach(id=>calulerGetElement(id)?.addEventListener('change',syncCurrencyRateLabel));syncCurrencyRateLabel();});
 function searchTools(){
- const q=($('toolSearch')?.value||'').trim().toLowerCase();
+ const q=(calulerGetElement('toolSearch')?.value||'').trim().toLowerCase();
  const cards=[...document.querySelectorAll('.tools-grid .tool-card')];
  let visible=0;
  cards.forEach(card=>{
@@ -118,10 +117,10 @@ function searchTools(){
    card.style.display=match?'':'none';
    if(match) visible++;
  });
- const heading=$('toolsHeading');
+ const heading=calulerGetElement('toolsHeading');
  if(heading && q) heading.textContent=`Search results for “${q}”`;
  else if(heading) heading.textContent=`All ${cards.length} Tools`;
- const no=$('noResults');
+ const no=calulerGetElement('noResults');
  if(no) no.hidden=visible!==0;
 }
 document.querySelectorAll('.cat').forEach(btn => {
