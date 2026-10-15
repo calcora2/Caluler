@@ -283,7 +283,7 @@ document.querySelectorAll('#mobileMenu a').forEach(function(link){
   }
   function evaluate(){
     if(!expression) return;
-    let s=cleanExpression(expression).replace(/(\d+(?:\.\d+)?)%/g,'($1/100)');
+    let s=cleanExpression(expression).replace(/(\d+(?:\.\d+)?)\s*%\s*(\d+(?:\.\d+)?)/g,'($1*$2/100)').replace(/(\d+(?:\.\d+)?)%/g,'($1/100)');
     if(!validExpression(s)) return;
     try{
       const value=Function('"use strict"; return ('+s+')')();
@@ -312,8 +312,11 @@ document.querySelectorAll('#mobileMenu a').forEach(function(link){
   function clear(){expression='';justEvaluated=false;render();}
   function backspace(){if(justEvaluated){clear();return;} expression=expression.slice(0,-1);render();}
   function percent(){
-    const m=expression.match(/(\d+(?:\.\d+)?)$/); if(!m) return;
-    expression=expression.slice(0,-m[1].length)+(Number(m[1])/100); render();
+    if (!expression) return;
+    if (!/[0-9.)]$/.test(expression)) return;
+    expression += '%';
+    justEvaluated = false;
+    render();
   }
   function square(){
     if(!expression) return;
