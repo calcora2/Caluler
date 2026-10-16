@@ -868,9 +868,180 @@ body { top: 0 !important; }
 
 /* Caluler dark-mode logo contrast fix */
 :root[data-theme="dark"] .logo {
-    background: #ffffff !important;
-    border-radius: 10px;
-    padding: 4px 10px;
+    background: transparent !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
     display: inline-flex !important;
     align-items: center;
+}
+
+/* Caluler transparent directory search icon */
+.directory-search {
+  background: transparent !important;
+}
+.directory-search:focus-within {
+  background: transparent !important;
+}
+.directory-search .search-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  transform: none;
+}
+.directory-search .search-icon img {
+  display: block;
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+/* Caluler logo/search transparent fix v2 */
+:root[data-theme="dark"] .nav .nav-inner > a.logo,
+.nav .nav-inner > a.logo {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+:root[data-theme="dark"] .nav .nav-inner > a.logo::before,
+:root[data-theme="dark"] .nav .nav-inner > a.logo::after,
+.nav .nav-inner > a.logo::before,
+.nav .nav-inner > a.logo::after {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+.nav .nav-inner > a.logo > img.logo-nav {
+  display: block !important;
+  height: 52px !important;
+  max-width: 176px !important;
+  width: auto !important;
+  object-fit: contain !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+@media (max-width: 560px) {
+  .nav .nav-inner > a.logo > img.logo-nav {
+    height: 46px !important;
+    max-width: 155px !important;
+  }
+}
+.tools-directory-page .tool-toolbar .directory-search,
+.tools-directory-page .tool-toolbar .directory-search:focus-within {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+.tools-directory-page .tool-toolbar .directory-search input#directorySearch,
+.tools-directory-page .tool-toolbar .directory-search input#directorySearch:focus {
+  background: transparent !important;
+  background-color: transparent !important;
+  color: var(--text) !important;
+}
+.tools-directory-page .tool-toolbar .directory-search .search-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 42px !important;
+  height: 42px !important;
+  flex: 0 0 42px !important;
+  transform: none !important;
+}
+.tools-directory-page .tool-toolbar .directory-search .search-icon img {
+  display: block !important;
+  width: 42px !important;
+  height: 42px !important;
+  object-fit: contain !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Caluler remove white toolbar panel v3 */
+.tool-toolbar {
+  background: transparent !important;
+  background-color: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+:root[data-theme="dark"] .tool-toolbar {
+  background: transparent !important;
+  background-color: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* Caluler actual-page visual fix v4 */
+.nav .nav-inner > a.logo {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+:root[data-theme="dark"] .nav .nav-inner > a.logo {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+.nav .nav-inner > a.logo > img.logo-nav {
+  display: block !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+  object-fit: contain !important;
+}
+.home-page .tool-toolbar {
+  background: transparent !important;
+  background-color: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+.home-page .tool-toolbar .directory-search,
+.home-page .tool-toolbar .directory-search:focus-within {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+.home-page .tool-toolbar .directory-search input#directorySearch,
+.home-page .tool-toolbar .directory-search input#directorySearch:focus {
+  background: transparent !important;
+  background-color: transparent !important;
+  color: var(--text) !important;
+}
+.home-page .tool-toolbar .directory-search .search-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 42px !important;
+  height: 42px !important;
+  flex: 0 0 42px !important;
+  transform: none !important;
+}
+.home-page .tool-toolbar .directory-search .search-icon img {
+  display: block !important;
+  width: 42px !important;
+  height: 42px !important;
+  object-fit: contain !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+  box-shadow: none !important;
 }
