@@ -865,3 +865,12 @@ body { top: 0 !important; }
     box-shadow: 0 3px 0 #d8e5f4, 0 5px 10px rgba(15, 23, 42, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.98);
   }
 }
+
+/* Caluler dark-mode logo contrast fix */
+:root[data-theme="dark"] .logo {
+    background: #ffffff !important;
+    border-radius: 10px;
+    padding: 4px 10px;
+    display: inline-flex !important;
+    align-items: center;
+}
