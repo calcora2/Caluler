@@ -1,16 +1,574 @@
 <!DOCTYPE html><html lang="en"><head>
 <link rel="icon" type="image/svg+xml" href="../assets/caluler-tab-icon.svg?v=8" /><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>EMI Calculator | Caluler</title><meta name="keywords" content="emi calculator, emi, online emi calculator, emi calculator formula, free emi calculator, online calculator, calculation tool, finance calculators"><meta name="description" content="Calculate monthly EMI for loans using amount, rate and tenure.">
+<title>Loan Amortization Calculator | Caluler</title><meta name="keywords" content="loan amortization calculator, loan repayment calculator, daily loan payment calculator, weekly loan payment calculator, monthly loan calculator, yearly loan calculator, interest-free loan calculator, extra principal payment, repayment schedule"><meta name="description" content="Calculate loan repayments over days, weeks, months or years with optional interest, flexible payment frequency, extra principal and a downloadable schedule.">
 <link rel="stylesheet" href="../assets/style.css"><script defer src="../assets/script.js"></script>
 
-<link rel="apple-touch-icon" href="../assets/caluler-favicon.png?v=7"><link rel="canonical" href="https://caluler.work/tools/emi-calculator.html"><meta property="og:type" content="website"><meta property="og:site_name" content="Caluler"><meta property="og:title" content="EMI Calculator - Free Online Tool | Caluler"><meta property="og:description" content="Calculate monthly EMI for loans using amount, rate and tenure."><meta property="og:url" content="https://caluler.work/tools/emi-calculator.html"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="EMI Calculator - Free Online Tool | Caluler"><meta name="twitter:description" content="Calculate monthly EMI for loans using amount, rate and tenure."><script src="https://translate.google.com/translate_a/element.js?cb=calulerGoogleTranslateInit" defer></script></head><body><nav class="nav" aria-label="Primary navigation"><div class="container nav-inner"><a class="logo" href="../index.html" aria-label="Caluler home"><img src="../assets/caluler-logo.webp" alt="Caluler" class="logo-nav"></a><div class="caluler-utility-controls notranslate" translate="no" aria-label="Website settings"><button type="button" class="caluler-theme-toggle" id="calulerThemeToggle" aria-label="Toggle dark mode" title="Toggle dark/light mode">🌙</button><label class="caluler-language-label" for="calulerLanguage">Language</label><select id="calulerLanguage" class="caluler-language-select notranslate" translate="no" aria-label="Choose website language"><option value="en">English</option><option value="ur">اردو</option><option value="ar">العربية</option><option value="hi">हिन्दी</option><option value="es">Español</option><option value="fr">Français</option><option value="de">Deutsch</option><option value="it">Italiano</option><option value="pt">Português</option><option value="ru">Русский</option><option value="zh-CN">简体中文</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="tr">Türkçe</option><option value="id">Bahasa Indonesia</option><option value="bn">বাংলা</option><option value="pa">ਪੰਜਾਬੀ</option><option value="fa">فارسی</option><option value="nl">Nederlands</option><option value="ta">தமிழ்</option></select></div><div id="google_translate_element" class="caluler-google-translate notranslate" translate="no" aria-hidden="true"></div><button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open navigation" class="menu-toggle"  type="button">☰</button><div class="nav-links" id="mobileMenu" data-mobile-menu data-open="false"><a href="../tools.html">Tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy</a></div></div></nav>
-<section class="page-hero"><div class="container"><h1>EMI Calculator</h1><p>Calculate monthly EMI for loans using amount, rate and tenure. Use this free emi calculator online with instant results.</p></div></section>
-<section class="section"><div class="container tool-layout"><main><div class="calculator"><h2>🏦 Calculator</h2><div class="form-grid"><div class="field"><label for="amount">Loan amount</label><input id="amount" type="number"></div><div class="field"><label for="rate">Annual interest %</label><input id="rate" type="number" step="0.01"></div><div class="field"><label for="months">Months</label><input id="months" type="number"></div></div><button class="btn" onclick="loanCalc()">Calculate EMI</button><div class="result" id="result">Your result will appear here.</div></div>
+<link rel="apple-touch-icon" href="../assets/caluler-favicon.png?v=7"><link rel="canonical" href="https://caluler.work/tools/emi-calculator.html"><meta property="og:type" content="website"><meta property="og:site_name" content="Caluler"><meta property="og:title" content="Loan Amortization Calculator - Free Online Tool | Caluler"><meta property="og:description" content="Calculate loan repayments over days, weeks, months or years with optional interest, flexible payment frequency, extra principal and a downloadable schedule."><meta property="og:url" content="https://caluler.work/tools/emi-calculator.html"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Loan Amortization Calculator - Free Online Tool | Caluler"><meta name="twitter:description" content="Calculate loan repayments over days, weeks, months or years with optional interest, flexible payment frequency, extra principal and a downloadable schedule."><script src="https://translate.google.com/translate_a/element.js?cb=calulerGoogleTranslateInit" defer></script></head><body><nav class="nav" aria-label="Primary navigation"><div class="container nav-inner"><a class="logo" href="../index.html" aria-label="Caluler home"><img src="../assets/caluler-logo.webp" alt="Caluler" class="logo-nav"></a><div class="caluler-utility-controls notranslate" translate="no" aria-label="Website settings"><button type="button" class="caluler-theme-toggle" id="calulerThemeToggle" aria-label="Toggle dark mode" title="Toggle dark/light mode">🌙</button><label class="caluler-language-label" for="calulerLanguage">Language</label><select id="calulerLanguage" class="caluler-language-select notranslate" translate="no" aria-label="Choose website language"><option value="en">English</option><option value="ur">اردو</option><option value="ar">العربية</option><option value="hi">हिन्दी</option><option value="es">Español</option><option value="fr">Français</option><option value="de">Deutsch</option><option value="it">Italiano</option><option value="pt">Português</option><option value="ru">Русский</option><option value="zh-CN">简体中文</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="tr">Türkçe</option><option value="id">Bahasa Indonesia</option><option value="bn">বাংলা</option><option value="pa">ਪੰਜਾਬੀ</option><option value="fa">فارسی</option><option value="nl">Nederlands</option><option value="ta">தமிழ்</option></select></div><div id="google_translate_element" class="caluler-google-translate notranslate" translate="no" aria-hidden="true"></div><button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open navigation" class="menu-toggle"  type="button">☰</button><div class="nav-links" id="mobileMenu" data-mobile-menu data-open="false"><a href="../tools.html">Tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy</a></div></div></nav>
+<section class="page-hero"><div class="container"><h1>Loan Amortization Calculator</h1><p>Calculate repayments over days, weeks, months or years. Leave interest blank for a 0% loan, choose a payment frequency, and compare extra principal payments.</p></div></section>
+<section class="section"><div class="container tool-layout"><main><div class="calculator">
+<h2>&#128202; Calculator</h2>
+
+<div class="form-grid">
+<div class="field">
+<label for="amLoanAmount">Loan amount (in your currency)</label>
+<input id="amLoanAmount" type="number" min="0.000001" step="any" inputmode="decimal" placeholder="e.g. 10000" required>
+</div>
+
+<div class="field">
+<label for="amAnnualRate">Annual interest rate (%) - optional</label>
+<input id="amAnnualRate" type="number" min="0" max="1000" step="any" inputmode="decimal" placeholder="Leave blank for 0% interest">
+</div>
+
+<div class="field">
+<label for="amTermValue">Loan term</label>
+<input id="amTermValue" type="number" min="0.000001" max="1000" step="any" inputmode="decimal" placeholder="e.g. 12" required>
+</div>
+
+<div class="field">
+<label for="amTermUnit">Loan term unit</label>
+<select id="amTermUnit">
+<option value="day">Days</option>
+<option value="week">Weeks</option>
+<option value="month" selected>Months</option>
+<option value="year">Years</option>
+</select>
+</div>
+
+<div class="field">
+<label for="amPaymentFrequency">Payment frequency</label>
+<select id="amPaymentFrequency">
+<option value="daily">Daily</option>
+<option value="weekly">Weekly</option>
+<option value="monthly" selected>Monthly</option>
+<option value="yearly">Yearly</option>
+</select>
+</div>
+
+<div class="field">
+<label for="amExtraPayment">Extra principal per payment (optional)</label>
+<input id="amExtraPayment" type="number" min="0" step="any" inputmode="decimal" value="0">
+</div>
+</div>
+
+<p>Leave the interest rate blank or enter 0 for an interest-free loan. Choose a duration unit and a separate payment frequency. All amounts use the same currency units. Fees, taxes and lender-specific rules are not included.</p>
+
+<button class="btn" id="amCalculateBtn" type="button">Calculate Schedule</button>
+<button class="btn" id="amCopyBtn" type="button" disabled>Copy Summary</button>
+<button class="btn" id="amCsvBtn" type="button" disabled>Download CSV</button>
+
+<div class="result" id="amResult" aria-live="polite">Enter a loan amount and loan term. Interest may be left blank for a 0% loan.</div>
+<div id="amCopyStatus" aria-live="polite"></div>
+</div>
 <div class="ad-slot">Ad space</div>
-<div class="content-box"><h2>About this EMI Calculator</h2><p>This free Caluler tool is designed for quick, clear and mobile-friendly calculations. Enter your values, review the units and assumptions, then calculate your result instantly.</p><h3>How to use</h3><ol><li>Enter the required values.</li><li>Click Calculate.</li><li>Review the result and verify assumptions before using it for an important decision.</li></ol><h3>Keywords</h3><p>EMI calculator, loan EMI calculator, monthly installment calculator, EMI interest</p><h3>Important note</h3><p>Results are for general informational purposes. Health, finance and other high-stakes results should be verified with a qualified professional or authoritative source.</p><section class="tool-faq" aria-labelledby="faq-heading"><h3 id="faq-heading">Frequently Asked Questions</h3><details><summary>What does the EMI Calculator do?</summary><p>Calculate monthly EMI for loans using amount, rate and tenure. It is part of Caluler’s Finance Calculators collection.</p></details><details><summary>How do I use this tool?</summary><p>Enter the requested values carefully, use the units shown beside each field, and select Calculate. Review the result and any assumptions before relying on it.</p></details><details><summary>Are the results saved or sent anywhere?</summary><p>The calculation is designed to run in your browser. Avoid entering private or sensitive information into any online tool unless you have reviewed the site’s privacy information.</p></details><details><summary>What should I check if the result looks wrong?</summary><p>Check that every required field contains a valid number or date, that units match the labels, and that no required value is missing or outside the tool’s supported range.</p></details></section></div></main>
+<div class="content-box">
+<h2>About this Loan Amortization Calculator</h2>
+
+<p>Calculate loan repayments using durations measured in days, weeks, months or years. Leave the annual interest rate blank for a zero-interest loan, select daily, weekly, monthly or yearly payments, and optionally add extra principal payments. The calculator separates principal and interest for every payment period and estimates total repayment and interest savings.</p>
+
+<h3>How to use</h3>
+<ol>
+<li>Enter the original loan amount.</li>
+<li>Enter the annual interest rate, or leave it blank for a 0% interest loan.</li>
+<li>Enter the loan term and select Days, Weeks, Months or Years.</li>
+<li>Select how often repayments occur: daily, weekly, monthly or yearly.</li>
+<li>Optionally enter additional principal to pay with each scheduled payment.</li>
+<li>Select Calculate Schedule. Review the totals and detailed repayment table.</li>
+<li>Use Copy Summary or Download CSV to save the results.</li>
+</ol>
+
+<h3>Calculation method</h3>
+<p>For each payment period, interest is estimated as the opening balance multiplied by the annual interest rate and the fraction of a 365.2425-day year covered by that period. A blank interest rate is treated as zero. The regular payment is calculated to repay the balance over the selected term using those period rates.</p>
+
+<p>The calculator uses average durations of 7 days per week, 365.2425 days per year and 365.2425 divided by 12 days per month. If the selected loan term ends between scheduled payment dates, the final repayment period may be shorter than a full interval.</p>
+
+<h3>Worked example</h3>
+<p>A 10,000-unit loan at 12% annual interest over 12 months, with monthly payments and no extra principal, has an estimated scheduled payment of about 888.49 units and total interest of about 661.85 units. With a blank interest rate, the same principal is repaid without interest, subject to the selected term and payment frequency.</p>
+
+<h3>How extra payments work</h3>
+<p>An extra principal payment is added to each regular payment. This generally reduces the outstanding principal faster and can reduce total interest and the number of payments. The extra amount is per selected payment interval, not necessarily per month.</p>
+
+<h3>Important assumptions</h3>
+<p>This calculator provides an estimate using a fixed annual rate and a proportional day-count method. Actual lenders may use different day-count conventions, compounding schedules, payment dates, fees, penalties or rounding rules. Verify the actual payoff amount with your lender before making financial decisions.</p>
+
+<section class="tool-faq" aria-labelledby="faq-heading">
+<h3 id="faq-heading">Frequently Asked Questions</h3>
+
+<details>
+<summary>Can I calculate a loan without interest?</summary>
+<p>Yes. Leave the annual interest rate blank or enter 0. The calculator will calculate the repayment schedule without interest charges.</p>
+</details>
+
+<details>
+<summary>Can I use days, weeks, months or years?</summary>
+<p>Yes. Select the loan term unit separately from the payment frequency. For example, a term can be entered in months with weekly repayments, or in days with daily repayments.</p>
+</details>
+
+<details>
+<summary>What does extra principal per payment mean?</summary>
+<p>It is the additional amount applied to the outstanding principal each time a regular payment is made. It can shorten the payoff period and lower interest in this estimate.</p>
+</details>
+
+<details>
+<summary>Why might the result differ from my lender?</summary>
+<p>Lenders may use specific calendar dates, daily compounding, fees, insurance, different rounding rules or other contract terms that this estimate does not include.</p>
+</details>
+
+<details>
+<summary>Are my loan details saved or sent anywhere?</summary>
+<p>The calculation is designed to run in your browser. Avoid entering private or sensitive information into any online tool unless you have reviewed the site's privacy information.</p>
+</details>
+</section>
+</div></main>
 <aside><div class="sidebar-box"><h3>Related Tools</h3><div class="related"><a href="business-valuation-calculator.html"><span class="related-icon" aria-hidden="true">💰</span><span>Business Valuation Calculator</span></a><a href="cash-flow-calculator.html"><span class="related-icon" aria-hidden="true">💰</span><span>Cash Flow Calculator</span></a><a href="commission-calculator.html"><span class="related-icon" aria-hidden="true">💰</span><span>Commission Calculator</span></a><a href="commission-split-calculator.html"><span class="related-icon" aria-hidden="true">💰</span><span>Commission Split Calculator</span></a><a href="compound-interest-calculator.html"><span class="related-icon" aria-hidden="true">💰</span><span>Compound Interest Calculator</span></a><a href="credit-card-payoff-calculator.html"><span class="related-icon" aria-hidden="true">💰</span><span>Credit Card Payoff Calculator</span></a><p class="sidebar-browse"><a href="../tools.html">Browse all calculators →</a></p></div></div></aside></div></section>
 <!-- Caluler ad placeholder: add approved ad code here when ready -->
 <div class="caluler-ad-slot caluler-ad-slot--content" role="complementary" aria-label="Advertisement space">
   <span class="caluler-ad-slot__label">Advertisement</span>
 </div>
-<footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><div class="footer-brand-title">CALULER</div><p>Free online calculators and practical productivity tools for health, finance, math, education, conversions and everyday tasks.</p></div><div class="footer-links"><h3>Explore</h3><a href="../tools.html">All 212 Tools</a><a href="../tools/age-calculator.html">Age Calculator</a><a href="../tools/bmi-calculator.html">BMI Calculator</a><a href="../tools/percentage-calculator.html">Percentage Calculator</a></div><div class="footer-links"><h3>Company &amp; Legal</h3><a href="../about.html">About Caluler</a><a href="../contact.html">Contact</a><a href="../disclaimer.html">Disclaimer</a><a href="../privacy.html">Privacy Policy</a><a href="../terms.html">Terms &amp; Conditions</a></div></div><div class="footer-bottom"><span>© 2026 Caluler. All rights reserved.</span><span class="footer-note">Free · Fast · Browser based · Mobile friendly</span></div></div></footer></body></html>
+<footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><div class="footer-brand-title">CALULER</div><p>Free online calculators and practical productivity tools for health, finance, math, education, conversions and everyday tasks.</p></div><div class="footer-links"><h3>Explore</h3><a href="../tools.html">All 212 Tools</a><a href="../tools/age-calculator.html">Age Calculator</a><a href="../tools/bmi-calculator.html">BMI Calculator</a><a href="../tools/percentage-calculator.html">Percentage Calculator</a></div><div class="footer-links"><h3>Company &amp; Legal</h3><a href="../about.html">About Caluler</a><a href="../contact.html">Contact</a><a href="../disclaimer.html">Disclaimer</a><a href="../privacy.html">Privacy Policy</a><a href="../terms.html">Terms &amp; Conditions</a></div></div><div class="footer-bottom"><span>© 2026 Caluler. All rights reserved.</span><span class="footer-note">Free · Fast · Browser based · Mobile friendly</span></div></div></footer><script>(function () {
+    'use strict';
+
+    const amountEl = document.getElementById('amLoanAmount');
+    const rateEl = document.getElementById('amAnnualRate');
+    const termEl = document.getElementById('amTermValue');
+    const termUnitEl = document.getElementById('amTermUnit');
+    const frequencyEl = document.getElementById('amPaymentFrequency');
+    const extraEl = document.getElementById('amExtraPayment');
+    const calculateBtn = document.getElementById('amCalculateBtn');
+    const copyBtn = document.getElementById('amCopyBtn');
+    const csvBtn = document.getElementById('amCsvBtn');
+    const resultEl = document.getElementById('amResult');
+    const statusEl = document.getElementById('amCopyStatus');
+
+    if (!amountEl || !rateEl || !termEl || !termUnitEl || !frequencyEl ||
+        !extraEl || !calculateBtn || !copyBtn || !csvBtn || !resultEl || !statusEl) return;
+
+    const YEAR_DAYS = 365.2425;
+    const MAX_PERIODS = 10000;
+
+    const formatter = new Intl.NumberFormat(undefined, {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
+
+    const termFactors = {
+        day: 1,
+        week: 7,
+        month: YEAR_DAYS / 12,
+        year: YEAR_DAYS
+    };
+
+    const termNames = {
+        day: 'day',
+        week: 'week',
+        month: 'month',
+        year: 'year'
+    };
+
+    const frequencyDays = {
+        daily: 1,
+        weekly: 7,
+        monthly: YEAR_DAYS / 12,
+        yearly: YEAR_DAYS
+    };
+
+    const frequencyNames = {
+        daily: 'day',
+        weekly: 'week',
+        monthly: 'month',
+        yearly: 'year'
+    };
+
+    let lastResult = null;
+
+    function formatAmount(value) {
+        return formatter.format(value);
+    }
+
+    function plural(value, singular) {
+        return value === 1 ? singular : singular + 's';
+    }
+
+    function showError(message) {
+        resultEl.textContent = message;
+        copyBtn.disabled = true;
+        csvBtn.disabled = true;
+        statusEl.textContent = '';
+        lastResult = null;
+    }
+
+    function makePeriodRates(durationDays, periodDays, annualRate) {
+        const count = Math.ceil(durationDays / periodDays - 1e-10);
+
+        if (!Number.isSafeInteger(count) || count < 1) {
+            throw new Error('Choose a positive loan term and a valid payment frequency.');
+        }
+
+        if (count > MAX_PERIODS) {
+            throw new Error('This combination creates more than 10,000 payments. Choose a shorter term or a less frequent payment interval.');
+        }
+
+        const rates = [];
+        const days = [];
+
+        for (let i = 0; i < count; i++) {
+            const remainingDays = durationDays - i * periodDays;
+            const actualDays = Math.min(periodDays, remainingDays);
+
+            if (!(actualDays > 0) || !Number.isFinite(actualDays)) {
+                throw new Error('Unable to create a valid repayment schedule from these values.');
+            }
+
+            days.push(actualDays);
+
+            // Nominal annual rate prorated for the actual length of each period.
+            rates.push((annualRate / 100) * (actualDays / YEAR_DAYS));
+        }
+
+        return { rates, days };
+    }
+
+    function solveScheduledPayment(principal, rates) {
+        // Present-value sum avoids overflowing a long schedule's growth factor.
+        let discountFactor = 1;
+        let presentValueFactor = 0;
+
+        for (const periodRate of rates) {
+            discountFactor /= (1 + periodRate);
+            presentValueFactor += discountFactor;
+
+            if (!Number.isFinite(discountFactor) ||
+                !Number.isFinite(presentValueFactor)) {
+                throw new Error('These values exceed the browser calculation range. Try a lower rate or shorter term.');
+            }
+        }
+
+        const payment = principal / presentValueFactor;
+
+        if (!Number.isFinite(payment) || payment <= 0) {
+            throw new Error('Unable to calculate a reliable payment. Check the loan amount, rate and term.');
+        }
+
+        return payment;
+    }
+
+    function buildSchedule(principal, annualRate, durationDays, periodDays, extraPayment) {
+        const inputs = makePeriodRates(durationDays, periodDays, annualRate);
+        const rates = inputs.rates;
+        const days = inputs.days;
+        const scheduledPayment = solveScheduledPayment(principal, rates);
+
+        let balance = principal;
+        let totalInterest = 0;
+        let totalPaid = 0;
+        const rows = [];
+        const tolerance = Math.max(1e-8, principal * 1e-12);
+
+        for (let i = 0; i < rates.length && balance > 0; i++) {
+            const interest = balance * rates[i];
+            const amountDue = balance + interest;
+
+            let payment = Math.min(amountDue, scheduledPayment + extraPayment);
+
+            // Clear any residual balance in the final term period.
+            if (i === rates.length - 1) payment = amountDue;
+
+            if (!Number.isFinite(payment) || payment <= 0) {
+                throw new Error('The payment became invalid. Try a shorter term or lower interest rate.');
+            }
+
+            if (payment + tolerance < interest) {
+                throw new Error('The payment does not cover the interest. Choose a shorter term or lower interest rate.');
+            }
+
+            let principalPaid = Math.min(balance, Math.max(0, payment - interest));
+            let remaining = Math.max(0, balance - principalPaid);
+
+            if (remaining <= tolerance) {
+                principalPaid = balance;
+                payment = principalPaid + interest;
+                remaining = 0;
+            }
+
+            const regularPortion = Math.min(scheduledPayment, payment);
+            const extraPortion = Math.max(0, payment - regularPortion);
+
+            rows.push({
+                period: i + 1,
+                days: days[i],
+                regularPayment: regularPortion,
+                extraPayment: extraPortion,
+                payment,
+                principal: principalPaid,
+                interest,
+                balance: remaining
+            });
+
+            totalInterest += interest;
+            totalPaid += payment;
+            balance = remaining;
+        }
+
+        if (balance > tolerance) {
+            throw new Error('The balance did not reach zero within the selected term. Check the inputs.');
+        }
+
+        return { scheduledPayment, totalInterest, totalPaid, rows };
+    }
+
+    function makeSummary(principal, annualRate, termValue, termUnit, frequency,
+        extraPayment, durationDays, actual, baseline) {
+
+        const interestSaved = Math.max(0, baseline.totalInterest - actual.totalInterest);
+        const periodsSaved = Math.max(0, baseline.rows.length - actual.rows.length);
+        const frequencyLabel = frequencyNames[frequency];
+
+        return [
+            'Loan Amortization Summary',
+            'Loan amount: ' + formatAmount(principal),
+            'Annual interest rate: ' + annualRate + '% (blank means 0%)',
+            'Loan term: ' + termValue + ' ' + plural(termValue, termNames[termUnit]),
+            'Approximate term length: ' + formatAmount(durationDays) + ' days',
+            'Payment frequency: ' + frequency,
+            'Scheduled payment per ' + frequencyLabel + ': ' + formatAmount(baseline.scheduledPayment),
+            'Extra principal per payment: ' + formatAmount(extraPayment),
+            'Estimated payoff payments: ' + actual.rows.length,
+            'Estimated total paid: ' + formatAmount(actual.totalPaid),
+            'Estimated total interest: ' + formatAmount(actual.totalInterest),
+            'Estimated interest saved versus no extra payment: ' + formatAmount(interestSaved),
+            'Payment periods saved: ' + periodsSaved
+        ].join('\n');
+    }
+
+    function renderResult(principal, annualRate, termValue, termUnit, frequency,
+        extraPayment, durationDays, actual, baseline) {
+
+        const interestSaved = Math.max(0, baseline.totalInterest - actual.totalInterest);
+        const periodsSaved = Math.max(0, baseline.rows.length - actual.rows.length);
+        const periodName = frequencyNames[frequency];
+
+        const summary = makeSummary(
+            principal, annualRate, termValue, termUnit, frequency,
+            extraPayment, durationDays, actual, baseline
+        );
+
+        const info =
+            '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(175px,1fr));gap:12px;margin-bottom:18px;font-weight:500">' +
+            '<div><strong>Scheduled payment per ' + periodName + '</strong><br>' + formatAmount(baseline.scheduledPayment) + '</div>' +
+            '<div><strong>Payment frequency</strong><br>' + frequency + '</div>' +
+            '<div><strong>Estimated payoff</strong><br>' + actual.rows.length + ' payments</div>' +
+            '<div><strong>Total paid</strong><br>' + formatAmount(actual.totalPaid) + '</div>' +
+            '<div><strong>Total interest</strong><br>' + formatAmount(actual.totalInterest) + '</div>' +
+            '<div><strong>Interest saved</strong><br>' + formatAmount(interestSaved) + '</div>' +
+            '<div><strong>Payment periods saved</strong><br>' + periodsSaved + '</div>' +
+            '</div>' +
+            '<p style="font-weight:500">Loan term: ' + termValue + ' ' +
+            plural(termValue, termNames[termUnit]) +
+            ' (approximately ' + formatAmount(durationDays) +
+            ' days). A blank interest rate is treated as 0%.</p>' +
+            '<h3 style="margin-top:18px">Repayment schedule</h3>' +
+            '<div style="overflow-x:auto;max-width:100%">' +
+            '<table style="width:100%;min-width:820px;border-collapse:collapse;font-weight:500;font-size:0.92em;line-height:1.4">' +
+            '<caption style="text-align:left;padding:8px 0">One row per payment period; the final period can be shorter than the selected frequency.</caption>' +
+            '<thead><tr>' +
+            '<th style="text-align:right;padding:8px;border-bottom:1px solid #cbd5e1">Period</th>' +
+            '<th style="text-align:right;padding:8px;border-bottom:1px solid #cbd5e1">Days</th>' +
+            '<th style="text-align:right;padding:8px;border-bottom:1px solid #cbd5e1">Regular portion</th>' +
+            '<th style="text-align:right;padding:8px;border-bottom:1px solid #cbd5e1">Extra principal</th>' +
+            '<th style="text-align:right;padding:8px;border-bottom:1px solid #cbd5e1">Total payment</th>' +
+            '<th style="text-align:right;padding:8px;border-bottom:1px solid #cbd5e1">Principal</th>' +
+            '<th style="text-align:right;padding:8px;border-bottom:1px solid #cbd5e1">Interest</th>' +
+            '<th style="text-align:right;padding:8px;border-bottom:1px solid #cbd5e1">Balance</th>' +
+            '</tr></thead><tbody>' +
+            actual.rows.map(function (row) {
+                return '<tr>' +
+                    '<td style="text-align:right;padding:7px;border-bottom:1px solid #dbe4ee">' + row.period + '</td>' +
+                    '<td style="text-align:right;padding:7px;border-bottom:1px solid #dbe4ee">' + formatAmount(row.days) + '</td>' +
+                    '<td style="text-align:right;padding:7px;border-bottom:1px solid #dbe4ee">' + formatAmount(row.regularPayment) + '</td>' +
+                    '<td style="text-align:right;padding:7px;border-bottom:1px solid #dbe4ee">' + formatAmount(row.extraPayment) + '</td>' +
+                    '<td style="text-align:right;padding:7px;border-bottom:1px solid #dbe4ee">' + formatAmount(row.payment) + '</td>' +
+                    '<td style="text-align:right;padding:7px;border-bottom:1px solid #dbe4ee">' + formatAmount(row.principal) + '</td>' +
+                    '<td style="text-align:right;padding:7px;border-bottom:1px solid #dbe4ee">' + formatAmount(row.interest) + '</td>' +
+                    '<td style="text-align:right;padding:7px;border-bottom:1px solid #dbe4ee">' + formatAmount(row.balance) + '</td>' +
+                    '</tr>';
+            }).join('') +
+            '</tbody></table></div>';
+
+        resultEl.innerHTML = info;
+
+        lastResult = {
+            principal, annualRate, termValue, termUnit, frequency,
+            extraPayment, durationDays, actual, baseline, summary
+        };
+
+        copyBtn.disabled = false;
+        csvBtn.disabled = false;
+        statusEl.textContent = '';
+    }
+
+    function calculate() {
+        statusEl.textContent = '';
+
+        const amountRaw = amountEl.value.trim();
+        const rateRaw = rateEl.value.trim();
+        const termRaw = termEl.value.trim();
+        const extraRaw = extraEl.value.trim();
+
+        if (!amountRaw || !termRaw) {
+            showError('Enter a loan amount and loan term. Interest may be left blank for a 0% loan.');
+            return;
+        }
+
+        const principal = Number(amountRaw);
+        const annualRate = rateRaw === '' ? 0 : Number(rateRaw);
+        const termValue = Number(termRaw);
+        const extraPayment = extraRaw === '' ? 0 : Number(extraRaw);
+        const termUnit = termUnitEl.value;
+        const frequency = frequencyEl.value;
+
+        if (!Number.isFinite(principal) || principal <= 0) {
+            showError('Loan amount must be a finite number greater than zero.');
+            return;
+        }
+
+        if (!Number.isFinite(annualRate) || annualRate < 0 || annualRate > 1000) {
+            showError('Annual interest rate may be blank for 0%, or a number between 0 and 1000%.');
+            return;
+        }
+
+        if (!Number.isFinite(termValue) || termValue <= 0 || termValue > 1000) {
+            showError('Loan term must be greater than zero and no more than 1,000 selected units.');
+            return;
+        }
+
+        if (!Object.prototype.hasOwnProperty.call(termFactors, termUnit)) {
+            showError('Choose a valid loan term unit: days, weeks, months or years.');
+            return;
+        }
+
+        if (!Object.prototype.hasOwnProperty.call(frequencyDays, frequency)) {
+            showError('Choose a valid payment frequency: daily, weekly, monthly or yearly.');
+            return;
+        }
+
+        if (!Number.isFinite(extraPayment) || extraPayment < 0) {
+            showError('Extra principal payment must be blank, zero or a positive number.');
+            return;
+        }
+
+        const durationDays = termValue * termFactors[termUnit];
+
+        if (!Number.isFinite(durationDays) || durationDays <= 0) {
+            showError('Loan term could not be converted to a valid duration.');
+            return;
+        }
+
+        const periodDays = frequencyDays[frequency];
+
+        try {
+            const baseline = buildSchedule(principal, annualRate, durationDays, periodDays, 0);
+            const actual = buildSchedule(principal, annualRate, durationDays, periodDays, extraPayment);
+
+            renderResult(
+                principal, annualRate, termValue, termUnit, frequency,
+                extraPayment, durationDays, actual, baseline
+            );
+        } catch (error) {
+            showError(error && error.message
+                ? error.message
+                : 'Unable to build the schedule with these values.');
+        }
+    }
+
+    async function copySummary() {
+        if (!lastResult) {
+            statusEl.textContent = 'Calculate a schedule before copying.';
+            return;
+        }
+
+        try {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                await navigator.clipboard.writeText(lastResult.summary);
+            } else {
+                const field = document.createElement('textarea');
+                field.value = lastResult.summary;
+                field.setAttribute('readonly', '');
+                field.style.position = 'fixed';
+                field.style.opacity = '0';
+                document.body.appendChild(field);
+                field.select();
+
+                const copied = document.execCommand('copy');
+                field.remove();
+
+                if (!copied) throw new Error('Copy command not available.');
+            }
+
+            statusEl.textContent = 'Summary copied.';
+        } catch (error) {
+            statusEl.textContent = 'Automatic copy was unavailable. You can select the summary and copy it manually.';
+        }
+    }
+
+    function downloadCsv() {
+        if (!lastResult) {
+            statusEl.textContent = 'Calculate a schedule before downloading.';
+            return;
+        }
+
+        const headers = [
+            'Period', 'Days in period', 'Regular portion', 'Extra principal',
+            'Total payment', 'Principal', 'Interest', 'Remaining balance'
+        ];
+
+        const lines = [headers.join(',')];
+
+        lastResult.actual.rows.forEach(function (row) {
+            lines.push([
+                row.period,
+                row.days.toFixed(4),
+                row.regularPayment.toFixed(2),
+                row.extraPayment.toFixed(2),
+                row.payment.toFixed(2),
+                row.principal.toFixed(2),
+                row.interest.toFixed(2),
+                row.balance.toFixed(2)
+            ].join(','));
+        });
+
+        const blob = new Blob(
+            ['\uFEFF' + lines.join('\r\n')],
+            { type: 'text/csv;charset=utf-8;' }
+        );
+
+        const url = URL.createObjectURL(blob);
+        const anchor = document.createElement('a');
+        anchor.href = url;
+        anchor.download = 'loan-amortization-schedule.csv';
+        document.body.appendChild(anchor);
+        anchor.click();
+        anchor.remove();
+
+        setTimeout(function () {
+            URL.revokeObjectURL(url);
+        }, 1000);
+
+        statusEl.textContent = 'CSV schedule download started.';
+    }
+
+    calculateBtn.addEventListener('click', calculate);
+    copyBtn.addEventListener('click', copySummary);
+    csvBtn.addEventListener('click', downloadCsv);
+
+    [amountEl, rateEl, termEl, termUnitEl, frequencyEl, extraEl].forEach(function (field) {
+        field.addEventListener('input', function () {
+            showError('Loan details changed. Select Calculate Schedule to refresh the results.');
+        });
+
+        field.addEventListener('change', function () {
+            showError('Loan details changed. Select Calculate Schedule to refresh the results.');
+        });
+    });
+
+    showError('Enter a loan amount and loan term. Interest may be left blank for a 0% loan.');
+})();</script>
+</body></html>
