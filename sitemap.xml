@@ -19,9 +19,9 @@
   <url><loc>https://caluler.work/tools/average-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/battery-charging-time-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/battery-energy-calculator.html</loc></url>
-  <url><loc>https://caluler.work/tools/binary-addition-calculator.html</loc></url>
-  <url><loc>https://caluler.work/tools/binary-to-decimal-converter.html</loc></url>
-  <url><loc>https://caluler.work/tools/binary-to-hexadecimal-converter.html</loc></url>
+
+
+
   <url><loc>https://caluler.work/tools/biotsavart-law-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/bitwise-and-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/bmi-calculator.html</loc><lastmod>2026-10-16</lastmod></url>
@@ -60,7 +60,7 @@
   <url><loc>https://caluler.work/tools/days-inventory-outstanding-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/dc-motor-speed-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/debt-payoff-calculator.html</loc></url>
-  <url><loc>https://caluler.work/tools/decimal-to-binary-converter.html</loc></url>
+
   <url><loc>https://caluler.work/tools/dilution-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/diode-series-resistor-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/discount-calculator.html</loc></url>
@@ -98,7 +98,7 @@
   <url><loc>https://caluler.work/tools/grade-percentage-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/gross-margin-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/heart-rate-zone-calculator.html</loc></url>
-  <url><loc>https://caluler.work/tools/hexadecimal-to-decimal-converter.html</loc></url>
+
   <url><loc>https://caluler.work/tools/hourly-to-salary-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/hourly-wage-with-overtime-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/hours-to-minutes-calculator.html</loc></url>
@@ -219,4 +219,9 @@
   <url><loc>https://caluler.work/tools/word-counter.html</loc><lastmod>2026-10-16</lastmod></url>
   <url><loc>https://caluler.work/tools/z-score-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/zakat-calculator.html</loc></url>
+  <url><loc>https://caluler.work/tools/number-system-converter.html</loc><lastmod>2026-10-18</lastmod></url>
+  <url><loc>https://caluler.work/tools/twos-complement-converter.html</loc><lastmod>2026-10-18</lastmod></url>
+  <url><loc>https://caluler.work/tools/ieee-754-converter.html</loc><lastmod>2026-10-18</lastmod></url>
+  <url><loc>https://caluler.work/tools/binary-fraction-converter.html</loc><lastmod>2026-10-18</lastmod></url>
+  <url><loc>https://caluler.work/tools/ascii-unicode-converter.html</loc><lastmod>2026-10-18</lastmod></url>
 </urlset>
