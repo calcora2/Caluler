@@ -862,7 +862,26 @@ document.querySelectorAll('#mobileMenu a').forEach(function(link){
   }
 
   function renderKeypad(mode) {
-    const rows = KEY_SETS[mode] || KEY_SETS.basic;
+    const mobileScientificRows = [
+      [['MC','memory'],['MR','memory'],['M+','memory'],['M−','memory'],['AC','clear']],
+      [['π','constant'],['e','constant'],['sin','function'],['cos','function'],['log','function']],
+      [['sin⁻¹','function'],['cos⁻¹','function'],['tan','function'],['tan⁻¹','function'],['ln','function']],
+      [['7','number'],['8','number'],['9','number'],['÷','operator'],['√','sqrt']],
+      [['4','number'],['5','number'],['6','number'],['×','operator'],['1/x','reciprocal']],
+      [['1','number'],['2','number'],['3','number'],['−','operator'],['x²','square']],
+      [['0','number'],['.','number'],['±','sign'],['+','operator'],['∛','cbrt']],
+      [['sinh','function'],['cosh','function'],['tanh','function'],['EXP','exp-entry'],['%','percent']],
+      [['(','paren'],[')','paren'],['⌫','backspace'],['|x|','function'],['floor','function']],
+      [['ceil','function'],['round','function'],['log2','function'],['xʸ','power'],['x³','cube']],
+      [['Ans','constant'],['10ˣ','pow10'],['eˣ','exp'],['!','factorial'],['=','equals']],
+      [['ⁿ√','function'],['a⁄b','fraction'],[',','comma'],['τ','constant'],['min','function']],
+      [['max','function'],['mod','function']]
+    ];
+    const isMobileScientific = mode === 'scientific' &&
+      window.matchMedia('(max-width: 600px)').matches;
+    const rows = isMobileScientific
+      ? mobileScientificRows
+      : (KEY_SETS[mode] || KEY_SETS.basic);
     keys.replaceChildren();
     rows.flat().forEach(([label, type]) => {
       const button = document.createElement('button');
@@ -873,6 +892,13 @@ document.querySelectorAll('#mobileMenu a').forEach(function(link){
     });
   }
 
+  // CALULER-MOBILE-SCIENTIFIC-NUMBER-ORDER-V29
+  const scientificMobileQuery = window.matchMedia('(max-width: 600px)');
+  if (scientificMobileQuery.addEventListener) {
+    scientificMobileQuery.addEventListener('change', () => {
+      if (currentMode === 'scientific') renderKeypad(currentMode);
+    });
+  }
   function setMode(mode) {
     currentMode = mode;
     root.dataset.mode = mode;

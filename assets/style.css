@@ -3922,3 +3922,14 @@ html.dark-mode footer a:focus-visible {
     box-sizing: border-box;
   }
 }
+
+/* CALULER-MOBILE-SCIENTIFIC-NUMBER-ORDER-V29 */
+@media screen and (max-width: 600px) {
+  #advancedCalculator[data-mode="scientific"] .calc-keys {
+    grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  }
+
+  #advancedCalculator[data-mode="scientific"] .calc-key.equals {
+    grid-column: span 1 !important;
+  }
+}
