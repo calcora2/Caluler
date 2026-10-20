@@ -3907,3 +3907,18 @@ html.dark-mode footer a:focus-visible {
   font-weight: 400 !important;
   font-style: normal !important;
 }
+
+
+/* CALULER-MOBILE-SCIENTIFIC-KEYPAD-V28
+   Mobile scientific keypad spacing only.
+   Shared button colours and calculation logic remain untouched. */
+@media screen and (max-width: 600px) {
+  .home-page .calculator-shell:has(#calcKeys .calc-key[data-key="sin"]) #calcKeys {
+    row-gap: 9px !important;
+  }
+
+  .home-page .calculator-shell:has(#calcKeys .calc-key[data-key="sin"]) #calcKeys .calc-key {
+    min-height: 44px;
+    box-sizing: border-box;
+  }
+}
