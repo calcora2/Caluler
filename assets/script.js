@@ -11,13 +11,14 @@ function calculateAge(){
 function calculateSleep(){
  const time=calulerGetElement('wake').value; if(!time) return show('result','Please choose wake-up time.');
  const [h,m]=time.split(':').map(Number); const wake=new Date(); wake.setHours(h,m,0,0);
- let out=[]; [6,5,4,3].forEach(c=>{let bed=new Date(wake.getTime()-c*90*60000-15*60000); out.push(`${c} cycles: <b>${bed.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})}</b>`)});
- show('result','Recommended bedtimes:<br>'+out.join('<br>'));
+ let out=[]; [6,5,4,3].forEach(c=>{let bed=new Date(wake.getTime()-c*90*60000-15*60000); out.push(`${c} cycles: <b>${bed.toLocaleTimeString([], {hour:'numeric',minute:'2-digit',hour12:true})}</b>`)});
+ show('result','Approximate bedtime options (sleep cycles vary):<br>'+out.join('<br>'));
 }
 function calculateBMI(){
- const w=n('weight'), h=n('height')/100; if(!w||!h) return show('result','Please enter weight and height.');
+ const w=n('weight'), heightCm=n('height'), h=heightCm/100;
+ if(!Number.isFinite(w)||w<20||w>350||!Number.isFinite(heightCm)||heightCm<100||heightCm>230) return show('result','Enter weight from 20–350 kg and height from 100–230 cm.');
  const bmi=w/(h*h); let s=bmi<18.5?'Underweight':bmi<25?'Normal weight':bmi<30?'Overweight':'Obese';
- show('result',`Your BMI is <b>${bmi.toFixed(1)}</b> — ${s}.`);
+ show('result','Your BMI is <b>'+bmi.toFixed(1)+'</b> — '+s+'.');
 }
 function calculateBMR(){
  const w=n('weight'), h=n('height'), age=n('age'), gender=calulerGetElement('gender').value; if(!w||!h||!age) return show('result','Please enter all values.');
@@ -2040,3 +2041,152 @@ root.querySelectorAll('[data-calc-tool]').forEach(button => {
     initialise();
   }
 })();
+
+/* CALULER_HEALTH_LIVE_PREVIEW_RUNTIME_JS_START */
+/* The preview heading is generated dynamically by inline calculator scripts.
+   Tag its real rendered panel instead of trying to parse HTML inside JavaScript strings. */
+(function () {
+  'use strict';
+  if (window.__calulerHealthLivePreviewThemeTagger) return;
+  window.__calulerHealthLivePreviewThemeTagger = true;
+
+  var markerText = 'LIVE DIAGRAM CALCULATION';
+  var panelClass = 'health-diagram-live-preview';
+  var titleClass = 'health-diagram-live-title';
+
+  function normalise(value) {
+    return String(value || '').replace(/\s+/g, ' ').trim().toUpperCase();
+  }
+
+  function visiblePanelAncestor(startNode) {
+    var node = startNode;
+    var fallback = null;
+    var depth = 0;
+
+    while (node && node !== document.body && depth < 7) {
+      depth += 1;
+      if (node.nodeType === 1 && node.classList) {
+        if (node.classList.contains(panelClass)) return node;
+
+        var rect = node.getBoundingClientRect();
+        var style = window.getComputedStyle(node);
+        var padding = parseFloat(style.paddingTop) || 0;
+        var radius = parseFloat(style.borderTopLeftRadius) || 0;
+        var borderWidth = parseFloat(style.borderTopWidth) || 0;
+        var hasBorder = borderWidth > 0 && style.borderTopStyle !== 'none';
+        var bg = style.backgroundColor;
+        var hasBackground = !!bg && bg !== 'transparent' && bg !== 'rgba(0, 0, 0, 0)';
+        var panelSized = rect.width >= 240 && rect.height >= 70;
+
+        if (panelSized && padding >= 8 && (hasBackground || (hasBorder && radius >= 8))) {
+          return node;
+        }
+        if (panelSized && hasBorder && radius >= 8) fallback = node;
+      }
+      node = node.parentElement;
+    }
+
+    return fallback;
+  }
+
+  function scanLivePreviewPanels() {
+    if (!document.body) return;
+    var elements = document.body.querySelectorAll('*');
+
+    for (var i = 0; i < elements.length; i += 1) {
+      var element = elements[i];
+      if (element.children.length !== 0) continue;
+      if (normalise(element.textContent) !== markerText) continue;
+
+      element.classList.add(titleClass);
+      var panel = visiblePanelAncestor(element.parentElement || element);
+      if (panel) panel.classList.add(panelClass);
+    }
+  }
+
+  function startObserver() {
+    if (!document.body) return;
+    scanLivePreviewPanels();
+    var observer = new MutationObserver(function () {
+      scanLivePreviewPanels();
+    });
+    observer.observe(document.body, {
+      childList: true,
+      characterData: true,
+      subtree: true
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startObserver, { once: true });
+  } else {
+    startObserver();
+  }
+})();
+/* CALULER_HEALTH_LIVE_PREVIEW_RUNTIME_JS_END */
+
+/* CALULER_BODYFAT_LIGHT_WRAPPER_JS_START */
+(function () {
+    'use strict';
+
+    function applyCalulerBodyFatLightFix() {
+        var pathname = (window.location.pathname || '').toLowerCase();
+
+        if (!pathname.endsWith('/body-fat-calculator.html')) {
+            return;
+        }
+
+        var svg = document.querySelector(
+            'svg.health-diagram-illustration[role="img"]'
+        ) || document.querySelector('svg.health-diagram-illustration');
+
+        if (!svg) {
+            console.warn('Caluler Body Fat theme fix: diagram SVG not found.');
+            return;
+        }
+
+        /*
+         * Find the smallest ancestor containing both the remaining
+         * Measurement Guide heading and the Live Diagram Calculation panel.
+         * Do not depend on the removed "not to scale" caption.
+         */
+        var target = null;
+        var node = svg.parentElement;
+
+        while (node && node !== document.body) {
+            var content = (node.innerText || node.textContent || '')
+                .replace(/\s+/g, ' ');
+
+            if (
+                /measurement guide/i.test(content) &&
+                /live diagram calculation/i.test(content)
+            ) {
+                target = node;
+                break;
+            }
+
+            node = node.parentElement;
+        }
+
+        if (!target) {
+            console.warn(
+                'Caluler Body Fat theme fix: guide wrapper could not be identified.'
+            );
+            return;
+        }
+
+        document.body.classList.add('caluler-bodyfat-lightfix');
+        target.classList.add('health-bodyfat-guide-lightfix');
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener(
+            'DOMContentLoaded',
+            applyCalulerBodyFatLightFix,
+            { once: true }
+        );
+    } else {
+        applyCalulerBodyFatLightFix();
+    }
+}());
+/* CALULER_BODYFAT_LIGHT_WRAPPER_JS_END */

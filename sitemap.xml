@@ -6,7 +6,7 @@
   <url><loc>https://caluler.work/disclaimer.html</loc></url>
   <url><loc>https://caluler.work/privacy.html</loc></url>
   <url><loc>https://caluler.work/terms.html</loc></url>
-  <url><loc>https://caluler.work/tools.html</loc></url>
+  <url><loc>https://caluler.work/tools.html</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://caluler.work/tools/ac-circuit-impedance-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/ac-generator-peak-emf-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/add-days-to-date-calculator.html</loc></url>
@@ -14,7 +14,6 @@
   <url><loc>https://caluler.work/tools/age-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/amperes-law-magnetic-field-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/area-converter.html</loc></url>
-  <url><loc>https://caluler.work/tools/army-body-fat-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/attendance-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/average-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/battery-charging-time-calculator.html</loc></url>
@@ -24,17 +23,14 @@
 
   <url><loc>https://caluler.work/tools/biotsavart-law-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/bitwise-and-calculator.html</loc></url>
-  <url><loc>https://caluler.work/tools/bmi-calculator.html</loc><lastmod>2026-10-16</lastmod></url>
-  <url><loc>https://caluler.work/tools/bmr-calculator.html</loc></url>
-  <url><loc>https://caluler.work/tools/body-fat-calculator.html</loc></url>
-  <url><loc>https://caluler.work/tools/body-surface-area-calculator.html</loc></url>
+  <url><loc>https://caluler.work/tools/bmi-calculator.html</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://caluler.work/tools/body-fat-calculator.html</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://caluler.work/tools/body-surface-area-calculator.html</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://caluler.work/tools/break-even-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/business-days-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/business-valuation-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/cable-voltage-drop-calculator.html</loc></url>
-  <url><loc>https://caluler.work/tools/calorie-burn-calculator.html</loc></url>
-  <url><loc>https://caluler.work/tools/calorie-calculator.html</loc></url>
-  <url><loc>https://caluler.work/tools/calorie-deficit-calculator.html</loc></url>
+<url><loc>https://caluler.work/tools/calorie-calculator.html</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://caluler.work/tools/capacitance-from-charge-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/capacitive-reactance-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/capacitor-energy-calculator.html</loc></url>
@@ -97,26 +93,26 @@
   <url><loc>https://caluler.work/tools/gpa-scale-converter.html</loc></url>
   <url><loc>https://caluler.work/tools/grade-percentage-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/gross-margin-calculator.html</loc></url>
-  <url><loc>https://caluler.work/tools/heart-rate-zone-calculator.html</loc></url>
+  <url><loc>https://caluler.work/tools/heart-rate-zone-calculator.html</loc><lastmod>2026-10-24</lastmod></url>
 
   <url><loc>https://caluler.work/tools/hourly-to-salary-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/hourly-wage-with-overtime-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/hours-to-minutes-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/hydraulic-pressure-calculator.html</loc></url>
-  <url><loc>https://caluler.work/tools/ideal-weight-calculator.html</loc></url>
+  <url><loc>https://caluler.work/tools/ideal-weight-calculator.html</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://caluler.work/tools/inductor-reactance-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/inventory-turnover-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/inverter-runtime-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/ipv4-cidr-host-count-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/kirchhoff-loop-voltage-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/lcm-calculator.html</loc></url>
-  <url><loc>https://caluler.work/tools/lean-body-mass-calculator.html</loc></url>
+  <url><loc>https://caluler.work/tools/lean-body-mass-calculator.html</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://caluler.work/tools/led-resistor-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/length-converter.html</loc></url>
   <url><loc>https://caluler.work/tools/linear-regression-slope-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/loan-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/logarithm-calculator.html</loc></url>
-  <url><loc>https://caluler.work/tools/macro-calculator.html</loc></url>
+  <url><loc>https://caluler.work/tools/macro-calculator.html</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://caluler.work/tools/magnetic-dipole-moment-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/magnetic-energy-density-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/magnetic-field-of-a-circular-coil-calculator.html</loc></url>
@@ -145,9 +141,9 @@
   <url><loc>https://caluler.work/tools/motor-torque-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/mutual-inductance-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/ohms-law-calculator.html</loc></url>
-  <url><loc>https://caluler.work/tools/one-rep-max-calculator.html</loc></url>
+  <url><loc>https://caluler.work/tools/one-rep-max-calculator.html</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://caluler.work/tools/operating-margin-calculator.html</loc></url>
-  <url><loc>https://caluler.work/tools/pace-calculator.html</loc></url>
+  <url><loc>https://caluler.work/tools/pace-calculator.html</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://caluler.work/tools/parallel-capacitance-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/parallel-resistance-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/paycheck-calculator.html</loc></url>
@@ -165,8 +161,7 @@
   <url><loc>https://caluler.work/tools/probability-of-independent-events-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/profit-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/profit-margin-calculator.html</loc></url>
-  <url><loc>https://caluler.work/tools/protein-intake-calculator.html</loc></url>
-  <url><loc>https://caluler.work/tools/pump-hydraulic-power-calculator.html</loc></url>
+<url><loc>https://caluler.work/tools/pump-hydraulic-power-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/quadratic-equation-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/ratio-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/rc-time-constant-calculator.html</loc></url>
@@ -184,7 +179,7 @@
   <url><loc>https://caluler.work/tools/series-capacitance-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/series-resistance-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/simple-interest-calculator.html</loc></url>
-  <url><loc>https://caluler.work/tools/sleep-calculator.html</loc><lastmod>2026-10-16</lastmod></url>
+  <url><loc>https://caluler.work/tools/sleep-calculator.html</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://caluler.work/tools/solar-battery-backup-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/solar-charge-controller-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/solar-panel-size-calculator.html</loc></url>
@@ -195,7 +190,6 @@
   <url><loc>https://caluler.work/tools/stock-profit-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/study-time-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/subnet-mask-from-prefix-calculator.html</loc></url>
-  <url><loc>https://caluler.work/tools/tdee-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/three-phase-power-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/time-calculator.html</loc><lastmod>2026-10-16</lastmod></url>
   <url><loc>https://caluler.work/tools/tip-calculator.html</loc><lastmod>2026-10-16</lastmod></url>
@@ -210,9 +204,9 @@
   <url><loc>https://caluler.work/tools/voltage-current-resistance-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/voltage-divider-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/volume-converter.html</loc></url>
-  <url><loc>https://caluler.work/tools/waist-to-hip-ratio-calculator.html</loc></url>
+  <url><loc>https://caluler.work/tools/waist-to-hip-ratio-calculator.html</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://caluler.work/tools/wapda-unit-cost-estimator.html</loc></url>
-  <url><loc>https://caluler.work/tools/water-intake-calculator.html</loc></url>
+  <url><loc>https://caluler.work/tools/water-intake-calculator.html</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://caluler.work/tools/water-tank-capacity-calculator.html</loc></url>
   <url><loc>https://caluler.work/tools/weight-converter.html</loc></url>
   <url><loc>https://caluler.work/tools/weighted-grade-calculator.html</loc></url>
@@ -224,4 +218,10 @@
   <url><loc>https://caluler.work/tools/ieee-754-converter.html</loc><lastmod>2026-10-18</lastmod></url>
   <url><loc>https://caluler.work/tools/binary-fraction-converter.html</loc><lastmod>2026-10-18</lastmod></url>
   <url><loc>https://caluler.work/tools/ascii-unicode-converter.html</loc><lastmod>2026-10-18</lastmod></url>
+  <url><loc>https://caluler.work/tools/body-weight-change-calculator.html</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://caluler.work/tools/fat-free-mass-index-calculator.html</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://caluler.work/tools/heart-rate-recovery-calculator.html</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://caluler.work/tools/waist-to-height-ratio-calculator.html</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://caluler.work/tools/vo2-max-calculator.html</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://caluler.work/tools/training-load-calculator.html</loc><lastmod>2026-10-24</lastmod></url>
 </urlset>

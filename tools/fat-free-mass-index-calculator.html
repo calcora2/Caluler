@@ -1,0 +1,307 @@
+<!DOCTYPE html><html lang="en"><head>
+<link rel="icon" type="image/svg+xml" href="../assets/caluler-tab-icon.svg?v=8" /><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>FFMI Calculator: Fat-Free Mass Index | Caluler</title>
+<meta name="description" content="Estimate fat-free mass index from weight, height and body-fat percentage. The estimate depends on the accuracy of the body-fat input and is not a diagnosis.">
+
+<link rel="stylesheet" href="../assets/style.css"><link rel="apple-touch-icon" href="../assets/caluler-favicon.png?v=7"><link rel="canonical" href="https://caluler.work/tools/fat-free-mass-index-calculator.html"><meta property="og:type" content="website"><meta property="og:site_name" content="Caluler"><meta property="og:title" content="FFMI Calculator: Fat-Free Mass Index | Caluler"><meta property="og:description" content="Estimate fat-free mass index from weight, height and body-fat percentage. The estimate depends on the accuracy of the body-fat input and is not a diagnosis."><meta property="og:url" content="https://caluler.work/tools/fat-free-mass-index-calculator.html"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="FFMI Calculator: Fat-Free Mass Index | Caluler"><meta name="twitter:description" content="Estimate fat-free mass index from weight, height and body-fat percentage. The estimate depends on the accuracy of the body-fat input and is not a diagnosis."><script src="../assets/script.js" defer></script>
+<script src="https://translate.google.com/translate_a/element.js?cb=calulerGoogleTranslateInit" defer></script><script id="healthSeoStructuredData" type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://caluler.work/tools/fat-free-mass-index-calculator.html#webpage",
+      "url": "https://caluler.work/tools/fat-free-mass-index-calculator.html",
+      "name": "FFMI Calculator: Fat-Free Mass Index | Caluler",
+      "description": "Estimate fat-free mass index from weight, height and body-fat percentage. The estimate depends on the accuracy of the body-fat input and is not a diagnosis.",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "Caluler",
+        "url": "https://caluler.work/"
+      }
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://caluler.work/tools/fat-free-mass-index-calculator.html#calculator",
+      "name": "Fat-Free Mass Index Calculator",
+      "url": "https://caluler.work/tools/fat-free-mass-index-calculator.html",
+      "description": "Estimate fat-free mass index from weight, height and body-fat percentage. The estimate depends on the accuracy of the body-fat input and is not a diagnosis.",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Any",
+      "isAccessibleForFree": true
+    }
+  ]
+}
+</script>
+<meta property="og:image" content="https://caluler.work/assets/caluler-social-preview.png">
+<meta property="og:image:width" content="1672">
+<meta property="og:image:height" content="941">
+<meta property="og:image:alt" content="Caluler online calculators">
+<meta name="twitter:image" content="https://caluler.work/assets/caluler-social-preview.png">
+</head><body>
+<nav class="nav" aria-label="Primary navigation"><div class="container nav-inner"><a class="logo" href="../index.html" aria-label="Caluler home"><img src="../assets/caluler-logo.webp" alt="Caluler" class="logo-nav"></a><div class="caluler-utility-controls notranslate" translate="no" aria-label="Website settings"><button type="button" class="caluler-theme-toggle" id="calulerThemeToggle" aria-label="Toggle dark mode" title="Toggle dark/light mode">🌙</button><label class="caluler-language-label" for="calulerLanguage">Language</label><select id="calulerLanguage" class="caluler-language-select notranslate" translate="no" aria-label="Choose website language"><option value="en">🇬🇧 English</option><option value="ur">🇵🇰 اردو</option><option value="ar">🇸🇦 العربية</option><option value="hi">🇮🇳 हिन्दी</option><option value="es">🇪🇸 Español</option><option value="fr">🇫🇷 Français</option><option value="de">🇩🇪 Deutsch</option><option value="it">🇮🇹 Italiano</option><option value="pt">🇵🇹 Português</option><option value="ru">🇷🇺 Русский</option><option value="zh-CN">🇨🇳 简体中文</option><option value="ja">🇯🇵 日本語</option><option value="ko">🇰🇷 한국어</option><option value="tr">🇹🇷 Türkçe</option><option value="id">🇮🇩 Bahasa Indonesia</option><option value="bn">🇧🇩 বাংলা</option><option value="pa">🇮🇳 ਪੰਜਾਬੀ</option><option value="fa">🇮🇷 فارسی</option><option value="nl">🇳🇱 Nederlands</option><option value="ta">🇮🇳 தமிழ்</option></select></div><div id="google_translate_element" class="caluler-google-translate notranslate" translate="no" aria-hidden="true"></div><button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open navigation" class="menu-toggle"  type="button">☰</button><div class="nav-links" id="mobileMenu" data-mobile-menu data-open="false"><a href="../tools.html">Tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy</a></div></div></nav>
+<section class="page-hero"><div class="container"><span class="badge">🦾 Free online tool · Health Calculators</span><h1>Fat-Free Mass Index Calculator</h1><p>Calculate fat-free mass and fat-free mass index from body weight, height and a body-fat percentage estimate.</p></div></section>
+<section class="section"><div class="container tool-layout"><main><div class="calculator"><h2>🦾 Fat-Free Mass Index Calculator</h2><form id="ffmiForm"><div class="form-grid"><div class="field"><label for="ffWeight">Body weight (kg)</label><input id="ffWeight" type="number" min="25" max="350" step="any" value="75" required></div><div class="field"><label for="ffHeight">Height (cm)</label><input id="ffHeight" type="number" min="100" max="230" step="any" value="180" required></div><div class="field"><label for="ffBodyFat">Estimated body fat (%)</label><input id="ffBodyFat" type="number" min="0" max="70" step="any" value="15" required></div></div><button class="btn" type="submit">Calculate FFMI</button></form><div class="result" id="ffResult" aria-live="polite">Enter weight, height and a body-fat estimate.</div>
+<section class="health-tool-diagram" aria-labelledby="health-diagram-fat-free-mass-index-calculator-heading"><h3 id="health-diagram-fat-free-mass-index-calculator-heading">Fat-free mass adjusted for height</h3><p>FFMI divides estimated fat-free mass in kilograms by height in metres squared.</p><figure><svg viewBox="0 0 720 205" role="img" aria-labelledby="health-diagram-fat-free-mass-index-calculator-title health-diagram-fat-free-mass-index-calculator-desc" focusable="false" class="health-diagram-illustration"><desc id="health-diagram-fat-free-mass-index-calculator-desc">FFMI divides estimated fat-free mass in kilograms by height in metres squared.</desc><rect x="1" y="1" width="718" height="203" rx="16" fill="#0b1a2a" stroke="#263f58"/><path d="M22 55 H698 M22 105 H698 M22 155 H698" stroke="#13283b" stroke-width="1"/><rect x="54" y="38" width="190" height="93" rx="12" fill="#132d43" stroke="#3e6885"/><text x="149" y="68" fill="#dff7ff" font-size="16" font-weight="700" text-anchor="middle">Body weight</text><text x="149" y="92" fill="#a8c5db" font-size="13" text-anchor="middle">minus fat mass</text><text x="149" y="114" fill="#a8e9ef" font-size="13" text-anchor="middle">= fat-free mass</text><text x="275" y="90" fill="#64d9f4" font-size="25" text-anchor="middle">÷</text><rect x="305" y="38" width="165" height="93" rx="12" fill="#132d43" stroke="#3e6885"/><text x="387" y="73" fill="#dff7ff" font-size="16" font-weight="700" text-anchor="middle">Height (m)²</text><text x="387" y="101" fill="#a8c5db" font-size="13" text-anchor="middle">height adjusted</text><path d="M480 84 H525" stroke="#64d9f4" stroke-width="3"/><path d="M515 76 L525 84 L515 92" stroke="#64d9f4" stroke-width="3" fill="none"/><rect x="535" y="51" width="145" height="66" rx="12" fill="#173a45" stroke="#55cbd7"/><text x="607" y="79" fill="#e0fbff" font-size="18" font-weight="700" text-anchor="middle">FFMI</text><text x="607" y="100" fill="#a8e9ef" font-size="12" text-anchor="middle">index</text></svg><figcaption>Illustration only. Accuracy depends on the entered body-fat estimate.</figcaption></figure></section>
+</div><div class="content-box"><h2>Formula</h2><p>Fat-free mass = weight × (1 − body-fat percentage ÷ 100). FFMI = fat-free mass ÷ height in metres squared.</p><div class="formula-flow" role="img" aria-label="Weight and body fat estimate produce fat-free mass, divided by height squared to produce FFMI"><strong>Weight + body fat</strong> → <strong>Fat-free mass</strong> ÷ <strong>Height²</strong> → <strong>FFMI</strong></div><h3>Worked example</h3><p>For 75 kg, 180 cm and an estimated 15% body fat, fat-free mass = 75 × 0.85 = 63.75 kg. FFMI = 63.75 ÷ 1.8² ≈ 19.68 kg/m².</p><h3>Limitations</h3><p>FFMI depends on the quality of the body-fat estimate and does not directly measure muscle mass. There is no single interpretation range that applies to every sex, age or population; this calculator does not diagnose health or athletic status.</p><!-- CALULER-HEALTH-SOURCES-V1 --><section class="tool-sources" aria-labelledby="health-sources-heading"><h3 id="health-sources-heading">Sources and methodology</h3><p>These references provide further reading on the calculation method or related health and fitness context. Outputs are estimates or arithmetic summaries; they do not diagnose a health condition or replace individualized professional advice.</p><ul><li><a href="https://www.nature.com/articles/0802037" target="_blank" rel="noopener noreferrer">International Journal of Obesity: FFMI reference values</a></li><li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3306818/" target="_blank" rel="noopener noreferrer">Research: Fat-free mass index across adulthood</a></li></ul></section><section class="tool-faq" aria-labelledby="faq-heading"><h3 id="faq-heading">Frequently Asked Questions</h3><details><summary>How is FFMI calculated?</summary><p>Calculate fat-free mass from weight and body-fat percentage, then divide fat-free mass in kilograms by height in metres squared.</p></details><details><summary>Does FFMI directly measure muscle?</summary><p>No. It uses estimated fat-free mass and is influenced by the accuracy of the body-fat input.</p></details><details><summary>Is there one universal FFMI target?</summary><p>No universal category applies to every person. This calculator gives a mathematical index and does not diagnose health or athletic status.</p></details></section></div></main><aside><div class="sidebar-box"><h3>Related Tools</h3><div class="related"><a href="lean-body-mass-calculator.html"><span class="related-icon" aria-hidden="true">💪</span><span>Lean Body Mass Calculator</span></a><a href="body-fat-calculator.html"><span class="related-icon" aria-hidden="true">🧍</span><span>Body Fat Calculator</span></a><a href="bmi-calculator.html"><span class="related-icon" aria-hidden="true">🧮</span><span>BMI Calculator</span></a><a href="calorie-calculator.html"><span class="related-icon" aria-hidden="true">⚡</span><span>Advanced Calorie &amp; Energy Calculator</span></a><p class="sidebar-browse"><a href="../tools.html">Browse all calculators →</a></p></div></div></aside></div></section>
+<footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><div class="footer-brand-title">CALULER</div><p>Free online calculators and practical productivity tools for health, finance, math, education, conversions and everyday tasks.</p></div><div class="footer-links"><h3>Explore</h3><a href="../tools.html">All 212 Tools</a><a href="../tools/age-calculator.html">Age Calculator</a><a href="../tools/bmi-calculator.html">BMI Calculator</a><a href="../tools/percentage-calculator.html">Percentage Calculator</a></div><div class="footer-links"><h3>Company &amp; Legal</h3><a href="../about.html">About Caluler</a><a href="../contact.html">Contact</a><a href="../disclaimer.html">Disclaimer</a><a href="../privacy.html">Privacy Policy</a><a href="../terms.html">Terms &amp; Conditions</a></div></div><div class="footer-bottom"><span>© 2026 Caluler. All rights reserved.</span><span class="footer-note">Free · Fast · Browser based · Mobile friendly</span></div></div></footer>
+<script>
+(function(){const f=document.getElementById('ffmiForm'),o=document.getElementById('ffResult');if(!f||!o)return;f.addEventListener('submit',function(e){e.preventDefault();const w=Number(document.getElementById('ffWeight').value),h=Number(document.getElementById('ffHeight').value)/100,b=Number(document.getElementById('ffBodyFat').value);if(!Number.isFinite(w)||w<25||w>350||!Number.isFinite(h)||h<1||h>2.3||!Number.isFinite(b)||b<0||b>70){o.textContent='Enter valid weight, height and body-fat percentage.';return;}const lean=w*(1-b/100),ffmi=lean/(h*h),fat=w-lean;o.innerHTML='<strong>Fat-free mass:</strong> '+lean.toFixed(2)+' kg<br><strong>Fat mass:</strong> '+fat.toFixed(2)+' kg<br><strong>FFMI:</strong> '+ffmi.toFixed(2)+' kg/m²';});})();
+</script><script id="healthDiagramAutoUpdate">
+(function () {
+  "use strict";
+
+  const svg = document.querySelector('svg[role="img"]');
+  if (!svg || !svg.parentNode) return;
+  if (document.getElementById("healthDiagramLivePreview")) return;
+
+  const panel = document.createElement("div");
+  panel.id = "healthDiagramLivePreview";
+  panel.setAttribute("role", "status");
+  panel.setAttribute("aria-live", "polite");
+  panel.setAttribute("aria-atomic", "true");
+  panel.style.cssText = "box-sizing:border-box;width:100%;max-width:100%;margin:12px 0 0;padding:12px 14px;border:1px solid #24536a;border-radius:12px;background:#102b39;color:#eaf7ff;font-size:.94rem;line-height:1.55;overflow-wrap:anywhere;";
+
+  const heading = document.createElement("div");
+  heading.textContent = "LIVE DIAGRAM CALCULATION";
+  heading.style.cssText = "margin:0 0 5px;color:#82e2f3;font-size:.75rem;font-weight:800;letter-spacing:.06em;";
+
+  const valueNode = document.createElement("div");
+  valueNode.id = "healthDiagramLiveValue";
+  valueNode.style.cssText = "font-weight:750;font-size:1rem;";
+
+  const noteNode = document.createElement("div");
+  noteNode.id = "healthDiagramLiveNote";
+  noteNode.style.cssText = "margin-top:4px;color:#bdd4e4;font-size:.82rem;";
+
+  panel.append(heading, valueNode, noteNode);
+  svg.insertAdjacentElement("afterend", panel);
+
+  const get = id => document.getElementById(id);
+  const raw = id => get(id) ? String(get(id).value ?? "").trim() : "";
+  const num = id => raw(id) === "" ? NaN : Number(raw(id));
+  const fmt = (n, digits = 1) => Number(n).toLocaleString(undefined, { maximumFractionDigits: digits, minimumFractionDigits: 0 });
+  const put = (value, note) => {
+    valueNode.textContent = value;
+    noteNode.textContent = (note ? note + " " : "Updates automatically when inputs change. ") + "Press Calculate to refresh the main result box.";
+  };
+  const invalid = message => put(message, "Enter valid current input values. The diagram preview and main calculator result are separate.");
+  const inRange = (n, min, max) => Number.isFinite(n) && n >= min && n <= max;
+  const sign = n => (n > 0 ? "+" : "") + fmt(n, 2);
+  const svgLabel = svg.getAttribute("aria-labelledby") || "";
+
+  function compute() {
+    try {
+      if (get("energyGoal")) {
+        const w = num("energyWeight"), goal = raw("energyGoal");
+        if (!inRange(w, 25, 350)) return invalid("Enter body weight from 25–350 kg.");
+
+        if (goal === "exercise") {
+          const mins = num("energyExerciseMinutes"), met = num("energyMET");
+          if (!inRange(mins, 1, 1440) || !inRange(met, 1, 25)) return invalid("Enter exercise duration (1–1,440 min) and MET (1–25).");
+          const kcal = met * 3.5 * w / 200 * mins;
+          return put("Exercise estimate: " + fmt(kcal, 0) + " kcal • MET " + fmt(met, 1) + " • " + fmt(mins, 0) + " min", "MET × 3.5 × body weight (kg) ÷ 200 × minutes; rough exercise-energy estimate.");
+        }
+
+        const h = num("energyHeight"), age = num("energyAge"), activity = num("energyActivity"), adj = num("energyAdjustment");
+        const sex = raw("energySex"), method = raw("energyMethod");
+        if (!inRange(h, 120, 230) || !inRange(age, 18, 100) || !Number.isFinite(activity) || activity <= 0) return invalid("Enter valid adult height, age and activity factor.");
+
+        let bmr;
+        if (method === "mifflin") bmr = 10 * w + 6.25 * h - 5 * age + (sex === "male" ? 5 : -161);
+        else bmr = sex === "male" ? 88.362 + 13.397 * w + 4.799 * h - 5.677 * age : 447.593 + 9.247 * w + 3.098 * h - 4.330 * age;
+
+        const tdee = bmr * activity;
+        let target = tdee, targetLabel = "Maintenance";
+
+        if (goal === "deficit" || goal === "surplus") {
+          if (!inRange(adj, 1, 3000)) return invalid("Enter a daily adjustment from 1–3,000 kcal.");
+
+          if (goal === "deficit") {
+            if (adj >= tdee) return invalid("Deficit must be smaller than estimated TDEE.");
+            target = tdee - adj;
+            targetLabel = "Deficit target";
+            if (target < bmr) return put("BMR " + fmt(bmr, 0) + " • TDEE " + fmt(tdee, 0) + " kcal/day", "Selected target would fall below estimated BMR; reduce the deficit and seek qualified guidance.");
+          } else {
+            target = tdee + adj;
+            targetLabel = "Surplus target";
+          }
+        }
+
+        return put("BMR " + fmt(bmr, 0) + " → TDEE " + fmt(tdee, 0) + " → " + targetLabel + " " + fmt(target, 0) + " kcal/day", "Method: " + (method === "mifflin" ? "Mifflin–St Jeor" : "Revised Harris–Benedict") + "; activity factor " + fmt(activity, 3) + ".");
+      }
+
+      if (get("macroMode")) {
+        if (raw("macroMode") === "protein") {
+          const w = num("proteinWeight"), factor = num("proteinFactor");
+          if (!inRange(w, 20, 350) || !inRange(factor, 0.4, 3)) return invalid("Enter protein-mode weight (20–350 kg) and factor (0.4–3 g/kg).");
+          return put("Daily protein target: " + fmt(w * factor, 0) + " g/day", fmt(w, 1) + " kg × " + fmt(factor, 1) + " g/kg. Factor is user-selected, not personal medical advice.");
+        }
+
+        const c = num("calories"), p = num("protein"), carbs = num("carbs"), fat = num("fat");
+        if (!inRange(c, 1, 10000) || ![p, carbs, fat].every(n => inRange(n, 0, 100))) return invalid("Enter calories and macro percentages in the allowed ranges.");
+        if (Math.abs(p + carbs + fat - 100) > 0.01) return invalid("Macro percentages must total 100% before calculating grams.");
+
+        return put("Protein " + fmt(c * p / 100 / 4, 1) + " g • Carbs " + fmt(c * carbs / 100 / 4, 1) + " g • Fat " + fmt(c * fat / 100 / 9, 1) + " g/day", fmt(c, 0) + " kcal split into " + fmt(p, 1) + "% protein, " + fmt(carbs, 1) + "% carbohydrate and " + fmt(fat, 1) + "% fat.");
+      }
+
+      if (get("bodyFatForm")) {
+        const h = num("height"), w = num("waist"), n = num("neck"), sex = raw("gender"), hipText = raw("hip"), hip = num("hip");
+        if (!inRange(h, 120, 230) || !inRange(w, 20, 250) || !inRange(n, 15, 100)) return invalid("Enter valid height, waist and neck measurements in cm.");
+
+        let density;
+        if (sex === "male") {
+          if (w <= n) return invalid("Male equation requires waist circumference greater than neck circumference.");
+          density = 1.0324 - 0.19077 * Math.log10(w - n) + 0.15456 * Math.log10(h);
+        } else {
+          if (hipText === "" || !inRange(hip, 20, 250)) return invalid("Female equation requires hip circumference in cm.");
+          if (w + hip <= n) return invalid("Check waist, hip and neck measurements for the female equation.");
+          density = 1.29579 - 0.35004 * Math.log10(w + hip - n) + 0.221 * Math.log10(h);
+        }
+
+        const bf = 495 / density - 450;
+        if (!Number.isFinite(bf) || bf < 0 || bf > 70) return invalid("Measurements are outside this estimate method range.");
+
+        return put("Estimated body fat: " + fmt(bf, 1) + "%", "Height " + fmt(h, 1) + " cm • Waist " + fmt(w, 1) + " cm • Neck " + fmt(n, 1) + " cm" + (sex === "female" ? " • Hips " + fmt(hip, 1) + " cm" : "") + "; U.S. Navy estimate only.");
+      }
+
+      if (get("ffmiForm")) {
+        const w = num("ffWeight"), h = num("ffHeight"), b = num("ffBodyFat");
+        if (!inRange(w, 25, 350) || !inRange(h, 100, 230) || !inRange(b, 0, 70)) return invalid("Enter valid weight, height and body-fat percentage.");
+
+        const lean = w * (1 - b / 100), fat = w - lean, ffmi = lean / Math.pow(h / 100, 2);
+        return put("FFMI " + fmt(ffmi, 2) + " kg/m² • Fat-free mass " + fmt(lean, 2) + " kg", "Fat mass " + fmt(fat, 2) + " kg from " + fmt(b, 1) + "% estimated body fat.");
+      }
+
+      if (get("trainingLoadForm")) {
+        const m = num("trainingMinutes"), r = num("trainingRpe");
+        if (!inRange(m, 1, 600) || !inRange(r, 0, 10)) return invalid("Enter duration from 1–600 minutes and RPE from 0–10.");
+        return put("Session load: " + fmt(m * r, 0) + " arbitrary units", fmt(m, 0) + " minutes × RPE " + fmt(r, 0) + "; use a consistent rating method to compare sessions.");
+      }
+
+      if (get("vo2Form")) {
+        const d = num("vo2Distance");
+        if (!inRange(d, 1000, 5000)) return invalid("Enter a 12-minute distance from 1,000 to 5,000 metres.");
+        return put("Estimated VO₂ max: " + fmt((d - 504.9) / 44.73, 1) + " ml/kg/min", fmt(d, 0) + " metres in 12 minutes using the Cooper equation; not a laboratory measurement.");
+      }
+
+      if (get("hrrForm")) {
+        const p = num("hrrPeak"), r = num("hrrAfter");
+        if (!inRange(p, 40, 240) || !inRange(r, 30, 240)) return invalid("Enter heart-rate readings in the supported ranges.");
+        if (r > p) return invalid("One-minute recovery HR must not exceed end-of-exercise HR for this calculation.");
+        return put("One-minute heart-rate drop: " + fmt(p - r, 0) + " bpm", "End exercise " + fmt(p, 0) + " bpm → after 1 minute " + fmt(r, 0) + " bpm. Measurement only, not a diagnosis.");
+      }
+
+      if (get("weightChangeForm")) {
+        const s = num("wcStart"), c = num("wcCurrent"), d = num("wcDays");
+        if (!inRange(s, 20, 500) || !inRange(c, 20, 500) || !Number.isInteger(d) || !inRange(d, 1, 36500)) return invalid("Enter valid weights (20–500 kg) and duration in whole days.");
+        const change = c - s, pct = change / s * 100, weekly = change / d * 7;
+        const direction = change > 0 ? "gain" : change < 0 ? "loss" : "no change";
+        return put("Change " + sign(change) + " kg (" + direction + ") • " + sign(pct) + "%", "Average weekly change " + sign(weekly) + " kg/week across " + fmt(d, 0) + " days.");
+      }
+
+      if (get("whratioForm")) {
+        const w = num("whWaist"), h = num("whHeight");
+        if (!inRange(w, 20, 250) || !inRange(h, 80, 250)) return invalid("Enter waist and height in the supported ranges using the same units.");
+        const r = w / h;
+        const band = r < 0.4 ? "below 0.40" : r < 0.5 ? "0.40–0.49" : r < 0.6 ? "0.50–0.59" : "0.60 or higher";
+        return put("Waist-to-height ratio: " + fmt(r, 2) + " • band " + band, "Waist " + fmt(w, 1) + " cm ÷ height " + fmt(h, 1) + " cm. Adult screening estimate, not a diagnosis.");
+      }
+
+      if (get("wake")) {
+        const wake = raw("wake");
+        if (!/^\d{2}:\d{2}$/.test(wake)) return invalid("Enter a wake-up time to preview approximate bedtime options.");
+        const parts = wake.split(":").map(Number), wakeMins = parts[0] * 60 + parts[1];
+        const time = minutes => {
+          const m = ((minutes % 1440) + 1440) % 1440;
+          return String(Math.floor(m / 60)).padStart(2, "0") + ":" + String(m % 60).padStart(2, "0");
+        };
+        const candidates = [[9, "9h"], [7.5, "7.5h"], [6, "6h"], [4.5, "4.5h"]].map(x => x[1] + " " + time(wakeMins - (x[0] * 60 + 15))).join(" • ");
+        return put("Approximate bedtime options: " + candidates, "Includes an assumed 15-minute sleep-onset allowance and 90-minute cycles; actual sleep cycles vary. Prioritize sufficient total sleep.");
+      }
+
+      if (get("age") && get("resting")) {
+        const age = num("age"), resting = num("resting"), max = 220 - age;
+        if (!Number.isFinite(age) || age <= 0 || age > 100 || !Number.isFinite(resting) || resting <= 0 || resting >= max) return invalid("Enter a valid age and resting HR below estimated maximum HR.");
+        const reserve = max - resting;
+        const zones = [[0.5,0.6],[0.6,0.7],[0.7,0.8],[0.8,0.9],[0.9,1]];
+        const summary = zones.map((z,i) => "Z" + (i+1) + " " + Math.round(resting + reserve*z[0]) + "–" + Math.round(resting + reserve*z[1])).join(" bpm • ");
+        return put("Estimated max HR: " + fmt(max, 0) + " bpm", summary + " bpm. Zone boundaries are estimates, not universal prescriptions.");
+      }
+
+      if (get("reps")) {
+        const w = num("weight"), r = num("reps");
+        if (!Number.isFinite(w) || w <= 0 || !inRange(r, 1, 30)) return invalid("Enter load above zero and 1–30 completed repetitions.");
+        return put("Estimated 1RM: " + fmt(w * (1 + r / 30), 1) + " kg", fmt(w, 1) + " kg × " + fmt(r, 0) + " reps using the page estimate; not a guaranteed true maximum.");
+      }
+
+      if (get("distance") && get("minutes")) {
+        const d = num("distance"), m = num("minutes");
+        if (!Number.isFinite(d) || d <= 0 || !Number.isFinite(m) || m <= 0) return invalid("Enter positive distance (km) and elapsed time (minutes).");
+        const seconds = Math.round((m / d) * 60), pace = Math.floor(seconds / 60) + ":" + String(seconds % 60).padStart(2, "0");
+        return put("Pace: " + pace + " min/km • Speed: " + fmt(d / (m / 60), 2) + " km/h", fmt(d, 2) + " km covered in " + fmt(m, 1) + " minutes.");
+      }
+
+      if (get("gender") && get("height") && svgLabel.includes("ideal-weight")) {
+        const h = num("height"), sex = raw("gender");
+        if (!inRange(h, 120, 230)) return invalid("Enter height from 120–230 cm for this adult reference equation.");
+        const kg = (sex === "male" ? 50 : 45.5) + 2.3 * Math.max(0, h / 2.54 - 60);
+        return put("Devine-style reference estimate: " + fmt(kg, 1) + " kg", "Height " + fmt(h, 1) + " cm • " + (sex === "male" ? "male" : "female") + " equation. One reference estimate, not a personal health verdict.");
+      }
+
+      if (get("height") && get("weight") && svgLabel.includes("body-surface-area")) {
+        const h = num("height"), w = num("weight");
+        if (!Number.isFinite(h) || h <= 0 || !Number.isFinite(w) || w <= 0) return invalid("Enter positive height in cm and weight in kg.");
+        return put("Body surface area: " + fmt(Math.sqrt(h * w / 3600), 2) + " m²", "Mosteller equation: sqrt(height (cm) × weight (kg) ÷ 3600).");
+      }
+
+      if (get("height") && get("weight") && svgLabel.includes("bmi-calculator")) {
+        const h = num("height"), w = num("weight");
+        if (!Number.isFinite(h) || h <= 0 || !Number.isFinite(w) || w <= 0) return invalid("Enter positive weight in kg and height in cm.");
+        return put("BMI: " + fmt(w / Math.pow(h / 100, 2), 2), "Weight " + fmt(w, 1) + " kg ÷ height " + fmt(h / 100, 2) + " m squared. BMI is a screening index, not a diagnosis.");
+      }
+
+      if (get("weight") && get("bodyfat")) {
+        const w = num("weight"), b = num("bodyfat");
+        if (!Number.isFinite(w) || w <= 0 || !inRange(b, 0, 99.9)) return invalid("Enter weight above zero and body-fat percentage from 0 to below 100.");
+        const lean = w * (1 - b / 100), fat = w - lean;
+        return put("Lean mass: " + fmt(lean, 1) + " kg (" + fmt(100-b, 1) + "%) • Fat mass: " + fmt(fat, 1) + " kg (" + fmt(b, 1) + "%)", "Total body weight " + fmt(w, 1) + " kg; the existing proportion bar updates with body-fat input.");
+      }
+
+      if (get("waist") && get("hip")) {
+        const w = num("waist"), h = num("hip");
+        if (!Number.isFinite(w) || w <= 0 || !Number.isFinite(h) || h <= 0) return invalid("Enter positive waist and hip measurements using the same units.");
+        return put("Waist-to-hip ratio: " + fmt(w / h, 2), "Waist " + fmt(w, 1) + " ÷ hip " + fmt(h, 1) + "; measurements must use the same units.");
+      }
+
+      if (get("weight")) {
+        const w = num("weight");
+        if (!Number.isFinite(w) || w <= 0) return invalid("Enter a positive body weight in kg.");
+        const liters = w * 0.035;
+        return put("Estimated daily fluid: " + fmt(liters, 2) + " L (about " + fmt(liters * 33.814, 0) + " fl oz)", "Weight-based starting estimate only; exercise, climate, food and medical context can change fluid needs.");
+      }
+
+      invalid("Enter the calculator inputs to preview this diagram.");
+    } catch (error) {
+      invalid("Preview unavailable for these values. Check the entered inputs.");
+    }
+  }
+
+  const ids = [
+    "energyWeight","energyHeight","energyAge","energySex","energyMethod","energyActivity","energyGoal","energyAdjustment","energyExerciseMinutes","energyMET",
+    "macroMode","calories","protein","carbs","fat","proteinWeight","proteinFactor",
+    "height","weight","gender","waist","neck","hip","hrrPeak","hrrAfter","bodyfat","age","resting","reps","vo2Distance",
+    "wcStart","wcCurrent","wcDays","distance","minutes","whWaist","whHeight","trainingMinutes","trainingRpe","ffWeight","ffHeight","ffBodyFat","wake"
+  ];
+
+  ids.forEach(id => {
+    const el = get(id);
+    if (!el) return;
+    el.addEventListener("input", compute);
+    el.addEventListener("change", compute);
+  });
+
+  compute();
+})();
+</script>
+</body></html>

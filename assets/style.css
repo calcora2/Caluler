@@ -3933,3 +3933,719 @@ html.dark-mode footer a:focus-visible {
     grid-column: span 1 !important;
   }
 }
+
+
+/* CALULER-ABOUT-STEPS-DARK-CONTRAST-V4 */
+:root[data-theme="dark"] .steps > div,
+html[data-theme="dark"] .steps > div,
+body.dark-mode .steps > div {
+    background: linear-gradient(145deg, #172943 0%, #132238 100%) !important;
+    background-color: #172943 !important;
+    color: #e5edf8 !important;
+    border-color: #304968 !important;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18) !important;
+}
+
+:root[data-theme="dark"] .steps > div h3,
+html[data-theme="dark"] .steps > div h3,
+body.dark-mode .steps > div h3 {
+    color: #f1f6ff !important;
+}
+
+:root[data-theme="dark"] .steps > div p,
+html[data-theme="dark"] .steps > div p,
+body.dark-mode .steps > div p {
+    color: #c5d4e8 !important;
+}
+
+:root[data-theme="dark"] .steps > div strong,
+html[data-theme="dark"] .steps > div strong,
+body.dark-mode .steps > div strong {
+    background: #203b5d !important;
+    color: #7dd3fc !important;
+    border: 1px solid #31557a !important;
+}
+/* END ABOUT STEPS DARK CONTRAST V4 */
+
+/* CALULER HEALTH DIAGRAM STANDARD START */
+/* Respect the HTML hidden attribute even on elements with display:grid/flex rules. */
+.calculator [hidden]{display:none!important}
+.health-tool-diagram{box-sizing:border-box;width:100%;max-width:100%;margin:18px 0 0;padding:16px;border:1px solid var(--border);border-radius:16px;background:var(--card);color:var(--text);overflow:hidden}
+.health-tool-diagram h3{margin:0 0 8px;color:var(--text);font-size:1.15rem;line-height:1.4}
+.health-tool-diagram>p{margin:0 0 14px;color:var(--muted);line-height:1.65}
+.health-tool-diagram figure{margin:0}
+.health-tool-diagram svg{display:block;width:100%;height:auto;max-width:720px;margin:0 auto}
+.health-tool-diagram figcaption{margin:10px 0 0;text-align:center;color:var(--muted);font-size:.875rem;line-height:1.55}
+@media(max-width:600px){.health-tool-diagram{padding:10px;margin-top:14px;border-radius:12px}.health-tool-diagram h3{font-size:1.05rem}.health-tool-diagram>p{font-size:.93rem}}
+/* CALULER HEALTH DIAGRAM STANDARD END */
+
+/* CALULER_HEALTH_DIAGRAM_STANDARD_START */
+svg.health-diagram-illustration[role="img"] {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  margin: 0 auto !important;
+  box-sizing: border-box;
+  border-radius: 16px;
+  background: #0b1a2a;
+  overflow: hidden;
+  font-family: "Segoe UI", Arial, sans-serif;
+  text-rendering: geometricPrecision;
+  shape-rendering: geometricPrecision;
+}
+svg.health-diagram-illustration[role="img"] text {
+  font-family: "Segoe UI", Arial, sans-serif !important;
+}
+@media (max-width: 600px) {
+  svg.health-diagram-illustration[role="img"] {
+    border-radius: 12px;
+  }
+}
+/* CALULER_HEALTH_DIAGRAM_STANDARD_END */
+
+/* CALULER_HEALTH_DIAGRAM_THEME_START */
+svg.health-diagram-illustration[role="img"] {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  box-sizing: border-box;
+  border-radius: 16px;
+  background: #0b1a2a;
+  font-family: "Segoe UI", Arial, sans-serif;
+  text-rendering: geometricPrecision;
+  shape-rendering: geometricPrecision;
+}
+svg.health-diagram-illustration[role="img"] text {
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+.health-diagram-section {
+  margin-top: 18px;
+  padding: 20px;
+  border: 1px solid #263f58;
+  border-radius: 18px;
+  background: #111f32;
+  color: #e9f6ff;
+}
+.health-diagram-section h2 { margin-top: 0; }
+.health-diagram-section > p { line-height: 1.65; }
+.health-diagram-live-preview {
+  margin-top: 14px;
+  padding: 15px 16px;
+  border: 1px solid #24566b;
+  border-radius: 14px;
+  background: #102b39;
+  color: #e9f6ff;
+  line-height: 1.6;
+}
+.health-diagram-live-preview .health-diagram-live-title {
+  margin: 0 0 7px;
+  color: #64d9f4;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1.1px;
+}
+.health-diagram-live-preview p { margin: 4px 0 0; }
+.health-diagram-caption {
+  margin: 12px 0 0;
+  color: #b7d5e8;
+  text-align: center;
+  font-size: 0.92em;
+}
+
+/* Light-mode canvas and formula cards. This targets only known dark palette fills. */
+html[data-theme="dark"] svg.health-diagram-illustration[role="img"] {
+  background: #0b1a2a;
+}
+html[data-theme="dark"] .health-diagram-section {
+  border-color: #263f58;
+  background: #111f32;
+  color: #e9f6ff;
+}
+html[data-theme="dark"] .health-diagram-live-preview {
+  border-color: #24566b;
+  background: #102b39;
+  color: #e9f6ff;
+}
+html[data-theme="dark"] .health-diagram-live-preview .health-diagram-live-title {
+  color: #64d9f4;
+}
+html[data-theme="dark"] .health-diagram-caption {
+  color: #b7d5e8;
+}
+html[data-theme="light"] svg.health-diagram-illustration[role="img"] {
+  background: #f7f9fc;
+}
+html[data-theme="light"] svg.health-diagram-illustration rect[fill="#0b1a2a" i],
+html[data-theme="light"] svg.health-diagram-illustration rect[fill="#0a1726" i],
+html[data-theme="light"] svg.health-diagram-illustration rect[fill="#0e1b2a" i],
+html[data-theme="light"] svg.health-diagram-illustration rect[fill="#091827" i] {
+  fill: #f7f9fc !important;
+  stroke: #c7d5e3 !important;
+}
+html[data-theme="light"] svg.health-diagram-illustration rect[fill="#604321" i] {
+  fill: #f8e7cb !important;
+  stroke: #c48c47 !important;
+}
+html[data-theme="light"] svg.health-diagram-illustration rect[fill="#173a45" i],
+html[data-theme="light"] svg.health-diagram-illustration rect[fill="#102b39" i],
+html[data-theme="light"] svg.health-diagram-illustration rect[fill="#112b3b" i],
+html[data-theme="light"] svg.health-diagram-illustration rect[fill="#132f45" i],
+html[data-theme="light"] svg.health-diagram-illustration rect[fill="#17344a" i],
+html[data-theme="light"] svg.health-diagram-illustration rect[fill="#153047" i],
+html[data-theme="light"] svg.health-diagram-illustration rect[fill="#142e43" i],
+html[data-theme="light"] svg.health-diagram-illustration rect[fill="#163647" i],
+html[data-theme="light"] svg.health-diagram-illustration rect[fill="#163546" i],
+html[data-theme="light"] svg.health-diagram-illustration rect[stroke="#55cbd7" i][fill] {
+  fill: #eaf4f8 !important;
+  stroke: #8db8ca !important;
+}
+html[data-theme="light"] svg.health-diagram-illustration text {
+  fill: #20364a !important;
+}
+html[data-theme="light"] svg.health-diagram-illustration text[fill="#ffcf8a" i],
+html[data-theme="light"] svg.health-diagram-illustration text[fill="#fff0d9" i],
+html[data-theme="light"] svg.health-diagram-illustration text[fill="#ffbd69" i],
+html[data-theme="light"] svg.health-diagram-illustration text[fill="#ffcb78" i] {
+  fill: #87500f !important;
+}
+html[data-theme="light"] svg.health-diagram-illustration text[fill="#cfc0ff" i],
+html[data-theme="light"] svg.health-diagram-illustration text[fill="#eee6ff" i] {
+  fill: #61458f !important;
+}
+html[data-theme="light"] svg.health-diagram-illustration text[fill="#a8e9ef" i],
+html[data-theme="light"] svg.health-diagram-illustration text[fill="#e0fbff" i] {
+  fill: #166a7a !important;
+}
+html[data-theme="light"] svg.health-diagram-illustration circle[r="15"],
+html[data-theme="light"] svg.health-diagram-illustration circle[r="16"],
+html[data-theme="light"] svg.health-diagram-illustration circle[r="17"] {
+  fill: #f4f8fc !important;
+}
+html[data-theme="light"] svg.health-diagram-illustration path[stroke="#13283b" i],
+html[data-theme="light"] svg.health-diagram-illustration path[stroke="#14283b" i],
+html[data-theme="light"] svg.health-diagram-illustration line[stroke="#13283b" i],
+html[data-theme="light"] svg.health-diagram-illustration line[stroke="#14283b" i] {
+  stroke: #dbe4ed !important;
+}
+html[data-theme="light"] .health-diagram-section {
+  border-color: #d6e0ea;
+  background: #ffffff;
+  color: #20364a;
+}
+html[data-theme="light"] .health-diagram-live-preview {
+  border-color: #c4dce5;
+  background: #eaf4f8;
+  color: #20364a;
+}
+html[data-theme="light"] .health-diagram-live-preview .health-diagram-live-title {
+  color: #146b82;
+}
+html[data-theme="light"] .health-diagram-caption {
+  color: #526c82;
+}
+@media (max-width: 600px) {
+  svg.health-diagram-illustration[role="img"] { border-radius: 12px; }
+  .health-diagram-section { padding: 14px; border-radius: 14px; }
+}
+/* CALULER_HEALTH_DIAGRAM_THEME_END */
+
+/* CALULER_HEALTH_LIVE_THEME_FIX_START */
+
+/* Light mode: diagram section and live calculation panel */
+html:not([data-theme="dark"]) body:not(.dark-mode) .health-diagram-section,
+html[data-theme="light"] .health-diagram-section,
+body.light-mode .health-diagram-section,
+body[data-theme="light"] .health-diagram-section {
+    background-color: #ffffff !important;
+    color: #20364a !important;
+    border-color: #d6e0ea !important;
+}
+
+html:not([data-theme="dark"]) body:not(.dark-mode) .health-diagram-live-preview,
+html[data-theme="light"] .health-diagram-live-preview,
+body.light-mode .health-diagram-live-preview,
+body[data-theme="light"] .health-diagram-live-preview {
+    background-color: #eaf4f8 !important;
+    color: #20364a !important;
+    border-color: #c4dce5 !important;
+    box-shadow: none !important;
+}
+
+html:not([data-theme="dark"]) body:not(.dark-mode) .health-diagram-live-preview *,
+html[data-theme="light"] .health-diagram-live-preview *,
+body.light-mode .health-diagram-live-preview *,
+body[data-theme="light"] .health-diagram-live-preview * {
+    color: #20364a !important;
+}
+
+html:not([data-theme="dark"]) body:not(.dark-mode) .health-diagram-live-preview .health-diagram-live-title,
+html[data-theme="light"] .health-diagram-live-preview .health-diagram-live-title,
+body.light-mode .health-diagram-live-preview .health-diagram-live-title,
+body[data-theme="light"] .health-diagram-live-preview .health-diagram-live-title {
+    color: #146b82 !important;
+    font-weight: 800 !important;
+}
+
+html:not([data-theme="dark"]) body:not(.dark-mode) .health-diagram-caption,
+html[data-theme="light"] .health-diagram-caption,
+body.light-mode .health-diagram-caption,
+body[data-theme="light"] .health-diagram-caption {
+    color: #526c82 !important;
+}
+
+/* Dark mode: preserve the existing dark appearance */
+html[data-theme="dark"] .health-diagram-section,
+body.dark-mode .health-diagram-section {
+    background-color: #111f32 !important;
+    color: #e9f6ff !important;
+    border-color: #263f58 !important;
+}
+
+html[data-theme="dark"] .health-diagram-live-preview,
+body.dark-mode .health-diagram-live-preview {
+    background-color: #102b39 !important;
+    color: #e9f6ff !important;
+    border-color: #24566b !important;
+}
+
+html[data-theme="dark"] .health-diagram-live-preview *,
+body.dark-mode .health-diagram-live-preview * {
+    color: #e9f6ff !important;
+}
+
+html[data-theme="dark"] .health-diagram-live-preview .health-diagram-live-title,
+body.dark-mode .health-diagram-live-preview .health-diagram-live-title {
+    color: #64d9f4 !important;
+}
+
+html[data-theme="dark"] .health-diagram-caption,
+body.dark-mode .health-diagram-caption {
+    color: #b7d5e8 !important;
+}
+
+/* CALULER_HEALTH_LIVE_THEME_FIX_END */
+
+/* CALULER_HEALTH_LIVE_PREVIEW_RUNTIME_CSS_START */
+/* These styles work once the runtime helper tags the actual rendered preview panel. */
+.health-diagram-live-preview {
+  box-sizing: border-box;
+  border-radius: 14px;
+  padding: 15px 16px;
+  margin-top: 14px;
+  line-height: 1.6;
+}
+html[data-theme="light"] .health-diagram-live-preview,
+body.light-mode .health-diagram-live-preview,
+body[data-theme="light"] .health-diagram-live-preview {
+  background: #eaf4f8 !important;
+  color: #20364a !important;
+  border: 1px solid #c4dce5 !important;
+  box-shadow: none !important;
+}
+html[data-theme="light"] .health-diagram-live-preview *,
+body.light-mode .health-diagram-live-preview *,
+body[data-theme="light"] .health-diagram-live-preview * {
+  color: #20364a !important;
+}
+html[data-theme="light"] .health-diagram-live-preview .health-diagram-live-title,
+body.light-mode .health-diagram-live-preview .health-diagram-live-title,
+body[data-theme="light"] .health-diagram-live-preview .health-diagram-live-title {
+  color: #146b82 !important;
+  font-weight: 800 !important;
+}
+html[data-theme="dark"] .health-diagram-live-preview,
+body.dark-mode .health-diagram-live-preview,
+body[data-theme="dark"] .health-diagram-live-preview {
+  background: #102b39 !important;
+  color: #e9f6ff !important;
+  border: 1px solid #24566b !important;
+  box-shadow: none !important;
+}
+html[data-theme="dark"] .health-diagram-live-preview *,
+body.dark-mode .health-diagram-live-preview *,
+body[data-theme="dark"] .health-diagram-live-preview * {
+  color: #e9f6ff !important;
+}
+html[data-theme="dark"] .health-diagram-live-preview .health-diagram-live-title,
+body.dark-mode .health-diagram-live-preview .health-diagram-live-title,
+body[data-theme="dark"] .health-diagram-live-preview .health-diagram-live-title {
+  color: #64d9f4 !important;
+  font-weight: 800 !important;
+}
+/* CALULER_HEALTH_LIVE_PREVIEW_RUNTIME_CSS_END */
+
+/* CALULER_HEALTH_SVG_LIGHT_CONTRAST_AUDIT_START */
+/* Fix dark-filled SVG formula/input cards. This was missing for the BMI formula card (#132d43). */
+html[data-theme="light"] svg.health-diagram-illustration rect[fill="#132d43" i],
+body.light-mode svg.health-diagram-illustration rect[fill="#132d43" i],
+body[data-theme="light"] svg.health-diagram-illustration rect[fill="#132d43" i] {
+  fill: #eaf2f8 !important;
+  stroke: #b8cadb !important;
+}
+
+/* Lighten the LBM base track without recolouring the actual lean/fat data segments. */
+html[data-theme="light"] svg.health-diagram-illustration rect[fill="#213e58" i],
+body.light-mode svg.health-diagram-illustration rect[fill="#213e58" i],
+body[data-theme="light"] svg.health-diagram-illustration rect[fill="#213e58" i] {
+  fill: #edf3f8 !important;
+  stroke: #b8cadb !important;
+}
+
+/* Macro & Protein: dark category bars become distinct, readable pastel cards. */
+html[data-theme="light"] svg.health-diagram-illustration rect[fill="#245a70" i],
+body.light-mode svg.health-diagram-illustration rect[fill="#245a70" i],
+body[data-theme="light"] svg.health-diagram-illustration rect[fill="#245a70" i] {
+  fill: #dceef5 !important;
+  stroke: #87b4c8 !important;
+}
+html[data-theme="light"] svg.health-diagram-illustration rect[fill="#35527a" i],
+body.light-mode svg.health-diagram-illustration rect[fill="#35527a" i],
+body[data-theme="light"] svg.health-diagram-illustration rect[fill="#35527a" i] {
+  fill: #e2eaf6 !important;
+  stroke: #91a8c9 !important;
+}
+html[data-theme="light"] svg.health-diagram-illustration rect[fill="#6b4c30" i],
+body.light-mode svg.health-diagram-illustration rect[fill="#6b4c30" i],
+body[data-theme="light"] svg.health-diagram-illustration rect[fill="#6b4c30" i] {
+  fill: #f4e4d2 !important;
+  stroke: #c89b65 !important;
+}
+
+/* Sleep: three dark text-bearing banners become pale cards with dark readable labels. */
+html[data-theme="light"] svg.health-diagram-illustration rect[fill="#24536b" i],
+body.light-mode svg.health-diagram-illustration rect[fill="#24536b" i],
+body[data-theme="light"] svg.health-diagram-illustration rect[fill="#24536b" i] {
+  fill: #e4f1f6 !important;
+  stroke: #8db8ca !important;
+}
+html[data-theme="light"] svg.health-diagram-illustration rect[fill="#3f4775" i],
+body.light-mode svg.health-diagram-illustration rect[fill="#3f4775" i],
+body[data-theme="light"] svg.health-diagram-illustration rect[fill="#3f4775" i] {
+  fill: #eeeaf7 !important;
+  stroke: #b7abd4 !important;
+}
+html[data-theme="light"] svg.health-diagram-illustration rect[fill="#6a4b76" i],
+body.light-mode svg.health-diagram-illustration rect[fill="#6a4b76" i],
+body[data-theme="light"] svg.health-diagram-illustration rect[fill="#6a4b76" i] {
+  fill: #f3e8f4 !important;
+  stroke: #c7a6c9 !important;
+}
+/* CALULER_HEALTH_SVG_LIGHT_CONTRAST_AUDIT_END */
+
+/* CALULER_VO2_LIGHT_MODE_FIX_START */
+
+/* VO2 Max: keep the central oval and its labels readable in Light Mode. */
+html:not([data-theme="dark"]) body:not(.dark-mode) svg.health-diagram-illustration ellipse[fill="#132d43" i],
+html[data-theme="light"] svg.health-diagram-illustration ellipse[fill="#132d43" i],
+body.light-mode svg.health-diagram-illustration ellipse[fill="#132d43" i],
+body[data-theme="light"] svg.health-diagram-illustration ellipse[fill="#132d43" i] {
+    fill: #eaf2f8 !important;
+    stroke: #4d9db0 !important;
+}
+
+/* Improve the dashed distance guide on the light oval. */
+html:not([data-theme="dark"]) body:not(.dark-mode) svg.health-diagram-illustration ellipse[fill="none"][stroke="#315575" i],
+html[data-theme="light"] svg.health-diagram-illustration ellipse[fill="none"][stroke="#315575" i],
+body.light-mode svg.health-diagram-illustration ellipse[fill="none"][stroke="#315575" i],
+body[data-theme="light"] svg.health-diagram-illustration ellipse[fill="none"][stroke="#315575" i] {
+    stroke: #88a7c0 !important;
+}
+
+/* CALULER_VO2_LIGHT_MODE_FIX_END */
+
+/* CALULER_BODYFAT_LIGHT_WRAPPER_CSS_START */
+
+/* Body Fat measurement guide: restore readable Light Mode colours. */
+html:not([data-theme="dark"]) body:not(.dark-mode).caluler-bodyfat-lightfix .health-bodyfat-guide-lightfix,
+html[data-theme="light"] body.caluler-bodyfat-lightfix .health-bodyfat-guide-lightfix,
+body.light-mode.caluler-bodyfat-lightfix .health-bodyfat-guide-lightfix,
+body[data-theme="light"].caluler-bodyfat-lightfix .health-bodyfat-guide-lightfix {
+    background: #f7f9fc !important;
+    background-image: none !important;
+    color: #20364a !important;
+    border-color: #c7d5e3 !important;
+    box-shadow: none !important;
+}
+
+/* Keep the guide heading, introduction, notes and live-preview text readable. */
+html:not([data-theme="dark"]) body:not(.dark-mode).caluler-bodyfat-lightfix .health-bodyfat-guide-lightfix h2,
+html:not([data-theme="dark"]) body:not(.dark-mode).caluler-bodyfat-lightfix .health-bodyfat-guide-lightfix h3,
+html:not([data-theme="dark"]) body:not(.dark-mode).caluler-bodyfat-lightfix .health-bodyfat-guide-lightfix h4,
+html:not([data-theme="dark"]) body:not(.dark-mode).caluler-bodyfat-lightfix .health-bodyfat-guide-lightfix p,
+html:not([data-theme="dark"]) body:not(.dark-mode).caluler-bodyfat-lightfix .health-bodyfat-guide-lightfix li,
+html:not([data-theme="dark"]) body:not(.dark-mode).caluler-bodyfat-lightfix .health-bodyfat-guide-lightfix strong,
+html:not([data-theme="dark"]) body:not(.dark-mode).caluler-bodyfat-lightfix .health-bodyfat-guide-lightfix small,
+html[data-theme="light"] body.caluler-bodyfat-lightfix .health-bodyfat-guide-lightfix h2,
+html[data-theme="light"] body.caluler-bodyfat-lightfix .health-bodyfat-guide-lightfix h3,
+html[data-theme="light"] body.caluler-bodyfat-lightfix .health-bodyfat-guide-lightfix h4,
+html[data-theme="light"] body.caluler-bodyfat-lightfix .health-bodyfat-guide-lightfix p,
+html[data-theme="light"] body.caluler-bodyfat-lightfix .health-bodyfat-guide-lightfix li,
+html[data-theme="light"] body.caluler-bodyfat-lightfix .health-bodyfat-guide-lightfix strong,
+html[data-theme="light"] body.caluler-bodyfat-lightfix .health-bodyfat-guide-lightfix small,
+body.light-mode.caluler-bodyfat-lightfix .health-bodyfat-guide-lightfix h2,
+body.light-mode.caluler-bodyfat-lightfix .health-bodyfat-guide-lightfix h3,
+body.light-mode.caluler-bodyfat-lightfix .health-bodyfat-guide-lightfix h4,
+body.light-mode.caluler-bodyfat-lightfix .health-bodyfat-guide-lightfix p,
+body.light-mode.caluler-bodyfat-lightfix .health-bodyfat-guide-lightfix li,
+body.light-mode.caluler-bodyfat-lightfix .health-bodyfat-guide-lightfix strong,
+body.light-mode.caluler-bodyfat-lightfix .health-bodyfat-guide-lightfix small,
+body[data-theme="light"].caluler-bodyfat-lightfix .health-bodyfat-guide-lightfix h2,
+body[data-theme="light"].caluler-bodyfat-lightfix .health-bodyfat-guide-lightfix h3,
+body[data-theme="light"].caluler-bodyfat-lightfix .health-bodyfat-guide-lightfix h4,
+body[data-theme="light"].caluler-bodyfat-lightfix .health-bodyfat-guide-lightfix p,
+body[data-theme="light"].caluler-bodyfat-lightfix .health-bodyfat-guide-lightfix li,
+body[data-theme="light"].caluler-bodyfat-lightfix .health-bodyfat-guide-lightfix strong,
+body[data-theme="light"].caluler-bodyfat-lightfix .health-bodyfat-guide-lightfix small {
+    color: #20364a !important;
+}
+
+/* Ensure the live-calculation card stays light with readable text. */
+html:not([data-theme="dark"]) body:not(.dark-mode).caluler-bodyfat-lightfix .health-bodyfat-guide-lightfix .health-diagram-live-preview,
+html[data-theme="light"] body.caluler-bodyfat-lightfix .health-bodyfat-guide-lightfix .health-diagram-live-preview,
+body.light-mode.caluler-bodyfat-lightfix .health-bodyfat-guide-lightfix .health-diagram-live-preview,
+body[data-theme="light"].caluler-bodyfat-lightfix .health-bodyfat-guide-lightfix .health-diagram-live-preview {
+    background: #eaf4f8 !important;
+    background-image: none !important;
+    color: #20364a !important;
+    border-color: #c4dce5 !important;
+    box-shadow: none !important;
+}
+
+/* CALULER_BODYFAT_LIGHT_WRAPPER_CSS_END */
+
+/* CALULER_PACE_PRO_DIAGRAM_CSS_START */
+
+/* Pace diagram: consistent, high-contrast professional vector styling. */
+svg.health-diagram-illustration .pace-pro-canvas {
+    fill: #f7f9fc !important;
+    stroke: #c8d7e5 !important;
+}
+
+svg.health-diagram-illustration .pace-pro-gridline {
+    stroke: #dce6ee !important;
+}
+
+svg.health-diagram-illustration .pace-pro-track {
+    stroke: #7193ae !important;
+}
+
+svg.health-diagram-illustration .pace-pro-track-center {
+    stroke: #e7eff5 !important;
+}
+
+svg.health-diagram-illustration .pace-pro-panel {
+    fill: #edf4f9 !important;
+    stroke: #a8c2d6 !important;
+}
+
+svg.health-diagram-illustration .pace-pro-panel-kicker {
+    fill: #14778e !important;
+}
+
+svg.health-diagram-illustration .pace-pro-panel-formula {
+    fill: #183f59 !important;
+}
+
+svg.health-diagram-illustration .pace-pro-panel-label {
+    fill: #176e87 !important;
+}
+
+svg.health-diagram-illustration .pace-pro-panel-rule {
+    stroke: #c6d9e6 !important;
+}
+
+/* Dark Mode: preserve a deep navy canvas and bright, readable typography. */
+[data-theme="dark"] svg.health-diagram-illustration .pace-pro-canvas,
+html.dark-mode svg.health-diagram-illustration .pace-pro-canvas,
+body.dark-mode svg.health-diagram-illustration .pace-pro-canvas {
+    fill: #0b1d2d !important;
+    stroke: #29465e !important;
+}
+
+[data-theme="dark"] svg.health-diagram-illustration .pace-pro-gridline,
+html.dark-mode svg.health-diagram-illustration .pace-pro-gridline,
+body.dark-mode svg.health-diagram-illustration .pace-pro-gridline {
+    stroke: #1c3448 !important;
+}
+
+[data-theme="dark"] svg.health-diagram-illustration .pace-pro-track,
+html.dark-mode svg.health-diagram-illustration .pace-pro-track,
+body.dark-mode svg.health-diagram-illustration .pace-pro-track {
+    stroke: #355d7b !important;
+}
+
+[data-theme="dark"] svg.health-diagram-illustration .pace-pro-track-center,
+html.dark-mode svg.health-diagram-illustration .pace-pro-track-center,
+body.dark-mode svg.health-diagram-illustration .pace-pro-track-center {
+    stroke: #6588a3 !important;
+}
+
+[data-theme="dark"] svg.health-diagram-illustration .pace-pro-panel,
+html.dark-mode svg.health-diagram-illustration .pace-pro-panel,
+body.dark-mode svg.health-diagram-illustration .pace-pro-panel {
+    fill: #132d43 !important;
+    stroke: #3b6684 !important;
+}
+
+[data-theme="dark"] svg.health-diagram-illustration .pace-pro-panel-kicker,
+html.dark-mode svg.health-diagram-illustration .pace-pro-panel-kicker,
+body.dark-mode svg.health-diagram-illustration .pace-pro-panel-kicker {
+    fill: #66def2 !important;
+}
+
+[data-theme="dark"] svg.health-diagram-illustration .pace-pro-panel-formula,
+html.dark-mode svg.health-diagram-illustration .pace-pro-panel-formula,
+body.dark-mode svg.health-diagram-illustration .pace-pro-panel-formula {
+    fill: #eff7ff !important;
+}
+
+[data-theme="dark"] svg.health-diagram-illustration .pace-pro-panel-label,
+html.dark-mode svg.health-diagram-illustration .pace-pro-panel-label,
+body.dark-mode svg.health-diagram-illustration .pace-pro-panel-label {
+    fill: #a8eafa !important;
+}
+
+[data-theme="dark"] svg.health-diagram-illustration .pace-pro-panel-rule,
+html.dark-mode svg.health-diagram-illustration .pace-pro-panel-rule,
+body.dark-mode svg.health-diagram-illustration .pace-pro-panel-rule {
+    stroke: #35546c !important;
+}
+
+/* CALULER_PACE_PRO_DIAGRAM_CSS_END */
+
+/* CALULER_SLEEP_COLOR_REFINEMENT_START */
+
+/* Light Mode: refined existing clock, moon and information boxes */
+html[data-theme="light"] svg.health-diagram-illustration.sleep-diagram-color-refresh rect[fill="#0b1a2a"],
+html:not([data-theme="dark"]) body:not(.dark-mode) svg.health-diagram-illustration.sleep-diagram-color-refresh rect[fill="#0b1a2a"],
+body.light-mode svg.health-diagram-illustration.sleep-diagram-color-refresh rect[fill="#0b1a2a"] {
+    fill: #f5f8fc !important;
+    stroke: #cbd9e7 !important;
+}
+html[data-theme="light"] svg.health-diagram-illustration.sleep-diagram-color-refresh path[stroke="#13283b"],
+html:not([data-theme="dark"]) body:not(.dark-mode) svg.health-diagram-illustration.sleep-diagram-color-refresh path[stroke="#13283b"],
+body.light-mode svg.health-diagram-illustration.sleep-diagram-color-refresh path[stroke="#13283b"] {
+    stroke: #dce6ef !important;
+}
+html[data-theme="light"] svg.health-diagram-illustration.sleep-diagram-color-refresh circle[fill="#132d43"],
+html:not([data-theme="dark"]) body:not(.dark-mode) svg.health-diagram-illustration.sleep-diagram-color-refresh circle[fill="#132d43"],
+body.light-mode svg.health-diagram-illustration.sleep-diagram-color-refresh circle[fill="#132d43"] {
+    fill: #193d57 !important;
+    stroke: #7895ae !important;
+}
+html[data-theme="light"] svg.health-diagram-illustration.sleep-diagram-color-refresh path[stroke="#64d9f4"],
+html:not([data-theme="dark"]) body:not(.dark-mode) svg.health-diagram-illustration.sleep-diagram-color-refresh path[stroke="#64d9f4"],
+body.light-mode svg.health-diagram-illustration.sleep-diagram-color-refresh path[stroke="#64d9f4"] {
+    stroke: #3bbbd5 !important;
+}
+html[data-theme="light"] svg.health-diagram-illustration.sleep-diagram-color-refresh circle[fill="#ffbd69"],
+html:not([data-theme="dark"]) body:not(.dark-mode) svg.health-diagram-illustration.sleep-diagram-color-refresh circle[fill="#ffbd69"],
+body.light-mode svg.health-diagram-illustration.sleep-diagram-color-refresh circle[fill="#ffbd69"] {
+    fill: #e8a24b !important;
+}
+html[data-theme="light"] svg.health-diagram-illustration.sleep-diagram-color-refresh path[fill="#c2a7ff"],
+html:not([data-theme="dark"]) body:not(.dark-mode) svg.health-diagram-illustration.sleep-diagram-color-refresh path[fill="#c2a7ff"],
+body.light-mode svg.health-diagram-illustration.sleep-diagram-color-refresh path[fill="#c2a7ff"] {
+    fill: #9a7be6 !important;
+}
+html[data-theme="light"] svg.health-diagram-illustration.sleep-diagram-color-refresh rect[fill="#24536b"],
+html:not([data-theme="dark"]) body:not(.dark-mode) svg.health-diagram-illustration.sleep-diagram-color-refresh rect[fill="#24536b"],
+body.light-mode svg.health-diagram-illustration.sleep-diagram-color-refresh rect[fill="#24536b"] {
+    fill: #e5f3f8 !important;
+    stroke: #87b6c9 !important;
+}
+html[data-theme="light"] svg.health-diagram-illustration.sleep-diagram-color-refresh rect[fill="#3f4775"],
+html:not([data-theme="dark"]) body:not(.dark-mode) svg.health-diagram-illustration.sleep-diagram-color-refresh rect[fill="#3f4775"],
+body.light-mode svg.health-diagram-illustration.sleep-diagram-color-refresh rect[fill="#3f4775"] {
+    fill: #f0ecfa !important;
+    stroke: #b6a5dd !important;
+}
+html[data-theme="light"] svg.health-diagram-illustration.sleep-diagram-color-refresh rect[fill="#6a4b76"],
+html:not([data-theme="dark"]) body:not(.dark-mode) svg.health-diagram-illustration.sleep-diagram-color-refresh rect[fill="#6a4b76"],
+body.light-mode svg.health-diagram-illustration.sleep-diagram-color-refresh rect[fill="#6a4b76"] {
+    fill: #f9ebf4 !important;
+    stroke: #d1a0c3 !important;
+}
+html[data-theme="light"] svg.health-diagram-illustration.sleep-diagram-color-refresh text[fill="#e7faff"],
+html:not([data-theme="dark"]) body:not(.dark-mode) svg.health-diagram-illustration.sleep-diagram-color-refresh text[fill="#e7faff"],
+body.light-mode svg.health-diagram-illustration.sleep-diagram-color-refresh text[fill="#e7faff"] {
+    fill: #18364c !important;
+}
+html[data-theme="light"] svg.health-diagram-illustration.sleep-diagram-color-refresh text[fill="#eeeaff"],
+html:not([data-theme="dark"]) body:not(.dark-mode) svg.health-diagram-illustration.sleep-diagram-color-refresh text[fill="#eeeaff"],
+body.light-mode svg.health-diagram-illustration.sleep-diagram-color-refresh text[fill="#eeeaff"] {
+    fill: #453760 !important;
+}
+html[data-theme="light"] svg.health-diagram-illustration.sleep-diagram-color-refresh text[fill="#ffeaff"],
+html:not([data-theme="dark"]) body:not(.dark-mode) svg.health-diagram-illustration.sleep-diagram-color-refresh text[fill="#ffeaff"],
+body.light-mode svg.health-diagram-illustration.sleep-diagram-color-refresh text[fill="#ffeaff"] {
+    fill: #653b5d !important;
+}
+
+/* Dark Mode: rich navy with clear cyan, lavender and warm accents */
+html[data-theme="dark"] svg.health-diagram-illustration.sleep-diagram-color-refresh rect[fill="#0b1a2a"],
+body.dark-mode svg.health-diagram-illustration.sleep-diagram-color-refresh rect[fill="#0b1a2a"],
+body[data-theme="dark"] svg.health-diagram-illustration.sleep-diagram-color-refresh rect[fill="#0b1a2a"] {
+    fill: #091a2a !important;
+    stroke: #2b455d !important;
+}
+html[data-theme="dark"] svg.health-diagram-illustration.sleep-diagram-color-refresh path[stroke="#13283b"],
+body.dark-mode svg.health-diagram-illustration.sleep-diagram-color-refresh path[stroke="#13283b"],
+body[data-theme="dark"] svg.health-diagram-illustration.sleep-diagram-color-refresh path[stroke="#13283b"] {
+    stroke: #1b3448 !important;
+}
+html[data-theme="dark"] svg.health-diagram-illustration.sleep-diagram-color-refresh circle[fill="#132d43"],
+body.dark-mode svg.health-diagram-illustration.sleep-diagram-color-refresh circle[fill="#132d43"],
+body[data-theme="dark"] svg.health-diagram-illustration.sleep-diagram-color-refresh circle[fill="#132d43"] {
+    fill: #15344c !important;
+    stroke: #587a95 !important;
+}
+html[data-theme="dark"] svg.health-diagram-illustration.sleep-diagram-color-refresh path[stroke="#64d9f4"],
+body.dark-mode svg.health-diagram-illustration.sleep-diagram-color-refresh path[stroke="#64d9f4"],
+body[data-theme="dark"] svg.health-diagram-illustration.sleep-diagram-color-refresh path[stroke="#64d9f4"] {
+    stroke: #64def2 !important;
+}
+html[data-theme="dark"] svg.health-diagram-illustration.sleep-diagram-color-refresh circle[fill="#ffbd69"],
+body.dark-mode svg.health-diagram-illustration.sleep-diagram-color-refresh circle[fill="#ffbd69"],
+body[data-theme="dark"] svg.health-diagram-illustration.sleep-diagram-color-refresh circle[fill="#ffbd69"] {
+    fill: #ffc36b !important;
+}
+html[data-theme="dark"] svg.health-diagram-illustration.sleep-diagram-color-refresh path[fill="#c2a7ff"],
+body.dark-mode svg.health-diagram-illustration.sleep-diagram-color-refresh path[fill="#c2a7ff"],
+body[data-theme="dark"] svg.health-diagram-illustration.sleep-diagram-color-refresh path[fill="#c2a7ff"] {
+    fill: #bba0ff !important;
+}
+html[data-theme="dark"] svg.health-diagram-illustration.sleep-diagram-color-refresh rect[fill="#24536b"],
+body.dark-mode svg.health-diagram-illustration.sleep-diagram-color-refresh rect[fill="#24536b"],
+body[data-theme="dark"] svg.health-diagram-illustration.sleep-diagram-color-refresh rect[fill="#24536b"] {
+    fill: #17394a !important;
+    stroke: #438198 !important;
+}
+html[data-theme="dark"] svg.health-diagram-illustration.sleep-diagram-color-refresh rect[fill="#3f4775"],
+body.dark-mode svg.health-diagram-illustration.sleep-diagram-color-refresh rect[fill="#3f4775"],
+body[data-theme="dark"] svg.health-diagram-illustration.sleep-diagram-color-refresh rect[fill="#3f4775"] {
+    fill: #292747 !important;
+    stroke: #65578e !important;
+}
+html[data-theme="dark"] svg.health-diagram-illustration.sleep-diagram-color-refresh rect[fill="#6a4b76"],
+body.dark-mode svg.health-diagram-illustration.sleep-diagram-color-refresh rect[fill="#6a4b76"],
+body[data-theme="dark"] svg.health-diagram-illustration.sleep-diagram-color-refresh rect[fill="#6a4b76"] {
+    fill: #39273b !important;
+    stroke: #8e6089 !important;
+}
+html[data-theme="dark"] svg.health-diagram-illustration.sleep-diagram-color-refresh text[fill="#e7faff"],
+body.dark-mode svg.health-diagram-illustration.sleep-diagram-color-refresh text[fill="#e7faff"],
+body[data-theme="dark"] svg.health-diagram-illustration.sleep-diagram-color-refresh text[fill="#e7faff"],
+html[data-theme="dark"] svg.health-diagram-illustration.sleep-diagram-color-refresh text[fill="#eeeaff"],
+body.dark-mode svg.health-diagram-illustration.sleep-diagram-color-refresh text[fill="#eeeaff"],
+body[data-theme="dark"] svg.health-diagram-illustration.sleep-diagram-color-refresh text[fill="#eeeaff"],
+html[data-theme="dark"] svg.health-diagram-illustration.sleep-diagram-color-refresh text[fill="#ffeaff"],
+body.dark-mode svg.health-diagram-illustration.sleep-diagram-color-refresh text[fill="#ffeaff"],
+body[data-theme="dark"] svg.health-diagram-illustration.sleep-diagram-color-refresh text[fill="#ffeaff"] {
+    fill: #f0f7ff !important;
+}
+
+/* CALULER_SLEEP_COLOR_REFINEMENT_END */
