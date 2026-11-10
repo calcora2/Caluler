@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graphing Calculator – Plot Functions Online | Caluler</title>
+  <meta name="description" content="Plot and compare functions with Caluler’s free online graphing calculator. Enter equations, adjust graph ranges, zoom, and check values in a table.">
+  <link rel="canonical" href="https://caluler.work/tools/graphing-calculator.html">
+  <link rel="icon" type="image/svg+xml" href="../assets/caluler-tab-icon.svg?v=8">
+  <link rel="apple-touch-icon" href="../assets/caluler-favicon.png?v=7">
+  <link rel="stylesheet" href="../assets/style.css">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Caluler">
+  <meta property="og:title" content="Graphing Calculator – Plot Functions Online | Caluler">
+  <meta property="og:description" content="Plot and compare functions with Caluler’s free online graphing calculator. Enter equations, adjust graph ranges, zoom, and check values in a table.">
+  <meta property="og:url" content="https://caluler.work/tools/graphing-calculator.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Graphing Calculator – Plot Functions Online | Caluler">
+  <meta name="twitter:description" content="Plot and compare functions with Caluler’s free online graphing calculator. Enter equations, adjust graph ranges, zoom, and check values in a table.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Graphing Calculator",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "url": "https://caluler.work/tools/graphing-calculator.html",
+    "description": "Plot and compare mathematical functions in an interactive coordinate plane.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "publisher": { "@type": "Organization", "name": "Caluler" }
+  }
+  </script>
+  <script src="../assets/script.js" defer></script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=calulerGoogleTranslateInit" defer></script>
+  <style>
+    .graph-card{overflow:hidden}
+    .graph-functions{display:grid;gap:10px;margin:18px 0}
+    .function-row{display:grid;grid-template-columns:12px minmax(0,1fr) auto;gap:10px;align-items:center}
+    .function-swatch{width:12px;height:34px;border-radius:8px}
+    .function-row input{min-width:0}
+    .graph-controls{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:16px 0}
+    .graph-actions{display:flex;flex-wrap:wrap;gap:10px;margin:14px 0}
+    .graph-actions .btn{min-height:44px}
+    .graph-wrap{position:relative;background:#fff;border:1px solid #dbe4f0;border-radius:18px;overflow:hidden}
+    #plot{display:block;width:100%;height:430px}
+    .graph-legend{display:flex;flex-wrap:wrap;gap:12px;padding:12px 16px;color:#475569;font-size:13px}
+    .graph-note{color:#64748b;font-size:13px;line-height:1.6}
+    .table-wrap{overflow-x:auto}
+    .value-table{width:100%;border-collapse:collapse;margin-top:12px}
+    .value-table th,.value-table td{padding:10px 12px;border-bottom:1px solid #e2e8f0;text-align:left;white-space:nowrap}
+    .value-table th{color:#475569;font-size:13px}
+    .value-table td{font-variant-numeric:tabular-nums}
+    .graph-error{color:#b91c1c;font-weight:700}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    @media(max-width:700px){.graph-controls{grid-template-columns:repeat(2,minmax(0,1fr))}#plot{height:340px}}
+    @media(max-width:420px){.graph-controls{grid-template-columns:1fr 1fr}.function-row{grid-template-columns:10px minmax(0,1fr)}.function-row .function-name{display:none}}
+  </style>
+</head>
+<body>
+<nav class="nav" aria-label="Primary navigation">
+  <div class="container nav-inner">
+    <a class="logo" href="../index.html" aria-label="Caluler home"><img src="../assets/caluler-logo.webp" alt="Caluler" class="logo-nav"></a>
+    <div class="caluler-utility-controls notranslate" translate="no" aria-label="Website settings">
+      <button type="button" class="caluler-theme-toggle" id="calulerThemeToggle" aria-label="Toggle dark mode" title="Toggle dark/light mode">🌙</button>
+      <label class="caluler-language-label" for="calulerLanguage">Language</label>
+      <select id="calulerLanguage" class="caluler-language-select notranslate" translate="no" aria-label="Choose website language">
+        <option value="en">🇬🇧 English</option><option value="ur">🇵🇰 اردو</option><option value="ar">🇸🇦 العربية</option><option value="hi">🇮🇳 हिन्दी</option><option value="es">🇪🇸 Español</option><option value="fr">🇫🇷 Français</option><option value="de">🇩🇪 Deutsch</option><option value="it">🇮🇹 Italiano</option><option value="pt">🇵🇹 Português</option><option value="ru">🇷🇺 Русский</option><option value="zh-CN">🇨🇳 简体中文</option><option value="ja">🇯🇵 日本語</option><option value="ko">🇰🇷 한국어</option><option value="tr">🇹🇷 Türkçe</option><option value="id">🇮🇩 Bahasa Indonesia</option><option value="bn">🇧🇩 বাংলা</option><option value="pa">🇮🇳 ਪੰਜਾਬੀ</option><option value="fa">🇮🇷 فارسی</option><option value="nl">🇳🇱 Nederlands</option><option value="ta">🇮🇳 தமிழ்</option>
+      </select>
+    </div>
+    <div id="google_translate_element" class="caluler-google-translate notranslate" translate="no" aria-hidden="true"></div>
+    <button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open navigation" class="menu-toggle" type="button">☰</button>
+    <div class="nav-links" id="mobileMenu" data-mobile-menu data-open="false"><a href="../tools.html">Tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy</a></div>
+  </div>
+</nav>
+<section class="page-hero"><div class="container"><span class="badge">∑ Free online tool · Mathematics</span><h1>Graphing Calculator</h1><p>Plot up to four functions on the same coordinate plane. Adjust the viewing window, zoom in on details, and evaluate each function at an x-value.</p></div></section>
+<section class="section"><div class="container tool-layout"><main>
+  <div class="calculator graph-card">
+    <h2>∑ Graph your functions</h2>
+    <p class="graph-note">Use <code>x</code>, numbers, parentheses, <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>^</code> and common functions such as <code>sin(x)</code>, <code>sqrt(x)</code> or <code>log(x)</code>. Trigonometric functions use radians.</p>
+    <div class="graph-functions" aria-label="Function equations">
+      <label class="function-row"><span class="function-swatch" style="background:#2563eb"></span><span class="sr-only">Function 1</span><input class="function-input" aria-label="Function 1" value="x^2" spellcheck="false" autocomplete="off"><span class="function-name">f₁(x)</span></label>
+      <label class="function-row"><span class="function-swatch" style="background:#e11d48"></span><span class="sr-only">Function 2</span><input class="function-input" aria-label="Function 2" placeholder="e.g. sin(x)" spellcheck="false" autocomplete="off"><span class="function-name">f₂(x)</span></label>
+      <label class="function-row"><span class="function-swatch" style="background:#059669"></span><span class="sr-only">Function 3</span><input class="function-input" aria-label="Function 3" placeholder="e.g. 2x + 1" spellcheck="false" autocomplete="off"><span class="function-name">f₃(x)</span></label>
+      <label class="function-row"><span class="function-swatch" style="background:#9333ea"></span><span class="sr-only">Function 4</span><input class="function-input" aria-label="Function 4" placeholder="Optional function" spellcheck="false" autocomplete="off"><span class="function-name">f₄(x)</span></label>
+    </div>
+    <h3>Viewing window</h3>
+    <div class="graph-controls">
+      <div class="field"><label for="xMin">x minimum</label><input id="xMin" type="number" value="-10" step="any"></div>
+      <div class="field"><label for="xMax">x maximum</label><input id="xMax" type="number" value="10" step="any"></div>
+      <div class="field"><label for="yMin">y minimum</label><input id="yMin" type="number" value="-10" step="any"></div>
+      <div class="field"><label for="yMax">y maximum</label><input id="yMax" type="number" value="10" step="any"></div>
+    </div>
+    <div class="graph-actions">
+      <button class="btn" id="plotButton" type="button">Plot functions</button>
+      <button class="btn secondary" id="zoomIn" type="button" aria-label="Zoom in">＋ Zoom in</button>
+      <button class="btn secondary" id="zoomOut" type="button" aria-label="Zoom out">− Zoom out</button>
+      <button class="btn secondary" id="resetView" type="button">Reset view</button>
+    </div>
+    <div class="result" id="status" aria-live="polite">Enter an equation and select Plot functions.</div>
+    <div class="graph-wrap"><canvas id="plot" role="img" aria-label="Graph of the entered functions on a coordinate plane">Your browser does not support canvas graphs.</canvas></div>
+    <div class="graph-legend" aria-label="Graph colors"><span>🔵 f₁(x)</span><span>🔴 f₂(x)</span><span>🟢 f₃(x)</span><span>🟣 f₄(x)</span></div>
+  </div>
+  <div class="content-box">
+    <h2>Evaluate a function</h2>
+    <p>Enter an x-value to calculate the output for each plotted function.</p>
+    <div class="form-grid"><div class="field"><label for="pointX">x-value</label><input id="pointX" type="number" value="2" step="any"></div><div class="field"><label for="pointButton">Result</label><button class="btn" id="pointButton" type="button">Evaluate at x</button></div></div>
+    <div class="table-wrap"><table class="value-table"><thead><tr><th>Function</th><th>Equation</th><th>Output</th></tr></thead><tbody id="valueRows"><tr><td colspan="3">Plot a function to see its value table.</td></tr></tbody></table></div>
+  </div>
+  <div class="content-box">
+    <h2>About the Graphing Calculator</h2>
+    <p>This free graphing calculator draws explicit functions of the form y = f(x). Plot several equations together to compare their shape and behavior. The graph is generated in your browser from the expressions you enter.</p>
+    <h3>How to use</h3><ol><li>Enter one or more equations using x as the variable, for example <code>x^2 - 4</code> or <code>sin(x)</code>.</li><li>Set the x and y ranges you want to see, then select <strong>Plot functions</strong>.</li><li>Use zoom controls to change the viewing window, or enter an x-value to evaluate the plotted functions.</li></ol>
+    <h3>Supported functions</h3><p>Use <code>sin</code>, <code>cos</code>, <code>tan</code>, <code>asin</code>, <code>acos</code>, <code>atan</code>, <code>sqrt</code>, <code>abs</code>, <code>ln</code>, <code>log</code>, <code>exp</code>, <code>floor</code>, <code>ceil</code> and <code>round</code>. Use <code>pi</code> or <code>e</code> for the constants π and Euler’s number. Exponents use <code>^</code>; multiplication can be written as <code>2*x</code> or <code>2x</code>.</p>
+    <h3>Limitations</h3><p>This tool plots explicit functions y = f(x), not implicit equations or parametric curves. Trigonometric functions use radians. Discontinuities and values outside the selected y-range may not appear as continuous lines.</p>
+  </div>
+</main>
+<aside><div class="sidebar-box"><h3>Related Tools</h3><div class="related"><a href="quadratic-equation-calculator.html"><span class="related-icon" aria-hidden="true">∑</span><span>Quadratic Equation Calculator</span></a><a href="function-notation-calculator.html"><span class="related-icon" aria-hidden="true">∑</span><span>Function Notation Calculator</span></a><a href="polynomial-long-division-calculator.html"><span class="related-icon" aria-hidden="true">∑</span><span>Polynomial Long Division Calculator</span></a><a href="../tools.html"><span class="related-icon" aria-hidden="true">▦</span><span>Browse all tools</span></a></div></div></aside>
+</div></section>
+<div class="caluler-ad-slot caluler-ad-slot--content" role="complementary" aria-label="Advertisement space"><span class="caluler-ad-slot__label">Advertisement</span></div>
+<footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><div class="footer-brand-title">CALULER</div><p>Free online calculators and practical productivity tools for health, finance, math, education, conversions and everyday tasks.</p></div><div class="footer-links"><h3>Explore</h3><a href="../tools.html">All calculators &amp; tools</a><a href="quadratic-equation-calculator.html">Quadratic Equation Calculator</a><a href="../tools.html">Browse all calculators</a></div><div class="footer-links"><h3>Company &amp; Legal</h3><a href="../about.html">About Caluler</a><a href="../contact.html">Contact</a><a href="../disclaimer.html">Disclaimer</a><a href="../privacy.html">Privacy Policy</a><a href="../terms.html">Terms &amp; Conditions</a></div></div><div class="footer-bottom"><span>© 2026 Caluler. All rights reserved.</span><span class="footer-note">Free · Fast · Browser based · Mobile friendly</span></div></div></footer>
+<script>
+(function(){
+  "use strict";
+  const colors = ["#2563eb", "#e11d48", "#059669", "#9333ea"];
+  const functionInputs = Array.from(document.querySelectorAll(".function-input"));
+  const canvas = document.getElementById("plot");
+  const ctx = canvas.getContext("2d");
+  const status = document.getElementById("status");
+  const viewIds = ["xMin", "xMax", "yMin", "yMax"];
+  let compiled = [];
+
+  function tokenize(source) {
+    const text = source.replace(/π/g, "pi").replace(/×/g, "*").replace(/÷/g, "/").replace(/−/g, "-");
+    const tokens = [];
+    let i = 0;
+    while (i < text.length) {
+      if (/\s/.test(text[i])) { i++; continue; }
+      const rest = text.slice(i);
+      const number = rest.match(/^(?:\d+(?:\.\d*)?|\.\d+)(?:e[+-]?\d+)?/i);
+      if (number) { tokens.push({type:"number", value:Number(number[0])}); i += number[0].length; continue; }
+      const identifier = rest.match(/^[a-z]+/i);
+      if (identifier) { tokens.push({type:"id", value:identifier[0].toLowerCase()}); i += identifier[0].length; continue; }
+      if ("+-*/%^()".includes(text[i])) { tokens.push({type:"op", value:text[i]}); i++; continue; }
+      throw new Error("Unsupported character: " + text[i]);
+    }
+    const functions = new Set(["sin","cos","tan","asin","acos","atan","sqrt","abs","ln","log","exp","floor","ceil","round"]);
+    const expanded = [];
+    for (let j = 0; j < tokens.length; j++) {
+      const current = tokens[j];
+      const previous = expanded[expanded.length - 1];
+      const endsValue = previous && (previous.type === "number" || previous.type === "id" || previous.value === ")");
+      const startsValue = current.type === "number" || current.type === "id" || current.value === "(";
+      const functionCall = previous && previous.type === "id" && functions.has(previous.value) && current.value === "(";
+      if (endsValue && startsValue && !functionCall) expanded.push({type:"op", value:"*"});
+      expanded.push(current);
+    }
+    return expanded;
+  }
+
+  function compileExpression(source) {
+    const tokens = tokenize(source);
+    if (!tokens.length) throw new Error("Enter at least one equation.");
+    let position = 0;
+    const peek = () => tokens[position];
+    const take = value => {
+      if (peek() && peek().value === value) { position++; return true; }
+      return false;
+    };
+    function primary() {
+      const token = tokens[position++];
+      if (!token) throw new Error("The equation ends unexpectedly.");
+      if (token.type === "number") return () => token.value;
+      if (token.value === "(") {
+        const node = add();
+        if (!take(")")) throw new Error("Add a closing parenthesis.");
+        return node;
+      }
+      if (token.type === "id") {
+        if (token.value === "x") return x => x;
+        if (token.value === "pi") return () => Math.PI;
+        if (token.value === "e") return () => Math.E;
+        const fns = {
+          sin:Math.sin, cos:Math.cos, tan:Math.tan, asin:Math.asin, acos:Math.acos, atan:Math.atan,
+          sqrt:Math.sqrt, abs:Math.abs, ln:Math.log, log:Math.log10, exp:Math.exp,
+          floor:Math.floor, ceil:Math.ceil, round:Math.round
+        };
+        if (!Object.prototype.hasOwnProperty.call(fns, token.value)) throw new Error("Unknown name: " + token.value);
+        if (!take("(")) throw new Error(token.value + " needs parentheses, e.g. " + token.value + "(x).");
+        const argument = add();
+        if (!take(")")) throw new Error("Add a closing parenthesis.");
+        return x => fns[token.value](argument(x));
+      }
+      throw new Error("Check the equation near " + token.value + ".");
+    }
+    function power() {
+      const left = primary();
+      if (take("^")) { const right = unary(); return x => Math.pow(left(x), right(x)); }
+      return left;
+    }
+    function unary() {
+      if (take("+")) return unary();
+      if (take("-")) { const value = unary(); return x => -value(x); }
+      return power();
+    }
+    function multiply() {
+      let left = unary();
+      while (peek() && ["*","/","%"].includes(peek().value)) {
+        const op = tokens[position++].value, right = unary(), previous = left;
+        left = op === "*" ? x => previous(x) * right(x) : op === "/" ? x => previous(x) / right(x) : x => previous(x) % right(x);
+      }
+      return left;
+    }
+    function add() {
+      let left = multiply();
+      while (peek() && ["+","-"].includes(peek().value)) {
+        const op = tokens[position++].value, right = multiply(), previous = left;
+        left = op === "+" ? x => previous(x) + right(x) : x => previous(x) - right(x);
+      }
+      return left;
+    }
+    const result = add();
+    if (position !== tokens.length) throw new Error("Check the operators and parentheses in the equation.");
+    return result;
+  }
+
+  function readView() {
+    const values = viewIds.map(id => Number(document.getElementById(id).value));
+    if (values.some(v => !Number.isFinite(v)) || values[0] >= values[1] || values[2] >= values[3]) {
+      throw new Error("Enter valid minimum and maximum values. Each minimum must be less than its maximum.");
+    }
+    return {xMin:values[0], xMax:values[1], yMin:values[2], yMax:values[3]};
+  }
+
+  function niceStep(span) {
+    const rough = span / 10;
+    const power = Math.pow(10, Math.floor(Math.log10(rough)));
+    const fraction = rough / power;
+    return (fraction < 1.5 ? 1 : fraction < 3.5 ? 2 : fraction < 7.5 ? 5 : 10) * power;
+  }
+
+  function draw() {
+    const rect = canvas.getBoundingClientRect();
+    if (!rect.width) return;
+    const ratio = Math.max(1, window.devicePixelRatio || 1);
+    canvas.width = Math.round(rect.width * ratio);
+    canvas.height = Math.round(rect.height * ratio);
+    ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+    const width = rect.width, height = rect.height;
+    const pad = {left:54, right:14, top:16, bottom:32};
+    const plotW = width - pad.left - pad.right, plotH = height - pad.top - pad.bottom;
+    let view;
+    try { view = readView(); } catch (_) { return; }
+    const px = x => pad.left + (x - view.xMin) / (view.xMax - view.xMin) * plotW;
+    const py = y => pad.top + (view.yMax - y) / (view.yMax - view.yMin) * plotH;
+
+    ctx.clearRect(0, 0, width, height);
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0, 0, width, height);
+    ctx.font = "12px Arial, sans-serif";
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = "#e8eef5";
+    ctx.fillStyle = "#64748b";
+    const xStep = niceStep(view.xMax - view.xMin), yStep = niceStep(view.yMax - view.yMin);
+    const firstX = Math.ceil(view.xMin / xStep) * xStep;
+    for (let x = firstX, count = 0; x <= view.xMax && count < 300; x += xStep, count++) {
+      const screenX = px(x);
+      ctx.beginPath(); ctx.moveTo(screenX, pad.top); ctx.lineTo(screenX, pad.top + plotH); ctx.stroke();
+      ctx.textAlign = "center"; ctx.fillText(Number(x.toPrecision(5)).toString(), screenX, height - 10);
+    }
+    const firstY = Math.ceil(view.yMin / yStep) * yStep;
+    for (let y = firstY, count = 0; y <= view.yMax && count < 300; y += yStep, count++) {
+      const screenY = py(y);
+      ctx.beginPath(); ctx.moveTo(pad.left, screenY); ctx.lineTo(pad.left + plotW, screenY); ctx.stroke();
+      ctx.textAlign = "right"; ctx.fillText(Number(y.toPrecision(5)).toString(), pad.left - 7, screenY + 4);
+    }
+    ctx.strokeStyle = "#64748b"; ctx.lineWidth = 1.5;
+    if (view.xMin <= 0 && view.xMax >= 0) { ctx.beginPath(); ctx.moveTo(px(0), pad.top); ctx.lineTo(px(0), pad.top + plotH); ctx.stroke(); }
+    if (view.yMin <= 0 && view.yMax >= 0) { ctx.beginPath(); ctx.moveTo(pad.left, py(0)); ctx.lineTo(pad.left + plotW, py(0)); ctx.stroke(); }
+
+    ctx.save();
+    ctx.beginPath(); ctx.rect(pad.left, pad.top, plotW, plotH); ctx.clip();
+    compiled.forEach((entry, index) => {
+      ctx.strokeStyle = colors[index]; ctx.lineWidth = 2.5; ctx.beginPath();
+      let drawing = false, previousY = null;
+      const samples = Math.max(500, Math.min(1800, Math.round(plotW * 1.5)));
+      for (let i = 0; i <= samples; i++) {
+        const x = view.xMin + (i / samples) * (view.xMax - view.xMin);
+        let y;
+        try { y = entry.fn(x); } catch (_) { y = NaN; }
+        if (!Number.isFinite(y) || y < view.yMin - (view.yMax-view.yMin) || y > view.yMax + (view.yMax-view.yMin)) { drawing = false; previousY = null; continue; }
+        const sx = px(x), sy = py(y);
+        if (!drawing || (previousY !== null && Math.abs(sy - previousY) > plotH * 0.7)) ctx.moveTo(sx, sy);
+        else ctx.lineTo(sx, sy);
+        drawing = true; previousY = sy;
+      }
+      ctx.stroke();
+    });
+    ctx.restore();
+  }
+
+  function updatePointTable() {
+    const tbody = document.getElementById("valueRows");
+    const x = Number(document.getElementById("pointX").value);
+    if (!Number.isFinite(x)) { tbody.innerHTML = '<tr><td colspan="3">Enter a valid x-value.</td></tr>'; return; }
+    const rows = compiled.map(entry => {
+      let value;
+      try { value = entry.fn(x); } catch (_) { value = NaN; }
+      const display = Number.isFinite(value) ? Number(value.toPrecision(8)).toString() : "Undefined";
+      return "<tr><td>" + entry.name + "</td><td><code>" + entry.expression.replace(/</g,"&lt;").replace(/>/g,"&gt;") + "</code></td><td>" + display + "</td></tr>";
+    });
+    tbody.innerHTML = rows.length ? rows.join("") : '<tr><td colspan="3">Enter a function and select Plot functions.</td></tr>';
+  }
+
+  function plot() {
+    try {
+      readView();
+      const next = [];
+      const errors = [];
+      functionInputs.forEach((input, index) => {
+        const expression = input.value.trim();
+        if (!expression) return;
+        try { next.push({name:"f" + (index + 1) + "(x)", expression, fn:compileExpression(expression)}); }
+        catch (error) { errors.push("f" + (index + 1) + ": " + error.message); }
+      });
+      compiled = next;
+      draw();
+      updatePointTable();
+      status.classList.toggle("graph-error", errors.length > 0);
+      status.textContent = errors.length ? errors.join(" ") : (compiled.length ? "Showing " + compiled.length + " function" + (compiled.length === 1 ? "" : "s") + "." : "Enter an equation to draw a graph.");
+    } catch (error) {
+      status.classList.add("graph-error");
+      status.textContent = error.message;
+    }
+  }
+
+  function zoom(factor) {
+    try {
+      const view = readView();
+      ["xMin","xMax"].forEach((id, i) => {
+        const center = (view.xMin + view.xMax) / 2, half = (view.xMax - view.xMin) * factor / 2;
+        document.getElementById(id).value = (center + (i ? half : -half)).toPrecision(8);
+      });
+      ["yMin","yMax"].forEach((id, i) => {
+        const center = (view.yMin + view.yMax) / 2, half = (view.yMax - view.yMin) * factor / 2;
+        document.getElementById(id).value = (center + (i ? half : -half)).toPrecision(8);
+      });
+      plot();
+    } catch (error) { status.classList.add("graph-error"); status.textContent = error.message; }
+  }
+
+  document.getElementById("plotButton").addEventListener("click", plot);
+  document.getElementById("zoomIn").addEventListener("click", () => zoom(0.65));
+  document.getElementById("zoomOut").addEventListener("click", () => zoom(1.55));
+  document.getElementById("resetView").addEventListener("click", () => {
+    [["xMin","-10"],["xMax","10"],["yMin","-10"],["yMax","10"]].forEach(([id,value]) => document.getElementById(id).value = value);
+    plot();
+  });
+  document.getElementById("pointButton").addEventListener("click", updatePointTable);
+  document.getElementById("pointX").addEventListener("keydown", event => { if (event.key === "Enter") updatePointTable(); });
+  functionInputs.forEach(input => input.addEventListener("keydown", event => { if (event.key === "Enter") plot(); }));
+  viewIds.forEach(id => document.getElementById(id).addEventListener("change", plot));
+  window.addEventListener("resize", draw);
+  plot();
+})();
+</script>
+</body>
+</html>
