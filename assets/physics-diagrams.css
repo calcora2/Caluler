@@ -1,0 +1,394 @@
+/* Physics & Electromagnetism only. Existing form/result actions remain shared. */
+html:root body[data-caluler-category="Physics & Electromagnetism"] .calculator.phys-layout {
+  display:grid!important; grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:24px!important; align-items:center!important;
+}
+.phys-form { min-width:0; }
+html:root body[data-caluler-category="Physics & Electromagnetism"] .phys-form .form-grid {
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+}
+html:root body[data-caluler-category="Physics & Electromagnetism"] .phys-form > #calculateBtn {
+  display:block!important; box-sizing:border-box!important; width:min(220px,100%)!important;
+  min-width:0!important; max-width:100%!important; min-height:var(--caluler-form-control-height)!important;
+  height:auto!important; padding:10px 16px!important; font-size:15.5px!important; line-height:1.35!important;
+  margin:24px auto 0!important;
+}
+html:root body[data-caluler-category="Physics & Electromagnetism"] .phys-form > #calculateBtn:focus-visible {
+  outline:2px solid var(--caluler-form-focus)!important; outline-offset:-2px!important;
+}
+html:root body[data-caluler-category="Physics & Electromagnetism"] .calculator.phys-layout > .result,
+html:root body[data-caluler-category="Physics & Electromagnetism"] .calculator.phys-layout > .caluler-result-actionbar {
+  grid-column:1/-1!important; justify-self:start!important; width:100%!important; max-width:100%!important;
+  box-sizing:border-box!important; margin-left:0!important; margin-right:0!important;
+}
+.phys-diagram {
+  --phys-current:var(--caluler-brand-primary); --phys-field:var(--caluler-brand-primary); --phys-positive:#137443;
+  --phys-secondary:#995400; --phys-negative:#B52E38; --phys-material:#7542A6;
+  box-sizing:border-box; min-width:0; width:100%; padding:18px;
+  border:1px solid var(--border); border-radius:20px;
+  background:var(--card); color:var(--text); position:relative;
+}
+.phys-diagram > h2 { font-size:20px; line-height:1.3; margin:0 48px 7px 0; }
+.phys-diagram > .phys-caption { font-size:14px; line-height:1.5; color:var(--muted); margin:0 0 8px; }
+.phys-diagram .phys-svg { display:block; width:100%; height:auto; max-width:480px; margin:0 auto; overflow:visible; }
+.phys-diagram .phys-svg text { font-family:Arial,Helvetica,sans-serif; font-size:16px; fill:var(--text); }
+.phys-diagram .phys-svg .phys-small { font-size:13px; }
+.phys-diagram .phys-interactive { cursor:help; outline-offset:3px; }
+.phys-diagram .phys-interactive:focus-visible { outline:2px solid currentColor; border-radius:7px; }
+.phys-diagram .phys-readout {
+  display:grid; grid-template-columns:minmax(0,1fr); gap:6px;
+  border-top:1px solid var(--border); padding-top:12px; min-width:0; font-size:14px;
+}
+.phys-diagram .phys-readout strong { display:block; min-height:2.6em; line-height:1.3; font-size:19px; font-variant-numeric:tabular-nums; overflow-wrap:anywhere; }
+.phys-diagram .phys-detail { min-height:4.2em; margin:8px 0 0; font-size:14px; line-height:1.4; overflow-wrap:anywhere; font-variant-numeric:tabular-nums; }
+.phys-diagram .phys-note { min-height:4.2em; font-size:13px; line-height:1.4; color:var(--muted); margin:10px 0 0; }
+.phys-diagram .phys-validation { font-size:14px; color:var(--phys-negative); margin:8px 0 0; }
+.phys-diagram [hidden] { display:none!important; }
+.phys-tooltip {
+  position:fixed; z-index:12000; box-sizing:border-box; max-width:min(300px,calc(100vw - 16px));
+  padding:9px 12px; border:2px solid var(--phys-tip); border-radius:12px;
+  color:var(--phys-tip); background:var(--card); box-shadow:0 6px 20px rgba(0,0,0,.18);
+  font:600 14px/1.45 Arial,Helvetica,sans-serif; white-space:pre-line; overflow-wrap:anywhere; pointer-events:none;
+}
+.phys-tooltip[hidden] { display:none!important; }
+:root[data-theme="dark"] .phys-diagram,body.dark-mode .phys-diagram {
+  --phys-current:var(--caluler-brand-accent); --phys-field:var(--caluler-brand-accent); --phys-positive:#68E0A0;
+  --phys-secondary:#FFC166; --phys-negative:#FF929B; --phys-material:#D3AEFF;
+}
+@media(min-width:1200px) {
+  html:root body[data-caluler-category="Physics & Electromagnetism"] .calculator.phys-layout > .result,
+  html:root body[data-caluler-category="Physics & Electromagnetism"] .calculator.phys-layout > .caluler-result-actionbar { width:75%!important; }
+}
+@media(max-width:900px) {
+  html:root body[data-caluler-category="Physics & Electromagnetism"] .calculator.phys-layout { grid-template-columns:minmax(0,1fr)!important; }
+}
+@media(max-width:768px) {
+  html:root body[data-caluler-category="Physics & Electromagnetism"] .phys-form > #calculateBtn { padding:9px 14px!important; font-size:16px!important; }
+}
+@media(max-width:560px) {
+  html:root body[data-caluler-category="Physics & Electromagnetism"] .phys-form .form-grid { grid-template-columns:minmax(0,1fr)!important; }
+  html:root body[data-caluler-category="Physics & Electromagnetism"] .calculator.phys-layout { padding:12px!important; gap:18px!important; }
+  .phys-diagram { padding:12px; border-radius:16px; }
+  .phys-diagram > h2 { font-size:18px; }
+  .phys-diagram .phys-svg text,.phys-diagram .phys-svg .phys-small { font-size:18px; }
+  .phys-diagram .phys-readout strong { font-size:18px; }
+}
+
+/* Coulomb's Law only: the other scientific scenes retain their existing styles. */
+.phys-diagram.phys-coulomb {
+  --phys-field:var(--muted);
+  --phys-material:#A62B75;
+  border-radius:22px;
+  background-image:linear-gradient(145deg,rgba(22,134,181,.045),transparent 60%);
+  box-shadow:0 8px 24px rgba(15,23,42,.055);
+}
+.phys-diagram.phys-coulomb > h2 { font-size:22px; letter-spacing:-.025em; }
+.phys-diagram.phys-coulomb .phys-caption { margin-bottom:6px; }
+.phys-diagram.phys-coulomb .phys-svg { max-width:420px; }
+.phys-diagram.phys-coulomb .phys-svg .phys-coulomb-sign { font-size:32px; font-weight:650; }
+.phys-diagram.phys-coulomb .phys-svg .phys-coulomb-label { font-size:16px; font-weight:650; }
+.phys-diagram.phys-coulomb .phys-svg .phys-coulomb-charge-value {
+  font-size:15px; font-variant-numeric:tabular-nums; fill:var(--text);
+}
+.phys-diagram.phys-coulomb .phys-svg .phys-coulomb-vector-label {
+  font-size:14px; font-weight:650; fill:var(--phys-material);
+}
+.phys-diagram.phys-coulomb .phys-svg .phys-coulomb-distance { font-size:15px; fill:var(--muted); }
+.phys-diagram.phys-coulomb .phys-coulomb-dimension line { stroke-width:1.3; }
+.phys-diagram.phys-coulomb .phys-readout { padding-top:10px; gap:4px; }
+.phys-diagram.phys-coulomb .phys-readout > span {
+  font-size:11px; font-weight:700; letter-spacing:.1em; color:var(--muted);
+}
+.phys-diagram.phys-coulomb .phys-readout > strong {
+  min-height:1.4em; font-size:clamp(20px,2.1vw,28px); font-weight:700;
+  line-height:1.4; color:var(--text); border-radius:7px;
+}
+.phys-diagram.phys-coulomb .phys-detail {
+  display:inline-flex; box-sizing:border-box; width:fit-content; max-width:100%;
+  min-height:0; margin:4px 0 0; padding:3px 9px; border:1px solid currentColor; border-radius:999px;
+  color:var(--muted); font-size:12.5px; font-weight:650; line-height:1.45; letter-spacing:0;
+}
+.phys-diagram.phys-coulomb[data-interaction="repulsion"] .phys-detail { color:var(--phys-material); }
+.phys-diagram.phys-coulomb[data-interaction="attraction"] .phys-detail { color:var(--phys-positive); }
+.phys-diagram.phys-coulomb .phys-note { min-height:0; margin-top:6px; font-size:12px; }
+:root[data-theme="dark"] .phys-diagram.phys-coulomb,body.dark-mode .phys-diagram.phys-coulomb {
+  --phys-material:#F1A2D0;
+  box-shadow:0 8px 24px rgba(0,0,0,.13);
+}
+@media(max-width:560px) {
+  .phys-diagram.phys-coulomb { padding:14px 10px; border-radius:18px; }
+  .phys-diagram.phys-coulomb > h2 { font-size:20px; }
+  .phys-diagram.phys-coulomb .phys-svg .phys-coulomb-charge-value { font-size:17px; }
+  .phys-diagram.phys-coulomb .phys-svg .phys-coulomb-label { font-size:17px; }
+  .phys-diagram.phys-coulomb .phys-svg .phys-coulomb-distance { font-size:17px; }
+  .phys-diagram.phys-coulomb .phys-readout > strong { font-size:22px; }
+}
+/* END COULOMB PREMIUM SCENE */
+
+/* All scenes use the shared card-local, three-second export feedback. */
+
+/* Mutual Inductance only: isolated metal windings and nondirectional linkage. */
+.phys-diagram.phys-mutual {
+  --phys-mutual-metal-edge:#7D919D; --phys-mutual-metal-light:#E9F1F5;
+  background-image:none; box-shadow:none;
+}
+.phys-diagram.phys-mutual .phys-svg { margin:4px auto 2px; }
+.phys-diagram.phys-mutual .phys-svg .phys-mutual-label { font-size:16px; font-weight:600; }
+.phys-diagram.phys-mutual .phys-mutual-coil path { stroke-linecap:round; stroke-linejoin:round; }
+.phys-diagram.phys-mutual .phys-readout { gap:3px; }
+.phys-diagram.phys-mutual .phys-readout > strong { color:var(--phys-positive); }
+.phys-diagram.phys-mutual .phys-note { font-size:12px; line-height:1.45; }
+:root[data-theme="dark"] .phys-diagram.phys-mutual,body.dark-mode .phys-diagram.phys-mutual {
+  --phys-mutual-metal-edge:#425E6E; --phys-mutual-metal-light:#A4BBC7;
+}
+/* END MUTUAL INDUCTANCE POLISH */
+
+/* Electric Charge only: current/time → conventional flow → signed transferred charge. */
+.phys-diagram.phys-charge-transfer {
+  padding:14px; border-radius:20px;
+  background-image:none; box-shadow:none;
+}
+.phys-diagram.phys-charge-transfer > h2 { font-size:20px; letter-spacing:-.02em; }
+.phys-diagram.phys-charge-transfer .phys-caption { font-size:12px; line-height:1.45; margin-bottom:6px; }
+.phys-diagram.phys-charge-transfer .phys-transfer-metrics { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+.phys-diagram.phys-charge-transfer .phys-transfer-metric {
+  min-width:0; padding:4px 2px 6px; border-bottom:1px solid var(--border);
+}
+.phys-diagram.phys-charge-transfer .phys-transfer-metric > span { display:block; color:var(--muted); font-size:12px; line-height:1.45; }
+.phys-diagram.phys-charge-transfer .phys-transfer-metric > strong {
+  display:block; min-height:1.4em; margin-top:3px; font-size:18px; line-height:1.4;
+  font-weight:650; font-variant-numeric:tabular-nums; overflow-wrap:anywhere;
+}
+.phys-diagram.phys-charge-transfer .phys-svg { max-width:360px; }
+.phys-diagram.phys-charge-transfer .phys-svg .phys-transfer-flow-label { font-size:15px; fill:var(--muted); }
+.phys-diagram.phys-charge-transfer .phys-current-trail { stroke-dasharray:10 23.333333; stroke-opacity:.5; stroke-width:5px; }
+.phys-diagram.phys-charge-transfer .phys-current-spark { stroke-dasharray:5 28.333333; stroke-width:3px; filter:none; }
+.phys-diagram.phys-charge-transfer .phys-readout {
+  border:1px solid var(--border); border-left:3px solid var(--phys-positive); border-radius:12px;
+  background:linear-gradient(100deg,rgba(19,116,67,.055),transparent); padding:8px 10px; gap:3px;
+}
+.phys-diagram.phys-charge-transfer .phys-readout > span { color:var(--muted); font-size:11px; font-weight:700; letter-spacing:.075em; }
+.phys-diagram.phys-charge-transfer .phys-readout > strong {
+  min-height:1.4em; line-height:1.4; font-size:24px; font-weight:700; border-radius:7px;
+}
+.phys-diagram.phys-charge-transfer .phys-detail {
+  min-height:0; margin:6px 0 0; color:var(--text); font-size:13px; line-height:1.4; overflow-wrap:anywhere;
+}
+.phys-diagram.phys-charge-transfer .phys-note { min-height:0; margin:5px 0 0; font-size:12px; }
+@media(max-width:560px) {
+  .phys-diagram.phys-charge-transfer { padding:14px 12px; border-radius:18px; }
+  .phys-diagram.phys-charge-transfer > h2 { font-size:18px; }
+  .phys-diagram.phys-charge-transfer .phys-transfer-metrics { gap:10px; }
+  .phys-diagram.phys-charge-transfer .phys-transfer-metric > strong { font-size:18px; }
+  .phys-diagram.phys-charge-transfer .phys-svg .phys-transfer-flow-label { font-size:16px; }
+  .phys-diagram.phys-charge-transfer .phys-readout > strong { font-size:22px; }
+}
+/* END CHARGE TRANSFER FLOW */
+
+
+/* Actual current-carrying Physics conductors only. Playback rate follows the
+   committed current; the CSS phase basis is not a physical drift-speed scale. */
+.phys-continuous-current,.phys-current-conductor {
+  --phys-neutral:var(--muted);
+  --phys-wire-edge:#82959F; --phys-wire-core:#E1E9ED;
+}
+.phys-current-conductor .phys-wire-edge,
+.phys-continuous-current .phys-current-reference { stroke:var(--phys-wire-edge); }
+.phys-current-conductor .phys-wire-core { stroke:var(--phys-wire-core); }
+.phys-current-conductor .phys-current-sparks {
+  animation:phys-conventional-travel 1s linear infinite;
+  animation-play-state:paused; pointer-events:none;
+}
+.phys-current-conductor .phys-current-trail {
+  stroke:var(--phys-flow-color); stroke-dasharray:14 86; stroke-opacity:.25;
+}
+.phys-current-conductor .phys-current-spark {
+  stroke:var(--phys-flow-color); stroke-dasharray:7 93;
+  filter:drop-shadow(0 0 1.5px var(--phys-flow-color));
+}
+.phys-current-conductor .phys-wire-cap {
+  fill:var(--phys-wire-core); stroke:var(--phys-wire-edge); stroke-width:1.3;
+}
+.phys-current-conductor[data-flow-active="false"] .phys-current-sparks,
+.phys-current-conductor[data-flow-reduced="true"] .phys-current-sparks { opacity:0; }
+.phys-current-conductor .phys-current-static line,
+.phys-current-conductor .phys-current-static path { stroke-width:2; }
+.phys-diagram.phys-continuous-current .phys-note { min-height:0; }
+.phys-diagram.phys-parallel-currents .phys-svg { max-width:430px; }
+.phys-diagram.phys-parallel-currents .phys-flow-value {
+  font-size:14px; font-variant-numeric:tabular-nums;
+}
+.phys-diagram.phys-parallel-currents .phys-current-status { font-size:15px; font-weight:700; }
+.phys-diagram.phys-parallel-currents .phys-readout strong { min-height:1.4em; }
+:root[data-theme="dark"] .phys-continuous-current,body.dark-mode .phys-continuous-current,
+:root[data-theme="dark"] .phys-current-conductor,body.dark-mode .phys-current-conductor {
+  --phys-wire-edge:#8298A3; --phys-wire-core:#243B47;
+}
+@keyframes phys-conventional-travel { from { stroke-dashoffset:0; } to { stroke-dashoffset:-100; } }
+@media(prefers-reduced-motion:reduce) {
+  .phys-current-conductor .phys-current-sparks { animation:none; opacity:0; }
+}
+@media(max-width:560px) {
+  .phys-diagram.phys-parallel-currents .phys-flow-value { font-size:16px; }
+  .phys-diagram.phys-parallel-currents .phys-current-status { font-size:17px; }
+}
+
+/* Approved eleven Physics instruments only; page/form/result geometry is unchanged. */
+.phys-diagram.phys-premium {
+  --phys-neutral:var(--muted); --phys-metal-edge:#7D919D; --phys-metal-light:#E9F1F5;
+  background-image:linear-gradient(145deg,rgba(22,134,181,.055),transparent 65%);
+  box-shadow:0 7px 22px rgba(15,23,42,.055);
+}
+.phys-diagram.phys-premium > h2 { margin-inline-end:52px; letter-spacing:-.02em; }
+.phys-diagram.phys-premium .phys-svg text { font-variant-numeric:tabular-nums; }
+.phys-diagram.phys-premium .phys-readout strong { min-height:1.4em; font-size:clamp(20px,2vw,26px); }
+.phys-diagram.phys-premium .phys-note { min-height:0; margin-top:7px; }
+.phys-diagram.phys-premium .phys-detail { min-height:0; margin-top:8px; }
+.phys-diagram.phys-premium .phys-marker-halo { fill:var(--phys-positive); fill-opacity:.12; stroke:none; pointer-events:none; }
+.phys-diagram.phys-premium .phys-calculated-point { stroke-width:2.5; }
+.phys-diagram.phys-premium .phys-instrument-pole { stroke:var(--border); }
+.phys-diagram.phys-premium .phys-field-guide { stroke-dasharray:5 5; }
+.phys-diagram.phys-premium .phys-instrument-value { font-size:16px; }
+:root[data-theme="dark"] .phys-diagram.phys-premium,body.dark-mode .phys-diagram.phys-premium {
+  --phys-metal-edge:#425E6E; --phys-metal-light:#A4BBC7;
+  box-shadow:0 7px 22px rgba(0,0,0,.12);
+}
+@media(max-width:560px) {
+  .phys-diagram.phys-premium .phys-instrument-value { font-size:18px; }
+  .phys-diagram.phys-premium > h2 { font-size:18px; }
+}
+
+.phys-diagram.phys-premium .phys-svg line[opacity=".3"] { opacity:.48; }
+
+.phys-diagram.phys-scene-magnetic-susceptibility .phys-readout strong { min-height:2.8em; }
+
+/* Solenoid field only: foreground current, restrained magnetic guides, plain values. */
+.phys-diagram.phys-solenoid-field .phys-solenoid-magnetic-guides { opacity:.85; }
+.phys-diagram.phys-solenoid-field .phys-current-trail { stroke-dasharray:18 82; stroke-opacity:.55; stroke-width:7.5px; }
+.phys-diagram.phys-solenoid-field .phys-current-spark { stroke-dasharray:10 90; stroke-width:4.2px; }
+.phys-diagram.phys-solenoid-field .phys-solenoid-parameters {
+  display:grid; grid-template-columns:max-content minmax(0,1fr); gap:5px 12px;
+  margin:8px 0 12px; padding:10px 0 0; border-top:1px solid var(--border);
+  font-size:16px; line-height:1.45; font-variant-numeric:tabular-nums;
+}
+.phys-diagram.phys-solenoid-field .phys-solenoid-parameters dt { color:var(--muted); font-weight:600; }
+.phys-diagram.phys-solenoid-field .phys-solenoid-parameters dd { margin:0; min-width:0; min-height:24px; text-align:right; overflow-wrap:anywhere; }
+
+/* Ampere only: current travels on the wire; field paths remain static. */
+.phys-diagram.phys-ampere-field .phys-ampere-field-guide { stroke-dasharray:4 5; }
+.phys-diagram.phys-ampere-field .phys-ampere-radius line { stroke-width:1.8; }
+.phys-diagram.phys-ampere-field .phys-current-trail { stroke-dasharray:22 78; stroke-opacity:.55; stroke-width:7.5px; }
+.phys-diagram.phys-ampere-field .phys-current-spark { stroke-dasharray:14 86; stroke-width:4.5px; }
+
+/* Electric field from a point charge only: static field direction, actual q and r. */
+.phys-diagram.phys-radial-field {
+  background-image:linear-gradient(145deg,rgba(22,134,181,.045),transparent 65%);
+  box-shadow:0 7px 22px rgba(15,23,42,.055);
+}
+.phys-diagram.phys-radial-field .phys-radial-source {
+  display:flex; flex-wrap:wrap; align-items:baseline; justify-content:center; gap:5px 10px;
+  min-width:0; max-width:100%; margin:4px 0 0; border-radius:7px; font-variant-numeric:tabular-nums;
+}
+.phys-diagram.phys-radial-field .phys-radial-source > span { color:var(--muted); font-size:13px; }
+.phys-diagram.phys-radial-field .phys-radial-source > strong { font-size:18px; line-height:1.35; overflow-wrap:anywhere; }
+.phys-diagram.phys-radial-field .phys-svg { max-width:420px; }
+.phys-diagram.phys-radial-field .phys-svg .phys-radial-sign { font-size:30px; font-weight:650; }
+.phys-diagram.phys-radial-field .phys-radial-ray :is(line,path) { vector-effect:non-scaling-stroke; }
+.phys-diagram.phys-radial-field .phys-radial-dimension line { stroke-width:1.3; }
+.phys-diagram.phys-radial-field .phys-svg .phys-radial-distance { font-size:16px; fill:var(--phys-secondary); }
+.phys-diagram.phys-radial-field .phys-svg .phys-radial-point-label { font-size:14px; fill:var(--phys-positive); }
+.phys-diagram.phys-radial-field .phys-readout { padding-top:10px; gap:4px; }
+.phys-diagram.phys-radial-field .phys-readout > strong { min-height:1.4em; font-size:22px; line-height:1.4; }
+.phys-diagram.phys-radial-field .phys-detail { min-height:0; margin:4px 0 0; font-size:13px; }
+.phys-diagram.phys-radial-field .phys-note { min-height:0; margin:6px 0 0; font-size:12px; }
+@media(max-width:560px) {
+  .phys-diagram.phys-radial-field .phys-svg .phys-radial-distance { font-size:18px; }
+  .phys-diagram.phys-radial-field .phys-svg .phys-radial-point-label { font-size:16px; }
+}
+/* END POINT-CHARGE RADIAL SCENE */
+
+/* Related electrical components only; Ohm reference width, intrinsic SVG aspect preserved. */
+.phys-diagram:is([aria-label="Flux linkage per ampere"],[aria-label="Magnetic coupling between coils"],[aria-label="Energy stored in the magnetic field"],[aria-label="Transformer winding ratio"],[aria-label="Transformer current transfer"],[aria-label="Reactance rises with frequency"]) { --caluler-electrical-visual-size:320px; padding:14px; }
+.phys-diagram:is([aria-label="Flux linkage per ampere"],[aria-label="Magnetic coupling between coils"],[aria-label="Energy stored in the magnetic field"],[aria-label="Transformer winding ratio"],[aria-label="Transformer current transfer"],[aria-label="Reactance rises with frequency"]) > h2 { font-size:19px; margin-bottom:4px; }
+.phys-diagram:is([aria-label="Flux linkage per ampere"],[aria-label="Magnetic coupling between coils"],[aria-label="Energy stored in the magnetic field"],[aria-label="Transformer winding ratio"],[aria-label="Transformer current transfer"],[aria-label="Reactance rises with frequency"]) > .phys-caption { font-size:12px; line-height:1.4; margin-bottom:2px; }
+.phys-diagram:is([aria-label="Flux linkage per ampere"],[aria-label="Magnetic coupling between coils"],[aria-label="Energy stored in the magnetic field"],[aria-label="Transformer winding ratio"],[aria-label="Transformer current transfer"],[aria-label="Reactance rises with frequency"]) .phys-svg { max-width:var(--caluler-electrical-visual-size); height:auto; }
+.phys-diagram:is([aria-label="Flux linkage per ampere"],[aria-label="Magnetic coupling between coils"],[aria-label="Energy stored in the magnetic field"],[aria-label="Transformer winding ratio"],[aria-label="Transformer current transfer"],[aria-label="Reactance rises with frequency"]) .phys-readout { padding-top:8px; gap:3px; font-size:12px; }
+.phys-diagram:is([aria-label="Flux linkage per ampere"],[aria-label="Magnetic coupling between coils"],[aria-label="Energy stored in the magnetic field"],[aria-label="Transformer winding ratio"],[aria-label="Transformer current transfer"],[aria-label="Reactance rises with frequency"]) .phys-readout strong { min-height:1.4em; font-size:20px; line-height:1.4; }
+.phys-diagram:is([aria-label="Flux linkage per ampere"],[aria-label="Magnetic coupling between coils"],[aria-label="Energy stored in the magnetic field"],[aria-label="Transformer winding ratio"],[aria-label="Transformer current transfer"],[aria-label="Reactance rises with frequency"]) .phys-detail { min-height:0; margin-top:5px; font-size:12px; line-height:1.4; }
+.phys-diagram:is([aria-label="Flux linkage per ampere"],[aria-label="Magnetic coupling between coils"],[aria-label="Energy stored in the magnetic field"],[aria-label="Transformer winding ratio"],[aria-label="Transformer current transfer"],[aria-label="Reactance rises with frequency"]) .phys-note { min-height:0; margin-top:5px; font-size:11.5px; line-height:1.4; }
+@media(max-width:560px) {
+ .phys-diagram:is([aria-label="Flux linkage per ampere"],[aria-label="Magnetic coupling between coils"],[aria-label="Energy stored in the magnetic field"],[aria-label="Transformer winding ratio"],[aria-label="Transformer current transfer"],[aria-label="Reactance rises with frequency"]) { --caluler-electrical-visual-size:280px; padding:12px; }
+ .phys-diagram:is([aria-label="Flux linkage per ampere"],[aria-label="Magnetic coupling between coils"],[aria-label="Energy stored in the magnetic field"],[aria-label="Transformer winding ratio"],[aria-label="Transformer current transfer"],[aria-label="Reactance rises with frequency"]) > h2 { font-size:18px; }
+}
+
+/* Magnetic energy density only: transparent unit volume, no meter or flow. */
+.phys-diagram.phys-energy-density { padding:14px; }
+.phys-diagram.phys-energy-density > h2 { margin-inline-end:0; margin-bottom:4px; font-size:19px; }
+.phys-diagram.phys-energy-density > .phys-caption { display:none; }
+.phys-diagram.phys-energy-density .phys-svg { max-width:320px; margin:2px auto 0; }
+.phys-diagram.phys-energy-density .phys-svg .phys-energy-volume { font-size:15px; fill:var(--muted); }
+.phys-diagram.phys-energy-density .phys-readout { display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:4px 12px; padding-top:8px; }
+.phys-diagram.phys-energy-density .phys-readout > span { color:var(--muted); font-size:12px; line-height:1.4; }
+.phys-diagram.phys-energy-density .phys-readout > strong { min-width:0; max-width:100%; min-height:1.4em; color:var(--phys-positive); font-size:19px; line-height:1.4; }
+.phys-diagram.phys-energy-density .phys-note { min-height:0; margin:5px 0 0; font-size:12px; line-height:1.4; }
+
+/* Reviewed Physics scenes: compact without changing graph coordinates or the
+   approved Coulomb, radial-field and charge-transfer visual designs. The shared
+   export toolbar already reserves its own heading space. */
+.phys-diagram.phys-reviewed > h2 { margin-inline-end:0; }
+.phys-diagram.phys-reviewed:not(.phys-coulomb):not(.phys-radial-field):not(.phys-charge-transfer) {
+  padding:14px;
+}
+.phys-diagram.phys-reviewed:not(.phys-coulomb):not(.phys-radial-field):not(.phys-charge-transfer) > h2 { font-size:19px; }
+.phys-diagram.phys-reviewed:not(.phys-coulomb):not(.phys-radial-field):not(.phys-charge-transfer) > .phys-caption {
+  font-size:12px; line-height:1.45; margin-bottom:4px;
+}
+.phys-diagram.phys-reviewed:not(.phys-coulomb):not(.phys-radial-field):not(.phys-charge-transfer) .phys-svg {
+  max-width:min(100%,360px,var(--caluler-electrical-visual-size,360px)); height:auto;
+}
+.phys-diagram.phys-reviewed:not(.phys-coulomb):not(.phys-radial-field):not(.phys-charge-transfer) .phys-readout {
+  padding-top:8px; gap:3px; font-size:12px;
+}
+.phys-diagram.phys-reviewed:not(.phys-coulomb):not(.phys-radial-field):not(.phys-charge-transfer) .phys-readout strong {
+  min-height:1.4em; font-size:20px; line-height:1.4;
+}
+.phys-diagram.phys-reviewed .phys-detail,.phys-diagram.phys-reviewed .phys-note { min-height:0; }
+.phys-diagram.phys-reviewed .phys-svg .phys-inline-result { font-size:18px; font-weight:650; }
+@media(max-width:560px) {
+  .phys-diagram.phys-reviewed:not(.phys-coulomb):not(.phys-radial-field):not(.phys-charge-transfer) { padding:12px; }
+  .phys-diagram.phys-reviewed:not(.phys-coulomb):not(.phys-radial-field):not(.phys-charge-transfer) > h2 { font-size:18px; }
+}
+@media(max-width:560px) { .phys-diagram.phys-energy-density { padding:12px; } .phys-diagram.phys-energy-density > h2 { font-size:18px; } }
+
+/* CALULER-ELECTRIC-LIME-CURRENT-V1: moving current overlays only; base wires stay neutral. */
+.phys-current-conductor .phys-current-sparks { isolation:isolate; }
+.phys-current-conductor .phys-current-trail {
+  stroke:#87FF5E!important; stroke-dasharray:14 86!important; stroke-opacity:1!important;
+  stroke-width:7px!important; stroke-linecap:round!important;
+  filter:drop-shadow(0 0 1.8px rgba(38,105,21,.78))!important;
+}
+.phys-current-conductor .phys-current-spark {
+  stroke:#245B16!important; stroke-dasharray:7 93!important; stroke-opacity:1!important;
+  stroke-width:3.2px!important; stroke-linecap:round!important;
+  filter:drop-shadow(0 0 1.5px rgba(38,105,21,.72))!important;
+}
+:is(html[data-theme="dark"],html.dark-mode) .phys-current-conductor .phys-current-trail,
+body.dark-mode .phys-current-conductor .phys-current-trail {
+  filter:drop-shadow(0 0 2.6px rgba(135,255,94,.76))!important;
+}
+:is(html[data-theme="dark"],html.dark-mode) .phys-current-conductor .phys-current-spark,
+body.dark-mode .phys-current-conductor .phys-current-spark {
+  stroke:#F4FFE9!important; filter:drop-shadow(0 0 2px rgba(135,255,94,.82))!important;
+}
+/* Preserve the same visible treatment where older diagram-specific rules set dash sizes. */
+.phys-diagram.phys-charge-transfer .phys-current-conductor .phys-current-trail,
+.phys-diagram.phys-solenoid-field .phys-current-conductor .phys-current-trail,
+.phys-diagram.phys-ampere-field .phys-current-conductor .phys-current-trail {
+  stroke-dasharray:14 86!important;
+}
+.phys-diagram.phys-charge-transfer .phys-current-conductor .phys-current-spark,
+.phys-diagram.phys-solenoid-field .phys-current-conductor .phys-current-spark,
+.phys-diagram.phys-ampere-field .phys-current-conductor .phys-current-spark {
+  stroke-dasharray:7 93!important;
+}
+/* END CALULER-ELECTRIC-LIME-CURRENT-V1 */

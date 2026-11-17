@@ -1,0 +1,112 @@
+/* Mathematics category only. Original equations, inputs and Result actions stay intact. */
+html:root body[data-caluler-category="Mathematics"] .calculator.math-layout {
+  display:grid!important; grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  gap:24px!important; align-items:center!important;
+}
+.math-form { min-width:0; }
+html:root body[data-caluler-category="Mathematics"] .math-form .form-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.math-form .math-field-wide { grid-column:1/-1; }
+html:root body[data-caluler-category="Mathematics"] .math-form > .btn {
+  display:block; width:min(220px,100%); min-width:0; min-height:44px; box-sizing:border-box;
+  margin:24px auto 0; text-align:center;
+}
+html:root body[data-caluler-category="Mathematics"] .calculator.math-layout > :is(.result,.caluler-result-actionbar) {
+  grid-column:1/-1!important; justify-self:start!important; width:75%!important; max-width:100%!important;
+  box-sizing:border-box!important; margin-inline:0!important; min-width:0;
+}
+.math-diagram {
+  --math-blue:var(--caluler-brand-primary); --math-blue-end:var(--caluler-brand-secondary); --math-green:#137443; --math-amber:#995400; --math-red:#B52E38;
+  position:relative; min-width:0; width:100%; box-sizing:border-box; padding:14px;
+  color:var(--text); background:var(--card); border:1px solid var(--border); border-radius:20px;
+}
+.math-diagram > h2 { margin:0 0 5px; font-size:19px; line-height:1.35; }
+.math-diagram .math-caption { color:var(--muted); font-size:12px; line-height:1.45; margin:0 0 10px; }
+.math-diagram .math-svg { display:block; width:100%; max-width:400px; height:auto; margin:0 auto; border-radius:12px; background:var(--card); background:color-mix(in srgb,var(--math-blue) 2%,var(--card)); }
+.math-diagram .math-svg text { font:16px Arial,Helvetica,sans-serif; fill:var(--text); font-variant-numeric:tabular-nums; }
+.math-diagram .math-svg .math-tick { font-size:14px; fill:var(--muted); }
+.math-diagram .math-svg .math-axis-title { font-size:14px; fill:var(--muted); }
+.math-diagram .math-svg .math-point-label { font-size:14px; }
+.math-diagram .math-svg .math-value { font-size:21px; font-weight:700; }
+.math-diagram .math-svg .math-eyebrow { font-size:14px; font-weight:600; fill:var(--muted); }
+.math-diagram .math-svg .math-marker-label { font-size:15px; font-weight:600; }
+.math-diagram .math-svg .math-bar-value { font-size:15px; font-weight:650; }
+.math-diagram .math-svg .math-placeholder { font-size:14px; fill:var(--muted); }
+.math-motion-root { position:relative; min-width:0; }
+.math-motion-scene { min-width:0; }
+.math-motion-root > .math-motion-copy {
+  position:absolute; inset:0 0 auto; z-index:1; margin:0; width:100%;
+  min-height:100%; box-sizing:border-box; background:var(--card); pointer-events:none;
+}
+.math-diagram .math-neutral { opacity:.85; }
+.math-diagram .math-svg [tabindex]:focus-visible { outline:2px solid var(--math-blue); outline-offset:3px; }
+.math-diagram .math-hoverable { cursor:help; }
+.math-diagram .math-hit { pointer-events:all; }
+.math-diagram .math-tip-active > :not(.math-hit), .math-diagram :is(rect,text,span,canvas).math-tip-active {
+  filter:brightness(1.12); stroke-width:2.6;
+}
+.math-diagram .math-hoverable:focus-visible { outline:2px solid var(--math-blue); outline-offset:3px; border-radius:4px; }
+/* Same compact surface, border and typography as the Physics/Electronics tooltip. */
+.math-diagram .math-tooltip {
+  position:absolute; z-index:20; box-sizing:border-box; width:max-content;
+  max-width:min(300px,calc(100% - 16px)); max-height:calc(100% - 16px); overflow:auto;
+  padding:8px 11px; border:2px solid var(--math-blue); border-radius:11px;
+  background:var(--card); color:var(--text); box-shadow:0 7px 22px rgba(0,0,0,.16);
+  font:600 13px/1.4 Arial,Helvetica,sans-serif; white-space:pre-line; overflow-wrap:anywhere;
+  animation:math-tooltip-reveal .1s ease-out;
+}
+@keyframes math-tooltip-reveal { from { opacity:0; } to { opacity:1; } }
+@media(prefers-reduced-motion:reduce) { .math-diagram .math-tooltip { animation:none; } }
+@media print { .math-diagram .math-tooltip, .math-diagram .math-hit { display:none!important; } }
+.math-diagram .math-summary { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:9px 24px; margin:0; padding-top:12px; border-top:1px solid var(--border); }
+.math-diagram .math-summary:empty { display:none; }
+.math-diagram .math-summary dt,.math-diagram .math-summary dd { min-width:0; margin:0; line-height:1.45; overflow-wrap:anywhere; font-size:14px; }
+.math-diagram .math-summary dt { color:var(--muted); }
+.math-diagram .math-summary dd { color:var(--math-green); font-weight:650; font-size:16px; text-align:end; font-variant-numeric:tabular-nums; }
+.math-diagram[data-math-kind="percentage"] .math-summary { align-items:center; padding-top:8px; }
+.math-diagram[data-math-kind="percentage"] .math-summary dt { font-size:13px; font-weight:600; }
+.math-diagram[data-math-kind="percentage"] .math-summary dd { color:var(--math-blue); font-size:25px; font-weight:700; }
+.math-diagram .math-note { margin:7px 0 0; color:var(--muted); font-size:12px; line-height:1.45; overflow-wrap:anywhere; }
+.math-diagram .math-structured:empty { display:none; }
+.math-diagram .math-matrices { display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:18px; padding:18px 0; }
+.math-diagram .math-matrices figure { flex:1 1 160px; min-width:0; max-width:100%; margin:0; }
+.math-diagram .math-matrices figcaption { color:var(--muted); text-align:center; font-weight:650; margin-bottom:8px; }
+.math-diagram .math-matrix { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; padding:9px; border-inline:2px solid var(--math-blue); border-radius:5px; }
+.math-diagram .math-matrix span { min-width:0; padding:8px 5px; border:1px solid var(--border); border-radius:6px; background:var(--card); background:color-mix(in srgb,var(--math-blue) 5%,var(--card)); overflow-wrap:anywhere; font-size:15px; font-weight:600; font-variant-numeric:tabular-nums; text-align:center; }
+.math-diagram .math-matrices figure + figure .math-matrix { border-color:var(--math-green); }
+.math-diagram .math-matrices figure + figure .math-matrix span { background:color-mix(in srgb,var(--math-green) 5%,var(--card)); }
+.math-diagram .math-warning { margin:7px 0 0; color:var(--math-red); font-size:13px; line-height:1.45; }
+.math-diagram [hidden] { display:none!important; }
+.math-diagram .graph-legend { display:flex; flex-wrap:wrap; gap:8px 16px; overflow-wrap:anywhere; }
+.math-diagram .graph-legend > span { min-width:0; max-width:100%; }
+.math-native-graph .finance-result-grid { gap:8px; margin-bottom:12px; }
+.math-native-graph .finance-result-item { padding:10px; gap:4px; }
+.math-native-graph .graph-legend { padding:10px 4px 0; color:var(--muted); }
+.math-native-graph .math-native-swatch-0 { background:var(--caluler-brand-primary); }
+.math-native-graph .math-native-swatch-1 { background:var(--caluler-brand-secondary); }
+.math-native-graph .math-native-swatch-2 { background:transparent; border:1px dashed var(--caluler-brand-primary); border-radius:2px; }
+.math-native-graph .math-native-swatch-3 { background:var(--muted); }
+:root[data-theme="dark"] .math-native-graph .math-native-swatch-0,body.dark-mode .math-native-graph .math-native-swatch-0 { background:var(--caluler-brand-accent); }
+:root[data-theme="dark"] .math-native-graph .math-native-swatch-2,body.dark-mode .math-native-graph .math-native-swatch-2 { border-color:#fff; }
+:root[data-theme="dark"] .math-diagram,body.dark-mode .math-diagram {
+  --math-blue:var(--caluler-brand-accent); --math-blue-end:var(--caluler-brand-accent); --math-green:#68E0A0; --math-amber:#FFC166; --math-red:#FF929B;
+}
+@media(max-width:900px) {
+  html:root body[data-caluler-category="Mathematics"] .calculator.math-layout { grid-template-columns:minmax(0,1fr)!important; }
+}
+@media(max-width:768px) {
+  html:root body[data-caluler-category="Mathematics"] .calculator.math-layout > :is(.result,.caluler-result-actionbar) { width:100%!important; }
+}
+@media(max-width:560px) {
+  html:root body[data-caluler-category="Mathematics"] .calculator.math-layout { padding:12px!important; gap:18px!important; }
+  html:root body[data-caluler-category="Mathematics"] .math-form .form-grid { grid-template-columns:minmax(0,1fr); }
+  .math-diagram { padding:12px; border-radius:16px; }
+  .math-diagram > h2 { font-size:18px; }
+  .math-diagram .math-svg text { font-size:18px; }
+  .math-diagram .math-svg .math-tick,.math-diagram .math-svg .math-axis-title { font-size:16px; }
+  .math-diagram .math-svg .math-eyebrow,.math-diagram .math-svg .math-marker-label { font-size:16px; }
+  .math-diagram .math-svg .math-bar-value { font-size:18px; }
+  .math-diagram .math-summary { gap:7px 16px; }
+  .math-diagram .math-summary dt { font-size:13px; }
+  .math-diagram .math-summary dd { font-size:15px; }
+  .math-diagram[data-math-kind="percentage"] .math-summary dd { font-size:23px; }
+}

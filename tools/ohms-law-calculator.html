@@ -1,27 +1,121 @@
 <!doctype html><html lang="en"><head>
-<link rel="icon" type="image/svg+xml" href="../assets/caluler-tab-icon.svg?v=8" /><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ohm’s Law Calculator | Caluler</title><meta name="description" content="Calculate voltage, current, resistance and electrical power using Ohm’s law. Enter any two known values and solve for the unknown."><link rel="canonical" href="https://caluler.work/tools/ohms-law-calculator.html"><link rel="apple-touch-icon" href="../assets/caluler-favicon.png?v=7"><meta property="og:type" content="website"><meta property="og:site_name" content="Caluler"><meta property="og:title" content="Ohm’s Law Calculator | Caluler"><meta property="og:description" content="Calculate voltage, current, resistance and electrical power using Ohm’s law. Enter any two known values and solve for the unknown."><meta property="og:url" content="https://caluler.work/tools/ohms-law-calculator.html"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Ohm’s Law Calculator | Caluler"><meta name="twitter:description" content="Calculate voltage, current, resistance and electrical power using Ohm’s law. Enter any two known values and solve for the unknown."><link rel="stylesheet" href="../assets/style.css"><script defer src="../assets/script.js"></script><script src="https://translate.google.com/translate_a/element.js?cb=calulerGoogleTranslateInit" defer></script></head><body><nav aria-label="Primary navigation" class="nav"><div class="container nav-inner"><a class="logo" href="../index.html"><img class="logo-nav" src="../assets/caluler-logo.webp" alt="Caluler"></a><div class="caluler-utility-controls notranslate" translate="no" aria-label="Website settings"><button type="button" class="caluler-theme-toggle" id="calulerThemeToggle" aria-label="Toggle dark mode" title="Toggle dark/light mode">🌙</button><label class="caluler-language-label" for="calulerLanguage">Language</label><select id="calulerLanguage" class="caluler-language-select notranslate" translate="no" aria-label="Choose website language"><option value="en">🇬🇧 English</option><option value="ur">🇵🇰 اردو</option><option value="ar">🇸🇦 العربية</option><option value="hi">🇮🇳 हिन्दी</option><option value="es">🇪🇸 Español</option><option value="fr">🇫🇷 Français</option><option value="de">🇩🇪 Deutsch</option><option value="it">🇮🇹 Italiano</option><option value="pt">🇵🇹 Português</option><option value="ru">🇷🇺 Русский</option><option value="zh-CN">🇨🇳 简体中文</option><option value="ja">🇯🇵 日本語</option><option value="ko">🇰🇷 한국어</option><option value="tr">🇹🇷 Türkçe</option><option value="id">🇮🇩 Bahasa Indonesia</option><option value="bn">🇧🇩 বাংলা</option><option value="pa">🇮🇳 ਪੰਜਾਬੀ</option><option value="fa">🇮🇷 فارسی</option><option value="nl">🇳🇱 Nederlands</option><option value="ta">🇮🇳 தமிழ்</option></select></div><div id="google_translate_element" class="caluler-google-translate notranslate" translate="no" aria-hidden="true"></div><button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open navigation" class="menu-toggle" type="button">☰</button><div class="nav-links" id="mobileMenu" data-mobile-menu data-open="false"><a href="../tools.html">Tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy</a></div></div></nav><main class="section"><div class="container tool-layout"><section class="calculator"><h1>🧲 Ohm’s Law Calculator</h1><p>Enter any two values among voltage, current, resistance, or power. Select the appropriate units. Add an optional time to calculate electrical energy.</p><div class="form-grid"><div class="field"><label for="voltage">Voltage</label><input id="voltage" type="number" min="0" step="any" inputmode="decimal" placeholder="Enter voltage"><select id="voltageUnit" aria-label="Voltage unit"><option value="1" selected>Volts (V)</option><option value="0.001">Millivolts (mV)</option><option value="1000">Kilovolts (kV)</option></select></div><div class="field"><label for="current">Current</label><input id="current" type="number" min="0" step="any" inputmode="decimal" placeholder="Enter current"><select id="currentUnit" aria-label="Current unit"><option value="1" selected>Amperes (A)</option><option value="0.001">Milliamperes (mA)</option><option value="0.000001">Microamperes (µA)</option></select></div><div class="field"><label for="resistance">Resistance</label><input id="resistance" type="number" min="0" step="any" inputmode="decimal" placeholder="Enter resistance"><select id="resistanceUnit" aria-label="Resistance unit"><option value="1" selected>Ohms (Ω)</option><option value="1000">Kilo-ohms (kΩ)</option><option value="1000000">Mega-ohms (MΩ)</option></select></div><div class="field"><label for="power">Power</label><input id="power" type="number" min="0" step="any" inputmode="decimal" placeholder="Enter power"><select id="powerUnit" aria-label="Power unit"><option value="1" selected>Watts (W)</option><option value="0.001">Milliwatts (mW)</option><option value="1000">Kilowatts (kW)</option></select></div><div class="field"><label for="duration">Time (optional, for energy)</label><input id="duration" type="number" min="0" step="any" inputmode="decimal" placeholder="Enter duration"><select id="durationUnit" aria-label="Time unit"><option value="1" selected>Seconds (s)</option><option value="60">Minutes (min)</option><option value="3600">Hours (h)</option></select></div></div><button class="btn" id="ohmsCalculate" type="button">Calculate</button><div class="result" id="ohmsResult" aria-live="polite">Enter exactly two known electrical values. Time is optional and is used to calculate energy.</div></section><aside class="sidebar-box"><h2>Related Tools</h2><p><a href="electrical-power-from-voltage-and-current.html">Electrical Power Calculator</a></p><p><a href="electrical-wire-resistance-calculator.html">Electrical Wire Resistance Calculator</a></p><p><a href="cable-voltage-drop-calculator.html">Cable Voltage Drop Calculator</a></p></aside></div><div class="container content-box" style="margin-top:24px;padding:24px"><h2>Formula and method</h2><p>Ohm’s law: V = I × R. Electrical power: P = V × I = I² × R = V² ÷ R. Electrical energy: E = P × t, where time is converted to seconds.</p><h2>Example</h2><p>With 12 V and 2 A, resistance is 6 Ω and power is 24 W. Over 1 hour, that power uses 24 Wh (0.024 kWh) of energy.</p><section class="tool-faq" aria-labelledby="faq-heading"><h3 id="faq-heading">Frequently Asked Questions</h3><details><summary>Which values can I enter?</summary><p>Enter exactly two known values from voltage, current, resistance, and power. The calculator derives the others. Add a time value to calculate energy.</p></details><details><summary>Which units are supported?</summary><p>Voltage supports mV, V and kV; current supports µA, mA and A; resistance supports Ω, kΩ and MΩ; power supports mW, W and kW. Time supports seconds, minutes and hours.</p></details><details><summary>How is electrical power calculated?</summary><p>Power can be calculated as voltage multiplied by current (P = V × I). The equivalent Ohm’s law relationships can derive other unknown values.</p></details></section></div></main><script>(function(){
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ohm’s Law Calculator | Caluler</title><meta name="description" content="Calculate voltage, current, resistance and electrical power using Ohm’s law. Enter any two known values and solve for the unknown."><link rel="canonical" href="https://caluler.work/tools/ohms-law-calculator.html"><meta property="og:type" content="website"><meta property="og:site_name" content="Caluler"><meta property="og:title" content="Ohm’s Law Calculator | Caluler"><meta property="og:description" content="Calculate voltage, current, resistance and electrical power using Ohm’s law. Enter any two known values and solve for the unknown."><meta property="og:url" content="https://caluler.work/tools/ohms-law-calculator.html"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Ohm’s Law Calculator | Caluler"><meta name="twitter:description" content="Calculate voltage, current, resistance and electrical power using Ohm’s law. Enter any two known values and solve for the unknown."><link rel="stylesheet" href="../assets/style.css"><script defer src="../assets/script.js"></script><script src="https://translate.google.com/translate_a/element.js?cb=calulerGoogleTranslateInit" defer></script><link rel="icon" type="image/svg+xml" sizes="any" href="../assets/caluler-tab-icon.svg?v=13"> <link rel="icon" type="image/png" sizes="512x512" href="../assets/caluler-favicon.png?v=13"> <link rel="shortcut icon" type="image/x-icon" href="../assets/caluler-favicon.ico?v=13"> <link rel="apple-touch-icon" sizes="180x180" href="../assets/caluler-apple-touch-icon.png?v=13">
+<!-- CALULER-ELECTRONICS-DIAGRAMS-V1 -->
+<link rel="stylesheet" href="../assets/electronics-diagrams.css">
+<script defer src="../assets/electronics-diagrams.js"></script>
+<style id="ohms-smart-input-style">
+html body .calculator .field .ohms-output-badge { display:inline-block; margin-inline-start:6px; font-size:11px; line-height:1.4; font-weight:500; color:var(--caluler-brand-primary); }
+html body .calculator .field .ohms-output-badge[hidden] { display:none; }
+#voltage[data-ohms-output="true"],#current[data-ohms-output="true"],#resistance[data-ohms-output="true"],#power[data-ohms-output="true"] { border-color:var(--caluler-brand-primary); border-style:dashed; background:var(--bg); color:var(--caluler-brand-primary); }
+.ohms-smart-hint { margin:8px 0 0; font-size:12px; line-height:1.4; color:var(--muted); overflow-wrap:anywhere; }
+.ohms-smart-error { margin:8px 0 0; font-size:13px; line-height:1.4; color:#A52A36; }
+.ohms-smart-error[hidden] { display:none; }
+:is(html[data-theme="dark"],html.dark-mode) body .calculator .field .ohms-output-badge,body.dark-mode .calculator .field .ohms-output-badge,
+:is(html[data-theme="dark"],html.dark-mode) :is(#voltage,#current,#resistance,#power)[data-ohms-output="true"],body.dark-mode :is(#voltage,#current,#resistance,#power)[data-ohms-output="true"] { color:var(--caluler-brand-accent); border-color:var(--caluler-brand-accent); }
+:is(html[data-theme="dark"],html.dark-mode) .ohms-smart-error,body.dark-mode .ohms-smart-error { color:#FF929B; }
+</style>
+
+<script type="application/ld+json" id="caluler-page-seo">{"@context":"https://schema.org","@type":"WebPage","@id":"https://caluler.work/tools/ohms-law-calculator.html#webpage","url":"https://caluler.work/tools/ohms-law-calculator.html","name":"Ohm’s Law Calculator | Caluler","description":"Calculate voltage, current, resistance and electrical power using Ohm’s law. Enter any two known values and solve for the unknown.","inLanguage":"en","isPartOf":{"@id":"https://caluler.work/#website"}}</script>
+</head><body data-caluler-category="Electricity &amp; Electronics"><nav aria-label="Primary navigation" class="nav"><div class="container nav-inner"><a class="logo" href="../index.html"><img class="logo-nav" src="../assets/caluler-logo.webp" alt="Caluler"></a><div class="caluler-utility-controls notranslate" translate="no" aria-label="Website settings"><button type="button" class="caluler-theme-toggle" id="calulerThemeToggle" aria-label="Toggle dark mode" title="Toggle dark/light mode">🌙</button><label class="caluler-language-label" for="calulerLanguage">Language</label><select id="calulerLanguage" class="caluler-language-select notranslate" translate="no" aria-label="Choose website language"><option value="en">English</option><option value="es">Español</option><option value="fr">Français</option><option value="de">Deutsch</option><option value="pt">Português</option><option value="it">Italiano</option><option value="zh-CN">简体中文</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="ru">Русский</option><option value="ar">العربية</option><option value="hi">हिन्दी</option><option value="ur">اردو</option><option value="tr">Türkçe</option><option value="id">Bahasa Indonesia</option><option value="nl">Nederlands</option><option value="bn">বাংলা</option><option value="pa">ਪੰਜਾਬੀ</option><option value="fa">فارسی</option><option value="ta">தமிழ்</option></select></div><div id="google_translate_element" class="caluler-google-translate notranslate" translate="no" aria-hidden="true"></div><button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open navigation" class="menu-toggle" type="button">☰</button><div class="nav-links" id="mobileMenu" data-mobile-menu data-open="false"><a href="../tools.html">Tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy</a></div></div></nav><section class="page-hero"><div class="container"><h1>Ohm’s Law Calculator</h1><p>Enter any two values among voltage, current, resistance, or power. Select the appropriate units. Add an optional time to calculate electrical energy.</p></div></section><section class="section"><div class="container tool-layout"><main><div class="calculator"><h2 data-caluler-compact-heading="v1" style="display:flex!important;align-items:center!important;gap:12px!important;font-size:22px!important;font-weight:600!important;line-height:1.3!important;"><span class="caluler-subpage-heading-icon" aria-hidden="true" style="display:inline-flex!important;align-items:center!important;justify-content:center!important;flex:0 0 24px!important;width:24px!important;height:24px!important;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" focusable="false" aria-hidden="true" data-caluler-icon="circuit-board" data-lucide-icon="circuit-board" style="display:block!important;width:24px!important;height:24px!important;min-width:24px!important;min-height:24px!important;max-width:24px!important;max-height:24px!important;"><rect width="18" height="18" x="3" y="3" rx="2" />
+  <path d="M11 9h4a2 2 0 0 0 2-2V3" />
+  <circle cx="9" cy="9" r="2" />
+  <path d="M7 21v-4a2 2 0 0 1 2-2h4" />
+  <circle cx="15" cy="15" r="2" /></svg></span>Enter Your Details</h2><div class="form-grid"><div class="field"><label for="voltage">Voltage</label><input id="voltage" type="number" min="0" step="any" inputmode="decimal" placeholder="Enter voltage"><select id="voltageUnit" aria-label="Voltage unit"><option value="1" selected>Volts (V)</option><option value="0.001">Millivolts (mV)</option><option value="1000">Kilovolts (kV)</option></select></div><div class="field"><label for="current">Current</label><input id="current" type="number" min="0" step="any" inputmode="decimal" placeholder="Enter current"><select id="currentUnit" aria-label="Current unit"><option value="1" selected>Amperes (A)</option><option value="0.001">Milliamperes (mA)</option><option value="0.000001">Microamperes (µA)</option></select></div><div class="field"><label for="resistance">Resistance</label><input id="resistance" type="number" min="0" step="any" inputmode="decimal" placeholder="Enter resistance"><select id="resistanceUnit" aria-label="Resistance unit"><option value="1" selected>Ohms (Ω)</option><option value="1000">Kilo-ohms (kΩ)</option><option value="1000000">Mega-ohms (MΩ)</option></select></div><div class="field"><label for="power">Power</label><input id="power" type="number" min="0" step="any" inputmode="decimal" placeholder="Enter power"><select id="powerUnit" aria-label="Power unit"><option value="1" selected>Watts (W)</option><option value="0.001">Milliwatts (mW)</option><option value="1000">Kilowatts (kW)</option></select></div><div class="field"><label for="duration">Time (optional, for energy)</label><input id="duration" type="number" min="0" step="any" inputmode="decimal" placeholder="Enter duration"><select id="durationUnit" aria-label="Time unit"><option value="1" selected>Seconds (s)</option><option value="60">Minutes (min)</option><option value="3600">Hours (h)</option></select></div></div><button class="btn" id="ohmsCalculate" type="button">Calculate</button><div class="result" id="ohmsResult" aria-live="polite">Enter exactly two known electrical values. Time is optional and is used to calculate energy.</div></div></main><aside><div class="sidebar-box"><h2>Related Tools</h2><div class="related"><a href="electrical-power-from-voltage-and-current.html"><span data-caluler-lucide-related="true" class="related-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" focusable="false" aria-hidden="true" data-caluler-icon="zap-off" data-lucide-icon="zap-off" style="display:block;width:24px;height:24px;"><path d="M10.768 5.111 13.44 2.44a1.5 1.5 0 012.474 1.561l-1.633 4.625" />
+  <path d="m18.889 13.232.672-.672A1.5 1.5 0 0018.5 10h-2.844" />
+  <path d="m2 2 20 20" />
+  <path d="m7.94 7.94-3.5 3.499A1.5 1.5 0 005.5 14h4.002a.5.5 0 01.471.666L8.086 20a1.5 1.5 0 002.475 1.56l5.5-5.5" /></svg></span><span>Electrical Power Calculator</span></a><a href="electrical-wire-resistance-calculator.html"><span data-caluler-lucide-related="true" class="related-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" focusable="false" aria-hidden="true" data-caluler-icon="plug-2" data-lucide-icon="plug-2" style="display:block;width:24px;height:24px;"><path d="M9 2v6" />
+  <path d="M15 2v6" />
+  <path d="M12 17v5" />
+  <path d="M5 8h14" />
+  <path d="M6 11V8h12v3a6 6 0 1 1-12 0Z" /></svg></span><span>Electrical Wire Resistance Calculator</span></a><a href="cable-voltage-drop-calculator.html"><span data-caluler-lucide-related="true" class="related-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" focusable="false" aria-hidden="true" data-caluler-icon="cable" data-lucide-icon="cable" style="display:block;width:24px;height:24px;"><path d="M17 19a1 1 0 0 1-1-1v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2a1 1 0 0 1-1 1z" />
+  <path d="M17 21v-2" />
+  <path d="M19 14V6.5a1 1 0 0 0-7 0v11a1 1 0 0 1-7 0V10" />
+  <path d="M21 21v-2" />
+  <path d="M3 5V3" />
+  <path d="M4 10a2 2 0 0 1-2-2V6a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2a2 2 0 0 1-2 2z" />
+  <path d="M7 5V3" /></svg></span><span>Cable Voltage Drop Calculator</span></a></div><p class="sidebar-browse"><a href="../tools.html?category=All">Browse all calculators &#8594;</a></p><style data-caluler-ohms-browse-style="v1">aside .browse-all-calculators{display:inline-flex;align-items:center;gap:6px;margin-top:16px;color:#2563eb;font-size:18px;font-weight:700;text-decoration:none}aside .browse-all-calculators:hover{text-decoration:underline}:root[data-theme="dark"] aside .browse-all-calculators,body.dark-mode aside .browse-all-calculators{color:#58D9FF}</style></div></aside></div><div class="container content-box" style="margin-top:24px;padding:24px"><h2>Formula and method</h2><p>Ohm’s law: V = I × R. Electrical power: P = V × I = I² × R = V² ÷ R. Electrical energy: E = P × t, where time is converted to seconds.</p><h2>Example</h2><p>With 12 V and 2 A, resistance is 6 Ω and power is 24 W. Over 1 hour, that power uses 24 Wh (0.024 kWh) of energy.</p><section class="tool-faq" aria-labelledby="faq-heading"><h3 id="faq-heading">Frequently Asked Questions</h3><details><summary>Which values can I enter?</summary><p>Enter exactly two known values from voltage, current, resistance, and power. The calculator derives the others. Add a time value to calculate energy.</p></details><details><summary>Which units are supported?</summary><p>Voltage supports mV, V and kV; current supports µA, mA and A; resistance supports Ω, kΩ and MΩ; power supports mW, W and kW. Time supports seconds, minutes and hours.</p></details><details><summary>How is electrical power calculated?</summary><p>Power can be calculated as voltage multiplied by current (P = V × I). The equivalent Ohm’s law relationships can derive other unknown values.</p></details></section></div></section><script>(function(){
 const byId=id=>document.getElementById(id);
 const result=byId('ohmsResult');
+const initialResult=result.textContent;
 const inputs=[
   {id:'voltage',unit:'voltageUnit',factor:'voltage'},
   {id:'current',unit:'currentUnit',factor:'current'},
   {id:'resistance',unit:'resistanceUnit',factor:'resistance'},
   {id:'power',unit:'powerUnit',factor:'power'}
 ];
-const factors={voltage:1,current:1,resistance:1,power:1};
-function showError(message){result.textContent=message;}
+const autoOutputs=new Set(),calculatedSI=new Map();
+const inputStateKey='caluler-ohms-known-inputs-v1';
+const calculateButton=byId('ohmsCalculate');
+const smartHint=document.createElement('p');smartHint.id='ohmsSmartHint';smartHint.className='ohms-smart-hint';
+calculateButton.parentNode.insertBefore(smartHint,calculateButton);
+const smartError=document.createElement('p');smartError.id='ohmsSmartError';smartError.className='ohms-smart-error';smartError.setAttribute('role','alert');smartError.hidden=true;
+calculateButton.parentNode.insertBefore(smartError,calculateButton);
+for(const item of inputs){
+ const field=byId(item.id),label=field.parentNode.querySelector('label'),badge=document.createElement('span');
+ badge.id='ohms-output-'+item.id;badge.className='ohms-output-badge';badge.textContent='Calculated output';badge.hidden=true;label.appendChild(badge);
+ item.badge=badge;item.description=field.getAttribute('aria-describedby')||'';
+}
+function saveOriginalInputs(){
+ const known=inputs.filter(item=>!autoOutputs.has(item.id)&&byId(item.id).value.trim()!=='');
+ const valid=known.length===2&&known.every(item=>{const field=byId(item.id),unit=byId(item.unit),value=Number(field.value),factor=Number(unit.value);return !field.validity?.badInput&&Number.isFinite(value)&&value>=0&&Number.isFinite(factor)&&factor>0&&Number.isFinite(value*factor);});
+ try{
+  if(!valid){sessionStorage.removeItem(inputStateKey);return;}
+  sessionStorage.setItem(inputStateKey,JSON.stringify({fields:known.map(item=>({id:item.id,value:byId(item.id).value,unit:byId(item.unit).value}))}));
+ }catch(e){}
+}
+function restoreOriginalInputs(){
+ autoOutputs.clear();calculatedSI.clear();
+ for(const item of inputs){byId(item.id).value='';byId(item.id).readOnly=false;byId(item.unit).selectedIndex=0;}
+ let state=null;
+ try{state=JSON.parse(sessionStorage.getItem(inputStateKey)||'null')}catch(e){}
+ if(!state||!Array.isArray(state.fields)||state.fields.length!==2||!state.fields.every(field=>field&&typeof field==='object')||new Set(state.fields.map(field=>field.id)).size!==2){try{sessionStorage.removeItem(inputStateKey)}catch(e){}return;}
+ const restored=[];
+ for(const saved of state.fields){
+  const item=inputs.find(candidate=>candidate.id===saved.id),field=item&&byId(item.id),unit=item&&byId(item.unit),value=Number(saved.value),factor=Number(saved.unit);
+  if(!item||!field||!unit||typeof saved.value!=='string'||saved.value.trim()===''||!Number.isFinite(value)||value<0||!Number.isFinite(factor)||factor<=0||!Array.from(unit.options).some(option=>option.value===String(saved.unit))||!Number.isFinite(value*factor)){try{sessionStorage.removeItem(inputStateKey)}catch(e){}return;}
+  restored.push({item,value:String(saved.value),unit:String(saved.unit)});
+ }
+ for(const saved of restored){byId(saved.item.unit).value=saved.unit;byId(saved.item.id).value=saved.value;}
+}
+function syncInputs(){
+ const knownItems=inputs.filter(item=>!autoOutputs.has(item.id)&&byId(item.id).value.trim()!=='');
+ const lock=knownItems.length===2&&knownItems.every(item=>{const field=byId(item.id),n=Number(field.value),factor=Number(byId(item.unit).value);return !field.validity?.badInput&&Number.isFinite(n)&&n>=0&&Number.isFinite(factor)&&factor>0&&Number.isFinite(n*factor);});
+ if(!lock){for(const id of autoOutputs)byId(id).value='';autoOutputs.clear();calculatedSI.clear();}
+ else for(const item of inputs)if(!knownItems.includes(item))autoOutputs.add(item.id);
+ for(const item of inputs){const field=byId(item.id),locked=autoOutputs.has(item.id);field.readOnly=locked;field.dataset.ohmsOutput=String(locked);field.setAttribute('aria-readonly',String(locked));item.badge.hidden=!locked;field.setAttribute('aria-describedby',[item.description,'ohmsSmartHint',locked?item.badge.id:''].filter(Boolean).join(' '));}
+ const names=knownItems.map(item=>item.factor[0].toUpperCase()+item.factor.slice(1));
+ const magnitudePair=knownItems.some(item=>item.factor==='power')&&knownItems.some(item=>item.factor==='resistance');
+ smartHint.textContent=lock?names.join(' and ')+' are known. Outputs update on Calculate.'+(magnitudePair?' P + R determines magnitudes; non-negative V/I shown.':''):'Enter any two non-negative electrical values. Outputs update on Calculate; Time is optional.';
+}
+function fillOutput(item,si){
+ const unit=byId(item.unit);let factor=Number(unit.value),value=si/factor;
+ // Keep extreme outputs representable without changing known inputs or rounding the SI snapshot.
+ if(!(Number.isFinite(factor)&&factor>0&&Number.isFinite(value))||(si!==0&&value===0)){unit.value='1';value=si;}
+ // Normalize floating-point display noise only; keep calculation snapshots unrounded.
+ byId(item.id).value=String(Number(value.toPrecision(15)));
+}
+function fillOutputs(values){for(const item of inputs)if(autoOutputs.has(item.id)){calculatedSI.set(item.id,values[item.factor]);fillOutput(item,values[item.factor]);}}
+for(const item of inputs){
+ byId(item.id).addEventListener('input',()=>{syncInputs();saveOriginalInputs();});
+ byId(item.unit).addEventListener('change',()=>{if(autoOutputs.has(item.id)&&calculatedSI.has(item.id))fillOutput(item,calculatedSI.get(item.id));else{syncInputs();saveOriginalInputs();}});
+}
+window.addEventListener('pageshow',event=>{restoreOriginalInputs();syncInputs();if(event.persisted){result.textContent=initialResult;window.calulerElectronics?.reset();}});
+restoreOriginalInputs();
+syncInputs();
+function showError(message){smartError.textContent=message;smartError.hidden=false;}
 function fmt(value){return Number(value.toPrecision(8)).toLocaleString(undefined,{maximumSignificantDigits:8});}
 byId('ohmsCalculate').addEventListener('click',function(){
+  syncInputs();smartError.hidden=true;smartError.textContent='';
   const known={};
   for(const item of inputs){
     const raw=byId(item.id).value.trim();
-    if(raw===''){known[item.factor]=null;continue;}
+    if(autoOutputs.has(item.id)||raw===''){known[item.factor]=null;continue;}
     const value=Number(raw),factor=Number(byId(item.unit).value);
     if(!Number.isFinite(value)||value<0||!Number.isFinite(factor)||factor<=0){showError('Please enter valid non-negative numbers and select valid units.');return;}
     known[item.factor]=value*factor;
   }
   const names=Object.keys(known).filter(key=>known[key]!==null);
-  if(names.length!==2){showError('Please enter exactly two known values among voltage, current, resistance and power. Clear any other electrical value.');return;}
+  if(names.length!==2){showError('Please enter exactly two known values among voltage, current, resistance and power. Clear extra known electrical values.');return;}
   let {voltage:V,current:I,resistance:R,power:P}=known;
   const pair=names.sort().join('+');
   if(pair==='current+voltage'){
@@ -46,6 +140,7 @@ byId('ohmsCalculate').addEventListener('click',function(){
   }
   const values=[V,I,R,P];
   if(values.some(value=>!Number.isFinite(value)||value<0)){showError('These values do not produce a finite result. Check the inputs and units.');return;}
+  let diagramSeconds=null,diagramEnergy=null;
   const durationRaw=byId('duration').value.trim();
   let energyLine='<br><small>To calculate electrical energy, enter a duration above.</small>';
   if(durationRaw!==''){
@@ -53,10 +148,36 @@ byId('ohmsCalculate').addEventListener('click',function(){
     if(!Number.isFinite(duration)||duration<0||!Number.isFinite(timeFactor)||timeFactor<=0){showError('Enter a valid non-negative duration and select a valid time unit.');return;}
     const seconds=duration*timeFactor,energyJ=P*seconds;
     if(!Number.isFinite(energyJ)){showError('Energy result is too large. Check the power and duration values.');return;}
+    diagramSeconds=seconds;diagramEnergy=energyJ;
     energyLine='<br>Electrical energy: <b>'+fmt(energyJ)+' J</b><br>Energy: <b>'+fmt(energyJ/3600)+' Wh</b> ('+fmt(energyJ/3600000)+' kWh)';
   }
+  saveOriginalInputs();
+  fillOutputs({voltage:V,current:I,resistance:R,power:P});
   result.innerHTML='Voltage: <b>'+fmt(V)+' V</b><br>Current: <b>'+fmt(I)+' A</b><br>Resistance: <b>'+fmt(R)+' Ω</b><br>Power: <b>'+fmt(P)+' W</b>'+energyLine;
+  window.calulerElectronics?.commit({values:[V,I,R,P,diagramSeconds??0,diagramEnergy??0],result:P,unit:'W',hasDuration:diagramSeconds!==null});
 });
 })();</script>
-<footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><div class="footer-brand-title">CALULER</div><p>Free online calculators and practical productivity tools for health, finance, math, education, conversions and everyday tasks.</p></div><div class="footer-links"><h3>Explore</h3><a href="../tools.html">All 212 Tools</a><a href="../tools/age-calculator.html">Age Calculator</a><a href="../tools/bmi-calculator.html">BMI Calculator</a><a href="../tools/percentage-calculator.html">Percentage Calculator</a></div><div class="footer-links"><h3>Company &amp; Legal</h3><a href="../about.html">About Caluler</a><a href="../contact.html">Contact</a><a href="../disclaimer.html">Disclaimer</a><a href="../privacy.html">Privacy Policy</a><a href="../terms.html">Terms &amp; Conditions</a></div></div><div class="footer-bottom"><span>© 2026 Caluler. All rights reserved.</span><span class="footer-note">Free · Fast · Browser based · Mobile friendly</span></div></div></footer>
+<footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><img alt="Caluler.Work" class="footer-brand-logo" src="../assets/caluler-logo.webp" width="180" height="34" loading="lazy" decoding="async" style="display:block;width:180px;max-width:100%;height:auto;object-fit:contain;margin:0 0 18px;"/><p>Free online calculators and practical productivity tools for health, finance, math, education, conversions and everyday tasks.</p>
+<div class="footer-socials footer-socials--brand" role="group" aria-label="Caluler social media">
+<span class="footer-social-icon footer-social-youtube" role="img" aria-label="YouTube">
+<svg viewBox="0 0 24 24" aria-hidden="true">
+<path fill="#FFFFFF" fill-rule="evenodd" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.2 31.2 0 0 0 0 12a31.2 31.2 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.2 31.2 0 0 0 24 12a31.2 31.2 0 0 0-.5-5.8Z M9.6 15.5l6.2-3.5-6.2-3.5z"/>
+</svg>
+</span>
+<span class="footer-social-icon footer-social-facebook" role="img" aria-label="Facebook">
+<svg viewBox="0 0 24 24" aria-hidden="true">
+<circle cx="12" cy="12" r="11" fill="#FFFFFF"/>
+<path fill="#1264A3" d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.3-1.6 1.6-1.6h1.7V3.5c-.3 0-1.4-.1-2.6-.1-2.6 0-4.4 1.6-4.4 4.6v1.9H7v3.1h2.8v8z"/>
+</svg>
+</span>
+<span class="footer-social-icon footer-social-x" role="img" aria-label="X">
+<svg viewBox="0 0 24 24" aria-hidden="true">
+<path fill="#FFFFFF" d="M18.901 1.153h3.68l-8.04 9.19 9.46 12.504h-7.406l-5.8-7.584-6.64 7.584h-3.68l8.6-9.83L.3 1.153h7.594l5.243 6.932zm-1.291 19.494h2.039L6.482 3.238H4.294z"/>
+</svg>
+</span>
+</div></div><div class="footer-links"><h3>Explore</h3><a href="../tools.html">All 212 Tools</a><a href="../tools/age-calculator.html">Age Calculator</a><a href="../tools/bmi-calculator.html">BMI Calculator</a><a href="../tools/percentage-calculator.html">Percentage Calculator</a></div><div class="footer-links"><h3>Company &amp; Legal</h3><a href="../about.html">About Caluler</a><a href="../contact.html">Contact</a><a href="../disclaimer.html">Disclaimer</a><a href="../privacy.html">Privacy Policy</a><a href="../terms.html">Terms &amp; Conditions</a></div></div><div class="footer-bottom"><span>© 2026 Caluler. All rights reserved.</span><span class="footer-note">Free · Fast · Browser based · Mobile friendly</span></div></div></footer>
+<script src="../assets/caluler-mobile-drawer-socials.js" defer data-caluler-drawer-socials="shared-v1"></script>
+<!-- CALULER-MASTER-DESIGN-V1-PAGE-START -->
+<style id="caluler-master-design-v1">@import url("../assets/caluler-master-design-v1.css");</style>
+<!-- CALULER-MASTER-DESIGN-V1-PAGE-END -->
 </body></html>

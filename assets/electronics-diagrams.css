@@ -1,0 +1,217 @@
+/* Electricity & Electronics only; existing forms, Results and shared actions stay intact. */
+html:root body[data-caluler-category="Electricity & Electronics"] .calculator.ee-layout {
+ display:grid!important; grid-template-columns:repeat(2,minmax(0,1fr))!important; align-items:center!important; gap:24px!important;
+}
+.ee-form { min-width:0; }
+html:root body[data-caluler-category="Electricity & Electronics"] .ee-form .form-grid { grid-template-columns:repeat(2,minmax(0,1fr))!important; }
+html:root body[data-caluler-category="Electricity & Electronics"] .ee-form > :is(#calculateBtn,#ohmsCalculate) {
+ display:block!important; box-sizing:border-box!important; width:min(220px,100%)!important; min-width:0!important; max-width:100%!important; margin:24px auto 0!important;
+}
+html:root body[data-caluler-category="Electricity & Electronics"] .calculator.ee-layout > .result,
+html:root body[data-caluler-category="Electricity & Electronics"] .calculator.ee-layout > .caluler-result-actionbar {
+ grid-column:1/-1!important; justify-self:start!important; box-sizing:border-box!important; width:100%!important; max-width:100%!important; min-width:0!important;
+}
+.ee-panel, .ee-tooltip {
+ --ee-blue:var(--caluler-brand-primary); --ee-green:#137443; --ee-amber:#995400; --ee-red:#B52E38;
+ --ee-metal-edge:#7D919D; --ee-metal-light:#E9F1F5; --ee-resistor:#E6CEAB; --ee-resistor-band:#82501D;
+}
+.ee-panel {
+ --caluler-electrical-visual-size:320px;
+ position:relative; box-sizing:border-box; width:100%; min-width:0; padding:14px; border:1px solid var(--border); border-radius:20px;
+ background:var(--card); color:var(--text); background-image:linear-gradient(145deg,rgba(22,134,181,.045),transparent 65%); box-shadow:0 7px 22px rgba(15,23,42,.055);
+}
+.ee-panel > h2 { margin:0 48px 4px 0; font-size:19px; line-height:1.3; letter-spacing:-.02em; }
+.ee-panel .ee-caption { margin:0 0 2px; color:var(--muted); font-size:12px; line-height:1.4; }
+.ee-panel .ee-svg { display:block; width:100%; height:auto; max-width:var(--caluler-electrical-visual-size); margin:0 auto; overflow:visible; }
+.ee-panel .ee-svg text { font:14px Arial,Helvetica,sans-serif; fill:var(--text); }
+.ee-panel .ee-svg .ee-source-sign { font-size:19px; font-weight:650; fill:var(--ee-blue); }
+.ee-panel .ee-flow { opacity:0; pointer-events:none; }
+.ee-panel .ee-metrics { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px 12px; margin:0 0 10px; }
+.ee-panel .ee-metric { min-width:0; border-radius:6px; }
+.ee-panel .ee-metric > span { display:block; color:var(--muted); font-size:12px; line-height:1.4; }
+.ee-panel .ee-metric > strong { display:block; min-height:1.4em; font-size:15px; line-height:1.4; font-variant-numeric:tabular-nums; overflow-wrap:anywhere; }
+.ee-panel .ee-output { display:grid; gap:4px; border-top:1px solid var(--border); padding-top:10px; min-width:0; }
+.ee-panel .ee-output > span { color:var(--muted); font-size:12px; line-height:1.4; }
+.ee-panel .ee-output > strong { min-height:1.4em; font-size:22px; line-height:1.4; font-variant-numeric:tabular-nums; overflow-wrap:anywhere; border-radius:6px; }
+.ee-panel .ee-note { margin:5px 0 0; color:var(--muted); font-size:11.5px; line-height:1.4; }
+.ee-panel .ee-warning { margin:8px 0 0; color:var(--ee-red); font-size:13px; line-height:1.45; }
+.ee-panel [hidden] { display:none!important; }
+.ee-panel .ee-interactive { cursor:help; }
+.ee-panel .ee-interactive:focus-visible { outline:2px solid var(--ee-tip-color,var(--ee-blue)); outline-offset:2px; border-radius:6px; }
+.ee-tooltip {
+ position:fixed; z-index:12500; box-sizing:border-box; max-width:min(300px,calc(100vw - 16px)); padding:8px 11px;
+ color:var(--ee-tip-color); border:2px solid var(--ee-tip-color); border-radius:11px; background:var(--card); box-shadow:0 7px 22px rgba(0,0,0,.16);
+ font:600 14px/1.4 Arial,Helvetica,sans-serif; overflow-wrap:anywhere; pointer-events:none;
+}
+.ee-tooltip[hidden] { display:none!important; }
+:is(html[data-theme="dark"],html.dark-mode) :is(.ee-panel,.ee-tooltip), body.dark-mode :is(.ee-panel,.ee-tooltip) {
+ --ee-blue:var(--caluler-brand-accent); --ee-green:#68E0A0; --ee-amber:#FFC166; --ee-red:#FF929B;
+ --ee-metal-edge:#627C8F; --ee-metal-light:#D8E5EF; --ee-resistor:#6A5339; --ee-resistor-band:#FFD195;
+ box-shadow:0 7px 22px rgba(0,0,0,.14);
+}
+@media(max-width:900px) {
+ html:root body[data-caluler-category="Electricity & Electronics"] .calculator.ee-layout { grid-template-columns:minmax(0,1fr)!important; }
+}
+@media(max-width:560px) {
+ html:root body[data-caluler-category="Electricity & Electronics"] .ee-form .form-grid { grid-template-columns:minmax(0,1fr)!important; }
+ .ee-panel { --caluler-electrical-visual-size:280px; padding:12px; border-radius:16px; }
+ .ee-panel > h2 { font-size:18px; }
+ .ee-panel .ee-svg text { font-size:16px; }
+ .ee-panel .ee-metric > strong { font-size:16px; min-height:2.8em; }
+}
+
+/* VCR only: compact circuit, component-local values and identified output field. */
+.ee-vcr-panel { --ee-vcr-resistor-light:#F7E6C8; }
+:is(html[data-theme="dark"],html.dark-mode) .ee-vcr-panel, body.dark-mode .ee-vcr-panel { --ee-vcr-resistor-light:#927653; }
+.ee-vcr-panel .ee-svg { max-width:var(--caluler-electrical-visual-size); }
+.ee-vcr-panel .ee-metrics { display:none; }
+.ee-vcr-panel .ee-svg text { font-size:16px; font-variant-numeric:tabular-nums; }
+.ee-vcr-panel .ee-svg .ee-vcr-polarity { fill:#FFFFFF; font-size:20px; font-weight:700; }
+.ee-vcr-panel .ee-svg .ee-vcr-direction { fill:var(--ee-blue); font-size:17px; }
+.ee-vcr-panel .ee-svg .ee-vcr-current { fill:var(--ee-blue); font-size:21px; font-weight:650; }
+.ee-vcr-panel .ee-svg .ee-vcr-voltage { fill:var(--ee-blue); font-weight:650; }
+.ee-vcr-panel .ee-svg .ee-vcr-resistance { fill:var(--ee-amber); font-weight:650; }
+.ee-vcr-panel .ee-output { padding-top:8px; gap:2px; }
+.ee-vcr-panel .ee-note { margin-top:5px; }
+.ee-vcr-form .ee-vcr-field-status { display:block; color:var(--caluler-brand-primary); font-size:11px; line-height:1.4; font-weight:500; }
+.ee-vcr-form .ee-vcr-field-status[hidden] { display:none; }
+.ee-vcr-form input[aria-readonly="true"] { background:var(--bg); border-style:dashed; color:var(--caluler-brand-primary); }
+:is(html[data-theme="dark"],html.dark-mode) .ee-vcr-form :is(input[aria-readonly="true"],.ee-vcr-field-status), body.dark-mode .ee-vcr-form :is(input[aria-readonly="true"],.ee-vcr-field-status) { color:var(--caluler-brand-accent); }
+@media(max-width:560px) {
+ .ee-vcr-panel .ee-svg text { font-size:18px; }
+ .ee-vcr-panel .ee-svg .ee-vcr-current { font-size:22px; }
+ .ee-vcr-panel .ee-svg :is(.ee-vcr-voltage,.ee-vcr-resistance,.ee-vcr-direction) { font-size:19px; }
+}
+
+/* Ohm's Law only: compact schematic with one consolidated calculated summary. */
+.ee-ohms-panel { padding:14px; }
+.ee-ohms-panel > h2 { font-size:19px; margin-bottom:4px; }
+.ee-ohms-panel .ee-caption { font-size:12px; margin-bottom:2px; }
+.ee-ohms-panel .ee-svg { max-width:var(--caluler-electrical-visual-size); }
+.ee-ohms-panel .ee-metrics { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:7px 12px; border-top:1px solid var(--border); padding-top:8px; margin-bottom:0; }
+.ee-ohms-panel .ee-metric > span { font-size:12px; }
+.ee-ohms-panel .ee-metric > strong { font-size:15px; line-height:1.35; min-height:2.7em; }
+.ee-ohms-panel .ee-output { display:none; }
+.ee-ohms-panel .ee-note { font-size:11.5px; line-height:1.4; margin-top:5px; }
+.ee-ohms-form > h2 { margin-top:0; margin-bottom:14px; }
+.ee-ohms-form .form-grid { row-gap:14px; }
+.ee-ohms-form .field { margin-bottom:0; gap:6px; }
+@media(max-width:560px) {
+ .ee-ohms-panel { padding:12px; }
+ .ee-ohms-panel > h2 { font-size:18px; }
+ .ee-ohms-panel .ee-svg { max-width:var(--caluler-electrical-visual-size); }
+ .ee-ohms-panel .ee-metrics { grid-template-columns:repeat(2,minmax(0,1fr)); gap:6px 10px; }
+ .ee-ohms-panel .ee-metric > strong { font-size:15px; }
+ .ee-ohms-form .form-grid { row-gap:12px; }
+}
+
+/* Compact source/load family uses the same frame as Ohm’s Law. */
+.ee-panel.ee-circuit-panel:not(.ee-vcr-panel) .ee-svg text { font-size:16px; }
+.ee-panel.ee-circuit-panel .ee-svg .ee-source-sign { font-size:19px; }
+@media(max-width:560px) {
+ .ee-panel.ee-circuit-panel:not(.ee-vcr-panel) .ee-svg text { font-size:18px; }
+}
+
+/* CALULER-SMART-CAPACITOR-VISUALS-V1: only capacitor/RC annotations. */
+.ee-smart-cap-panel .ee-svg .ee-cap-sign { font-size:14px; font-weight:650; }
+.ee-smart-cap-panel .ee-svg .ee-cap-caption { font-size:13px; fill:var(--muted); }
+.ee-smart-rc-panel .ee-svg .ee-rc-label { font-size:13px; }
+.ee-smart-cap-panel .ee-cap-components { margin:0 0 10px; min-width:0; color:var(--text); font-size:12px; line-height:1.5; }
+.ee-smart-cap-panel .ee-cap-components > summary { cursor:pointer; color:var(--ee-blue); border-radius:5px; }
+.ee-smart-cap-panel .ee-cap-components > summary:focus-visible { outline:2px solid var(--ee-blue); outline-offset:2px; }
+.ee-smart-cap-panel .ee-cap-components > p { margin:6px 0 0; overflow-wrap:anywhere; font-variant-numeric:tabular-nums; }
+/* END CALULER-SMART-CAPACITOR-VISUALS-V1 */
+
+/* CALULER-ENERGY-COST-FLOW-V1: one lightweight, centered row; no summary/cards. */
+.ee-energy-panel > h2 { margin-inline-end:0; }
+.ee-energy-panel .ee-energy-flow { display:grid; grid-template-columns:minmax(0,1fr) 14px minmax(0,1fr) 14px minmax(0,1fr); align-items:center; gap:8px; width:100%; max-width:560px; box-sizing:border-box; margin:10px auto 0; }
+.ee-energy-panel .ee-energy-node { display:grid; justify-items:center; align-content:start; gap:5px; min-width:0; padding:4px 0; border:0; border-radius:0; background:none; box-shadow:none; color:var(--ee-blue); text-align:center; }
+.ee-energy-panel .ee-energy-node-usage,.ee-energy-panel .ee-energy-node-cost { color:var(--ee-green); }
+.ee-energy-panel .ee-energy-icon { display:block; width:16px; height:16px; }
+.ee-energy-panel .ee-energy-arrow { display:block; width:14px; height:12px; align-self:end; margin-bottom:8px; color:var(--muted); opacity:.6; }
+.ee-energy-panel .ee-energy-label { font-size:12px; font-weight:500; line-height:1.3; }
+.ee-energy-panel .ee-energy-value { display:flex; flex-wrap:wrap; align-items:baseline; justify-content:center; gap:3px; min-width:0; max-width:100%; }
+.ee-energy-panel .ee-energy-number { display:block; min-width:0; max-width:100%; font-size:clamp(14px,1.6vw,18px); font-weight:600; line-height:1.4; font-variant-numeric:tabular-nums; overflow-wrap:anywhere; }
+.ee-energy-panel .ee-energy-unit { min-width:0; max-width:100%; font-size:11.5px; line-height:1.4; color:var(--muted); overflow-wrap:anywhere; }
+.ee-energy-panel .ee-energy-node-cost .ee-energy-value { padding:2px 6px; border-radius:6px; background:color-mix(in srgb,var(--ee-green) 7%,transparent); }
+.ee-energy-panel .ee-energy-node-cost .ee-energy-number { font-weight:700; }
+.ee-energy-panel .ee-energy-node[data-negative="true"] .ee-energy-number { color:var(--ee-red); }
+@media(max-width:560px) {
+ .ee-energy-panel .ee-energy-flow { grid-template-columns:minmax(0,1fr) 10px minmax(0,1fr) 10px minmax(0,1fr); gap:6px; margin-top:8px; }
+ .ee-energy-panel .ee-energy-arrow { width:10px; }
+ .ee-energy-panel .ee-energy-number { font-size:14px; }
+}
+/* END CALULER-ENERGY-COST-FLOW-V1 */
+
+/* CALULER-IDEAL-LC-PHASE-V1: normalized fields/current, no invented amplitudes. */
+.ee-lc-panel .ee-svg .ee-lc-charge { font-size:14px; font-weight:650; }
+.ee-lc-panel .ee-svg .ee-lc-caption { font-size:13px; fill:var(--muted); }
+.ee-lc-panel .ee-lc-current { pointer-events:stroke; }
+.ee-lc-panel .ee-lc-wave-marker { cursor:help; }
+/* END CALULER-IDEAL-LC-PHASE-V1 */
+
+/* CALULER-NORMALIZED-TRANSIENT-MOTION-V1: RC/RL only. */
+.ee-transient-panel .ee-svg .ee-transient-label { font-size:12px; }
+.ee-transient-panel .ee-transient-current { pointer-events:none; }
+/* END CALULER-NORMALIZED-TRANSIENT-MOTION-V1 */
+
+/* KVL only: signed component contributions and voltage accounting, never current. */
+.ee-kvl-panel > h2 { margin-inline-end:0; }
+.ee-kvl-panel .ee-svg { margin-top:4px; }
+.ee-kvl-panel .ee-kvl-trace { opacity:.65; }
+.ee-kvl-panel .ee-svg .ee-kvl-name { font-size:13px; fill:var(--muted); }
+.ee-kvl-panel .ee-svg .ee-kvl-value { font-size:16px; font-weight:650; font-variant-numeric:tabular-nums; }
+.ee-kvl-panel .ee-kvl-blue .ee-kvl-value { fill:var(--ee-blue); }
+.ee-kvl-panel .ee-kvl-amber .ee-kvl-value { fill:var(--ee-amber); }
+.ee-kvl-panel .ee-kvl-totals { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px 16px; border-top:1px solid var(--border); padding-top:8px; }
+.ee-kvl-panel .ee-kvl-total { min-width:0; border-radius:5px; }
+.ee-kvl-panel .ee-kvl-total > span { display:block; color:var(--muted); font-size:12px; line-height:1.4; }
+.ee-kvl-panel .ee-kvl-total > strong { display:block; font-size:15px; line-height:1.4; font-weight:650; font-variant-numeric:tabular-nums; overflow-wrap:anywhere; }
+.ee-kvl-panel .ee-kvl-residual { grid-column:1/-1; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:6px 12px; min-width:0; }
+.ee-kvl-panel .ee-kvl-residual > .ee-kvl-total { flex:1 1 80px; }
+.ee-kvl-panel .ee-kvl-status { max-width:100%; padding:4px 8px; border-radius:7px; color:var(--muted); background:color-mix(in srgb,currentColor 8%,transparent); font-size:11.5px; line-height:1.4; font-weight:600; overflow-wrap:anywhere; }
+.ee-kvl-panel .ee-kvl-status[data-state="balanced"],.ee-kvl-panel .ee-kvl-residual[data-state="balanced"] > .ee-kvl-total > strong { color:var(--ee-green); }
+.ee-kvl-panel .ee-kvl-status[data-state="imbalanced"],.ee-kvl-panel .ee-kvl-residual[data-state="imbalanced"] > .ee-kvl-total > strong { color:var(--ee-amber); }
+/* END KVL voltage accounting. */
+
+/* Capacitor networks only: component-local values, one equivalent, no inferred excitation. */
+.ee-cap-network-panel > h2 { margin-inline-end:0; }
+.ee-cap-network-panel .ee-svg { margin-top:5px; }
+.ee-cap-network-panel .ee-svg .ee-cap-network-label { font-size:13px; fill:var(--muted); }
+.ee-cap-network-panel .ee-svg .ee-cap-network-value { font-size:15px; font-weight:650; fill:var(--ee-blue); font-variant-numeric:tabular-nums; }
+.ee-cap-network-panel .ee-cap-network-output { display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:4px 12px; border-top:1px solid var(--border); padding-top:8px; min-width:0; }
+.ee-cap-network-panel .ee-cap-network-output > span { min-width:0; color:var(--muted); font-size:12px; line-height:1.4; }
+.ee-cap-network-panel .ee-cap-network-output > strong { min-width:0; max-width:100%; color:var(--ee-green); font-size:17px; line-height:1.4; font-weight:650; font-variant-numeric:tabular-nums; overflow-wrap:anywhere; border-radius:5px; }
+.ee-cap-network-panel :is(.ee-cap-network-formula,.ee-cap-network-subset,.ee-cap-network-assumption) { margin:5px 0 0; color:var(--muted); font-size:11.5px; line-height:1.45; overflow-wrap:anywhere; }
+.ee-cap-network-panel .ee-cap-components { margin:6px 0 0; }
+/* END capacitor networks. */
+
+/* CALULER-ELECTRIC-LIME-CURRENT-V1: only real/normalized conductor-current paths. */
+.ee-panel .ee-flow .ee-flow-trail {
+ stroke:#87FF5E!important; stroke-width:7.5!important; stroke-dasharray:8 24!important;
+ stroke-linecap:round!important; opacity:1!important;
+ filter:drop-shadow(0 0 1.5px rgba(38,105,21,.75))!important;
+}
+.ee-panel .ee-flow .ee-flow-core {
+ display:inline!important; stroke:#245B16!important; stroke-width:2.5!important;
+ stroke-dasharray:8 24!important; stroke-linecap:round!important; opacity:1!important;
+}
+.ee-transient-panel .ee-transient-current path,
+.ee-lc-panel .ee-lc-current path {
+ stroke:#87FF5E!important; stroke-width:6!important; stroke-dasharray:8 24!important;
+ stroke-linecap:round!important; opacity:1!important;
+ filter:drop-shadow(0 0 1.5px rgba(38,105,21,.75))!important;
+}
+:is(html[data-theme="dark"],html.dark-mode) .ee-panel .ee-flow .ee-flow-trail,
+body.dark-mode .ee-panel .ee-flow .ee-flow-trail,
+:is(html[data-theme="dark"],html.dark-mode) .ee-transient-panel .ee-transient-current path,
+body.dark-mode .ee-transient-panel .ee-transient-current path,
+:is(html[data-theme="dark"],html.dark-mode) .ee-lc-panel .ee-lc-current path,
+body.dark-mode .ee-lc-panel .ee-lc-current path {
+ filter:drop-shadow(0 0 2.5px rgba(135,255,94,.72))!important;
+}
+:is(html[data-theme="dark"],html.dark-mode) .ee-panel .ee-flow .ee-flow-core,
+body.dark-mode .ee-panel .ee-flow .ee-flow-core {
+ stroke:#F4FFE9!important;
+}
+/* END CALULER-ELECTRIC-LIME-CURRENT-V1 */

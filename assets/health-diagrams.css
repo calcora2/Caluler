@@ -1,0 +1,100 @@
+/* Health-only layer: shared Finance control sizing, category-specific visual geometry. */
+body[data-caluler-category="Health Calculators"] .health-premium-panel {
+  --health-blue:var(--caluler-brand-primary); --health-teal:#147D64; --health-amber:#A45E08;
+  --health-purple:#7357AA; --health-rose:#AF4164;
+  position:relative; overflow:visible; min-width:0; padding:16px; align-self:center;
+}
+html[data-theme="dark"] body[data-caluler-category="Health Calculators"] .health-premium-panel,
+body.dark-mode[data-caluler-category="Health Calculators"] .health-premium-panel {
+  --health-blue:var(--caluler-brand-accent); --health-teal:#6DD9B7; --health-amber:#F1BC70;
+  --health-purple:#C4B0F1; --health-rose:#F0A5BE;
+}
+/* Override the existing important Health grid; leave unrelated calculator categories intact. */
+html:root body[data-caluler-category="Health Calculators"] .calculator.caluler-health-layout.health-premium-layout {
+  grid-template-columns:minmax(0,1fr)!important;
+  grid-template-areas:"form" "diagram" "result" "actions"!important;
+  gap:20px!important;
+}
+html:root body[data-caluler-category="Health Calculators"] .calculator.health-premium-layout > .health-premium-panel { margin:0!important; min-height:0; }
+html:root body[data-caluler-category="Health Calculators"] .calculator.caluler-health-layout.health-premium-layout > :is(.result,.caluler-result-actionbar) {
+  box-sizing:border-box!important; width:var(--caluler-result-section-width,75%)!important;
+  max-width:100%!important; min-width:0!important; justify-self:start!important; margin-inline:0!important;
+}
+@media(min-width:901px) {
+  html:root body[data-caluler-category="Health Calculators"] .calculator.caluler-health-layout.health-premium-layout {
+    grid-template-columns:repeat(2,minmax(0,1fr))!important;
+    grid-template-areas:"form diagram" "result result" "actions actions"!important; column-gap:24px!important;
+  }
+  html:root body[data-caluler-category="Health Calculators"] .calculator.caluler-health-layout.health-premium-layout > .caluler-health-form { align-self:center!important; }
+}
+@media(max-width:768px) {
+  html:root body[data-caluler-category="Health Calculators"] .calculator.caluler-health-layout.health-premium-layout > :is(.result,.caluler-result-actionbar) { width:100%!important; }
+}
+.health-premium-panel .health-caption { font-size:13px; line-height:1.5; margin-bottom:10px; }
+.health-premium-panel .health-motion-root { position:relative; min-width:0; isolation:isolate; }
+.health-premium-panel .health-motion-scene { background:var(--card); }
+.health-premium-panel .health-motion-scene :is(text,strong) { font-variant-numeric:tabular-nums; }
+.health-premium-panel .health-metric-card :is(.health-metric-label,.health-metric-value) { text-anchor:middle; font-variant-numeric:tabular-nums; }
+.health-premium-panel .health-motion-copy { position:absolute; inset:0; pointer-events:none; }
+.health-premium-panel svg.health-new-svg { width:100%; max-width:440px; height:auto; margin:0 auto; overflow:visible; font-family:inherit; }
+.health-premium-panel .health-new-svg text { font-family:inherit; }
+.health-premium-panel .health-model-note { margin:8px 0 0; font-size:12px; line-height:1.5; color:var(--muted); overflow-wrap:anywhere; }
+.health-premium-panel .health-macro-status { min-block-size:1.5em; margin:0 0 6px; font-size:12px; line-height:1.5; color:var(--muted); overflow-wrap:anywhere; }
+.health-premium-panel .health-macro-status[data-health-previous-mode="true"] { color:var(--health-amber); font-weight:600; }
+.health-premium-panel .health-diagram-warning { margin:8px 0 0; border-inline-start:3px solid var(--health-amber); padding:6px 9px; color:var(--text); font-size:13px; line-height:1.5; }
+.health-premium-panel .health-interactive { cursor:help; }
+.health-premium-panel .health-interactive:focus-visible { outline:2px solid var(--health-blue); outline-offset:3px; border-radius:4px; }
+.health-premium-panel .health-interactive:is(:hover,.health-tip-active) > :not(.health-hit) { filter:brightness(1.08); }
+.health-premium-panel .health-hit { pointer-events:all; }
+.health-premium-panel .health-tooltip {
+  position:absolute; z-index:12; box-sizing:border-box; padding:9px 11px; border:1px solid var(--border);
+  border-inline-start:3px solid var(--health-tip-color,var(--health-blue)); border-radius:10px;
+  background:var(--card); color:var(--text); box-shadow:0 5px 18px rgb(0 0 0 / .14);
+  font-size:13px; line-height:1.5; white-space:pre-line; overflow-wrap:anywhere; overflow:auto;
+}
+.health-premium-panel [hidden] { display:none!important; }
+/* Body guides: portraits and fitted tapes share one SVG; callouts stay readable HTML. */
+body[data-caluler-category="Health Calculators"] .health-body-panel { container:health-body / inline-size; }
+.health-body-view { min-width:0; }
+.health-body-frame { display:grid; grid-template-columns:minmax(0,1fr); align-items:center; gap:12px 18px; min-width:0; }
+html:root body[data-caluler-category="Health Calculators"] .health-body-frame > svg.health-body-portrait-svg {
+  width:100%!important; max-width:210px!important; height:auto!important; margin:0 auto!important;
+  background:transparent!important; border-radius:0; overflow:visible;
+}
+.health-body-legend { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px 12px; margin:0; padding:0; min-width:0; }
+.health-body-item { --health-guide-color:var(--health-blue); min-width:0; min-height:44px; padding:3px; border-radius:7px; }
+.health-body-item[data-health-tone="amber"],.health-composition-key [data-health-tone="amber"] { --health-guide-color:var(--health-amber); }
+.health-body-item[data-health-tone="purple"] { --health-guide-color:var(--health-purple); }
+.health-body-item:only-child { grid-column:1/-1; }
+.health-body-item dt { display:flex; align-items:center; gap:7px; font-size:14px; font-weight:650; color:var(--text); }
+.health-body-letter { flex:0 0 23px; display:inline-flex; align-items:center; justify-content:center; box-sizing:border-box; width:23px; height:23px; border:1.5px solid var(--health-guide-color); border-radius:50%; color:var(--health-guide-color); font-size:12px; font-weight:700; }
+.health-body-item dd { margin:4px 0 0 30px; font-size:12px; line-height:1.45; color:var(--muted); overflow-wrap:anywhere; }
+html:root body[data-caluler-category="Health Calculators"] .health-body-view > svg.health-body-summary-svg {
+  display:block; width:100%!important; max-width:440px!important; height:auto!important; margin:12px auto 0!important; overflow:visible;
+}
+.health-composition-key { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; max-width:440px; margin:3px auto 0; color:var(--muted); font-size:13px; line-height:1.35; }
+.health-composition-key > span { --health-guide-color:var(--health-blue); display:grid; grid-template-columns:9px minmax(0,1fr); align-items:center; column-gap:6px; min-width:0; color:var(--health-guide-color); }
+.health-composition-key > span:last-child { justify-self:stretch; }
+.health-composition-key strong { grid-column:2; inline-size:6ch; min-inline-size:6ch; min-block-size:1.4em; text-align:center; font-size:18px; font-weight:700; line-height:1.4; font-variant-numeric:tabular-nums; white-space:nowrap; }
+.health-composition-key .health-composition-swatch { display:inline-block; width:9px; height:9px; flex:0 0 9px; border-radius:2px; background:var(--health-guide-color); }
+.health-diagram-primary { display:flex; justify-content:space-between; align-items:baseline; gap:6px 12px; max-width:440px; margin:4px auto 0; font-size:13px; line-height:1.5; color:var(--muted); }
+.health-diagram-primary > span { min-inline-size:0; }
+.health-diagram-primary > strong { flex:0 0 6ch; inline-size:6ch; min-inline-size:6ch; min-block-size:1.5em; text-align:center; color:var(--health-blue); font-size:18px; font-weight:700; line-height:1.5; font-variant-numeric:tabular-nums; white-space:nowrap; }
+html:root body[data-caluler-category="Health Calculators"] .health-premium-panel > figure .health-composition-svg,
+html:root body[data-caluler-category="Health Calculators"] .health-premium-panel .health-motion-scene > .health-composition-svg { max-width:440px!important; background:transparent!important; }
+@container health-body (min-width:380px) {
+  .health-body-frame { grid-template-columns:minmax(0,1fr) minmax(0,1fr); }
+  html:root body[data-caluler-category="Health Calculators"] .health-body-frame > svg.health-body-portrait-svg { max-width:260px!important; }
+  .health-body-legend { grid-template-columns:minmax(0,1fr); gap:14px; }
+  .health-body-item dt { font-size:15px; }
+  .health-body-item dd { font-size:13px; }
+}
+@media(max-width:430px) { body[data-caluler-category="Health Calculators"] .health-premium-panel { padding:12px; } }
+@media print { .health-premium-panel :is(.health-tooltip,.health-hit,.health-diagram-warning,.health-motion-copy) { display:none!important; } }
+@media(prefers-reduced-motion:reduce) { .health-premium-panel * { transition:none!important; animation:none!important; } }
+
+/* Compact Sleep timeline only: natural height, four aligned options, no new cards. */
+body[data-caluler-category="Health Calculators"] .health-premium-panel.health-sleep-panel { padding:12px; }
+.health-premium-panel.health-sleep-panel > .health-caption { margin:0 0 4px; line-height:1.4; }
+.health-premium-panel.health-sleep-panel svg.health-new-svg { max-width:400px; }
+.health-premium-panel.health-sleep-panel .health-model-note { margin-top:6px; line-height:1.35; }

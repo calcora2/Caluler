@@ -1,24 +1,2865 @@
-<!DOCTYPE html><html lang="en"><head>
-<link rel="icon" type="image/svg+xml" href="../assets/caluler-tab-icon.svg?v=8" /><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Paycheck Calculator – Take-Home Pay Estimate | Caluler</title>
-<meta name="description" content="Estimate take-home pay by applying a simple tax or deduction rate to gross pay. This paycheck calculator is a general estimate, not a local tax calculation.">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Pay &amp; Salary Calculator: Hourly, Annual and Take-Home | Caluler</title><meta name="description" content="Convert hourly pay to annual salary or salary to an hourly rate, and estimate take-home pay after applying a deduction rate you choose."><link rel="canonical" href="https://caluler.work/tools/paycheck-calculator.html"><meta property="og:type" content="website"><meta property="og:site_name" content="Caluler"><meta property="og:title" content="Pay &amp; Salary Calculator: Hourly, Annual and Take-Home | Caluler"><meta property="og:description" content="Convert hourly rates to annual pay, annual salary to hourly pay or estimate take-home pay from a chosen deduction rate."><meta property="og:url" content="https://caluler.work/tools/paycheck-calculator.html"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Pay &amp; Salary Calculator: Hourly, Annual and Take-Home | Caluler"><meta name="twitter:description" content="Convert hourly rates to annual pay, annual salary to hourly pay or estimate take-home pay from a chosen deduction rate."><link rel="stylesheet" href="../assets/style.css"><script src="../assets/script.js" defer></script><script src="https://translate.google.com/translate_a/element.js?cb=calulerGoogleTranslateInit" defer></script><style>.finance-result-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px;margin-top:10px}.finance-result-item{display:flex;flex-direction:column;gap:7px;padding:14px;border:1px solid var(--border);border-radius:12px;background:var(--card);min-width:0}.finance-result-item span{font-size:.9rem;color:var(--muted);line-height:1.4}.finance-result-item strong{font-size:1.15rem;color:var(--text);overflow-wrap:anywhere}.finance-result-note{margin:12px 0 0;color:var(--muted);font-size:.9rem;line-height:1.55}.finance-tool-diagram svg text{font-family:inherit}.finance-tool-diagram figcaption{max-width:58ch;margin-inline:auto}</style><style id="caluler-finance-live-diagram-style-v1">
+/* CALULER-FINANCE-LIVE-DIAGRAM-CSS-V1 */
+.finance-live-diagram{margin:20px 0 0;padding:18px;border:1px solid var(--border,#dbe4ef);border-radius:16px;background:var(--card,#fff);color:var(--text,#152033);min-width:0;max-width:100%;}
+.finance-live-diagram h3{margin:0 0 8px;font-size:1.15rem;line-height:1.35;color:var(--text,#152033);}
+.finance-live-diagram .finance-live-intro{margin:0 0 16px;color:var(--muted,#64748b);font-size:.94rem;line-height:1.55;}
+.finance-live-diagram .finance-live-items{display:grid;gap:15px;min-width:0;}
+.finance-live-diagram .finance-live-item{min-width:0;}
+.finance-live-diagram .finance-live-item-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:7px;min-width:0;}
+.finance-live-diagram .finance-live-label{font-weight:650;line-height:1.4;overflow-wrap:anywhere;min-width:0;}
+.finance-live-diagram .finance-live-value{font-variant-numeric:tabular-nums;font-weight:700;text-align:right;white-space:normal;overflow-wrap:anywhere;}
+.finance-live-diagram .finance-live-track{height:16px;width:100%;overflow:hidden;border-radius:999px;background:rgba(100,116,139,.16);border:1px solid var(--border,#dbe4ef);}
+.finance-live-diagram .finance-live-fill{display:block;height:100%;width:0;border-radius:999px;transition:width .18s ease;min-width:0;}
+.finance-live-diagram .finance-live-fill.tone-0{background:#2787a5;}
+.finance-live-diagram .finance-live-fill.tone-1{background:#e8a23a;}
+.finance-live-diagram .finance-live-fill.tone-2{background:#7c6bd0;}
+.finance-live-diagram .finance-live-fill.tone-3{background:#2a9d75;}
+.finance-live-diagram .finance-live-fill.negative{background:#cf5353;}
+.finance-live-diagram .finance-live-note{margin:14px 0 0;color:var(--muted,#64748b);font-size:.88rem;line-height:1.55;}
+@media(max-width:560px){.finance-live-diagram{padding:14px}.finance-live-diagram .finance-live-item-head{gap:8px;flex-wrap:wrap}.finance-live-diagram .finance-live-value{text-align:left}}
+/* END CALULER-FINANCE-LIVE-DIAGRAM-CSS-V1 */
+</style><style id="caluler-finance-visual-diversity-style-v2">
+/* CALULER-FINANCE-VISUAL-DIVERSITY-V2 */
+.finance-live-diagram{margin:20px 0 0;padding:18px;border:1px solid var(--border,#dbe4ef);border-radius:18px;background:var(--card,#fff);color:var(--text,#152033);min-width:0;max-width:100%;box-shadow:0 8px 24px rgba(20,36,58,.045)}
+.finance-live-diagram h3{margin:0 0 8px;font-size:1.15rem;line-height:1.35;color:var(--text,#152033)}
+.finance-live-diagram .finance-live-intro{margin:0 0 14px;color:var(--muted,#64748b);font-size:.94rem;line-height:1.55}
+.finance-live-diagram .finance-live-items{display:block!important;min-width:0;max-width:100%}
+.finance-live-diagram .finance-visual-svg{display:block;width:100%;height:auto;max-width:100%;overflow:visible}
+.finance-live-diagram .finance-live-note{margin:12px 0 0;padding-top:10px;border-top:1px solid var(--border,#dbe4ef);color:var(--muted,#64748b);font-size:.88rem;line-height:1.55}
+#result.result{box-sizing:border-box;max-width:100%;min-width:0;padding:16px 18px;border-radius:18px;line-height:1.55;overflow-wrap:anywhere}
+#result.result>*{min-width:0;max-width:100%;overflow-wrap:anywhere}
+#result.result .result-card,#result.result .metric-card,#result.result .stat-card,#result.result .result-metric{box-sizing:border-box;min-width:0;border-radius:12px}
+@media(max-width:560px){.finance-live-diagram{padding:13px}.finance-live-diagram .finance-visual-svg{min-height:140px}#result.result{padding:14px;border-radius:16px}}
+/* END CALULER-FINANCE-VISUAL-DIVERSITY-V2 */
+</style>
+<style id="caluler-finance-consistent-shell-v3-2">
+/* CALULER-FINANCE-CONSISTENT-SHELL-V3-2 */
+/* Shared layout shell; the SVG scene remains calculator-specific. */
+.finance-live-diagram,
+.finance-tool-diagram {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 20px 0 0;
+  padding: 18px;
+  border: 1px solid var(--border, #dbe4ef);
+  border-radius: 18px;
+  background: var(--card, #ffffff);
+  color: var(--text, #152033);
+  box-shadow: 0 8px 24px rgba(20, 36, 58, .045);
+}
+.finance-live-diagram h3,
+.finance-tool-diagram h3 {
+  margin: 0 0 8px;
+  font-size: 1.15rem;
+  line-height: 1.4;
+  font-weight: 750;
+  color: var(--text, #152033);
+}
+.finance-live-diagram .finance-live-intro,
+.finance-tool-diagram > p {
+  margin: 0 0 14px;
+  color: var(--muted, #64748b);
+  font-size: .94rem;
+  line-height: 1.55;
+}
+.finance-live-diagram .finance-live-items {
+  display: block !important;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid var(--border, #cbd9e8);
+  border-radius: 16px;
+  background: var(--surface-muted, #f4f8fc);
+  overflow: hidden;
+}
+.finance-live-diagram .finance-visual-svg,
+.finance-tool-diagram .health-diagram-illustration {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  overflow: visible;
+}
+.finance-tool-diagram figure {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  margin: 14px 0 0;
+  min-width: 0;
+}
+.finance-tool-diagram figcaption {
+  margin-top: 8px;
+  color: var(--muted, #64748b);
+  font-size: .88rem;
+  line-height: 1.5;
+}
+.finance-live-diagram .finance-live-note {
+  box-sizing: border-box;
+  margin: 12px 0 0;
+  padding: 12px 14px;
+  border: 1px solid var(--border, #cbd9e8);
+  border-radius: 12px;
+  background: var(--surface-muted, #eef6fb);
+  color: var(--muted, #52677f);
+  font-size: .88rem;
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+.finance-live-diagram .finance-live-note::before {
+  content: 'LIVE DIAGRAM CALCULATION';
+  display: block;
+  margin: 0 0 5px;
+  color: var(--accent, #087e9b);
+  font-size: .70rem;
+  font-weight: 800;
+  letter-spacing: .075em;
+}
+#result.result,
+#amResult.result {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid var(--border, #cbd9e8);
+  border-radius: 18px;
+  background: var(--surface-muted, #eef7fd);
+  color: var(--text, #152033);
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+}
+#result.result .finance-result-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr));
+  gap: 12px;
+  width: 100%;
+  margin: 0;
+}
+#result.result .finance-result-item {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: 0;
+  min-height: 88px;
+  padding: 14px;
+  border: 1px solid var(--border, #dbe4ef);
+  border-radius: 13px;
+  background: var(--card, #ffffff);
+  box-shadow: 0 2px 8px rgba(20, 36, 58, .025);
+}
+#result.result .finance-result-item span {
+  display: block;
+  margin: 0;
+  color: var(--muted, #64748b);
+  font-size: .91rem;
+  font-weight: 550;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+#result.result .finance-result-item strong {
+  display: block;
+  margin: 0;
+  color: var(--text, #152033);
+  font-size: clamp(1rem, 1.8vw, 1.22rem);
+  font-weight: 550;
+  line-height: 1.35;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+#result.result .finance-result-note {
+  margin: 12px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid var(--border, #dbe4ef);
+  color: var(--muted, #64748b);
+  font-size: .88rem;
+  line-height: 1.55;
+}
+#result.result .finance-stale-note {
+  margin: 12px 0 0;
+  padding: 10px 12px;
+  border: 1px solid rgba(232, 162, 58, .55);
+  border-radius: 11px;
+  background: rgba(232, 162, 58, .10);
+  color: var(--text, #152033);
+  font-size: .88rem;
+  line-height: 1.45;
+}
+#result.result[data-finance-result-stale='true'] {
+  border-color: rgba(232, 162, 58, .75);
+}
+@media (max-width: 640px) {
+  .finance-live-diagram,
+  .finance-tool-diagram {
+    margin-top: 16px;
+    padding: 14px;
+    border-radius: 16px;
+  }
+  .finance-live-diagram .finance-live-items {
+    padding: 8px;
+    border-radius: 13px;
+  }
+  #result.result,
+  #amResult.result {
+    padding: 12px;
+    border-radius: 16px;
+  }
+  #result.result .finance-result-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+  #result.result .finance-result-item {
+    min-height: 82px;
+    padding: 11px;
+  }
+}
+@media (max-width: 360px) {
+  #result.result .finance-result-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+/* END CALULER-FINANCE-CONSISTENT-SHELL-V3-2 */
 
-<link rel="stylesheet" href="../assets/style.css"><link rel="apple-touch-icon" href="../assets/caluler-favicon.png?v=7"><link rel="canonical" href="https://caluler.work/tools/paycheck-calculator.html"><meta property="og:type" content="website"><meta property="og:site_name" content="Caluler"><meta property="og:title" content="Paycheck Calculator – Take-Home Pay Estimate | Caluler"><meta property="og:description" content="Estimate take-home pay by applying a simple tax or deduction rate to gross pay. This paycheck calculator is a general estimate, not a local tax calculation."><meta property="og:url" content="https://caluler.work/tools/paycheck-calculator.html"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Paycheck Calculator – Take-Home Pay Estimate | Caluler"><meta name="twitter:description" content="Estimate take-home pay by applying a simple tax or deduction rate to gross pay. This paycheck calculator is a general estimate, not a local tax calculation."><script src="../assets/script.js" defer></script>
-<script src="https://translate.google.com/translate_a/element.js?cb=calulerGoogleTranslateInit" defer></script></head><body>
-<nav class="nav" aria-label="Primary navigation"><div class="container nav-inner"><a class="logo" href="../index.html" aria-label="Caluler home"><img src="../assets/caluler-logo.webp" alt="Caluler" class="logo-nav"></a><div class="caluler-utility-controls notranslate" translate="no" aria-label="Website settings"><button type="button" class="caluler-theme-toggle" id="calulerThemeToggle" aria-label="Toggle dark mode" title="Toggle dark/light mode">🌙</button><label class="caluler-language-label" for="calulerLanguage">Language</label><select id="calulerLanguage" class="caluler-language-select notranslate" translate="no" aria-label="Choose website language"><option value="en">🇬🇧 English</option><option value="ur">🇵🇰 اردو</option><option value="ar">🇸🇦 العربية</option><option value="hi">🇮🇳 हिन्दी</option><option value="es">🇪🇸 Español</option><option value="fr">🇫🇷 Français</option><option value="de">🇩🇪 Deutsch</option><option value="it">🇮🇹 Italiano</option><option value="pt">🇵🇹 Português</option><option value="ru">🇷🇺 Русский</option><option value="zh-CN">🇨🇳 简体中文</option><option value="ja">🇯🇵 日本語</option><option value="ko">🇰🇷 한국어</option><option value="tr">🇹🇷 Türkçe</option><option value="id">🇮🇩 Bahasa Indonesia</option><option value="bn">🇧🇩 বাংলা</option><option value="pa">🇮🇳 ਪੰਜਾਬੀ</option><option value="fa">🇮🇷 فارسی</option><option value="nl">🇳🇱 Nederlands</option><option value="ta">🇮🇳 தமிழ்</option></select></div><div id="google_translate_element" class="caluler-google-translate notranslate" translate="no" aria-hidden="true"></div><button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open navigation" class="menu-toggle"  type="button">☰</button><div class="nav-links" id="mobileMenu" data-mobile-menu data-open="false"><a href="../tools.html">Tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy</a></div></div></nav>
-<section class="page-hero"><div class="container"><span class="badge">💰 Free online tool · Finance Calculators</span><h1>Paycheck Calculator</h1><p>Estimate take-home pay from gross pay and a simple tax/deduction rate. Get an instant result without sign-up.</p></div></section>
-<section class="section"><div class="container tool-layout"><main><div class="calculator"><h2>💳 Calculator</h2><div class="form-grid"><div class="field"><label for="gross">Gross pay</label><input id="gross" type="number" placeholder="2000" step=any></div><div class="field"><label for="deductions">Total deductions %</label><input id="deductions" type="number" placeholder="15" step=any></div></div><button class="btn" id="calcBtn" type="button">Calculate</button><div class="result" id="result" aria-live="polite">Your result will appear here.</div></div>
-<div class="ad-slot">Ad space</div>
-<div class="content-box"><h2>About the Paycheck Calculator</h2><p>Estimate take-home pay from gross pay and a simple tax/deduction rate. This Caluler tool is designed for quick, transparent calculations with clearly labeled inputs.</p><h3>How to use</h3><ol><li>Use the fields labelled: Gross pay, Total deductions %. Enter valid values or choose required options, following the units and optional-field notes shown beside each field.</li><li>Select Calculate to run Paycheck Calculator and display the result.</li><li>Check the result and units, then compare the output with the formula or method notes before applying the result.</li></ol><h3>Formula & assumptions</h3><p>Net estimate = gross pay × (1 − deduction rate). Actual payroll taxes vary by jurisdiction.</p><h3>Who can use this calculator?</h3><p>This free online calculator is useful for students, professionals, businesses, creators and everyday users who need a quick answer. Results depend on the information entered and the assumptions described above.</p><h3>Important note</h3><p>This tool provides estimates or mathematical results for general informational purposes. For financial, health, legal or other high-stakes decisions, verify the result with a qualified professional or authoritative source.</p><section class="tool-faq" aria-labelledby="faq-heading"><h3 id="faq-heading">Frequently Asked Questions</h3><details><summary>What does the Paycheck Calculator do?</summary><p>Estimate take-home pay from gross pay and a simple tax/deduction rate. It is part of Caluler’s Finance Calculators collection.</p></details><details><summary>How do I use this tool?</summary><p>For Paycheck Calculator, use the fields labelled: Gross pay, Total deductions %. Enter valid values in the displayed units, choose any required options, and select Calculate to view the result.</p></details><details><summary>Are the results saved or sent anywhere?</summary><p>The calculation is designed to run in your browser. Avoid entering private or sensitive information into any online tool unless you have reviewed the site’s privacy information.</p></details><details><summary>What should I check if the result looks wrong?</summary><p>For Paycheck Calculator, check these fields: Gross pay, Total deductions %. Confirm required values are valid, selected options are correct and units match the labels. Then compare the result with the formula or method notes.</p></details></section></div>
-</main><aside><div class="sidebar-box"><h3>Related Tools</h3><div class="related"><a href="business-valuation-calculator.html"><span class="related-icon" aria-hidden="true">💰</span><span>Business Valuation Calculator</span></a><a href="cash-flow-calculator.html"><span class="related-icon" aria-hidden="true">💰</span><span>Cash Flow Calculator</span></a><a href="commission-calculator.html"><span class="related-icon" aria-hidden="true">💰</span><span>Commission Calculator</span></a><a href="commission-split-calculator.html"><span class="related-icon" aria-hidden="true">💰</span><span>Commission Split Calculator</span></a><a href="compound-interest-calculator.html"><span class="related-icon" aria-hidden="true">💰</span><span>Compound Interest Calculator</span></a><a href="credit-card-payoff-calculator.html"><span class="related-icon" aria-hidden="true">💰</span><span>Credit Card Payoff Calculator</span></a><p class="sidebar-browse"><a href="../tools.html">Browse all calculators →</a></p></div></div></aside></div></section>
-<!-- Caluler ad placeholder: add approved ad code here when ready -->
-<div class="caluler-ad-slot caluler-ad-slot--content" role="complementary" aria-label="Advertisement space">
-  <span class="caluler-ad-slot__label">Advertisement</span>
-</div>
-<footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><div class="footer-brand-title">CALULER</div><p>Free online calculators and practical productivity tools for health, finance, math, education, conversions and everyday tasks.</p></div><div class="footer-links"><h3>Explore</h3><a href="../tools.html">All 212 Tools</a><a href="../tools/age-calculator.html">Age Calculator</a><a href="../tools/bmi-calculator.html">BMI Calculator</a><a href="../tools/percentage-calculator.html">Percentage Calculator</a></div><div class="footer-links"><h3>Company &amp; Legal</h3><a href="../about.html">About Caluler</a><a href="../contact.html">Contact</a><a href="../disclaimer.html">Disclaimer</a><a href="../privacy.html">Privacy Policy</a><a href="../terms.html">Terms &amp; Conditions</a></div></div><div class="footer-bottom"><span>© 2026 Caluler. All rights reserved.</span><span class="footer-note">Free · Fast · Browser based · Mobile friendly</span></div></div></footer>
-<script>
-const $=id=>document.getElementById(id); const bad=(msg='Please enter valid values.')=>{throw new Error(msg)};
-function gcd(a,b){a=Math.abs(Math.trunc(a));b=Math.abs(Math.trunc(b));while(b){[a,b]=[b,a%b]}return a||1;}
-function calculate(){try{const v={}; document.querySelectorAll('.field input,.field select').forEach(e=>v[e.id]=e.value); const out=(function(v){const g=Number(v.gross),d=Number(v.deductions); if(!(g>=0&&d>=0&&d<=100)) return bad(); return `Estimated deductions: <b>${(g*d/100).toFixed(2)}</b><br>Estimated take-home: <b>${(g*(1-d/100)).toFixed(2)}</b>`;})(v); $('result').innerHTML=out;}catch(e){$('result').textContent=e.message||'Please check your inputs.';}}
-$('calcBtn').addEventListener('click',calculate); document.querySelectorAll('input,select').forEach(e=>e.addEventListener('keydown',ev=>{if(ev.key==='Enter')calculate()}));
-</script></body></html>
+/* CALULER-FINANCE-RESULT-SUMMARY-CSS-V1 */
+#result .finance-result-summary{display:flex;flex-direction:column;gap:4px;min-width:0;width:100%}
+#result .finance-result-line{margin:0;padding:0;font-size:1.05rem;font-weight:550;line-height:1.7;color:inherit;overflow-wrap:anywhere}
+#result .finance-result-line strong{font-weight:550}
+#result .finance-result-note{margin:8px 0 0;color:var(--muted,#52677f);font-size:.94rem;font-weight:500;line-height:1.6;overflow-wrap:anywhere}
+@media(max-width:600px){#result .finance-result-line{font-size:1rem}}
+</style>
+<style id="CALULER-FINANCE-HEALTH-RESULT-COLOR-V1">
+/* Mirror the Health calculator result text palette without changing diagram labels. */
+.calculator .result:not(.error),
+.calculator .result:not(.error) * {
+  color: #075985 !important;
+}
+:root[data-theme="dark"] .calculator .result:not(.error),
+:root[data-theme="dark"] .calculator .result:not(.error) * {
+  color: #b9e8ff !important;
+}
+</style>
+
+<style id="CALULER-FINANCE-HEALTH-VISUAL-PARITY-V1">
+/* Caluler Finance theme parity: match Health visual surfaces in both themes. */
+:root {
+  --finance-visual-surface: #f4f8fc;
+}
+:root[data-theme="dark"] {
+  --finance-visual-surface: #0b1a2a;
+}
+
+/* Keep the diagram shell, canvas and note on one theme-aware surface. */
+.finance-live-diagram .finance-live-items,
+.finance-live-diagram .finance-live-items.finance-live-visual-surface,
+.finance-live-diagram .finance-live-visual-surface,
+.finance-tool-diagram figure {
+  box-sizing: border-box;
+  background: var(--finance-visual-surface, #f4f8fc) !important;
+  border-color: var(--border, #d8e3ef) !important;
+}
+.finance-live-diagram .finance-visual-svg,
+.finance-tool-diagram .health-diagram-illustration {
+  --surface-muted: var(--finance-visual-surface, #f4f8fc);
+  display: block;
+  background: transparent !important;
+  max-width: 100%;
+}
+.finance-live-diagram .finance-live-note {
+  background: var(--finance-visual-surface, #f4f8fc) !important;
+  border-color: var(--border, #d8e3ef) !important;
+}
+
+/* In dark mode, replace pale fixed SVG panels with dark semantic surfaces.
+   Bright teal, gold, green, purple and red accents remain unchanged. */
+:root[data-theme="dark"] .finance-visual-svg rect[fill="#e7f7ef"],
+:root[data-theme="dark"] .finance-visual-svg rect[fill="#e8f7f2"],
+:root[data-theme="dark"] .finance-visual-svg rect[fill="#e5f7ec"] {
+  fill: #153a32 !important;
+}
+:root[data-theme="dark"] .finance-visual-svg rect[fill="#fff1d9"],
+:root[data-theme="dark"] .finance-visual-svg rect[fill="#fff0d2"] {
+  fill: #3b2c1a !important;
+}
+:root[data-theme="dark"] .finance-visual-svg rect[fill="#e9e4ff"],
+:root[data-theme="dark"] .finance-visual-svg rect[fill="#eee9ff"] {
+  fill: #282342 !important;
+}
+:root[data-theme="dark"] .finance-visual-svg rect[fill="#fff0f0"] {
+  fill: #3b222a !important;
+}
+:root[data-theme="dark"] .finance-visual-svg rect[fill="#e6f4fa"],
+:root[data-theme="dark"] .finance-visual-svg rect[fill="#e2f1fa"] {
+  fill: #112d42 !important;
+}
+:root[data-theme="dark"] .finance-visual-svg rect[fill="#e6edf4"],
+:root[data-theme="dark"] .finance-visual-svg rect[fill="#e8eef4"],
+:root[data-theme="dark"] .finance-visual-svg rect[fill="#d8e6ef"] {
+  fill: #172a40 !important;
+}
+
+/* Match Health result-line rhythm: same visual weight, no extra flex gap. */
+#result.result .finance-result-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 0 !important;
+  width: 100%;
+  min-width: 0;
+}
+#result.result .finance-result-line {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 1rem !important;
+  font-weight: 550 !important;
+  line-height: 1.7 !important;
+  overflow-wrap: anywhere;
+}
+#result.result .finance-result-line strong {
+  font-weight: 550 !important;
+}
+
+/* Mobile keeps diagram canvas inside the calculator card without horizontal drift. */
+.finance-live-diagram,
+.finance-tool-diagram,
+.finance-live-diagram .finance-live-items,
+.finance-live-diagram .finance-visual-svg {
+  min-width: 0;
+  max-width: 100%;
+}
+@media (max-width: 640px) {
+  .finance-live-diagram .finance-live-items,
+  .finance-live-diagram .finance-live-visual-surface,
+  .finance-tool-diagram figure {
+    padding: 10px;
+    border-radius: 14px;
+  }
+}
+</style>
+
+<style id="caluler-finance-health-reference-parity-v4">
+/* CALULER-FINANCE-HEALTH-REFERENCE-PARITY-V4 */
+/* Shared page/card rhythm matches Health. Keep the calculator-specific SVG unique. */
+:root {
+  --surface-muted: #f4f8fc;
+  --finance-svg-canvas: #f7f9fc;
+}
+:root[data-theme="dark"] {
+  --surface-muted: #0b1a2a;
+  --finance-svg-canvas: #0b1a2a;
+}
+:root[data-theme="light"] {
+  --surface-muted: #f4f8fc;
+  --finance-svg-canvas: #f7f9fc;
+}
+
+/* Health calculator card and form standards. These rules are scoped to Finance pages. */
+.calculator {
+  box-sizing: border-box;
+  background: var(--card, #fff) !important;
+  color: var(--text, #0f172a) !important;
+  border: 1px solid var(--border, #e2e8f0) !important;
+  border-radius: 24px !important;
+  padding: 26px !important;
+  box-shadow: var(--shadow, 0 18px 45px rgba(15,23,42,.10)) !important;
+}
+.calculator h2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 24px;
+  font-size: 30px;
+  line-height: 1.25;
+  font-weight: 750;
+  letter-spacing: -.45px;
+  color: var(--text, #0f172a);
+}
+.form-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.field { min-width: 0; display: flex; flex-direction: column; gap: 8px; margin-bottom: 15px; }
+.field label { color: var(--text, #334155); font-weight: 800; }
+.calculator input,
+.calculator select,
+.calculator textarea {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  border: 1px solid #cbd5e1;
+  border-radius: 14px;
+  padding: 13px 14px;
+  font-size: 16px;
+  color: var(--text, #0f172a);
+  background: var(--card, #fff);
+}
+:root[data-theme="dark"] .calculator input,
+:root[data-theme="dark"] .calculator select,
+:root[data-theme="dark"] .calculator textarea {
+  color: var(--text, #e5edf8);
+  background: #0b1525;
+  border-color: var(--border, #29384e);
+}
+
+/* One Health-style result box, including EMI's specialized main result element. */
+.calculator #result.result:not(.error),
+.calculator #amResult.result:not(.error) {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 58px;
+  margin-top: 18px !important;
+  padding: 18px !important;
+  border: 1px solid #bae6fd !important;
+  border-radius: 18px !important;
+  background: #f0f9ff !important;
+  color: #075985 !important;
+  font-size: 1.05rem;
+  font-weight: 900;
+  line-height: 1.7 !important;
+  overflow-wrap: anywhere;
+  box-shadow: none !important;
+}
+:root[data-theme="dark"] .calculator #result.result:not(.error),
+:root[data-theme="dark"] .calculator #amResult.result:not(.error) {
+  background: #10283a !important;
+  border-color: #24506a !important;
+  color: #b9e8ff !important;
+}
+#result.result .finance-result-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 0 !important;
+  width: 100%;
+  min-width: 0;
+}
+#result.result .finance-result-line {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 1.05rem !important;
+  font-weight: 550 !important;
+  line-height: 1.7 !important;
+  color: inherit !important;
+  overflow-wrap: anywhere;
+}
+#result.result .finance-result-line strong { font-weight: 550 !important; }
+#result.result .finance-result-note {
+  margin: 8px 0 0;
+  color: var(--muted, #52677f) !important;
+  font-size: .92rem;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+/* Match Health .health-tool-diagram frame, heading, description and SVG sizing. */
+.finance-live-diagram {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 18px 0 0 !important;
+  padding: 16px !important;
+  border: 1px solid var(--border, #e2e8f0) !important;
+  border-radius: 16px !important;
+  background: var(--card, #fff) !important;
+  color: var(--text, #0f172a) !important;
+  overflow: hidden;
+  box-shadow: none !important;
+}
+.finance-live-diagram h3 {
+  margin: 0 0 8px !important;
+  color: var(--text, #0f172a) !important;
+  font-size: 1.15rem !important;
+  line-height: 1.4 !important;
+  font-weight: 750;
+}
+.finance-live-diagram .finance-live-intro {
+  margin: 0 0 14px !important;
+  color: var(--muted, #64748b) !important;
+  font-size: 1rem;
+  line-height: 1.65 !important;
+}
+.finance-live-diagram .finance-live-items,
+.finance-live-diagram .finance-live-visual-surface {
+  display: block !important;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+.finance-live-diagram .finance-visual-svg {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  margin: 0 auto;
+  border: 0;
+  border-radius: 16px;
+  background: var(--finance-svg-canvas, #f7f9fc) !important;
+  overflow: hidden;
+}
+:root[data-theme="dark"] .finance-live-diagram .finance-visual-svg {
+  background: #0b1a2a !important;
+}
+:root[data-theme="light"] .finance-live-diagram .finance-visual-svg {
+  background: #f7f9fc !important;
+}
+.finance-live-diagram .finance-live-note {
+  margin: 10px 0 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: var(--muted, #64748b) !important;
+  text-align: center;
+  font-size: .875rem !important;
+  line-height: 1.55 !important;
+  overflow-wrap: anywhere;
+}
+
+/* Live calculation preview follows the SVG and reflects the same input rows. */
+.finance-live-calculation-preview {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  margin: 14px 0 0;
+  padding: 15px 16px;
+  border: 1px solid #24566b;
+  border-radius: 14px;
+  background: #102b39;
+  color: #e9f6ff;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.finance-live-calculation-preview .finance-live-preview-title {
+  margin: 0 0 7px;
+  color: #64d9f4;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1.1px;
+}
+.finance-live-calculation-preview .finance-live-preview-line {
+  margin: 4px 0 0;
+  padding: 0;
+  color: #eaf7ff;
+  font-size: .96rem;
+  font-weight: 750;
+  line-height: 1.55;
+}
+.finance-live-calculation-preview .finance-live-preview-note {
+  margin: 7px 0 0;
+  color: #b7d5e8;
+  font-size: .82rem;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+/* Theme-aware SVG panels. Accent colors remain distinct; pale informational panels darken in dark mode. */
+:root[data-theme="dark"] .finance-visual-svg [fill="#e8f7f2"],
+:root[data-theme="dark"] .finance-visual-svg [fill="#e7f7ef"],
+:root[data-theme="dark"] .finance-visual-svg [fill="#e5f7ec"] { fill: #153a32 !important; stroke: #2a9d75; }
+:root[data-theme="dark"] .finance-visual-svg [fill="#fff0d2"],
+:root[data-theme="dark"] .finance-visual-svg [fill="#fff1d9"] { fill: #3b2c1a !important; stroke: #a77735; }
+:root[data-theme="dark"] .finance-visual-svg [fill="#e9e4ff"],
+:root[data-theme="dark"] .finance-visual-svg [fill="#eee9ff"] { fill: #282342 !important; stroke: #7c6bd0; }
+:root[data-theme="dark"] .finance-visual-svg [fill="#fff0f0"] { fill: #3b222a !important; stroke: #d65353; }
+:root[data-theme="dark"] .finance-visual-svg [fill="#e6f4fa"],
+:root[data-theme="dark"] .finance-visual-svg [fill="#e2f1fa"],
+:root[data-theme="dark"] .finance-visual-svg [fill="#e6edf4"],
+:root[data-theme="dark"] .finance-visual-svg [fill="#e8eef4"],
+:root[data-theme="dark"] .finance-visual-svg [fill="#d8e6ef"] { fill: #112d42 !important; stroke: #3c6b89; }
+
+/* Consistent content, FAQs and related tools; theme surfaces always use shared tokens. */
+.content-box, .sidebar-box {
+  background: var(--card, #fff) !important;
+  color: var(--text, #0f172a) !important;
+  border-color: var(--border, #e2e8f0) !important;
+}
+.content-box p, .content-box li { color: var(--muted, #475569); line-height: 1.75; }
+.tool-faq details { border-color: var(--border, #e2e8f0); }
+.tool-faq summary { color: var(--text, #0f172a); line-height: 1.5; }
+.related a {
+  background: var(--card, #fff);
+  color: var(--text, #0f172a);
+  border-color: var(--border, #e2e8f0);
+  border-radius: 14px;
+}
+:root[data-theme="dark"] .related a { background: #172a40; color: #e5edf8; border-color: #29384e; }
+
+@media (max-width: 600px) {
+  .calculator { padding: 20px !important; }
+  .calculator h2 { font-size: 23px !important; }
+  .form-grid { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .finance-live-diagram { padding: 10px !important; margin-top: 14px !important; border-radius: 12px !important; }
+  .finance-live-diagram h3 { font-size: 1.05rem !important; }
+  .finance-live-diagram .finance-visual-svg { border-radius: 12px; }
+  .finance-live-calculation-preview { padding: 12px; border-radius: 12px; }
+  .calculator #result.result:not(.error),
+  .calculator #amResult.result:not(.error) { padding: 14px !important; border-radius: 16px !important; }
+}
+</style>
+<style id="caluler-finance-result-typography-refinement-v1">
+/* CALULER-FINANCE-RESULT-TYPOGRAPHY-REFINEMENT-V1 */
+/* Match Health result box: same palette, gentler type weight, tighter rhythm. */
+.calculator #result.result:not(.error) {
+  color: #075985 !important;
+  font-weight: 500 !important;
+  line-height: 1.5 !important;
+}
+:root[data-theme="dark"] .calculator #result.result:not(.error) {
+  color: #b9e8ff !important;
+}
+#result.result .finance-result-summary {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+  row-gap: 0 !important;
+}
+#result.result .finance-result-line {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 1.05rem !important;
+  font-weight: 500 !important;
+  line-height: 1.48 !important;
+  color: inherit !important;
+  overflow-wrap: anywhere;
+}
+#result.result .finance-result-line strong {
+  font-weight: 550 !important;
+}
+#result.result .finance-result-note {
+  margin: 6px 0 0 !important;
+  font-size: .90rem !important;
+  font-weight: 500 !important;
+  line-height: 1.5 !important;
+}
+@media (max-width: 600px) {
+  #result.result .finance-result-line {
+    font-size: 1rem !important;
+    line-height: 1.48 !important;
+  }
+}
+</style>
+<style id="caluler-finance-health-reference-parity-final-v6">
+/* Final Finance parity layer, based on the current Health calculator CSS. */
+/* One compact Health-style result panel. Values stay medium; labels are only subtly emphasized. */
+.calculator #result.result:not(.error),
+.calculator #amResult.result:not(.error) {
+  box-sizing: border-box !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  min-height: 58px !important;
+  margin-top: 18px !important;
+  padding: 18px !important;
+  border: 1px solid #BAE6FD !important;
+  border-radius: 18px !important;
+  background: #F0F9FF !important;
+  color: #075985 !important;
+  font-family: inherit !important;
+  font-size: 1.05rem !important;
+  font-weight: 500 !important;
+  line-height: 1.48 !important;
+  letter-spacing: normal !important;
+  text-align: left;
+  overflow-wrap: anywhere !important;
+  box-shadow: none !important;
+}
+:root[data-theme="dark"] .calculator #result.result:not(.error),
+:root[data-theme="dark"] .calculator #amResult.result:not(.error) {
+  background: #10283A !important;
+  border-color: #24506A !important;
+  color: #B9E8FF !important;
+}
+.calculator #result.result:not(.error) .finance-result-summary {
+  display: block !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  gap: 0 !important;
+  row-gap: 0 !important;
+  line-height: 1.48 !important;
+}
+.calculator #result.result:not(.error) p.finance-result-line {
+  display: block !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: inherit !important;
+  font-family: inherit !important;
+  font-size: 1.05rem !important;
+  font-weight: 500 !important;
+  line-height: 1.48 !important;
+  letter-spacing: normal !important;
+  overflow-wrap: anywhere !important;
+}
+.calculator #result.result:not(.error) p.finance-result-line strong {
+  color: inherit !important;
+  font-weight: 550 !important;
+}
+.calculator #result.result:not(.error) p.finance-result-note {
+  display: block !important;
+  margin: 6px 0 0 !important;
+  padding: 0 !important;
+  color: inherit !important;
+  font-family: inherit !important;
+  font-size: .90rem !important;
+  font-weight: 500 !important;
+  line-height: 1.5 !important;
+}
+
+/* Match Health's diagram section shell: same radius, padding, border and no extra shadow. */
+.finance-live-diagram,
+.finance-tool-diagram {
+  display: block !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  margin: 18px 0 0 !important;
+  padding: 16px !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 16px !important;
+  background: var(--card) !important;
+  color: var(--text) !important;
+  box-shadow: none !important;
+  overflow: hidden;
+}
+.finance-live-diagram h3,
+.finance-tool-diagram h3 {
+  margin: 0 0 8px !important;
+  color: var(--text) !important;
+  font-size: 1.15rem !important;
+  line-height: 1.4 !important;
+  font-weight: 700 !important;
+  letter-spacing: normal !important;
+}
+.finance-live-diagram .finance-live-intro,
+.finance-tool-diagram > p {
+  margin: 0 0 14px !important;
+  color: var(--muted) !important;
+  font-size: 1rem !important;
+  line-height: 1.65 !important;
+}
+/* Health has no extra framed box around its SVG; keep Finance SVG unique but use the same figure rhythm. */
+.finance-live-diagram .finance-live-items {
+  display: block !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  margin: 14px 0 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+/* FINANCE SVG CANVAS HEALTH PARITY V1 */
+.finance-live-diagram .finance-visual-svg {
+  display: block !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  max-width: 720px !important;
+  min-width: 0 !important;
+  height: auto !important;
+  margin: 0 auto !important;
+  border: 1px solid var(--border, #cbd9e8) !important;
+  border-radius: 16px !important;
+  background: var(--finance-svg-canvas, #f7f9fc) !important;
+  overflow: hidden !important;
+}
+:root[data-theme="light"] .finance-live-diagram .finance-visual-svg {
+  background: #f7f9fc !important;
+  border-color: var(--border, #cbd9e8) !important;
+}
+:root[data-theme="dark"] .finance-live-diagram .finance-visual-svg {
+  background: #0b1a2a !important;
+  border-color: var(--border, #294057) !important;
+}
+.finance-tool-diagram .health-diagram-illustration {
+  display: block !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  max-width: 720px !important;
+  min-width: 0 !important;
+  height: auto !important;
+  margin: 0 auto !important;
+  border: 0 !important;
+  border-radius: 16px !important;
+  background: transparent !important;
+  overflow: hidden;
+}
+.finance-live-diagram .finance-live-note {
+  display: block !important;
+  box-sizing: border-box !important;
+  margin: 10px 0 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--muted) !important;
+  text-align: center !important;
+  font-size: .875rem !important;
+  font-weight: 400 !important;
+  line-height: 1.55 !important;
+}
+.finance-live-diagram .finance-live-note::before { content: none !important; }
+
+/* The Health live preview uses a dark teal note in both page themes. */
+.finance-live-calculation-preview {
+  display: block !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  margin: 12px 0 0 !important;
+  padding: 12px 14px !important;
+  border: 1px solid #24536A !important;
+  border-radius: 12px !important;
+  background: #102B39 !important;
+  color: #EAF7FF !important;
+  font-family: inherit !important;
+  font-size: .94rem !important;
+  font-weight: 400 !important;
+  line-height: 1.55 !important;
+  letter-spacing: normal !important;
+  overflow-wrap: anywhere !important;
+  box-shadow: none !important;
+}
+.finance-live-calculation-preview .finance-live-preview-title {
+  display: block !important;
+  margin: 0 0 5px !important;
+  padding: 0 !important;
+  color: #82E2F3 !important;
+  font-size: .75rem !important;
+  font-weight: 800 !important;
+  line-height: 1.4 !important;
+  letter-spacing: .06em !important;
+}
+.finance-live-calculation-preview .finance-live-preview-line {
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: #EAF7FF !important;
+  font-size: 1rem !important;
+  font-weight: 750 !important;
+  line-height: 1.55 !important;
+  letter-spacing: normal !important;
+}
+.finance-live-calculation-preview .finance-live-preview-line + .finance-live-preview-line { margin-top: 3px !important; }
+.finance-live-calculation-preview .finance-live-preview-note {
+  display: block !important;
+  margin: 7px 0 0 !important;
+  padding: 0 !important;
+  color: #BDD4E4 !important;
+  font-size: .82rem !important;
+  font-weight: 500 !important;
+  line-height: 1.55 !important;
+}
+@media (max-width: 600px) {
+  .calculator #result.result:not(.error),
+  .calculator #result.result:not(.error) p.finance-result-line { font-size: 1rem !important; line-height: 1.48 !important; }
+  .calculator #result.result:not(.error),
+  .calculator #amResult.result:not(.error) { padding: 14px !important; border-radius: 16px !important; }
+  .finance-live-diagram, .finance-tool-diagram { padding: 10px !important; margin-top: 14px !important; border-radius: 12px !important; }
+  .finance-live-diagram .finance-live-items { margin-top: 12px !important; }
+  .finance-live-calculation-preview { padding: 12px !important; border-radius: 12px !important; }
+}
+</style>
+<style id="caluler-integrated-live-diagram-caption-v2">
+.finance-live-diagram .finance-live-note {
+  box-sizing: border-box !important;
+  display: block !important;
+  margin: 8px 0 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--muted, #64748b) !important;
+  text-align: center !important;
+  font-size: .875rem !important;
+  font-weight: 400 !important;
+  line-height: 1.55 !important;
+  overflow-wrap: anywhere;
+}
+.finance-live-diagram .finance-live-note::before {
+  display: none !important;
+  content: none !important;
+}
+.finance-live-calculation-preview { display: none !important; }
+@media (max-width: 560px) {
+  .finance-live-diagram .finance-live-note { font-size: .82rem !important; }
+}
+</style><style id="caluler-finance-health-result-typography-v2">
+/* Match the Health result typography; preserve existing colours and surfaces. */
+.calculator #result.result:not(.error),
+.calculator #amResult.result:not(.error) {
+  font-family: "Segoe UI", Arial, sans-serif !important;
+  font-size: clamp(17px, 1.2vw, 20px) !important;
+  font-weight: 600 !important;
+  line-height: 1.5 !important;
+  letter-spacing: .005em !important;
+}
+.calculator #result.result:not(.error) .finance-result-summary {
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  gap: 0 !important;
+  row-gap: 0 !important;
+  line-height: 1.5 !important;
+}
+.calculator #result.result:not(.error) p.finance-result-line {
+  display: block !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  font-family: "Segoe UI", Arial, sans-serif !important;
+  font-size: clamp(17px, 1.2vw, 20px) !important;
+  font-weight: 550 !important;
+  line-height: 1.5 !important;
+  letter-spacing: .005em !important;
+  color: inherit !important;
+  overflow-wrap: anywhere !important;
+}
+.calculator #result.result:not(.error) p.finance-result-line strong {
+  font-weight: 550 !important;
+  color: inherit !important;
+}
+@media (max-width: 600px) {
+  .calculator #result.result:not(.error),
+  .calculator #amResult.result:not(.error),
+  .calculator #result.result:not(.error) p.finance-result-line {
+    font-size: 17px !important;
+    line-height: 1.5 !important;
+  }
+}
+</style>
+<style id="caluler-finance-single-canvas-polish-v2">
+/* Remove the old square surface behind the SVG. */
+.finance-live-diagram .finance-live-items.finance-live-visual-surface,
+.finance-live-diagram .finance-live-items {
+  box-sizing: border-box !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+}
+
+/* One polished SVG canvas, matching the Health reference. */
+.finance-live-diagram .finance-visual-svg {
+  display: block !important;
+  box-sizing: border-box !important;
+  width: 100% !important;
+  max-width: 720px !important;
+  min-width: 0 !important;
+  height: auto !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  border: 1px solid #D8E3EF !important;
+  border-radius: 16px !important;
+  background: #F7F9FC !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+}
+
+:root[data-theme="light"] .finance-live-diagram .finance-visual-svg {
+  border-color: #D8E3EF !important;
+  background: #F7F9FC !important;
+}
+
+:root[data-theme="dark"] .finance-live-diagram .finance-visual-svg {
+  border-color: #294057 !important;
+  background: #0B1A2A !important;
+}
+
+@media (max-width: 600px) {
+  .finance-live-diagram .finance-visual-svg {
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 14px !important;
+  }
+}
+</style>
+<style id="caluler-finance-mobile-breakdown-v1">
+/* CALULER FINANCE MOBILE BREAKDOWN V1
+   Keep each page's unique SVG; add readable phone-sized values
+   from the same calculateRows() data. */
+.finance-live-diagram .finance-mobile-breakdown {
+  display: none !important;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+.finance-live-diagram .finance-mobile-card {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  padding: 11px 12px;
+  border: 1px solid var(--border, #d8e3ef);
+  border-radius: 12px;
+  background: var(--card, #ffffff);
+  color: var(--text, #14243a);
+}
+.finance-live-diagram .finance-mobile-card-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 8px 12px;
+  min-width: 0;
+}
+.finance-live-diagram .finance-mobile-label {
+  display: block;
+  min-width: 0;
+  color: var(--muted, #63758b);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+.finance-live-diagram .finance-mobile-value {
+  display: block;
+  min-width: 0;
+  color: var(--text, #14243a);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+.finance-live-diagram .finance-mobile-track {
+  display: block;
+  width: 100%;
+  height: 8px;
+  margin-top: 9px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(100, 116, 139, .16);
+}
+.finance-live-diagram .finance-mobile-fill {
+  display: block;
+  height: 100%;
+  min-width: 0;
+  border-radius: inherit;
+  transition: width .18s ease;
+}
+.finance-live-diagram .finance-mobile-fill.tone-0 { background: #2787a5; }
+.finance-live-diagram .finance-mobile-fill.tone-1 { background: #e8a23a; }
+.finance-live-diagram .finance-mobile-fill.tone-2 { background: #7c6bd0; }
+.finance-live-diagram .finance-mobile-fill.tone-3 { background: #2a9d75; }
+.finance-live-diagram .finance-mobile-fill.negative { background: #d65353; }
+
+@media (max-width: 640px) {
+  /* Keep the unique SVG visible; add readable values beneath it. */
+  .finance-live-diagram .finance-visual-svg {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  .finance-live-diagram .finance-mobile-breakdown {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 9px;
+    margin: 10px 0 0;
+  }
+}
+@media (max-width: 360px) {
+  .finance-live-diagram .finance-mobile-card-head {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4px;
+  }
+  .finance-live-diagram .finance-mobile-value {
+    text-align: left;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .finance-live-diagram .finance-mobile-fill {
+    transition: none;
+  }
+}
+/* END CALULER FINANCE MOBILE BREAKDOWN V1 */
+</style><style id="caluler-finance-category-master-v1">
+/* CALULER FINANCE CATEGORY MASTER DESIGN V1
+   Per-page overrides; shared CSS/JS assets are not edited. */
+.page-hero { padding: 28px 0 30px !important; }
+.page-hero .badge {
+  display: inline-flex !important;
+  padding: 6px 12px !important;
+  margin: 0 0 8px !important;
+  font-size: 14px !important;
+  line-height: 1.25 !important;
+}
+.page-hero h1 {
+  max-width: 820px !important;
+  margin: 0 0 8px !important;
+  font-size: clamp(36px, 3.5vw, 46px) !important;
+  line-height: 1.08 !important;
+}
+.page-hero p {
+  max-width: 760px !important;
+  margin: 0 !important;
+  font-size: 17px !important;
+  line-height: 1.5 !important;
+}
+
+/* Related Tools becomes a full-width panel after the calculator. */
+.tool-layout { grid-template-columns: minmax(0, 1fr) !important; }
+.tool-layout > main { min-width: 0; width: 100%; }
+.tool-layout > main > aside {
+  display: block;
+  width: 100%;
+  max-width: none;
+  margin: 22px 0 0;
+}
+.tool-layout > main > aside .sidebar-box {
+  position: static !important;
+  top: auto !important;
+  width: 100%;
+  max-width: none;
+  box-sizing: border-box;
+  margin-top: 0;
+}
+
+/* Match the Cash Flow master diagram heading scale; SVG scenes remain unique. */
+.finance-live-diagram h3 {
+  font-size: 1.25rem !important;
+  line-height: 1.35 !important;
+}
+.finance-live-diagram .finance-live-intro {
+  font-size: 1rem !important;
+  line-height: 1.55 !important;
+}
+
+@media (min-width: 1200px) {
+  .tool-layout > main > aside .related {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+  .tool-layout > main > aside .related > a {
+    min-width: 0;
+    height: 100%;
+    box-sizing: border-box;
+  }
+  .tool-layout > main > aside .related > .sidebar-browse {
+    grid-column: 1 / -1;
+    margin: 2px 0 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-hero { padding: 22px 0 24px !important; }
+  .page-hero .badge {
+    padding: 5px 10px !important;
+    margin-bottom: 7px !important;
+    font-size: 13px !important;
+  }
+  .page-hero h1 { font-size: clamp(30px, 8vw, 36px) !important; }
+  .page-hero p { font-size: 15px !important; line-height: 1.45 !important; }
+}
+@media (min-width: 1200px) {
+  .calculator {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-areas:
+      "heading heading"
+      "intro intro"
+      "form diagram"
+      "result diagram";
+    column-gap: 24px;
+    row-gap: 16px;
+    align-items: start;
+    min-width: 0;
+  }
+  .calculator > h2 {
+    grid-area: heading;
+    margin: 0 !important;
+  }
+  .calculator > p {
+    grid-area: intro;
+    margin: 0 0 2px !important;
+  }
+  .calculator > form {
+    grid-area: form;
+    align-self: start;
+    min-width: 0;
+    margin: 0;
+  }
+  .calculator > form > .form-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 14px 16px !important;
+    align-items: start;
+  }
+  .calculator > form .field:not([hidden]) {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: flex-start;
+    gap: 7px !important;
+    min-width: 0;
+    margin: 0 !important;
+  }
+  .calculator > form .field label {
+    display: block;
+    min-width: 0;
+    margin: 0 !important;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+  }
+  .calculator > form .field input,
+  .calculator > form .field select,
+  .calculator > form .field textarea {
+    display: block;
+    box-sizing: border-box;
+    width: 100% !important;
+    min-width: 0;
+    max-width: 100%;
+  }
+  .calculator > form .btn,
+  .calculator > form button[type="submit"] {
+    display: block;
+    width: 100% !important;
+    margin-top: 14px !important;
+  }
+  .calculator > .result {
+    grid-area: result;
+    align-self: start;
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 !important;
+  }
+  .calculator > .finance-live-diagram {
+    grid-area: diagram;
+    align-self: stretch;
+    min-width: 0;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 !important;
+  }
+}
+</style><style id="caluler-finance-savings-reference-design-parity-v1-2">
+/* CALULER-FINANCE-SAVINGS-REFERENCE-DESIGN-PARITY-V1-2-APPLIED
+   Savings Planner visual tokens applied consistently across the Finance category. */
+
+/* Calculator card and title */
+.calculator {
+  box-sizing: border-box;
+  border-radius: 24px !important;
+  padding: 26px !important;
+}
+.calculator h2 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 18px !important;
+  font-size: 30px !important;
+  line-height: 1.25 !important;
+  font-weight: 750 !important;
+  letter-spacing: -.45px;
+}
+.calculator > p {
+  margin: 0 0 16px !important;
+  font-size: 18px !important;
+  line-height: 1.55 !important;
+}
+
+/* Form labels, fields and controls */
+.calculator .form-grid {
+  gap: 16px !important;
+}
+.calculator .field {
+  min-width: 0;
+  gap: 8px !important;
+  margin-bottom: 15px !important;
+}
+.calculator .field label {
+  display: block;
+  min-width: 0;
+  margin: 0 !important;
+  color: var(--text, #334155) !important;
+  font-size: 16px !important;
+  font-weight: 650 !important;
+  line-height: 1.35 !important;
+  overflow-wrap: anywhere;
+}
+.calculator input:not([type="checkbox"]):not([type="radio"]),
+.calculator select,
+.calculator textarea {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  min-height: 52px;
+  padding: 13px 16px !important;
+  border-radius: 16px !important;
+  font-size: 16px !important;
+  line-height: 1.4 !important;
+}
+.calculator textarea { min-height: 140px; }
+.calculator .btn,
+.calculator button[type="submit"],
+.calculator button[type="button"] {
+  min-height: 50px;
+  padding: 13px 20px !important;
+  border-radius: 16px !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+}
+
+/* Result card and result text */
+.calculator > .result,
+.calculator > #amResult.result,
+.calculator #result.result,
+.calculator #amResult.result {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  min-height: 58px;
+  padding: 18px 20px !important;
+  border-radius: 18px !important;
+  font-size: 1.05rem !important;
+  font-weight: 650 !important;
+  line-height: 1.65 !important;
+  overflow-wrap: anywhere;
+}
+#result.result .finance-result-summary { gap: 0 !important; }
+#result.result .finance-result-line {
+  margin: 0 !important;
+  padding: 0 !important;
+  font-size: 1rem !important;
+  font-weight: 550 !important;
+  line-height: 1.65 !important;
+  overflow-wrap: anywhere;
+}
+#result.result .finance-result-line strong { font-weight: 550 !important; }
+#result.result .finance-result-item span { font-weight: 550 !important; }
+#result.result .finance-result-item strong { font-weight: 550 !important; }
+#result.result .finance-result-note {
+  margin-top: 8px;
+  font-size: .92rem !important;
+  font-weight: 500 !important;
+  line-height: 1.55 !important;
+}
+
+/* Diagram card, heading, description and live SVG canvas */
+.finance-live-diagram,
+.finance-tool-diagram {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  padding: 18px !important;
+  border-radius: 18px !important;
+}
+.finance-live-diagram h3,
+.finance-tool-diagram h3 {
+  margin: 0 0 8px !important;
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+}
+.finance-live-diagram .finance-live-intro,
+.finance-tool-diagram > p {
+  margin: 0 0 14px !important;
+  font-size: 1rem !important;
+  font-weight: 400 !important;
+  line-height: 1.6 !important;
+}
+.finance-live-diagram .finance-live-items {
+  display: block !important;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+.finance-live-diagram svg,
+.finance-tool-diagram svg,
+.finance-live-diagram .finance-visual-svg,
+.finance-tool-diagram .health-diagram-illustration {
+  display: block;
+  box-sizing: border-box;
+  width: 100% !important;
+  max-width: 760px !important;
+  height: auto !important;
+  min-width: 0;
+  margin-inline: auto;
+}
+.finance-live-diagram .finance-live-note {
+  margin: 12px 0 0 !important;
+  font-size: .92rem !important;
+  font-weight: 500 !important;
+  line-height: 1.55 !important;
+  overflow-wrap: anywhere;
+}
+
+/* Related Tools and educational sections retain each page's own content and links. */
+.sidebar-box { border-radius: 20px !important; padding: 22px !important; }
+.sidebar-box > h3 { font-size: 1.25rem !important; line-height: 1.35 !important; font-weight: 700 !important; }
+.related a {
+  box-sizing: border-box;
+  min-height: 54px;
+  padding: 13px 15px !important;
+  border-radius: 16px !important;
+  font-size: 1rem !important;
+  font-weight: 650 !important;
+  line-height: 1.4 !important;
+}
+.content-box {
+  box-sizing: border-box;
+  border-radius: 22px !important;
+  padding: 24px !important;
+}
+.content-box h2 { font-size: 1.6rem !important; line-height: 1.3 !important; }
+.content-box h3 { font-size: 1.2rem !important; line-height: 1.4 !important; }
+.content-box p,
+.content-box li { font-size: 1rem !important; line-height: 1.75 !important; }
+.tool-faq summary { font-size: 1.05rem !important; font-weight: 650 !important; line-height: 1.5 !important; }
+
+/* Tablet/mobile: keep the existing stacked layout and prevent SVG/input overflow. */
+@media (max-width: 640px) {
+  .calculator { padding: 20px !important; border-radius: 20px !important; }
+  .calculator h2 { margin-bottom: 14px !important; font-size: 23px !important; }
+  .calculator > p { font-size: 1rem !important; }
+  .calculator .field label { font-size: 15px !important; }
+  .calculator input:not([type="checkbox"]):not([type="radio"]),
+  .calculator select,
+  .calculator textarea { min-height: 48px; padding: 12px 14px !important; font-size: 16px !important; }
+  .calculator .btn,
+  .calculator button[type="submit"],
+  .calculator button[type="button"] { min-height: 48px; font-size: 16px !important; }
+  .calculator > .result,
+  .calculator > #amResult.result,
+  .calculator #result.result,
+  .calculator #amResult.result { padding: 14px !important; font-size: 1rem !important; }
+  .finance-live-diagram,
+  .finance-tool-diagram { padding: 14px !important; border-radius: 16px !important; }
+  .finance-live-diagram h3,
+  .finance-tool-diagram h3 { font-size: 1.1rem !important; }
+  .finance-live-diagram .finance-live-intro,
+  .finance-tool-diagram > p { font-size: .95rem !important; }
+  .finance-live-diagram .finance-visual-svg,
+  .finance-tool-diagram .health-diagram-illustration { max-width: 100% !important; }
+  .sidebar-box, .content-box { padding: 18px !important; }
+  .related a { min-height: 50px; padding: 12px !important; }
+}
+/* END CALULER-FINANCE-SAVINGS-REFERENCE-DESIGN-PARITY-V1-2 */
+</style>
+
+<style id="caluler-finance-typography-balance-v1">
+/* CALULER FINANCE TYPOGRAPHY BALANCE V1 */
+
+/* Calculator title */
+.calculator h2 {
+    font-weight: 700 !important;
+}
+
+/* Form labels */
+.calculator .field label {
+    font-weight: 600 !important;
+}
+
+/* Calculate buttons */
+.calculator .btn,
+.calculator button[type="submit"],
+.calculator button[type="button"] {
+    font-weight: 650 !important;
+}
+
+/* Result panels */
+.calculator > .result,
+.calculator > #amResult.result,
+.calculator #result.result,
+.calculator #amResult.result {
+    font-weight: 600 !important;
+}
+
+.calculator #result.result:not(.error) p.finance-result-line {
+    font-weight: 550 !important;
+}
+
+.calculator #result.result:not(.error) p.finance-result-line strong {
+    font-weight: 550 !important;
+}
+
+#result.result .finance-result-line {
+    font-weight: 550 !important;
+}
+
+#result.result .finance-result-line strong {
+    font-weight: 550 !important;
+}
+
+#result.result .finance-result-item span {
+    font-weight: 550 !important;
+}
+
+#result.result .finance-result-item strong {
+    font-weight: 550 !important;
+}
+
+#result.result .finance-result-note {
+    font-weight: 500 !important;
+}
+
+/* Educational content hierarchy */
+.content-box h2 {
+    font-weight: 700 !important;
+}
+
+.content-box h3 {
+    font-weight: 650 !important;
+}
+
+.content-box strong,
+.content-box b {
+    font-weight: 650 !important;
+}
+
+/* Related tools and FAQ */
+.sidebar-box > h3 {
+    font-weight: 650 !important;
+}
+
+.related a {
+    font-weight: 600 !important;
+}
+
+.tool-faq summary {
+    font-weight: 600 !important;
+}
+/* Finance diagram typography */
+
+/* Diagram titles */
+.finance-live-diagram h3,
+.finance-tool-diagram h3 {
+    font-weight: 650 !important;
+}
+
+/* Diagram labels and amounts */
+.finance-live-diagram .finance-live-label {
+    font-weight: 600 !important;
+}
+
+.finance-live-diagram .finance-live-value {
+    font-weight: 650 !important;
+}
+
+.finance-live-diagram .finance-mobile-label {
+    font-weight: 600 !important;
+}
+
+.finance-live-diagram .finance-mobile-value {
+    font-weight: 650 !important;
+}
+
+/* Existing SVG text: soften only heavier font weights.
+   Geometry, font sizes and text content stay unchanged. */
+.finance-live-diagram svg text[font-weight="700"],
+.finance-live-diagram svg text[font-weight="750"],
+.finance-live-diagram svg text[font-weight="800"],
+.finance-live-diagram svg text[font-weight="900"],
+.finance-tool-diagram svg text[font-weight="700"],
+.finance-tool-diagram svg text[font-weight="750"],
+.finance-tool-diagram svg text[font-weight="800"],
+.finance-tool-diagram svg text[font-weight="900"] {
+    font-weight: 650 !important;
+}
+
+/* Diagram notes and previews */
+.finance-live-diagram .finance-live-note {
+    font-weight: 500 !important;
+}
+
+.finance-live-diagram .finance-live-note::before {
+    font-weight: 600 !important;
+}
+
+.finance-live-calculation-preview .finance-live-preview-title,
+.finance-live-calculation-preview .finance-live-preview-line {
+    font-weight: 650 !important;
+}
+
+.finance-live-calculation-preview .finance-live-preview-note {
+    font-weight: 500 !important;
+}
+</style>
+
+<style id="caluler-finance-diagram-heading-weight-v3">
+/* CALULER-FINANCE-DIAGRAM-HEADING-WEIGHT-V3 */
+/* Outer HTML diagram headings only. */
+html body section.finance-live-diagram > h3#finance-live-title,
+html body .finance-tool-diagram > h3,
+html body .finance-tool-diagram h3 {
+    font-weight: 600 !important;
+}
+
+/* Inner SVG title only; summary values remain unchanged. */
+html body section.finance-live-diagram svg.finance-visual-svg text[x="18"][y="28"] {
+    font-weight: 600 !important;
+}
+</style>
+
+<style id="caluler-finance-header-compact-v4">
+
+/* FINANCE ONLY - COMPACT HEADER CONTROLS */
+
+/* Main settings wrapper */
+html body .nav .nav-inner > .caluler-utility-controls {
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 7px !important;
+    width: max-content !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    flex: 0 0 auto !important;
+    margin: 0 0 0 4px !important;
+    padding: 4px !important;
+}
+
+/* Compact light / dark toggle */
+html body .nav .nav-inner > .caluler-utility-controls > #calulerThemeToggle {
+    box-sizing: border-box !important;
+    width: 60px !important;
+    min-width: 60px !important;
+    max-width: 60px !important;
+    height: 34px !important;
+    min-height: 34px !important;
+    max-height: 34px !important;
+    flex: 0 0 60px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 0 !important;
+}
+
+/* Smaller moving toggle thumb */
+html body .nav .nav-inner > .caluler-utility-controls > #calulerThemeToggle .theme-toggle-thumb {
+    top: 3px !important;
+    left: 3px !important;
+    width: 26px !important;
+    height: 26px !important;
+    transform: translateX(0) !important;
+}
+
+html body .nav .nav-inner > .caluler-utility-controls > #calulerThemeToggle[aria-pressed="true"] .theme-toggle-thumb {
+    transform: translateX(26px) !important;
+}
+
+/* Toggle sun and moon icons */
+html body .nav .nav-inner > .caluler-utility-controls > #calulerThemeToggle .theme-toggle-icon {
+    top: 3px !important;
+    width: 26px !important;
+    height: 26px !important;
+    font-size: 17px !important;
+}
+
+html body .nav .nav-inner > .caluler-utility-controls > #calulerThemeToggle .theme-icon-sun {
+    left: 3px !important;
+}
+
+html body .nav .nav-inner > .caluler-utility-controls > #calulerThemeToggle .theme-icon-moon {
+    right: 3px !important;
+}
+
+/* Remove the separate globe / language label */
+html body .nav .nav-inner > .caluler-utility-controls > .caluler-language-label,
+html body .nav .nav-inner > .caluler-utility-controls > .caluler-language-label::before,
+html body .nav .nav-inner > .caluler-utility-controls > .caluler-language-label::after {
+    display: none !important;
+    content: none !important;
+    width: 0 !important;
+    min-width: 0 !important;
+    max-width: 0 !important;
+    flex: 0 0 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Compact visible language picker */
+html body .nav .nav-inner > .caluler-utility-controls > .caluler-language-picker {
+    box-sizing: border-box !important;
+    width: 126px !important;
+    min-width: 126px !important;
+    max-width: 126px !important;
+    flex: 0 0 126px !important;
+    margin: 0 !important;
+}
+
+/* English / language trigger */
+html body .nav .nav-inner > .caluler-utility-controls .caluler-language-trigger {
+    box-sizing: border-box !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    width: 126px !important;
+    min-width: 126px !important;
+    max-width: 126px !important;
+    height: 34px !important;
+    min-height: 34px !important;
+    padding: 5px 7px !important;
+    border-radius: 10px !important;
+    font-size: 12px !important;
+}
+
+/* Smaller country flag */
+html body .nav .nav-inner > .caluler-utility-controls .caluler-language-trigger .caluler-language-flag {
+    width: 23px !important;
+    height: 16px !important;
+    min-width: 23px !important;
+    flex: 0 0 23px !important;
+}
+
+/* Language text */
+html body .nav .nav-inner > .caluler-utility-controls .caluler-language-trigger-label {
+    min-width: 0 !important;
+    font-size: 12px !important;
+    line-height: 1.2 !important;
+}
+
+/* Compact Menu button */
+html body .nav .nav-inner > .caluler-site-menu > .caluler-site-menu-trigger {
+    box-sizing: border-box !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    width: 78px !important;
+    min-width: 78px !important;
+    max-width: 78px !important;
+    height: 38px !important;
+    min-height: 38px !important;
+    padding: 6px 8px !important;
+    border-radius: 11px !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0 !important;
+}
+
+/* Smaller hamburger icon */
+html body .nav .nav-inner > .caluler-site-menu .caluler-menu-hamburger {
+    width: 16px !important;
+    min-width: 16px !important;
+    height: 18px !important;
+    gap: 3px !important;
+}
+
+html body .nav .nav-inner > .caluler-site-menu .caluler-menu-hamburger span {
+    width: 16px !important;
+    height: 2px !important;
+}
+
+/* Mobile / tablet header */
+@media (max-width: 640px) {
+
+    html body .nav .nav-inner > .caluler-utility-controls {
+        grid-column: 1 / -1 !important;
+        grid-row: 2 !important;
+        justify-self: end !important;
+        width: max-content !important;
+        max-width: 100% !important;
+        gap: 6px !important;
+        margin: 0 !important;
+        padding: 4px !important;
+    }
+
+    html body .nav .nav-inner > .caluler-site-menu {
+        grid-column: 2 !important;
+        grid-row: 1 !important;
+        justify-self: end !important;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 380px) {
+
+    html body .nav .nav-inner > .caluler-utility-controls {
+        gap: 5px !important;
+        padding: 3px !important;
+    }
+
+    html body .nav .nav-inner > .caluler-utility-controls > #calulerThemeToggle {
+        width: 54px !important;
+        min-width: 54px !important;
+        max-width: 54px !important;
+        height: 32px !important;
+        min-height: 32px !important;
+        flex-basis: 54px !important;
+    }
+
+    html body .nav .nav-inner > .caluler-utility-controls > #calulerThemeToggle .theme-toggle-thumb {
+        width: 24px !important;
+        height: 24px !important;
+    }
+
+    html body .nav .nav-inner > .caluler-utility-controls > #calulerThemeToggle[aria-pressed="true"] .theme-toggle-thumb {
+        transform: translateX(22px) !important;
+    }
+
+    html body .nav .nav-inner > .caluler-utility-controls > #calulerThemeToggle .theme-toggle-icon {
+        width: 24px !important;
+        height: 24px !important;
+        font-size: 16px !important;
+    }
+
+    html body .nav .nav-inner > .caluler-utility-controls > .caluler-language-picker,
+    html body .nav .nav-inner > .caluler-utility-controls .caluler-language-trigger {
+        width: 118px !important;
+        min-width: 118px !important;
+        max-width: 118px !important;
+    }
+
+    html body .nav .nav-inner > .caluler-utility-controls .caluler-language-trigger .caluler-language-flag {
+        width: 21px !important;
+        height: 15px !important;
+        min-width: 21px !important;
+        flex-basis: 21px !important;
+    }
+
+    html body .nav .nav-inner > .caluler-site-menu > .caluler-site-menu-trigger {
+        width: 72px !important;
+        min-width: 72px !important;
+        max-width: 72px !important;
+        height: 36px !important;
+        min-height: 36px !important;
+        padding: 5px 6px !important;
+    }
+}
+
+</style>
+<link rel="icon" type="image/svg+xml" sizes="any" href="../assets/caluler-tab-icon.svg?v=13"> <link rel="icon" type="image/png" sizes="512x512" href="../assets/caluler-favicon.png?v=13"> <link rel="shortcut icon" type="image/x-icon" href="../assets/caluler-favicon.ico?v=13"> <link rel="apple-touch-icon" sizes="180x180" href="../assets/caluler-apple-touch-icon.png?v=13">
+<!-- CALULER-MASTER-DESIGN-V1-PAGE-START -->
+<link rel="stylesheet" href="../assets/caluler-master-design-v1.css">
+<!-- CALULER-MASTER-DESIGN-V1-PAGE-END -->
+<style id="caluler-paycheck-waterfall-v1">
+.finance-live-diagram[data-finance-live-kind="pay-salary"] .finance-live-intro,
+.finance-live-diagram[data-finance-live-kind="pay-salary"] .finance-live-note { display:none!important; }
+.paycheck-waterfall { display:block; width:100%; min-width:0; box-sizing:border-box; color:var(--text); }
+.paycheck-period { margin:0 0 16px; color:var(--muted); font-size:.88rem; }
+.paycheck-steps { display:grid; gap:22px; padding:0; margin:0; list-style:none; }
+.paycheck-step { min-width:0; --paycheck-tone:var(--caluler-brand-primary); }
+.paycheck-tone-1 { --paycheck-tone:#DC8629; }
+.paycheck-tone-2 { --paycheck-tone:#238747; }
+.paycheck-step-head { display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:4px 12px; margin-bottom:8px; min-width:0; }
+.paycheck-step-label { font-size:.93rem; font-weight:600; overflow-wrap:anywhere; }
+.paycheck-step-label::before { content:""; display:inline-block; width:.65rem; height:.65rem; border-radius:3px; margin-inline-end:.4rem; background:var(--paycheck-tone); }
+.paycheck-step-value { font-size:1.12rem; font-variant-numeric:tabular-nums; overflow-wrap:anywhere; max-width:100%; }
+.paycheck-tone-2 .paycheck-step-value { font-weight:750; }
+.paycheck-step-track { height:24px; width:100%; background:#E5E7EB; border-radius:6px; overflow:hidden; }
+.paycheck-step-bar { display:block; height:100%; background:var(--paycheck-tone); border-radius:4px; }
+.paycheck-tone-0 .paycheck-step-bar { position:relative; overflow:hidden; }
+.paycheck-tone-0 .paycheck-step-bar::after { content:""; position:absolute; inset:0 auto 0 0; width:30%; pointer-events:none; background:linear-gradient(90deg,transparent,rgba(255,255,255,.75),transparent); transform:translateX(var(--paycheck-sweep-offset,-100%)); opacity:var(--paycheck-sweep-opacity,0); }
+.paycheck-step[data-caluler-value-label] { cursor:pointer; border-radius:6px; }
+.paycheck-step:focus-visible { outline:2px solid var(--caluler-brand-secondary); outline-offset:5px; }
+.paycheck-empty { margin:0; line-height:1.5; overflow-wrap:anywhere; }
+:root[data-theme="dark"] .paycheck-tone-0 { --paycheck-tone:var(--caluler-brand-accent); }
+:root[data-theme="dark"] .paycheck-tone-1 { --paycheck-tone:#F2A84A; }
+:root[data-theme="dark"] .paycheck-tone-2 { --paycheck-tone:#4CDB88; }
+:root[data-theme="dark"] .paycheck-step-track { background:#334155; }
+:root[data-theme="dark"] .paycheck-step:focus-visible { outline-color:var(--caluler-brand-accent); }
+@media(max-width:560px) {
+ html:root body[data-caluler-category="Finance Calculators"] .calculator > section.finance-live-diagram[data-finance-live-kind="pay-salary"] .finance-live-items > .paycheck-waterfall { display:block!important; visibility:visible!important; }
+}
+</style>
+<style id="caluler-paycheck-mode-interaction-v1">
+/* The existing custom picker stays intact; suppress only Chrome's rectangular tap wash. */
+#financeForm #mode + .caluler-custom-select-wrap {
+  --paycheck-mode-focus:var(--caluler-brand-primary);
+  -webkit-tap-highlight-color:transparent;
+}
+#financeForm #mode + .caluler-custom-select-wrap .caluler-custom-select-trigger:is(:hover,:active,[aria-expanded="true"]) {
+  border-color:var(--paycheck-mode-focus)!important;
+}
+#financeForm #mode + .caluler-custom-select-wrap .caluler-custom-select-trigger:focus-visible {
+  outline:2px solid var(--paycheck-mode-focus)!important;
+  outline-offset:-3px!important;
+}
+:root[data-theme="dark"] #financeForm #mode + .caluler-custom-select-wrap,
+body.dark-mode #financeForm #mode + .caluler-custom-select-wrap {
+  --paycheck-mode-focus:var(--caluler-brand-accent);
+}
+</style>
+<style id="caluler-paycheck-calculate-interaction-v1">
+/* Suppress Chrome touch feedback only on this form's Calculate button. */
+#financeForm > button.btn[type="submit"] {
+  -webkit-tap-highlight-color:transparent;
+}
+#financeForm > button.btn[type="submit"]:focus-visible {
+  outline:3px solid var(--caluler-brand-accent)!important;
+  outline-offset:-3px!important;
+}
+</style>
+
+<script type="application/ld+json" id="caluler-page-seo">{"@context":"https://schema.org","@type":"WebPage","@id":"https://caluler.work/tools/paycheck-calculator.html#webpage","url":"https://caluler.work/tools/paycheck-calculator.html","name":"Pay & Salary Calculator: Hourly, Annual and Take-Home | Caluler","description":"Convert hourly pay to annual salary or salary to an hourly rate, and estimate take-home pay after applying a deduction rate you choose.","inLanguage":"en","isPartOf":{"@id":"https://caluler.work/#website"}}</script>
+</head><body data-caluler-category="Finance Calculators"><nav class="nav" aria-label="Primary navigation"><div class="container nav-inner"><a class="logo" href="../index.html" aria-label="Caluler home"><img src="../assets/caluler-logo.webp" alt="Caluler" class="logo-nav"></a><div class="caluler-utility-controls notranslate" translate="no" aria-label="Website settings"><button type="button" class="caluler-theme-toggle" id="calulerThemeToggle" aria-label="Toggle dark mode" title="Toggle dark/light mode">🌙</button><label class="caluler-language-label" for="calulerLanguage">Language</label><select id="calulerLanguage" class="caluler-language-select notranslate" translate="no" aria-label="Choose website language"><option value="en">English</option><option value="es">Español</option><option value="fr">Français</option><option value="de">Deutsch</option><option value="pt">Português</option><option value="it">Italiano</option><option value="zh-CN">简体中文</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="ru">Русский</option><option value="ar">العربية</option><option value="hi">हिन्दी</option><option value="ur">اردو</option><option value="tr">Türkçe</option><option value="id">Bahasa Indonesia</option><option value="nl">Nederlands</option><option value="bn">বাংলা</option><option value="pa">ਪੰਜਾਬੀ</option><option value="fa">فارسی</option><option value="ta">தமிழ்</option></select></div><div id="google_translate_element" class="caluler-google-translate notranslate" translate="no" aria-hidden="true"></div><button aria-controls="mobileMenu" aria-expanded="false" aria-label="Open navigation" class="menu-toggle"  type="button">☰</button><div class="nav-links" id="mobileMenu" data-mobile-menu data-open="false"><a href="../tools.html">Tools</a><a href="../about.html">About</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy</a></div></div></nav><section class="page-hero"><div class="container"><h1><span class="caluler-page-title-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" focusable="false" data-caluler-icon="wallet-cards" data-lucide-icon="wallet-cards"><path d="M3 11h3.75a2 2 0 0 1 1.6.8l.45.6a4 4 0 0 0 6.4 0l.45-.6a2 2 0 0 1 1.6-.8H21" />
+  <path d="M3 7h18" />
+  <rect x="3" y="3" width="18" height="18" rx="2" /></svg></span> Pay &amp; Salary Calculator</h1><p>Hourly-to-salary, salary-to-hourly and gross-to-net estimate modes.</p></div></section>
+<div class="caluler-hero-ad-space" role="complementary" aria-label="Advertisement">Advertisement</div>
+<section class="section"><div class="container tool-layout"><main><div class="calculator" data-calc-type="pay-salary"><form id="financeForm" novalidate><div class="form-grid"><div class="field"><label for="mode">Pay calculation mode</label><select id="mode" name="mode"><option value="hourly" selected>Hourly rate to annual salary</option><option value="annual">Annual salary to hourly rate</option><option value="net">Gross pay per period - take-home estimate</option></select></div><div class="field" data-caluler-affix="$"><label for="amount">Rate, salary or gross pay per period</label><input type="number" id="amount" name="amount" value="25" step="any" min="0" required inputmode="decimal" autocomplete="off"></div><div class="field"><label for="hours">Hours worked per week</label><input type="number" id="hours" name="hours" value="40" step="0.25" min="0" max="168" required inputmode="decimal" autocomplete="off"></div><div class="field"><label for="weeks">Working weeks per year</label><input type="number" id="weeks" name="weeks" value="52" step="0.1" min="0" max="52" required inputmode="decimal" autocomplete="off"></div><div class="field"><label for="periods">Pay periods per year</label><input type="number" id="periods" name="periods" value="26" step="1" min="1" max="365" required inputmode="decimal" autocomplete="off"></div><div class="field" data-caluler-affix="%"><label for="deductionRate">Estimated deductions (%)</label><input type="number" id="deductionRate" name="deductionRate" value="20" step="0.1" min="0" max="100" required inputmode="decimal" autocomplete="off"></div></div><button class="btn" type="submit">Calculate</button></form><div class="result" id="result" aria-live="polite">Enter your assumptions and select Calculate.</div><!-- CALULER-FINANCE-LIVE-DIAGRAM-V1 -->
+<section class="finance-live-diagram" data-finance-live-kind="pay-salary" data-caluler-submit-only="true" data-caluler-color-tooltips="true" aria-labelledby="finance-live-title"><h3 id="finance-live-title">Paycheck Waterfall</h3><p class="finance-live-intro">Select Calculate to update this diagram and its values.</p><div class="finance-live-items" aria-label="Live financial comparison"></div><p class="finance-live-note" role="status">The diagram shows the last valid calculation.</p></section></div><aside><div class="sidebar-box"><h3>Related Tools</h3><div class="related"><a href="budget-allocation-calculator.html"><span data-caluler-lucide-related="true" class="related-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" focusable="false" data-caluler-icon="chart-pie" data-lucide-icon="chart-pie"><path d="M21 12c.552 0 1.005-.449.95-.998a10 10 0 0 0-8.953-8.951c-.55-.055-.998.398-.998.95v8a1 1 0 0 0 1 1z" />
+  <path d="M21.21 15.89A10 10 0 1 1 8 2.83" /></svg></span><span>Budget Allocation Planner</span></a><a href="emergency-fund-calculator.html"><span data-caluler-lucide-related="true" class="related-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" focusable="false" data-caluler-icon="shield-check" data-lucide-icon="shield-check"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" />
+  <path d="m9 12 2 2 4-4" /></svg></span><span>Emergency Fund Calculator</span></a><a href="debt-payoff-calculator.html"><span data-caluler-lucide-related="true" class="related-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" focusable="false" data-caluler-icon="wallet-minimal" data-lucide-icon="wallet-minimal"><path d="M17 14h.01" />
+  <path d="M7 7h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14" /></svg></span><span>Debt Payoff Planner</span></a><p class="sidebar-browse"><a href="../tools.html?category=All">Browse all calculators →</a></p></div></div></aside><div class="ad-slot">Ad space</div><div class="content-box"><h2>About the Pay &amp; Salary Calculator</h2><p>Compare hourly and annual compensation or estimate take-home pay from a gross pay-period amount. The deduction percentage is an assumption you enter—not a tax calculation or payroll withholding forecast.</p><h3>How to use</h3><ol><li>Select hourly-to-annual, annual-to-hourly, or take-home estimate mode.</li><li>Enter the pay amount and work schedule. For take-home mode, enter the gross amount per pay period and estimated deduction rate.</li><li>Review annualized pay, hourly equivalent and approximate net pay per period.</li></ol><h3>Formula and method</h3><p>Annualized hourly pay = hourly rate × hours per week × working weeks. Hourly equivalent = annual salary ÷ (hours per week × working weeks). Estimated net pay = gross pay per period × (1 − deduction rate).</p><h3>Worked example</h3><p>At 25 per hour, 40 hours per week and 52 working weeks, annualized gross pay is 52,000 before unpaid leave, taxes and benefits.</p><h3>Assumptions and limitations</h3><p>Use the same currency unit for all monetary inputs on this page. Results are estimates based on entered assumptions. They are not personalized financial, investment, credit, legal or tax advice; confirm important decisions with authoritative terms and a qualified professional where appropriate.</p><section class="tool-faq" aria-labelledby="faq-paycheck-calculator-html"><h3 id="faq-paycheck-calculator-html">Frequently Asked Questions</h3><details><summary>Does this calculate actual tax withholding?</summary><p>No. Use a tax estimator or payroll statement for jurisdiction-specific withholding and deductions.</p></details><details><summary>Can my weekly hours change the estimate?</summary><p>Yes. Annualized earnings scale with the hours and working weeks entered.</p></details><details><summary>Are bonuses included?</summary><p>Only if you include them in the amount you enter; this page does not separately model bonuses.</p></details><details><summary>Why might actual net pay differ?</summary><p>Taxes, benefits, retirement contributions, overtime rules and local payroll deductions vary.</p></details></section><section class="tool-sources" aria-labelledby="sources-paycheck-calculator-html"><h3 id="sources-paycheck-calculator-html">Sources and further reading</h3><p>These resources provide general background. They do not validate your individual inputs or replace product terms or local rules.</p><ul><li><a href="https://www.irs.gov/individuals/tax-withholding-estimator" target="_blank" rel="noopener noreferrer">IRS: Tax withholding estimator</a></li></ul></section></div></main></div></section><!-- Caluler ad placeholder: add approved ad code here when ready -->
+<div class="caluler-ad-slot caluler-ad-slot--content" role="complementary" aria-label="Advertisement space"><span class="caluler-ad-slot__label">Advertisement</span></div><footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-brand"><img alt="Caluler.Work" class="footer-brand-logo" src="../assets/caluler-logo.webp" width="180" height="34" loading="lazy" decoding="async" style="display:block;width:180px;max-width:100%;height:auto;object-fit:contain;margin:0 0 18px;"/><p>Free online calculators and practical productivity tools for health, finance, math, education, conversions and everyday tasks.</p>
+<div class="footer-socials footer-socials--brand" role="group" aria-label="Caluler social media">
+<span class="footer-social-icon footer-social-youtube" role="img" aria-label="YouTube">
+<svg viewBox="0 0 24 24" aria-hidden="true">
+<path fill="#FFFFFF" fill-rule="evenodd" d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31.2 31.2 0 0 0 0 12a31.2 31.2 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31.2 31.2 0 0 0 24 12a31.2 31.2 0 0 0-.5-5.8Z M9.6 15.5l6.2-3.5-6.2-3.5z"/>
+</svg>
+</span>
+<span class="footer-social-icon footer-social-facebook" role="img" aria-label="Facebook">
+<svg viewBox="0 0 24 24" aria-hidden="true">
+<circle cx="12" cy="12" r="11" fill="#FFFFFF"/>
+<path fill="#1264A3" d="M13.5 21v-8h2.7l.4-3.1h-3.1V7.9c0-.9.3-1.6 1.6-1.6h1.7V3.5c-.3 0-1.4-.1-2.6-.1-2.6 0-4.4 1.6-4.4 4.6v1.9H7v3.1h2.8v8z"/>
+</svg>
+</span>
+<span class="footer-social-icon footer-social-x" role="img" aria-label="X">
+<svg viewBox="0 0 24 24" aria-hidden="true">
+<path fill="#FFFFFF" d="M18.901 1.153h3.68l-8.04 9.19 9.46 12.504h-7.406l-5.8-7.584-6.64 7.584h-3.68l8.6-9.83L.3 1.153h7.594l5.243 6.932zm-1.291 19.494h2.039L6.482 3.238H4.294z"/>
+</svg>
+</span>
+</div></div><div class="footer-links"><h3>Explore</h3><a href="../tools.html">All 212 Tools</a><a href="../tools/age-calculator.html">Age Calculator</a><a href="../tools/bmi-calculator.html">BMI Calculator</a><a href="../tools/percentage-calculator.html">Percentage Calculator</a></div><div class="footer-links"><h3>Company &amp; Legal</h3><a href="../about.html">About Caluler</a><a href="../contact.html">Contact</a><a href="../disclaimer.html">Disclaimer</a><a href="../privacy.html">Privacy Policy</a><a href="../terms.html">Terms &amp; Conditions</a></div></div><div class="footer-bottom"><span>© 2026 Caluler. All rights reserved.</span><span class="footer-note">Free · Fast · Browser based · Mobile friendly</span></div></div></footer><script>(() => {
+'use strict';
+const form = document.getElementById('financeForm');
+const result = document.getElementById('result');
+const kind = document.querySelector('.calculator[data-calc-type]').dataset.calcType;
+const num = id => { const el=document.getElementById(id); if(!el) return 0; const raw=String(el.value).trim(); if(raw==='') throw new Error('Enter a value for '+(el.labels&&el.labels[0]?el.labels[0].textContent:id)+'.'); const v=Number(raw); if(!Number.isFinite(v)) throw new Error('Please enter valid numeric values.'); return v; };
+const str = id => { const el=document.getElementById(id); return el ? el.value : ''; };
+const need = (ok, msg) => { if(!ok) throw new Error(msg); };
+const fmt = v => Number(v).toLocaleString(undefined,{maximumFractionDigits:2,minimumFractionDigits:0});
+const pct = v => fmt(v)+'%';
+const pair = (label, value) => [label, value];
+const money = v => fmt(v);
+function syncPaySalaryFieldRequirements() {
+  if (kind !== 'pay-salary') return;
+  const modeEl = document.getElementById('mode');
+  if (!modeEl || !form) return;
+  const mode = modeEl.value;
+  const rules = {
+    amount: {required:true, help:''},
+    hours: {
+      required:mode !== 'net',
+      help:mode === 'net' ? 'Optional — used only to calculate hourly equivalent.' : ''
+    },
+    weeks: {
+      required:mode !== 'net',
+      help:mode === 'net' ? 'Optional — used only to calculate hourly equivalent.' : ''
+    },
+    periods: {
+      required:mode === 'net',
+      help:mode === 'net' ? '' : 'Optional — defaults to 26 pay periods per year.'
+    },
+    deductionRate: {
+      required:mode === 'net',
+      help:mode === 'net' ? '' : 'Optional — defaults to 0%.'
+    }
+  };
+  Object.entries(rules).forEach(([id, rule]) => {
+    const input = document.getElementById(id);
+    const label = form.querySelector('label[for="' + id + '"]');
+    if (!input || !label) return;
+
+    if (!label.dataset.calulerBaseLabel) {
+      label.dataset.calulerBaseLabel = label.textContent.replace(/\s+\(optional[^)]*\)$/i, '').trim();
+    }
+    label.textContent = label.dataset.calulerBaseLabel;
+
+    input.required = rule.required;
+    input.setAttribute('aria-required', rule.required ? 'true' : 'false');
+    input.placeholder = '';
+
+    let helper = input.parentElement.querySelector('[data-caluler-mode-help="' + id + '"]');
+    if (!helper) {
+      helper = document.createElement('small');
+      helper.setAttribute('data-caluler-mode-help', id);
+      helper.id = id + '-mode-help';
+      helper.style.cssText = 'display:block;color:var(--muted,#63758b);font-size:0.85rem;line-height:1.4;font-weight:400;margin-top:-3px;';
+      input.insertAdjacentElement('afterend', helper);
+    }
+    helper.textContent = rule.help;
+    helper.hidden = !rule.help;
+
+    if (rule.help) {
+      input.setAttribute('aria-describedby', helper.id);
+    } else if (input.getAttribute('aria-describedby') === helper.id) {
+      input.removeAttribute('aria-describedby');
+    }
+  });
+}
+if (kind === 'pay-salary') {
+  syncPaySalaryFieldRequirements();
+  const payModeControl = document.getElementById('mode');
+  if (payModeControl) payModeControl.addEventListener('change', syncPaySalaryFieldRequirements);
+}
+function render(items, note='') {
+  if(items.some(item=>/NaN|Infinity|∞/.test(String(item[1]))))throw new Error('These values exceed the supported calculation range.');
+  const paint=()=>{
+  /* CALULER-FINANCE-RESULT-SUMMARY-V1 */
+  result.classList.remove('error');
+  const rows = items.map(([label, value]) => '<div class="finance-result-line"><span class="finance-result-label">' + escapeHtml(label) + ':</span><strong class="finance-result-value">' + escapeHtml(String(value)) + '</strong></div>').join('');
+  result.innerHTML = '<div class="finance-result-summary">' + rows + '</div>' + (note ? '<p class="finance-result-note">' + escapeHtml(note) + '</p>' : '');
+
+  };
+  if(form.calulerFinanceCommit)form.calulerFinanceCommit(paint);else paint();
+}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function readPaycheckCalculation() {
+        const mode=str('mode'), amount=num('amount');
+        const readOptional = id => {
+          const el=document.getElementById(id), raw=el?String(el.value).trim():'';
+          if(raw==='') return null;
+          const value=Number(raw);
+          need(Number.isFinite(value),'Enter a valid number for '+(el.labels&&el.labels[0]?el.labels[0].textContent:id)+'.');
+          return value;
+        };
+        const hours=readOptional('hours'), weeks=readOptional('weeks');
+        const periodsInput=readOptional('periods'), deductionInput=readOptional('deductionRate');
+        const netMode=mode==='net';
+        need(amount>=0,'Pay amount must be non-negative.');
+        if(netMode){
+          need(periodsInput!==null&&Number.isInteger(periodsInput)&&periodsInput>=1&&periodsInput<=365,'Gross-to-net mode requires 1–365 pay periods per year.');
+          need(deductionInput!==null&&deductionInput>=0&&deductionInput<=100,'Gross-to-net mode requires an estimated deduction rate from 0% to 100%.');
+          need((hours===null&&weeks===null)||(hours!==null&&weeks!==null),'For an hourly equivalent, enter both weekly hours and working weeks, or leave both blank.');
+          if(hours!==null&&weeks!==null) need(hours>0&&hours<=168&&weeks>0&&weeks<=52,'Optional work schedule must use hours greater than 0 and at most 168, and weeks greater than 0 and at most 52.');
+        } else {
+          need(hours!==null&&hours>0&&hours<=168&&weeks!==null&&weeks>0&&weeks<=52,'Hourly and annual modes require hours greater than 0 and at most 168, plus working weeks greater than 0 and at most 52.');
+          if(periodsInput!==null) need(Number.isInteger(periodsInput)&&periodsInput>=1&&periodsInput<=365,'Pay periods must be a whole number from 1 to 365.');
+          if(deductionInput!==null) need(deductionInput>=0&&deductionInput<=100,'Estimated deductions must be between 0% and 100%.');
+        }
+        const periods=periodsInput===null?26:periodsInput;
+        const deduct=(deductionInput===null?0:deductionInput)/100;
+        const hasSchedule=hours!==null&&weeks!==null;
+        let annual, hourly=null;
+        if(mode==='hourly'){hourly=amount;annual=amount*hours*weeks;}
+        else if(mode==='annual'){annual=amount;hourly=annual/(hours*weeks);}
+        else {annual=amount*periods;if(hasSchedule)hourly=annual/(hours*weeks);}
+        const grossPer=annual/periods, netPer=grossPer*(1-deduct);
+        return {annual,hourly,grossPer,netPer,periods};
+}
+form.calulerReadPaycheck=readPaycheckCalculation;
+function calculate() {
+  try {
+    let out=[]; let note='';
+    switch(kind) {
+      case 'interest-time': {
+        const mode=str('mode'), amount=num('amount'), rate=num('rate')/100, years=num('years'), frequency=Math.max(1,Math.floor(num('frequency')));
+        need(amount>0 && years>=0 && rate>-1, 'Amount must be positive, time non-negative and annual rate above −100%.');
+        if(mode==='simple'){const interest=amount*rate*years;out=[pair('Simple interest',money(interest)),pair('Total amount',money(amount+interest)),pair('Principal',money(amount))];}
+        else if(mode==='present'){const future=num('futureAmount');need(future>0,'Enter a positive future amount.');out=[pair('Present value',money(future/Math.pow(1+rate,years))),pair('Future amount',money(future)),pair('Discounted amount',money(future-future/Math.pow(1+rate,years)))];}
+        else if(mode==='ear'){out=[pair('Effective annual rate',pct((Math.pow(1+rate/frequency,frequency)-1)*100)),pair('Nominal annual rate',pct(rate*100)),pair('Compounding periods / year',frequency)];}
+        else {const fv=amount*Math.pow(1+rate/frequency,frequency*years);out=[pair('Future value',money(fv)),pair('Interest growth',money(fv-amount)),pair('Principal',money(amount)),pair('Total growth (%)',pct(amount?((fv-amount)/amount*100):0))];}
+        break;
+      }
+      case 'savings-planner': {
+        const mode=str('mode'), initial=num('initial'), monthly=num('monthly')+num('extraMonthly'), r=num('rate')/100, years=num('years'), target=num('target');
+        need(initial>=0&&monthly>=0&&years>0&&r>-1&&target>=0,'Enter non-negative balances/contributions, a positive timeline and a rate above −100%.');
+        const i=Math.pow(1+r,1/12)-1, m=Math.max(1,Math.round(years*12)), growth=Math.pow(1+i,m), existing=initial*growth;
+        if(mode==='goal'){const needed=i===0?(target-initial)/m:(target-existing)*i/(growth-1);out=[pair('Monthly deposit needed',money(Math.max(0,needed))),pair('Target balance',money(target)),pair('Current savings future value',money(existing)),pair('Months in plan',m)];}
+        else {let bal=initial;for(let k=0;k<m;k++)bal=bal*(1+i)+monthly;out=[pair('Projected balance',money(bal)),pair('Starting balance',money(initial)),pair('Total deposits',money(monthly*m)),pair('Estimated growth',money(bal-initial-monthly*m))];}
+        break;
+      }
+      case 'investment-return': {
+        const mode=str('mode'), cost=num('cost'), ending=num('ending'), fees=num('fees'), dividends=num('dividends'), units=Math.max(1,Math.floor(num('units'))), years=num('years');
+        need(cost>0&&ending>=0&&fees>=0&&dividends>=0&&years>=0,'Purchase cost must be positive; other values and the holding period cannot be negative.');
+        const factor=mode==='unit'?units:1, start=cost*factor+fees, end=ending*factor+dividends, profit=end-start, roi=profit/(start||1)*100;
+        out=[pair('Net profit / loss',money(profit)),pair('ROI',pct(roi)),pair('Total cost including fees',money(start)),pair('Ending value plus distributions',money(end))];
+        if(years>0&&start>0&&end>0)out.push(pair('Annualized growth (CAGR)',pct((Math.pow(end/start,1/years)-1)*100)));
+        break;
+      }
+      case 'sales-tax-vat': {
+        const mode=str('mode'), amount=num('amount'), rate=num('rate')/100, discount=num('discount')/100;
+        need(amount>=0&&rate>=0&&discount>=0&&discount<=1,'Price must be non-negative and discount between 0% and 100%.');
+        if(mode==='remove'){const net=amount/(1+rate);out=[pair('Pre-tax price',money(net)),pair('Tax included',money(amount-net)),pair('Tax-inclusive total',money(amount))];}
+        else {const net=amount*(1-discount), tax=net*rate;out=[pair('Price after discount',money(net)),pair('Tax amount',money(tax)),pair('Final total',money(net+tax)),pair('Discount saved',money(amount-net))];}
+        break;
+      }
+      case 'commission-split': {
+        const sales=num('sales'), rate=num('rate')/100, share=num('yourShare')/100, recipients=Math.floor(num('recipients')), bonus=num('bonus');
+        need(sales>=0&&rate>=0&&share>=0&&share<=1&&recipients>=1&&bonus>=0,'Check sales, rates, recipient count and bonus.');
+        const base=sales*rate, total=base+bonus, yours=total*share, rem=total-yours;
+        out=[pair('Commission before bonus',money(base)),pair('Total commission + bonus',money(total)),pair('Primary share',money(yours)),pair('Each other recipient',money(rem/recipients)),pair('Remainder to split',money(rem))];
+        break;
+      }
+      case 'pay-salary': {
+        const {annual,hourly,grossPer,netPer}=readPaycheckCalculation();
+        out=[pair('Annualized gross pay',money(annual)),pair('Hourly equivalent',hourly===null?'Not entered':money(hourly)),pair('Gross per pay period',money(grossPer)),pair('Estimated take-home per period',money(netPer))];
+        break;
+      }
+      case 'debt-payoff': {
+        let balance=num('balance'); const apr=num('rate')/100, payment=num('payment')+num('extra');
+        need(balance>=0&&apr>=0&&payment>0,'Enter a non-negative balance and APR, plus a positive monthly payment.');
+        if(balance===0){out=[pair('Payoff time','0 months'),pair('Total interest',money(0)),pair('Total paid',money(0))];break;}
+        const r=apr/12; let months=0,totalInterest=0,totalPaid=0;
+        while(balance>0.005&&months<1200){const interest=balance*r;need(payment>interest,'Payment must exceed the monthly interest or the debt will not shrink.');const paid=Math.min(payment,balance+interest);balance=balance+interest-paid;totalInterest+=interest;totalPaid+=paid;months++;}
+        need(balance<=0.005,'This scenario exceeds the 100-year simulation limit. Increase payments or review the rate.');
+        out=[pair('Estimated payoff time',months+' months'),pair('Total paid',money(totalPaid)),pair('Total interest',money(totalInterest)),pair('Monthly payment used',money(payment))];
+        break;
+      }
+      case 'discount-sale': {
+        const price=num('price'), d1=num('discount')/100, d2=num('extra')/100, tax=num('tax')/100;
+        need(price>=0&&d1>=0&&d1<=1&&d2>=0&&d2<=1&&tax>=0,'Check price, discount and tax values.');
+        const after1=price*(1-d1), after2=after1*(1-d2), saved=price-after2, taxAmt=after2*tax;
+        out=[pair('After first discount',money(after1)),pair('After second discount',money(after2)),pair('Total savings',money(saved)),pair('Estimated tax',money(taxAmt)),pair('Final price',money(after2+taxAmt))];
+        break;
+      }
+      case 'cash-flow': {
+        const opening=num('opening'), opIn=num('opIn'),opOut=num('opOut'),invIn=num('invIn'),invOut=num('invOut'),finIn=num('finIn'),finOut=num('finOut');
+        need([opening,opIn,opOut,invIn,invOut,finIn,finOut].every(x=>x>=0),'Cash balances and flows must be non-negative inputs.');
+        const op=opIn-opOut, inv=invIn-invOut, fin=finIn-finOut, change=op+inv+fin;
+        out=[pair('Net operating cash',money(op)),pair('Net investing cash',money(inv)),pair('Net financing cash',money(fin)),pair('Net cash change',money(change)),pair('Ending cash',money(opening+change))];break;
+      }
+      case 'business-valuation': {
+        const method=str('method'), revenue=num('revenue'), ebitda=num('ebitda'), em=num('earningsMultiple'), rm=num('revenueMultiple'), debt=num('debt'), cash=num('cash');
+        need([revenue,ebitda,em,rm,debt,cash].every(x=>x>=0),'Values and multiples must be non-negative.');
+        const metric=method==='revenue'?revenue:ebitda, multiple=method==='revenue'?rm:em, ev=metric*multiple, equity=ev-debt+cash;
+        out=[pair('Selected metric',money(metric)),pair('Selected multiple',multiple.toFixed(2)+'×'),pair('Implied enterprise value',money(ev)),pair('Illustrative equity value',money(equity))];break;
+      }
+      case 'dividend-yield': {
+        const price=num('price'),shares=num('shares'),div=num('dividend'),growth=num('growth')/100;
+        need(price>0&&shares>=0&&div>=0&&growth>-1,'Share price must be positive and other values valid.');
+        out=[pair('Dividend yield',pct(div/price*100)),pair('Annual dividend income',money(div*shares)),pair('Current share value',money(price*shares)),pair('Next-year income scenario',money(div*(1+growth)*shares))];break;
+      }
+      case 'currency-converter': {
+        const amount=num('amount'),rate=num('rate'),fee=num('fee')/100,from=str('fromCode'),to=str('toCode');
+        need(amount>=0&&rate>0&&fee>=0&&fee<=1,'Amount must be non-negative, exchange rate positive and fee 0–100%.');
+        const feeAmount=amount*fee, net=amount-feeAmount, converted=net*rate;
+        out=[pair('Source amount',fmt(amount)+' '+from),pair('Conversion fee',fmt(feeAmount)+' '+from),pair('Amount after fee',fmt(net)+' '+from),pair('Estimated converted amount',fmt(converted)+' '+to),pair('Entered rate',fmt(rate)+' '+to+' per '+from)];break;
+      }
+      case 'profit-margin': {
+        const revenue=num('revenue'),direct=num('directCosts'),operating=num('operatingCosts'),other=num('otherCosts');
+        need(revenue>=0&&direct>=0&&operating>=0&&other>=0,'Revenue and entered costs must be non-negative.');
+        const gross=revenue-direct, op=gross-operating, net=op-other;
+        out=[pair('Gross profit',money(gross)),pair('Gross margin',revenue?pct(gross/revenue*100):'—'),pair('Operating profit',money(op)),pair('Operating margin',revenue?pct(op/revenue*100):'—'),pair('Profit after entered costs',money(net)),pair('Markup on direct costs',direct?pct(gross/direct*100):'—')];break;
+      }
+      case 'tip': {
+        const bill=num('bill'),tipRate=num('tipRate')/100,taxRate=num('taxRate')/100,people=Math.floor(num('people')),basis=str('tipBasis');
+        need(bill>=0&&tipRate>=0&&taxRate>=0&&people>=1,'Check bill, percentages and the number of people.');
+        const tax=bill*taxRate, base=basis==='afterTax'?bill+tax:bill, tip=base*tipRate, total=bill+tax+tip;
+        out=[pair('Tax amount',money(tax)),pair('Tip amount',money(tip)),pair('Total bill',money(total)),pair('Per-person total',money(total/people)),pair('Per-person tip',money(tip/people))];break;
+      }
+      case 'inflation': {
+        const amount=num('amount'), rate=num('rate')/100, years=num('years');need(amount>=0&&rate>-1&&years>=0,'Amount/time must be non-negative and inflation above −100%.');
+        const factor=Math.pow(1+rate,years), future=amount*factor, real=amount/factor;
+        out=[pair('Future equivalent cost',money(future)),pair('Purchasing power of fixed amount',money(real)),pair('Purchasing-power change',pct((real/Math.max(amount,1e-9)-1)*100)),pair('Price-level multiplier',fmt(factor)+'×')];break;
+      }
+      case 'net-worth': {
+        const assets=num('cash')+num('investments')+num('property')+num('otherAssets'), liabilities=num('mortgages')+num('loans')+num('cards')+num('otherLiabilities');
+        need(assets>=0&&liabilities>=0,'Assets and liabilities must be non-negative.');
+        out=[pair('Total assets',money(assets)),pair('Total liabilities',money(liabilities)),pair('Estimated net worth',money(assets-liabilities)),pair('Liabilities / assets',assets?pct(liabilities/assets*100):'—')];break;
+      }
+      case 'budget-allocation': {
+        const income=num('income'), needs=num('needsRate'), wants=num('wantsRate'), savings=num('savingsRate'), total=needs+wants+savings;
+        need(income>=0&&needs>=0&&wants>=0&&savings>=0,'Income and percentages must be non-negative.');need(Math.abs(total-100)<0.011,'Needs, wants and savings percentages must add to 100%.');
+        out=[pair('Needs allocation',money(income*needs/100)),pair('Wants allocation',money(income*wants/100)),pair('Savings / debt goals',money(income*savings/100)),pair('Total allocated',money(income))];break;
+      }
+      case 'emergency-fund': {
+        const expenses=num('expenses'),months=num('monthsTarget'),current=num('current'),save=num('monthlySave');need(expenses>=0&&months>0&&current>=0&&save>=0,'Enter valid monthly expenses, target months and savings.');
+        const target=expenses*months,gap=Math.max(0,target-current),coverage=expenses?current/expenses:0;
+        out=[pair('Target fund',money(target)),pair('Remaining gap',money(gap)),pair('Current expense coverage',fmt(coverage)+' months'),pair('Months to target at planned saving',save?String(Math.ceil(gap/save))+' months':(gap?'Not reached with zero deposits':'0 months'))];break;
+      }
+      case 'retirement': {
+        const age=num('ageNow'), retire=num('ageRetire'), current=num('current'), monthly=num('monthly'), rate=num('returnRate')/100, inflation=num('inflationRate')/100, income=num('incomeToday');
+        need(age>=18&&retire>age&&current>=0&&monthly>=0&&rate>-1&&inflation>-1&&income>=0,'Retirement age must be later than current age; review balances and rates.');
+        const years=retire-age, months=Math.round(years*12), mr=Math.pow(1+rate,1/12)-1, ir=Math.pow(1+inflation,1/12)-1;let bal=current;
+        for(let m=0;m<months;m++) bal=bal*(1+mr)+monthly;
+        const real=bal/Math.pow(1+inflation,years), annualTarget=income*12, nest=annualTarget/0.04;
+        out=[pair('Years to retirement',years+' years'),pair('Projected nominal balance',money(bal)),pair('Balance in today’s money',money(real)),pair('4% annual withdrawal illustration',money(bal*0.04/12)+' / month'),pair('Illustrative target at 4% rule',money(nest)),pair('Target gap (today-money basis)',money(nest-real))];break;
+      }
+      case 'loan-affordability': {
+        const income=num('income'), existing=num('existingDebt'), proposed=num('proposed'), limit=num('limit');need(income>0&&existing>=0&&proposed>=0&&limit>0&&limit<=100,'Income must be positive and DTI limit between 0 and 100%.');
+        const now=existing/income*100, after=(existing+proposed)/income*100, cap=Math.max(0,income*limit/100-existing);
+        out=[pair('Current DTI',pct(now)),pair('DTI with proposed payment',pct(after)),pair('Monthly payment ceiling at selected DTI',money(cap)),pair('Proposed payment within limit',(after<=limit?'Yes':'No'))];break;
+      }
+      case 'ltv': {
+        const property=num('propertyValue'),loan=num('loanAmount');need(property>0&&loan>=0,'Property value must be positive and loan balance non-negative.');
+        out=[pair('Loan-to-value ratio',pct(loan/property*100)),pair('Estimated equity',money(property-loan)),pair('Equity share',pct((property-loan)/property*100)),pair('Loan balance',money(loan))];break;
+      }
+      case 'credit-utilization': {
+        const b1=num('balance1'),l1=num('limit1'),b2=num('balance2'),l2=num('limit2'),b3=num('balance3'),l3=num('limit3'),target=num('target')/100;
+        need([b1,l1,b2,l2,b3,l3].every(x=>x>=0)&&l1+l2+l3>0&&target>=0&&target<=1,'Limits must total more than zero; balances and target must be valid.');
+        const balance=b1+b2+b3,limit=l1+l2+l3,util=balance/limit*100,gap=Math.max(0,balance-limit*target);
+        out=[pair('Overall balance',money(balance)),pair('Combined credit limits',money(limit)),pair('Overall utilization',pct(util)),pair('Paydown to selected target',money(gap)),pair('Card 1 utilization',l1?pct(b1/l1*100):'—'),pair('Card 2 utilization',l2?pct(b2/l2*100):'—'),pair('Card 3 utilization',l3?pct(b3/l3*100):'—')];break;
+      }
+      case 'capital-gains': {
+        const proceeds=num('proceeds'),basis=num('basis'),improvements=num('improvements'),costs=num('sellingCosts'),rate=num('taxRate')/100;need(proceeds>=0&&basis>=0&&improvements>=0&&costs>=0&&rate>=0&&rate<=1,'Amounts and tax rate must be non-negative and tax rate no higher than 100%.');
+        const adjusted=basis+improvements,gain=proceeds-costs-adjusted,tax=Math.max(0,gain)*rate;
+        out=[pair('Adjusted basis',money(adjusted)),pair('Estimated gain / loss',money(gain)),pair('Tax on positive gain at entered rate',money(tax)),pair('Proceeds after costs and estimated tax',money(proceeds-costs-tax))];break;
+      }
+      case 'bond-yield': {
+        const face=num('face'),price=num('price'),coupon=num('coupon')/100,years=num('years');need(face>0&&price>0&&coupon>=0&&years>0,'Face value, price and maturity years must be positive; coupon cannot be negative.');
+        const annual=face*coupon,current=annual/price*100,ytm=((annual+(face-price)/years)/((face+price)/2))*100;
+        out=[pair('Annual coupon income',money(annual)),pair('Current yield',pct(current)),pair('Approximate yield to maturity',pct(ytm)),pair('Premium / discount to face',money(price-face))];break;
+      }
+      case 'portfolio-rebalance': {
+        const values=[num('stockValue'),num('bondValue'),num('cashValue'),num('otherValue')],targets=[num('stockTarget'),num('bondTarget'),num('cashTarget'),num('otherTarget')];
+        need(values.every(v=>v>=0)&&targets.every(v=>v>=0)&&Math.abs(targets.reduce((a,b)=>a+b,0)-100)<0.011,'Current values must be non-negative and target percentages must add to 100%.');
+        const total=values.reduce((a,b)=>a+b,0);need(total>0,'Enter a positive total portfolio value.');
+        const names=['Stocks','Bonds','Cash','Other assets'];out=[pair('Total portfolio',money(total))];
+        values.forEach((v,i)=>{const goal=total*targets[i]/100,delta=goal-v;out.push(pair(names[i]+' current / target',money(v)+' / '+money(goal)));out.push(pair(names[i]+' difference',money(delta)+(delta>0?' (add)':' (reduce)')));});break;
+      }
+      case 'rental-yield': {
+        const price=num('price'),rent=num('rent'),vac=num('vacancy')/100,opex=num('opex'),annualCosts=num('annualCosts'),debt=num('debtService'),cash=num('cashInvested');
+        need(price>0&&rent>=0&&vac>=0&&vac<1&&opex>=0&&annualCosts>=0&&debt>=0&&cash>0,'Check property value, vacancy, expenses, debt service and cash invested.');
+        const gross=rent*12,effective=gross*(1-vac),noi=effective-opex*12-annualCosts,after=noi-debt;
+        out=[pair('Gross annual rent',money(gross)),pair('Effective rent after vacancy',money(effective)),pair('Net operating income (NOI)',money(noi)),pair('Gross rental yield',pct(gross/price*100)),pair('Cap rate',pct(noi/price*100)),pair('Cash flow after debt service',money(after)),pair('Cash-on-cash return',pct(after/cash*100))];break;
+      }
+      case 'npv-irr': {
+        const initial=num('initial'),discount=num('discountRate')/100,cfs=[num('cf1'),num('cf2'),num('cf3'),num('cf4'),num('cf5')];need(initial>=0&&discount>-1,'Initial outlay must be non-negative and discount rate above −100%.');
+        const npvAt=r=>-initial+cfs.reduce((sum,cf,i)=>sum+cf/Math.pow(1+r,i+1),0),npv=npvAt(discount);
+        let irr=null,prevR=-0.999,prev=npvAt(prevR),found=false;
+        for(let k=1;k<=2000;k++){const r=-0.999+(10.999*k/2000),v=npvAt(r);if(prev===0){irr=prevR;found=true;break;}if(v===0||v*prev<0){let lo=prevR,hi=r,flo=npvAt(lo);for(let j=0;j<100;j++){const mid=(lo+hi)/2,fm=npvAt(mid);if(Math.abs(fm)<1e-8){lo=hi=mid;break;}if(flo*fm<=0)hi=mid;else{lo=mid;flo=fm;}}irr=(lo+hi)/2;found=true;break;}prevR=r;prev=v;}
+        out=[pair('Net present value (NPV)',money(npv)),pair('Discount rate used',pct(discount*100)),pair('Approximate IRR',found?pct(irr*100):'No single root found in search range')];note='IRR search finds one sign-change root in the tested range; unusual cash-flow patterns can have multiple or no roots.';break;
+      }
+      case 'rent-vs-buy': {
+        const price=num('price'),downRate=num('downRate')/100,mortgageRate=num('mortgageRate')/100,term=num('termYears'),rent=num('rent'),rentGrowth=num('rentGrowth')/100,app=num('appreciation')/100,ownCosts=num('ownershipCosts'),closingRate=num('closingRate')/100,years=num('years'),saleRate=num('saleCosts')/100;
+        need(price>0&&downRate>=0&&downRate<=1&&mortgageRate>=0&&term>0&&rent>=0&&rentGrowth>-1&&app>-1&&ownCosts>=0&&closingRate>=0&&years>0&&saleRate>=0&&saleRate<=1,'Review the home price, rates, down payment and holding period.');
+        const down=price*downRate,loan=price-down,rm=mortgageRate/12,n=Math.round(term*12),months=Math.min(Math.round(years*12),n);let pmt=rm===0?loan/n:loan*rm/(1-Math.pow(1+rm,-n));
+        let remaining=loan;
+        for(let i=0;i<months;i++){const interest=remaining*rm;remaining=Math.max(0,remaining+interest-pmt);}
+        const closing=price*closingRate,homeFuture=price*Math.pow(1+app,years),equity=Math.max(0,homeFuture*(1-saleRate)-remaining);
+        let rentTotal=0;for(let y=0;y<Math.ceil(years);y++){const yrMonthly=rent*Math.pow(1+rentGrowth,y);rentTotal+=yrMonthly*12;if(y===Math.floor(years)-1 && years%1!==0)rentTotal-=yrMonthly*12*(1-(years%1));}
+        const ownerCost=down+closing+pmt*months+ownCosts*months-equity;
+        out=[pair('Estimated monthly mortgage payment',money(pmt)),pair('Estimated remaining loan',money(remaining)),pair('Estimated net sale equity',money(equity)),pair('Rent paid over holding period',money(rentTotal)),pair('Net owner cost estimate',money(ownerCost)),pair('Lower cost under entered assumptions',ownerCost<rentTotal?'Buying':'Renting')];
+        note='Simplified scenario. Excludes opportunity cost of down payment, income-tax effects, major repairs not entered, and detailed transaction timing.';break;
+      }
+      default: throw new Error('This calculator type is not configured.');
+    }
+    render(out,note);
+  } catch(e) {
+    if(form.calulerFinanceError)form.calulerFinanceError(e && e.message ? e.message : 'Check your inputs and try again.');else {result.classList.add('error'); result.textContent=e && e.message ? e.message : 'Check your inputs and try again.';}
+  }
+}
+form.addEventListener('submit', e=>{e.preventDefault();calculate();});
+form.querySelectorAll('input,select').forEach(el=>el.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.isComposing){e.preventDefault();if(form.requestSubmit)form.requestSubmit();else form.dispatchEvent(new Event('submit',{bubbles:true,cancelable:true}));}}));
+})();</script><script id="caluler-finance-live-diagram-script-v1" data-caluler-integrated-live-result="v1">
+/* CALULER-FINANCE-LIVE-DIAGRAM-JS-V1 */
+(() => {
+  'use strict';
+  const panel = document.querySelector('[data-finance-live-kind]');
+  if (!panel || panel.dataset.liveBound === 'true') return;
+  panel.dataset.liveBound = 'true';
+  let financeFrameInputs=null;
+  const financeInputValue=id=>financeFrameInputs&&Object.prototype.hasOwnProperty.call(financeFrameInputs,id)?financeFrameInputs[id]:document.getElementById(id)?.value;
+  const financeCollectInputs=()=>{
+    const values={};
+    (panel.closest('.calculator')||document).querySelectorAll('input,select').forEach(el=>{
+      if(!el.id)return;
+      const raw=String(el.value??'').trim();
+      if(el.type==='number'){
+        if(raw===''&&el.required)throw new Error('Complete '+el.id+' before viewing the diagram.');
+        const value=raw===''?0:Number(raw);
+        if(!Number.isFinite(value))throw new Error('Check the value for '+el.id+'.');
+        values[el.id]=raw===''?'':value;
+      }else values[el.id]=el.value;
+    });
+    return values;
+  };
+  const itemsBox = panel.querySelector('.finance-live-items');
+  const noteBox = panel.querySelector('.finance-live-note');
+  const n = (id) => {
+    const el = document.getElementById(id);
+    if (!el || String(financeInputValue(id)??'').trim() === '') return 0;
+    const value = Number(financeInputValue(id));
+    return Number.isFinite(value) ? value : 0;
+  };
+  const s = (id, fallback = '') => {
+    const el = document.getElementById(id);
+    return el ? financeInputValue(id) : fallback;
+  };
+  const clean = (value) => Number.isFinite(value) ? value : 0;
+  const money = (value) => clean(value).toLocaleString(undefined, {maximumFractionDigits: 2, minimumFractionDigits: 0});
+  const percent = (value) => money(value) + '%';
+  const row = (label, value, suffix = '') => ({label, value: clean(value), display: money(value) + suffix});
+  const pctRow = (label, value) => ({label, value: clean(value), display: percent(value)});
+  const annuity = (principal, periodicRate, periods) => {
+    if (periods <= 0) return 0;
+    if (Math.abs(periodicRate) < 1e-10) return principal / periods;
+    const denominator = 1 - Math.pow(1 + periodicRate, -periods);
+    return denominator > 0 ? principal * periodicRate / denominator : 0;
+  };
+  function calculateRows() {
+    const kind = panel.dataset.financeLiveKind;
+    switch (kind) {
+      case 'interest-time': {
+        const mode = s('mode', 'compound'), amount = n('amount'), future = n('futureAmount'), r = n('rate') / 100;
+        const years = Math.max(0, n('years')), frequency = Math.max(1, Math.floor(n('frequency') || 1));
+        if (mode === 'ear') {
+          const effective = Math.pow(1 + r / frequency, frequency) - 1;
+          return {rows:[pctRow('Nominal annual rate', r * 100), pctRow('Effective annual rate', effective * 100)], note:'The rate bars update when the nominal rate or compounding frequency changes.'};
+        }
+        if (mode === 'present') {
+          const pv = r > -1 ? future / Math.pow(1 + r, years) : 0;
+          return {rows:[row('Present value', pv), row('Discount amount', future - pv), row('Future amount', future)], note:'All bars are values in the same entered currency unit.'};
+        }
+        const growth = mode === 'simple' ? amount * r * years : amount * Math.pow(1 + r / frequency, frequency * years);
+        const total = mode === 'simple' ? amount + growth : growth;
+        const interest = total - amount;
+        return {rows:[row('Principal', amount), row(mode === 'simple' ? 'Simple interest' : 'Interest growth', interest), row('Projected total', total)], note:'Projected values update as you change principal, rate, term or compounding frequency.'};
+      }
+      case 'savings-planner': {
+        const initial=n('initial'), monthly=n('monthly')+n('extraMonthly'), r=n('rate')/100, years=Math.max(0,n('years')), months=Math.min(1200,Math.max(0,Math.round(years*12))), target=n('target');
+        const mr = r > -1 ? Math.pow(1+r,1/12)-1 : 0; let balance=initial;
+        for(let i=0;i<months;i++) balance=balance*(1+mr)+monthly;
+        const contributions=monthly*months, growth=balance-initial-contributions;
+        if(s('mode','projection')==='goal') return {rows:[row('Target balance',target),row('Projected from current plan',balance),row('Target gap / surplus',target-balance)],note:'The bars compare your entered goal with the projected savings balance; the main result shows the deposit required.'};
+        return {rows:[row('Starting savings',initial),row('Total planned deposits',contributions),row('Estimated growth',growth),row('Projected balance',balance)],note:'The projection responds to initial savings, monthly deposits, rate and timeline.'};
+      }
+      case 'investment-return': {
+        const factor=s('mode','total')==='unit'?Math.max(1,Math.floor(n('units')||1)):1;
+        const invested=n('cost')*factor+n('fees'), ending=n('ending')*factor+n('dividends'), profit=ending-invested;
+        return {rows:[row('Total invested incl. fees',invested),row('Ending value incl. distributions',ending),row('Net profit / loss',profit)],note:'Amounts use the calculator’s selected total-value or per-unit mode.'};
+      }
+      case 'sales-tax-vat': {
+        const amount=n('amount'), rate=Math.max(0,n('rate'))/100, discount=Math.min(1,Math.max(0,n('discount')/100));
+        if(s('mode','add')==='remove') {const base=1+rate>0?amount/(1+rate):amount;return {rows:[row('Pre-tax price',base),row('Included tax',amount-base),row('Tax-inclusive total',amount)],note:'The chart reflects the selected tax-inclusive mode.'};}
+        const net=amount*(1-discount), tax=net*rate;
+        return {rows:[row('Price after discount',net),row('Tax amount',tax),row('Final total',net+tax),row('Discount saved',amount-net)],note:'Bars update with the price, discount and tax rate.'};
+      }
+      case 'commission-split': {
+        const sales=n('sales'), base=sales*n('rate')/100, total=base+n('bonus'), share=Math.min(1,Math.max(0,n('yourShare')/100)), your=total*share, recipients=Math.max(1,Math.floor(n('recipients')||1)), remainder=total-your;
+        return {rows:[row('Sales amount',sales),row('Total commission + bonus',total),row('Your share',your),row('Each other recipient',remainder/recipients)],note:'Commission and split bars update as sales, rates, bonus and sharing inputs change.'};
+      }
+      case 'pay-salary': {
+        const {grossPer,netPer,periods}=document.getElementById('financeForm').calulerReadPaycheck();
+        if(![grossPer,netPer].every(Number.isFinite))throw new Error('These amounts exceed the display range.');
+        return {rows:[row('Gross Pay',grossPer),row('Estimated Deductions',grossPer-netPer),row('Take-Home Pay',netPer)],note:'Per pay period · '+periods+' periods per year'};
+      }
+      case 'debt-payoff': {
+        const balance=n('balance'), r=Math.max(0,n('rate'))/1200, payment=n('payment')+n('extra'), interest=balance*r, after=Math.max(0,balance+interest-payment);
+        return {rows:[row('Current debt balance',balance),row('One-month interest estimate',interest),row('Planned monthly payment',payment),row('Estimated balance after one payment',after)],note:'This is a one-period illustration; the main calculator estimates the full payoff schedule.'};
+      }
+      case 'discount-sale': {
+        const price=n('price'), d1=Math.min(1,Math.max(0,n('discount')/100)), d2=Math.min(1,Math.max(0,n('extra')/100)), tax=Math.max(0,n('tax')/100);
+        const after1=price*(1-d1), after2=after1*(1-d2), saved=price-after2, taxValue=after2*tax, final=after2+taxValue;
+        return {rows:[row('Original price',price),row('Total savings',saved),row('Price after discounts',after2),row('Final price incl. tax',final)],note:'The bar lengths change live with both discount rates and the tax rate.'};
+      }
+      case 'cash-flow': {
+        const opening=n('opening'), inflows=n('opIn')+n('invIn')+n('finIn'), outflows=n('opOut')+n('invOut')+n('finOut'), net=inflows-outflows;
+        return {rows:[row('Opening cash',opening),row('Total cash inflows',inflows),row('Total cash outflows',outflows),row('Ending cash',opening+net)],note:'Inflows, outflows and ending balance are recalculated from the current assumptions.'};
+      }
+      case 'business-valuation': {
+        const method=s('method','ebitda'), revenue=n('revenue'), ebitda=n('ebitda'), multiple=method==='revenue'?n('revenueMultiple'):n('earningsMultiple'), metric=method==='revenue'?revenue:ebitda, ev=metric*multiple, equity=ev-n('debt')+n('cash');
+        return {rows:[row(method==='revenue'?'Revenue metric':'EBITDA metric',metric),row('Implied enterprise value',ev),row('Debt',n('debt')),row('Illustrative equity value',equity)],note:'Switch between EBITDA and revenue multiples to see the valuation bars change.'};
+      }
+      case 'dividend-yield': {
+        const price=n('price'), shares=n('shares'), dividend=n('dividend'), growth=n('growth')/100, invested=price*shares, income=dividend*shares, next=income*(1+growth);
+        return {rows:[row('Share position value',invested),row('Annual dividend income',income),row('Next-year income scenario',next)],note:'The income bars respond to share price, share count, dividend per share and growth assumption.'};
+      }
+      case 'currency-converter': {
+        const amount=n('amount'), rate=n('rate'), feePct=Math.min(1,Math.max(0,n('fee')/100)), fee=amount*feePct, after=amount-fee, converted=after*rate, code=s('toCode','target currency')||'target currency';
+        return {rows:[row('Source amount after fee',after),row('Conversion fee (source units)',fee),{label:'Converted amount ('+code+')',value:converted,display:money(converted)+' '+code}],note:'The conversion amount updates with source value, exchange rate and fee. Source and converted currencies are different units.'};
+      }
+      case 'profit-margin': {
+        const revenue=n('revenue'), direct=n('directCosts'), operating=n('operatingCosts'), other=n('otherCosts'), totalCosts=direct+operating+other, gross=revenue-direct, net=revenue-totalCosts;
+        return {rows:[row('Revenue',revenue),row('Total entered costs',totalCosts),row('Gross profit',gross),row('Profit after entered costs',net)],note:'Cost and profit bars update directly with revenue and each cost category.'};
+      }
+      case 'tip': {
+        const bill=n('bill'), tax=bill*n('taxRate')/100, basis=s('tipBasis','preTax')==='afterTax'?bill+tax:bill, tip=basis*n('tipRate')/100, total=bill+tax+tip, people=Math.max(1,Math.floor(n('people')||1));
+        return {rows:[row('Bill before tax and tip',bill),row('Tax',tax),row('Tip',tip),row('Total per person',total/people)],note:'This live illustration changes with bill, tax, tip basis and number of people.'};
+      }
+      case 'inflation': {
+        const amount=n('amount'), r=n('rate')/100, years=Math.max(0,n('years')), factor=r>-1?Math.pow(1+r,years):1, future=amount*factor, real=factor>0?amount/factor:0;
+        return {rows:[row('Current amount',amount),row('Future equivalent cost',future),row('Purchasing power of fixed amount',real),row('Purchasing power lost',amount-real)],note:'The bars illustrate how the selected inflation rate and years change purchasing power.'};
+      }
+      case 'net-worth': {
+        const assets=n('cash')+n('investments')+n('property')+n('otherAssets'), liabilities=n('mortgages')+n('loans')+n('cards')+n('otherLiabilities');
+        return {rows:[row('Total assets',assets),row('Total liabilities',liabilities),row('Estimated net worth',assets-liabilities)],note:'Asset and liability bars update independently as you change each balance.'};
+      }
+      case 'budget-allocation': {
+        const income=n('income'), needs=n('needsRate'), wants=n('wantsRate'), savings=n('savingsRate');
+        return {rows:[{label:'Needs · '+percent(needs),value:income*needs/100,display:money(income*needs/100)}, {label:'Wants · '+percent(wants),value:income*wants/100,display:money(income*wants/100)}, {label:'Savings · '+percent(savings),value:income*savings/100,display:money(income*savings/100)}],note:'Each bar changes with the monthly income and the percentage allocated to that category.'};
+      }
+      case 'emergency-fund': {
+        const expenses=n('expenses'), target=expenses*n('monthsTarget'), current=n('current'), gap=Math.max(0,target-current), after=current+n('monthlySave');
+        return {rows:[row('Target emergency fund',target),row('Current savings',current),row('Remaining gap',gap),row('Balance after one planned deposit',after)],note:'The target, current balance and remaining gap update as you change expenses, target months and savings.'};
+      }
+      case 'retirement': {
+        const age=n('ageNow'), retirement=n('ageRetire'), current=n('current'), monthly=n('monthly'), r=n('returnRate')/100, inf=n('inflationRate')/100, years=Math.max(0,retirement-age), months=Math.min(1200,Math.max(0,Math.round(years*12))), mr=r>-1?Math.pow(1+r,1/12)-1:0;
+        let bal=current; for(let i=0;i<months;i++) bal=bal*(1+mr)+monthly;
+        const contrib=monthly*months, real=(inf>-1)?bal/Math.pow(1+inf,years):bal;
+        return {rows:[row('Current savings projected forward',current*Math.pow(1+mr,months)),row('Planned contributions',contrib),row('Nominal projected balance',bal),row('Inflation-adjusted estimate',real)],note:'The live projection responds to age, retirement age, contributions, return and inflation assumptions.'};
+      }
+      case 'loan-affordability': {
+        const income=n('income'), existing=n('existingDebt'), proposed=n('proposed'), limit=n('limit'), obligations=existing+proposed, ceiling=income*limit/100, room=ceiling-existing;
+        return {rows:[row('Monthly income',income),row('Existing debt payments',existing),row('Debt payments with proposal',obligations),row('Payment room at selected DTI limit',room)],note:'The bars compare monthly obligations with income and the selected debt-to-income limit.'};
+      }
+      case 'ltv': {
+        const property=n('propertyValue'), loan=n('loanAmount'), equity=property-loan;
+        return {rows:[row('Property value',property),row('Loan balance',loan),row('Estimated equity',equity),pctRow('Loan-to-value ratio',property?loan/property*100:0)],note:'Loan, equity and LTV update as property value or loan balance changes.'};
+      }
+      case 'credit-utilization': {
+        const balance=n('balance1')+n('balance2')+n('balance3'), limit=n('limit1')+n('limit2')+n('limit3'), available=limit-balance, target=limit*n('target')/100;
+        return {rows:[row('Total credit limit',limit),row('Credit used',balance),row('Available credit',available),row('Balance at selected target',target)],note:'The bars update as each card balance/limit and target utilization changes.'};
+      }
+      case 'capital-gains': {
+        const proceeds=n('proceeds'), adjusted=n('basis')+n('improvements'), cost=n('sellingCosts'), gain=proceeds-cost-adjusted, tax=Math.max(0,gain)*n('taxRate')/100;
+        return {rows:[row('Sale proceeds',proceeds),row('Adjusted basis + selling costs',adjusted+cost),row('Estimated gain / loss',gain),row('Estimated tax on positive gain',tax)],note:'Tax is only illustrated on a positive estimated gain using the entered rate; local rules may differ.'};
+      }
+      case 'bond-yield': {
+        const face=n('face'), price=n('price'), annual=n('face')*n('coupon')/100, years=Math.max(0.01,n('years'));
+        const current=price>0?annual/price*100:0, ytm=((annual+(face-price)/years)/((face+price)/2))*100;
+        return {rows:[row('Face value',face),row('Market price',price),row('Annual coupon income',annual),pctRow('Approx. yield to maturity',ytm)],note:'The price and income bars respond to face value, market price, coupon and years to maturity.'};
+      }
+      case 'portfolio-rebalance': {
+        const ids=['stock','bond','cash','other'], names=['Stocks','Bonds','Cash','Other assets'];
+        const values=ids.map(k=>n(k+'Value')), targets=ids.map(k=>n(k+'Target')), total=values.reduce((a,b)=>a+b,0);
+        const rows=[]; ids.forEach((k,i)=>{const target=total*targets[i]/100;rows.push(row(names[i]+' current',values[i]));rows.push(row(names[i]+' target',target));});
+        return {rows,note:'For each asset class, current value and target value are plotted on a shared portfolio-currency scale.'};
+      }
+      case 'rental-yield': {
+        const price=n('price'), rent=n('rent')*12, effective=rent*(1-Math.min(1,Math.max(0,n('vacancy')/100))), noi=effective-n('opex')*12-n('annualCosts'), after=noi-n('debtService');
+        return {rows:[row('Property price',price),row('Gross annual rent',rent),row('Net operating income',noi),row('Annual cash flow after debt service',after)],note:'Vacancy, monthly operating costs, annual costs and debt service change the live income bars.'};
+      }
+      case 'npv-irr': {
+        const initial=n('initial'), discount=n('discountRate')/100, cfs=[1,2,3,4,5].map(i=>n('cf'+i));
+        const pv=discount>-1?cfs.reduce((sum,cf,i)=>sum+cf/Math.pow(1+discount,i+1),0):0, npv=pv-initial;
+        return {rows:[row('Initial investment',initial),row('Present value of future inflows',pv),row('Net present value',npv),row('Undiscounted future cash flows',cfs.reduce((a,b)=>a+b,0))],note:'The displayed bars are a live present-value illustration; use the calculator result for the full NPV and IRR analysis.'};
+      }
+      case 'rent-vs-buy': {
+        const price=n('price'), downRate=n('downRate')/100, mortgageRate=n('mortgageRate')/100, term=Math.max(1,n('termYears')), rent=n('rent'), rentGrowth=n('rentGrowth')/100, own=n('ownershipCosts'), closing=price*n('closingRate')/100, years=Math.max(0,n('years')), saleRate=n('saleCosts')/100, loan=price*(1-downRate), monthlyRate=mortgageRate/12, payment=annuity(loan,monthlyRate,Math.max(1,term*12)), months=Math.min(1200,Math.round(years*12));
+        let rentTotal=0, remaining=loan; for(let y=0;y<Math.ceil(years);y++){const monthlyRent=rent*Math.pow(1+rentGrowth,y);rentTotal+=monthlyRent*12;if(y===Math.floor(years)-1&&years%1!==0)rentTotal-=monthlyRent*12*(1-years%1);}
+        for(let i=0;i<months;i++)remaining=Math.max(0,remaining+remaining*monthlyRate-payment);
+        const ownerCash=price*downRate+closing+payment*months+own*months, homeValue=price*Math.pow(1+n('appreciation')/100,years), equity=Math.max(0,homeValue*(1-saleRate)-remaining), ownerNet=ownerCash-equity;
+        return {rows:[row('Total rent over holding period',rentTotal),row('Upfront down payment + closing',price*downRate+closing),row('Owner cash outflow estimate',ownerCash),row('Owner net cost after estimated sale equity',ownerNet)],note:'This is a live comparison illustration; fees, taxes, maintenance, insurance and appreciation assumptions can materially change the result.'};
+      }
+      case 'emi': {
+        const principal=n('amLoanAmount'), rate=n('amAnnualRate')/100, term=n('amTermValue'), unit=s('amTermUnit','month'), frequency=s('amPaymentFrequency','monthly'), basis=s('amRateBasis','annual'), method=s('amRepaymentMethod','emi');
+        const yrs=unit==='day'?term/365:unit==='week'?term/52:unit==='year'?term:term/12;
+        const ppy=frequency==='daily'?365:frequency==='weekly'?52:frequency==='yearly'?1:12;
+        const periods=Math.max(1,Math.min(12000,Math.round(yrs*ppy)));
+        const pr=basis==='period'?rate:rate/ppy;
+        let payment=0, interestTotal=0;
+        if(method==='flat') {interestTotal=principal*(basis==='period'?rate*periods:rate*yrs);payment=(principal+interestTotal)/periods;}
+        else if(method==='equal-principal') {const fixed=n('amFixedPrincipal');payment=(fixed>0?fixed:principal/periods)+principal*pr;interestTotal=principal*pr*periods/2;}
+        else {payment=annuity(principal,pr,periods);interestTotal=Math.max(0,payment*periods-principal);}
+        const extra=n('amExtraPayment'), scheduled=payment+extra, total=principal+interestTotal;
+        return {rows:[row('Loan principal',principal),row('Estimated total interest',interestTotal),row('Payment incl. extra',scheduled),row('Estimated total repayment',total)],note:'Live repayment illustration based on selected term, rate basis, frequency and method. The amortization schedule remains the calculator’s detailed result.'};
+      }
+      default: return {rows:[],note:'Change the calculator inputs to update this diagram.'};
+    }
+  }
+  function renderPaycheckWaterfall(rows,sweepPhase=0) {
+    const host=document.createElement('div');host.className='paycheck-waterfall';
+    const caption=document.createElement('p');caption.className='paycheck-period';caption.textContent='Per pay period';host.appendChild(caption);
+    const list=document.createElement('ol');list.className='paycheck-steps';
+    const gross=rows[0].value,net=rows[2].value,retained=gross>0?Math.max(0,Math.min(100,net/gross*100)):0;
+    rows.forEach((item,index)=>{
+      const step=document.createElement('li');step.className='paycheck-step paycheck-tone-'+index;
+      const amount='$'+item.value.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2});
+      step.dataset.calulerColorSource='--paycheck-tone';step.dataset.calulerValueLabel=item.label;step.dataset.calulerValue=amount;step.setAttribute('tabindex','0');step.setAttribute('role','img');step.setAttribute('aria-label',item.label+': '+amount+' per pay period');
+      const head=document.createElement('div');head.className='paycheck-step-head';
+      const label=document.createElement('span');label.className='paycheck-step-label';label.textContent=(index===1?'− ':'')+item.label;
+      const value=document.createElement('strong');value.className='paycheck-step-value';value.textContent=(index===1&&item.value>0?'−':'')+amount;head.append(label,value);
+      const track=document.createElement('div');track.className='paycheck-step-track';track.setAttribute('aria-hidden','true');
+      const bar=document.createElement('span');bar.className='paycheck-step-bar';
+      bar.style.width=(index===0?(gross>0?100:0):index===1?(gross>0?100-retained:0):retained)+'%';
+      if(index===0){const phase=sweepPhase-Math.floor(sweepPhase);bar.style.setProperty('--paycheck-sweep-offset',(phase*(100/30+100)-100)+'%');bar.style.setProperty('--paycheck-sweep-opacity',String(Math.sin(Math.PI*phase)*.6));}
+      bar.style.marginInlineStart=(index===1?retained:0)+'%';track.appendChild(bar);step.append(head,track);list.appendChild(step);
+    });host.appendChild(list);return host;
+  }
+  function renderFinanceVisual(kind, rows) {
+    const NS = 'http://www.w3.org/2000/svg';
+    const C = {ink:'var(--text,#14243a)',muted:'var(--muted,#63758b)',line:'var(--border,#d8e3ef)',blue:'#2787a5',cyan:'#55cbd7',gold:'#e8a23a',purple:'#7c6bd0',green:'#2a9d75',red:'#d65353',pale:'var(--surface-muted,#eef6fb)',surface:'var(--card,#ffffff)',white:'#ffffff',navy:'#153047'};
+    const svg = document.createElementNS(NS,'svg');
+    svg.setAttribute('class','finance-visual-svg'); svg.setAttribute('viewBox','0 0 720 270');
+    svg.setAttribute('role','img'); svg.setAttribute('aria-label', 'Live calculator-specific financial diagram');
+    svg.setAttribute('focusable','false');
+    const financeScene = document.createElementNS(NS,'g'); financeScene.setAttribute('transform','scale(1 1.08)'); svg.appendChild(financeScene);
+    const add=(tag,attrs={},parent=financeScene,txt=null)=>{const el=document.createElementNS(NS,tag);Object.entries(attrs).forEach(([k,v])=>el.setAttribute(k,String(v)));if(txt!==null)el.textContent=String(txt);parent.appendChild(el);return el;};
+    const trunc=(v,m=29)=>{v=String(v??'');return v.length>m?v.slice(0,m-1)+'…':v;};
+    const txt=(x,y,t,size=16,fill=C.ink,weight=600,anchor='start',parent=financeScene)=>add('text',{x,y,fill,'font-size':size,'font-weight':weight,'text-anchor':anchor,'font-family':'inherit'},parent,trunc(t,size<=13?34:29));
+    const rect=(x,y,w,h,fill=C.surface,rx=14,stroke=C.line,sw=1.5,parent=financeScene)=>add('rect',{x,y,width:w,height:h,rx,fill,stroke,'stroke-width':sw},parent);
+    const line=(x1,y1,x2,y2,stroke=C.line,sw=2,parent=financeScene)=>add('line',{x1,y1,x2,y2,stroke,'stroke-width':sw,'stroke-linecap':'round'},parent);
+    const circle=(cx,cy,r,fill=C.blue,stroke='none',sw=1,parent=financeScene)=>add('circle',{cx,cy,r,fill,stroke,'stroke-width':sw},parent);
+    const path=(d,stroke=C.blue,sw=4,fill='none',parent=financeScene)=>add('path',{d,stroke,'stroke-width':sw,fill,'stroke-linecap':'round','stroke-linejoin':'round'},parent);
+    const poly=(points,stroke=C.blue,sw=4,fill='none',parent=financeScene)=>add('polyline',{points,stroke,'stroke-width':sw,fill,'stroke-linecap':'round','stroke-linejoin':'round'},parent);
+    const get=(key,idx=0)=>rows.find(r=>String(r.label||'').toLowerCase().includes(key.toLowerCase()))||rows[idx]||{label:'Value',value:0,display:'0'};
+    const val=r=>Number.isFinite(Number(r?.value))?Number(r.value):0;
+    const disp=r=>trunc(r?.display??(Number(val(r)).toLocaleString()),22);
+    const safe=(v)=>Number.isFinite(v)?v:0;
+    const head=(title,sub='Live view of your current inputs')=>{txt(18,28,title,20,C.ink,600);add('text',{x:18,y:53,fill:C.muted,'font-size':14,'font-weight':500,'text-anchor':'start','font-family':'inherit'},financeScene,String(sub??''));line(18,70,702,70,C.line,1.4);};
+    const card=(x,y,w,h,label,value,accent=C.blue)=>{rect(x,y,w,h,C.surface,14,C.line,1.4);/* CALULER-FINANCE-SUMMARY-ACCENT-REGRESSION-V1 */rect(x+8,y+(h-28)/2,3,28,accent,1.5,'none',0);txt(x+18,y+24,label,12,C.muted,600);txt(x+18,y+47,value,16,C.ink,750);};
+    const arrow=(x1,y1,x2,y2,color=C.blue)=>{line(x1,y1,x2,y2,color,2.5);const dir=x2>=x1?1:-1;path(`M ${x2-dir*9} ${y2-6} L ${x2} ${y2} L ${x2-dir*9} ${y2+6}`,color,2.5,'none');};
+    /* CALULER-FINANCE-RING-HOVER-V1 */
+let calulerRingTipGroup=null,calulerRingTipBg=null,calulerRingTipAccent=null,calulerRingTipLabel=null,calulerRingTipValue=null,calulerRingPinnedNode=null;
+const ensureCalulerRingTip=()=>{if(calulerRingTipGroup)return;calulerRingTipGroup=add('g',{'data-caluler-ring-tooltip':'true','pointer-events':'none','display':'none','aria-hidden':'true'},financeScene);calulerRingTipBg=add('rect',{x:0,y:0,width:136,height:44,rx:8,fill:C.surface,stroke:C.line,'stroke-width':1.1},calulerRingTipGroup);calulerRingTipAccent=add('rect',{x:8,y:9,width:3,height:26,rx:1.5,fill:C.blue},calulerRingTipGroup);calulerRingTipLabel=add('text',{x:72,y:17,fill:C.muted,'font-size':10.5,'font-weight':650,'text-anchor':'middle','font-family':'inherit'},calulerRingTipGroup,'');calulerRingTipValue=add('text',{x:72,y:34,fill:C.ink,'font-size':13,'font-weight':750,'text-anchor':'middle','font-family':'inherit'},calulerRingTipGroup,'');};
+const hideCalulerRingTip=()=>{if(calulerRingTipGroup)calulerRingTipGroup.setAttribute('display','none');};
+const bindRingValue=(node,label,value,color,fx,fy)=>{if(!node)return node;node.setAttribute('pointer-events','stroke');node.setAttribute('tabindex','0');node.setAttribute('focusable','true');node.setAttribute('role','button');node.setAttribute('aria-label',String(label)+': '+String(value));node.setAttribute('aria-pressed','false');node.setAttribute('style','cursor:default');const show=evt=>{if(calulerRingPinnedNode&&calulerRingPinnedNode!==node)return;ensureCalulerRingTip();const lab=String(label??'Value'),valText=String(value??'');const width=Math.max(126,Math.min(210,Math.max(lab.length*6.1,valText.length*7)+36));calulerRingTipBg.setAttribute('width',String(width));calulerRingTipAccent.setAttribute('fill',color||C.blue);calulerRingTipLabel.setAttribute('x',String(width/2+4));calulerRingTipValue.setAttribute('x',String(width/2+4));calulerRingTipLabel.textContent=lab;calulerRingTipValue.textContent=valText;let p={x:Number(fx)||0,y:Number(fy)||0};const root=financeScene.ownerSVGElement||financeScene;if(evt&&Number.isFinite(evt.clientX)&&Number.isFinite(evt.clientY)){try{const ctm=financeScene.getScreenCTM();if(ctm&&root.createSVGPoint){const pt=root.createSVGPoint();pt.x=evt.clientX;pt.y=evt.clientY;const local=pt.matrixTransform(ctm.inverse());p={x:local.x,y:local.y};}}catch(_err){}}const vb=root.viewBox&&root.viewBox.baseVal;const left=vb&&Number.isFinite(vb.x)?vb.x:0,top=vb&&Number.isFinite(vb.y)?vb.y:0;const right=left+(vb&&vb.width?vb.width:720),bottom=top+(vb&&vb.height?vb.height:420),h=44;let x=p.x+14,y=p.y+16;if(x+width>right-4)x=p.x-width-14;if(y+h>bottom-4)y=p.y-h-16;x=Math.max(left+4,Math.min(x,right-width-4));y=Math.max(top+4,Math.min(y,bottom-h-4));calulerRingTipGroup.setAttribute('transform',`translate(${x} ${y})`);calulerRingTipGroup.setAttribute('display','inline');financeScene.appendChild(calulerRingTipGroup);};const select=evt=>{if(calulerRingPinnedNode===node){calulerRingPinnedNode=null;node.setAttribute('aria-pressed','false');hideCalulerRingTip();}else{if(calulerRingPinnedNode)calulerRingPinnedNode.setAttribute('aria-pressed','false');calulerRingPinnedNode=node;node.setAttribute('aria-pressed','true');show(evt);}};node.addEventListener('pointerenter',e=>{if(!calulerRingPinnedNode)show(e);});node.addEventListener('pointermove',e=>{if(!calulerRingPinnedNode||calulerRingPinnedNode===node)show(e);});node.addEventListener('pointerleave',()=>{if(!calulerRingPinnedNode)hideCalulerRingTip();});node.addEventListener('click',select);node.addEventListener('focus',()=>{if(!calulerRingPinnedNode)show(null);});node.addEventListener('blur',()=>{if(!calulerRingPinnedNode)hideCalulerRingTip();});node.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select(null);}});return node;};
+/* /CALULER-FINANCE-RING-HOVER-V1 */
+    const arc=(cx,cy,r,a0,a1,color,sw=13,ringInfo=null)=>{const rad=a=>a*Math.PI/180;const x0=cx+r*Math.cos(rad(a0)),y0=cy+r*Math.sin(rad(a0)),x1=cx+r*Math.cos(rad(a1)),y1=cy+r*Math.sin(rad(a1));const large=Math.abs(a1-a0)>180?1:0;const sweep=a1>=a0?1:0;const node=path(`M ${x0} ${y0} A ${r} ${r} 0 ${large} ${sweep} ${x1} ${y1}`,color,sw,'none');if(ringInfo&&ringInfo.label){const mid=(a0+a1)*Math.PI/360;bindRingValue(node,ringInfo.label,ringInfo.value,color,cx+(r+sw/2)*Math.cos(mid),cy+(r+sw/2)*Math.sin(mid));}return node;};
+    const donut=(cx,cy,r,values,colors,centerTop,centerBottom,strokeWidth=22,innerInset=14,topWeight=750,bottomWeight=600,segmentLabels=[],segmentDisplays=[])=>{const total=values.reduce((a,b)=>a+Math.max(0,b),0)||1;let a=-90;values.forEach((raw,i)=>{const v=Math.max(0,raw),span=v/total*359.8,start=a*Math.PI/180,end=(a+span)*Math.PI/180,x0=cx+r*Math.cos(start),y0=cy+r*Math.sin(start),x1=cx+r*Math.cos(end),y1=cy+r*Math.sin(end),large=span>180?1:0,mid=(a+span/2)*Math.PI/180;const seg=add('path',{d:`M ${x0} ${y0} A ${r} ${r} 0 ${large} 1 ${x1} ${y1}`,fill:'none',stroke:colors[i%colors.length],'stroke-width':strokeWidth,'stroke-linecap':'butt'},financeScene);if(segmentLabels&&segmentLabels[i]){const shown=segmentDisplays&&segmentDisplays[i]!==undefined?segmentDisplays[i]:Number(v).toLocaleString();bindRingValue(seg,segmentLabels[i],shown,colors[i%colors.length],cx+(r+strokeWidth/2)*Math.cos(mid),cy+(r+strokeWidth/2)*Math.sin(mid));}a+=span;});circle(cx,cy,r-innerInset,'var(--card,#ffffff)');txt(cx,cy-2,centerTop,16,C.ink,topWeight,'middle');txt(cx,cy+19,centerBottom,11,C.muted,bottomWeight,'middle');};
+    const stage=(x,y,w,title,value,color)=>{rect(x,y,w,95,C.surface,13,C.line,1.2);rect(x,y,w,7,color,4,'none',0);txt(x+12,y+31,title,12,C.muted,650);txt(x+12,y+59,value,15,C.ink,750);};
+    const pointLine=(vals,x0=54,y0=190,w=612,h=105,color=C.blue,fillColor='rgba(39,135,165,.10)')=>{const max=Math.max(1,...vals.map(v=>Math.abs(v)));const pts=vals.map((v,i)=>[x0+i*w/Math.max(1,vals.length-1),y0-h*(Math.max(0,v)/max)]);line(x0,y0,x0+w,y0,C.line,1.3);line(x0,y0-h,x0,y0,C.line,1.3);const d='M '+pts.map(p=>p.join(' ')).join(' L ')+` L ${x0+w} ${y0} L ${x0} ${y0} Z`;path(d,'none',0,fillColor);poly(pts.map(p=>p.join(',')).join(' '),color,3.5);pts.forEach(p=>circle(p[0],p[1],4,color));};
+    const baseFor=(key,idx=0)=>get(key,idx);
+    switch(kind){
+      case 'interest-time': {
+        head('Compound growth curve','Projected value over time');
+        const amount=Math.max(0,n('amount')), rate=n('rate')/100, years=Math.max(0,n('years')), freq=Math.max(1,Math.floor(n('frequency')||1)), mode=s('mode','compound');
+        let pts=[];for(let i=0;i<=10;i++){const t=years*i/10;let v=0;if(mode==='present'){const future=n('futureAmount');v=rate>-1?future/Math.pow(1+rate,t):future;}else if(mode==='ear'){v=Math.pow(1+rate/freq,freq*t);}else if(mode==='simple'){v=amount*(1+rate*t);}else{v=amount*Math.pow(1+rate/freq,freq*t);}pts.push(v);}
+        pointLine(pts,54,198,612,120,C.blue,'rgba(39,135,165,.12)');txt(54,223,'Start',12,C.muted,600);txt(666,223,'End of term',12,C.muted,600,'end');const headline = mode==='present' ? get('present value',0) : mode==='ear' ? get('effective annual rate',1) : get('projected total',2); card(480,78,206,55,mode==='ear'?'Effective rate':mode==='present'?'Present value':'Projected value',disp(headline),C.green);break;
+      }
+      case 'savings-planner': {
+        head('Savings goal tracker','Deposits and growth move the balance toward your target');
+        const target=Math.max(0,n('target')||val(get('target balance',0))), current=Math.max(0,s('mode','projection')==='goal'?val(get('projected from current plan',1)):val(get('projected balance',3))), pct=target>0?Math.min(100,current/target*100):100;
+        arc(145,151,58,-90,-90+3.6*pct,pct>=100?C.green:C.blue,16);txt(145,148,Math.round(pct)+'%',21,C.ink,800,'middle');txt(145,170,'of goal',12,C.muted,600,'middle');
+        card(245,90,215,62,'Target balance',disp(get('target balance',0)),C.purple);card(475,90,215,62,'Projected balance',disp(get('projected from current plan',1)),C.green);
+        line(245,177,690,177,C.line,1.3);txt(245,200,'Starting savings',12,C.muted,600);txt(690,200,disp(get('starting savings',0)),13,C.ink,750,'end');txt(245,222,'Planned deposits',12,C.muted,600);txt(690,222,disp(get('total planned deposits',1)),13,C.ink,750,'end');break;
+      }
+      case 'investment-return': {
+        head('Investment outcome','Compare the amount put in with the final position');
+        const invested=val(get('total invested',0)), ending=val(get('ending value',1)), profit=val(get('net profit',2));
+        card(28,88,194,86,'Capital invested',disp(get('total invested',0)),C.blue);arrow(232,132,286,132,profit>=0?C.green:C.red);card(296,88,194,86,'Ending position',disp(get('ending value',1)),C.purple);arrow(500,132,546,132,profit>=0?C.green:C.red);rect(554,92,138,78,profit>=0?'#e7f7ef':'#fff0f0',14,profit>=0?C.green:C.red,1.3);txt(623,119,'Net return',12,C.muted,650,'middle');txt(623,146,disp(get('net profit',2)),16,profit>=0?C.green:C.red,800,'middle');txt(28,211,'Net return includes entered fees and distributions.',12,C.muted,500);break;
+      }
+      case 'sales-tax-vat': {
+        head('Price build-up','See how discount and tax change the final amount');
+        const a=Math.abs(val(get('price after discount',0))), b=Math.abs(val(get('tax amount',1))), c=Math.abs(val(get('final total',2))), max=Math.max(1,a+b);
+        rect(32,94,656,50,'#e6edf4',13,C.line,1.2);const baseW=656*a/max,taxW=656*b/max;rect(32,94,baseW,50,C.blue,13,'none',0);rect(32+baseW,94,Math.max(0,Math.min(656-baseW,taxW)),50,C.gold,0,'none',0);txt(32,78,'Pre-tax amount',13,C.muted,650);txt(688,78,'Tax added',13,C.muted,650,'end');card(32,164,198,55,'After discount',disp(get('price after discount',0)),C.blue);card(261,164,198,55,'Tax',disp(get('tax amount',1)),C.gold);card(490,164,198,55,'Final total',disp(get('final total',2)),C.green);break;
+      }
+      case 'commission-split': {
+        head('Commission distribution','Sales and incentive value is divided by the selected sharing rule');
+        const total=Math.max(0,val(get('total commission',1))), your=Math.max(0,val(get('your share',2))), each=Math.max(0,val(get('each other recipient',3))), rest=Math.max(0,total-your);
+        donut(145,151,56,[your,rest],[C.blue,C.gold],Math.round(total?your/total*100:0)+'%','your share');
+        arrow(217,151,286,151,C.purple);circle(345,125,23,C.pale,C.purple,2);circle(345,125,8,C.purple);path('M 312 166 Q 345 136 378 166',C.purple,7,'none');txt(345,195,'Sales team',13,C.ink,700,'middle');
+        [0,1,2].forEach((i)=>{const x=438+i*83;circle(x,115,18,['#e6f4fa','#fff1d9','#e9e4ff'][i]);circle(x,110,6,[C.blue,C.gold,C.purple][i]);path(`M ${x-12} 132 Q ${x} 119 ${x+12} 132`,[C.blue,C.gold,C.purple][i],5,'none');});
+        txt(438,164,'Your share',12,C.muted,600);txt(438,184,disp(get('your share',2)),14,C.ink,750);txt(688,207,'Each other recipient: '+disp(get('each other recipient',3)),12,C.muted,650,'end');break;
+      }
+      case 'pay-salary': {
+        const mode=s('mode','hourly');
+        const annualRow=get('annualized gross pay',0);
+        const grossRow=get('gross per pay',2), dedRow=get('estimated deductions',2), netRow=get('estimated take-home',3);
+        const annual=Math.max(0,val(annualRow));
+        const hourlyRow=get('hourly equivalent',1);
+        const hourlyDisplay=hourlyRow.display || money(val(hourlyRow));
+        const gross=Math.max(0,val(grossRow));
+        const ded=Math.max(0,val(dedRow));
+        const net=Math.max(0,val(netRow));
+        const periodsInput=n('periods');
+        const periods=periodsInput>0?periodsInput:26;
+        const annualNet=net*periods;
+        const retained=gross>0?Math.max(0,Math.min(100,net/gross*100)):0;
+        const deductionPct=gross>0?Math.max(0,Math.min(100,ded/gross*100)):0;
+        const modeSubtitle=mode==='hourly'
+          ? 'Hourly pay is annualized from your weekly work schedule'
+          : mode==='annual'
+            ? 'Annual salary is translated into hourly and pay-period equivalents'
+            : 'Gross pay per period is reduced by estimated deductions';
+
+        svg.setAttribute('viewBox','0 0 720 389');
+        svg.setAttribute('aria-label','Paycheck breakdown with annual gross pay, hourly equivalent, gross pay per period, estimated deductions and take-home pay');
+        txt(18,38,'Paycheck breakdown',18,C.ink,600);
+        add('text',{x:18,y:58,fill:C.muted,'font-size':11,'font-weight':500,'text-anchor':'start','font-family':'inherit'},financeScene,modeSubtitle);
+        line(18,70,702,70,C.line,1.2);
+
+        // Annualized context: the three figures remain tied to the selected mode.
+        const metricCard=(x,label,value,color)=>{
+          rect(x,78,216,62,C.surface,13,C.line,1.2);
+          rect(x+9,94,3,30,color,1.5,'none',0);
+          txt(x+18,102,label,11,C.muted,550);
+          txt(x+18,126,value,15,C.ink,600);
+        };
+        metricCard(18,mode==='net'?'Annualized gross pay':'Annual gross pay',disp(annualRow),C.blue);
+        metricCard(252,'Hourly equivalent',hourlyDisplay,C.purple);
+        metricCard(486,mode==='net'?'Annualized take-home':'Annual take-home',money(annualNet),C.green);
+
+        // Pay-period split: retained pay and estimated deductions share one proportional track.
+        rect(18,154,684,176,C.surface,16,C.line,1.3);
+        txt(36,179,'PAY-PERIOD BREAKDOWN',11,C.muted,550);
+        txt(684,179,'Gross pay  '+disp(grossRow),13,C.ink,600,'end');
+        line(36,190,684,190,C.line,1.2);
+
+        donut(116,254,48,[net,ded],[C.green,C.gold],Math.round(retained)+'%','take-home',14,7,650,500,['Take-home','Estimated deductions'],[disp(netRow),disp(dedRow)]);
+        txt(116,322,'PAY RETAINED',10,C.green,550,'middle');
+
+        txt(220,219,'TAKE-HOME',12,C.green,600);
+        txt(684,219,disp(netRow)+'  ('+Math.round(retained)+'%)',14,C.ink,600,'end');
+        txt(220,245,'ESTIMATED DEDUCTIONS',12,C.gold,600);
+        txt(684,245,disp(dedRow)+'  ('+Math.round(deductionPct)+'%)',14,C.ink,600,'end');
+
+        const trackX=220, trackY=260, trackW=464, trackH=14;
+        const netW=gross>0?Math.max(0,Math.min(trackW,trackW*net/gross)):0;
+        rect(trackX,trackY,trackW,trackH,C.pale,13,C.line,1);
+        if(netW<=1){
+          rect(trackX,trackY,trackW,trackH,C.gold,13,'none',0);
+        } else if(netW>=trackW-1){
+          rect(trackX,trackY,trackW,trackH,C.green,13,'none',0);
+        } else {
+          const split=trackX+netW, radius=7, bottom=trackY+trackH;
+          const netPath=`M ${trackX+radius} ${trackY} H ${split} V ${bottom} H ${trackX+radius} A ${radius} ${radius} 0 0 1 ${trackX} ${bottom-radius} V ${trackY+radius} A ${radius} ${radius} 0 0 1 ${trackX+radius} ${trackY} Z`;
+          const dedPath=`M ${split} ${trackY} H ${trackX+trackW-radius} A ${radius} ${radius} 0 0 1 ${trackX+trackW} ${trackY+radius} V ${bottom-radius} A ${radius} ${radius} 0 0 1 ${trackX+trackW-radius} ${bottom} H ${split} Z`;
+          path(netPath,'none',0,C.green);
+          path(dedPath,'none',0,C.gold);
+        }
+
+        txt(220,299,'Gross pay per pay period',11,C.muted,600);
+        txt(684,299,disp(grossRow),12,C.ink,600,'end');
+        txt(360,350,'Gross pay - deductions = take-home',12,C.muted,600,'middle');
+        break;
+      }
+      case 'debt-payoff': {
+        head('Debt balance after payments','An illustrative downward path as payments reduce principal');
+        const balance=Math.max(0,n('balance')), r=Math.max(0,n('rate'))/1200, p=Math.max(0,n('payment')+n('extra'));let v=balance, seq=[v];for(let i=0;i<8;i++){v=Math.max(0,v+v*r-p);seq.push(v);}pointLine(seq,50,197,620,116,C.red,'rgba(214,83,83,.09)');txt(52,222,'Today',12,C.muted,600);txt(668,222,'Later payments',12,C.muted,600,'end');card(472,78,214,51,'Balance now',disp(get('current debt balance',0)),C.red);break;
+      }
+      case 'discount-sale': {
+        head('Discount path to final price','Each discount is applied in sequence, then tax is added');
+        const labels=['Original','After discount','After extra discount','Final incl. tax'];const keys=['original price','price after discounts','price after discounts','final price incl. tax'];const colors=[C.navy,C.blue,C.purple,C.green];
+        const vals=[get('original price',0),get('price after discounts',2),get('price after discounts',2),get('final price incl. tax',3)];
+        for(let i=0;i<4;i++){const x=20+i*176;stage(x,91,154,labels[i],disp(vals[i]),colors[i]);if(i<3)arrow(x+156,140,x+174,140,C.muted);}txt(22,220,'Original price → discounts → tax-inclusive total',12,C.muted,600);break;
+      }
+      case 'cash-flow': {
+        head('Cash movement','Opening cash plus inflows less outflows determines the ending balance');
+        const rs=[get('opening cash',0),get('total cash inflows',1),get('total cash outflows',2),get('ending cash',3)];const cols=[C.navy,C.green,C.red,C.blue];const labels=['Opening','Inflows','Outflows','Ending'];
+        rs.forEach((r,i)=>{const x=35+i*173;rect(x,106,135,66,C.surface,13,C.line,1.3);circle(x+18,123,5,cols[i]);txt(x+31,128,labels[i],12,C.muted,650);txt(x+12,154,disp(r),14,C.ink,750);if(i<3)arrow(x+137,140,x+167,140,C.muted);});txt(35,211,'Cash inflows and outflows are aggregated from the selected categories.',12,C.muted,500);break;
+      }
+      case 'business-valuation': {
+        head('Valuation bridge','Operating metric × multiple, adjusted for debt and cash');
+        const rs=[get('enterprise value',1),get('debt',2),get('equity value',3)];
+        stage(24,95,174,'Selected metric',disp(rows[0]||get('revenue metric',0)),C.blue);arrow(202,143,238,143,C.muted);stage(244,95,148,'Enterprise value',disp(rs[0]),C.purple);arrow(396,143,424,143,C.muted);stage(430,95,120,'Debt / cash',disp(rs[1]),C.gold);arrow(554,143,578,143,C.muted);stage(584,95,112,'Equity',disp(rs[2]),C.green);txt(24,219,'Illustrative estimate using your selected valuation method.',12,C.muted,500);break;
+      }
+      case 'dividend-yield': {
+        head('Dividend income stream','Share position produces cash distributions over time');
+        circle(102,138,43,C.pale,C.blue,2);txt(102,132,'SHARES',12,C.blue,800,'middle');txt(102,151,disp(get('share position value',0)),11,C.ink,700,'middle');arrow(153,138,229,138,C.blue);
+        rect(240,91,190,90,C.surface,14,C.line,1.4);txt(258,119,'Annual dividend',13,C.muted,650);txt(258,148,disp(get('annual dividend income',1)),19,C.green,800);
+        arrow(435,138,495,138,C.green);rect(506,91,190,90,'#e7f7ef',14,C.green,1.4);txt(524,119,'Next-year scenario',13,C.muted,650);txt(524,148,disp(get('next-year income',2)),19,C.green,800);txt(24,218,'Income estimate follows share count, dividend and growth assumptions.',12,C.muted,500);break;
+      }
+      case 'currency-converter': {
+        head('Currency exchange path','The source amount, fee and exchange rate determine the converted amount');
+        const from=disp(get('source amount after fee',0)), fee=disp(get('conversion fee',1)), to=disp(get('converted amount',2));
+        rect(22,91,238,102,C.surface,16,C.line,1.4);circle(52,120,14,C.blue);txt(52,125,'A',13,C.white,800,'middle');txt(78,121,'You send',12,C.muted,600);txt(42,157,from,22,C.ink,800);txt(42,180,'after fee',11,C.muted,500);
+        arrow(274,141,435,141,C.purple);rect(318,93,78,36,'#eee9ff',18,C.purple,1);txt(357,116,'FX RATE',10,C.purple,800,'middle');
+        rect(450,91,248,102,'#e8f7f2',16,C.green,1.4);circle(480,120,14,C.green);txt(480,125,'B',13,C.white,800,'middle');txt(506,121,'Recipient gets',12,C.muted,600);txt(470,157,to,22,C.green,800);txt(470,180,'fee: '+fee,11,C.muted,500);break;
+      }
+      case 'profit-margin': {
+        head('Revenue-to-profit waterfall','Operating costs reduce revenue to the final profit estimate');
+        const revenue=Math.max(0,val(get('revenue',0))),cost=Math.max(0,val(get('total entered costs',1))),gross=val(get('gross profit',2)),net=val(get('profit after entered costs',3));const max=Math.max(1,revenue);
+        const ys=[100,136,172];const vals=[revenue,cost,net];const colors=[C.blue,C.gold,net>=0?C.green:C.red];const labels=['Revenue','Total costs','Net profit'];
+        for(let i=0;i<3;i++){const w=575*Math.min(1,Math.abs(vals[i])/max);txt(28,ys[i]-6,labels[i],12,C.muted,650);rect(142,ys[i]-18,545,20,'#e8eef4',10,C.line,0.7);rect(142,ys[i]-18,w,20,colors[i],10,'none',0);txt(690,ys[i]-3,disp([{value:revenue,display:disp(get('revenue',0))},{value:cost,display:disp(get('total entered costs',1))},{value:net,display:disp(get('profit after entered costs',3))}][i]),11,C.ink,750,'end');}txt(28,219,'Gross profit before operating and other costs: '+disp(get('gross profit',2)),12,C.muted,600);break;
+      }
+      case 'tip': {
+        head('Bill, tip and group split','The total is shared across the entered party size');
+        rect(24,80,270,145,C.surface,12,C.line,1.3);rect(24,80,270,30,C.navy,10,'none',0);txt(40,100,'BILL SUMMARY',11,C.white,800);const labels=['Bill','Tax','Tip','Total'];const rs=[get('bill',0),get('tax',1),get('tip',2),get('total',3)];rs.forEach((r,i)=>{const y=130+i*23;txt(40,y,labels[i],12,C.muted,600);txt(278,y,disp(r),12,C.ink,750,'end');if(i<3)line(40,y+6,278,y+6,C.line,0.8);});
+        const count=Math.min(8,Math.max(1,Math.floor(n('people')||1)));txt(350,96,'Party split',14,C.ink,750);for(let i=0;i<count;i++){const rowi=Math.floor(i/4),coli=i%4,x=373+coli*77,y=132+rowi*54;circle(x,y,15,['#e6f4fa','#fff1d9','#e9e4ff','#e5f7ec'][i%4]);circle(x,y-4,5,[C.blue,C.gold,C.purple,C.green][i%4]);path(`M ${x-9} ${y+8} Q ${x} ${y-1} ${x+9} ${y+8}`,[C.blue,C.gold,C.purple,C.green][i%4],4,'none');}rect(348,191,340,31,'#eef6fb',10,C.line,1);txt(518,211,'Per person: '+disp(get('per person',4)),13,C.blue,800,'middle');break;
+      }
+      case 'inflation': {
+        head('Purchasing power over time','A fixed amount buys less as prices rise');
+        const amount=Math.max(0,n('amount')), rate=n('rate')/100, years=Math.max(0,n('years')), pts=[];for(let i=0;i<=10;i++){const t=years*i/10;pts.push(rate>-1?amount/Math.pow(1+rate,t):amount);}
+        pointLine(pts,55,196,610,120,C.purple,'rgba(124,107,208,.12)');txt(55,222,'Today',12,C.muted,600);txt(665,222,'Future',12,C.muted,600,'end');card(470,78,216,53,'Future equivalent',disp(get('future equivalent',1)),C.purple);break;
+      }
+      case 'net-worth': {
+        head('Assets and liabilities balance','Your net worth is the difference between what you own and owe');
+        line(360,88,360,187,C.navy,5);line(235,110,485,110,C.navy,5);path('M 360 108 L 336 191 L 384 191 Z',C.navy,2,C.pale);line(226,112,180,169,C.blue,2);line(226,112,272,169,C.blue,2);path('M 170 169 Q 226 195 282 169',C.blue,3,'none');line(494,112,448,169,C.gold,2);line(494,112,540,169,C.gold,2);path('M 438 169 Q 494 195 550 169',C.gold,3,'none');card(62,80,150,54,'Total assets',disp(get('total assets',0)),C.blue);card(508,80,150,54,'Liabilities',disp(get('total liabilities',1)),C.gold);rect(235,200,250,34,'#e8f7f2',10,C.green,1.2);txt(360,222,'Net worth: '+disp(get('estimated net worth',2)),15,C.green,800,'middle');break;
+      }
+      case 'budget-allocation': {
+        head('Monthly budget allocation','Each share represents a proportion of entered take-home income');
+        const needs=get('needs',0),wants=get('wants',1),savings=get('savings',2);donut(196,154,64,[val(needs),val(wants),val(savings)],[C.blue,C.gold,C.green],'100%','allocation');
+        const arr=[['Needs '+n('needsRate')+'%',needs,C.blue],['Wants '+n('wantsRate')+'%',wants,C.gold],['Savings '+n('savingsRate')+'%',savings,C.green]];arr.forEach((a,i)=>{const y=103+i*48;circle(350,y,6,a[2]);txt(367,y+5,a[0],13,C.muted,650);txt(685,y+5,disp(a[1]),15,C.ink,800,'end');line(350,y+15,685,y+15,C.line,0.8);});txt(350,223,'Editable percentages update this allocation graphic.',11,C.muted,500);break;
+      }
+      case 'emergency-fund': {
+        head('Emergency reserve tank','Current savings fill the reserve target; the gap shows what remains');
+        const target=Math.max(0,val(get('target fund',0))),current=Math.max(0,n('current')),pct=target>0?Math.min(100,current/target*100):100;
+        rect(62,82,132,138,C.pale,20,C.blue,2);rect(69,89+116*(1-pct/100),118,116*pct,C.blue,12,'none',0);line(70,89,188,89,C.blue,2);line(70,205,188,205,C.blue,2);txt(128,74,'Reserve',13,C.ink,750,'middle');txt(128,150,Math.round(pct)+'%',20,C.white,850,'middle');
+        card(239,89,206,58,'Target fund',disp(get('target fund',0)),C.blue);card(461,89,226,58,'Current savings',disp(get('current savings',1)),C.gold);card(239,165,206,58,'Remaining gap',disp(get('remaining gap',2)),C.red);card(461,165,226,58,'After one deposit',disp(get('balance after one planned deposit',3)),C.green);break;
+      }
+      case 'retirement': {
+        head('Retirement runway','Contributions and returns compound between now and retirement');
+        const age=n('ageNow'),ret=n('ageRetire'),years=Math.max(0,ret-age),current=Math.max(0,n('current')),monthly=Math.max(0,n('monthly')),r=n('returnRate')/100;let series=[];for(let i=0;i<=10;i++){const t=years*i/10,months=Math.round(t*12),mr=r>-1?Math.pow(1+r,1/12)-1:0;let b=current;for(let j=0;j<Math.min(1200,months);j++)b=b*(1+mr)+monthly;series.push(b);}
+        pointLine(series,50,183,620,94,C.green,'rgba(42,157,117,.12)');line(50,198,670,198,C.line,1.2);txt(50,222,'Age '+age,12,C.muted,600);txt(670,222,'Age '+ret,12,C.muted,600,'end');card(466,76,221,52,'Projected balance',disp(get('nominal projected balance',2)),C.green);break;
+      }
+      case 'loan-affordability': {
+        head('Debt-to-income comfort gauge','Compare proposed obligations with your selected monthly income limit');
+        const income=Math.max(0,n('income')),oblig=Math.max(0,val(get('debt payments with proposal',2))),lim=Math.max(0,n('limit')),dti=income>0?oblig/income*100:0,limitAngle=Math.min(180,lim/100*180),angle=Math.min(180,dti/100*180);
+        path('M 155 184 A 145 112 0 0 1 445 184',C.line,20,'none');arc(300,184,145,180,180+limitAngle,C.gold,16);arc(300,184,145,180,180+angle,dti<=lim?C.green:C.red,7);circle(300,184,8,C.navy);path(`M 300 184 L ${300+104*Math.cos((180+angle)*Math.PI/180)} ${184+80*Math.sin((180+angle)*Math.PI/180)}`,C.navy,4,'none');txt(300,146,dti.toFixed(1)+'%',24,C.ink,800,'middle');txt(300,218,'Debt-to-income',12,C.muted,600,'middle');card(478,104,207,56,'Selected limit',lim+'%',C.gold);card(478,172,207,56,'Payment room',disp(get('payment room',3)),dti<=lim?C.green:C.red);break;
+      }
+      case 'ltv': {
+        head('Home equity split','Loan-to-value compares borrowing with the property value');
+        const property=Math.max(0,n('propertyValue')),loan=Math.max(0,n('loanAmount')),ratio=property>0?Math.min(100,loan/property*100):0;
+        path('M 65 133 L 150 74 L 235 133',C.navy,5,'none');rect(83,131,134,92,C.pale,6,C.blue,1.5);rect(96,145,108,64,'#e2f1fa',4,C.line,1);rect(96,145,108,64*ratio/100,C.blue,4,'none',0);txt(150,177,ratio.toFixed(1)+'%',18,C.white,800,'middle');
+        card(277,93,190,62,'Loan balance',disp(get('loan balance',1)),C.blue);card(483,93,207,62,'Estimated equity',disp(get('estimated equity',2)),C.green);rect(277,178,413,28,'#e8eef4',14,C.line,1);rect(277,178,413*ratio/100,28,C.blue,14,'none',0);txt(277,226,'Loan share',11,C.muted,600);txt(690,226,'Equity share: '+(100-ratio).toFixed(1)+'%',11,C.muted,600,'end');break;
+      }
+      case 'credit-utilization': {
+        head('Credit limit and available room','The filled card shows balance used against total available credit');
+        const limit=Math.max(0,val(get('total credit limit',0))),used=Math.max(0,val(get('credit used',1))),available=Math.max(0,val(get('available credit',2))),pct=limit>0?Math.min(100,used/limit*100):0;
+        rect(45,82,316,146,'#183b56',19,'#3c6b89',1.5);rect(63,101,44,31,'#d8e6ef',5,'none',0);line(63,116,107,116,'#8698a9',2);txt(128,119,'CREDIT ACCOUNT',12,'#d8e6ef',750);txt(63,164,disp(get('credit used',1)),22,C.white,800);rect(63,187,278,13,'#436078',7,'none',0);rect(63,187,278*pct/100,13,pct>70?C.red:C.cyan,7,'none',0);txt(63,218,pct.toFixed(1)+'% used',12,C.white,700);
+        card(394,92,294,56,'Total limit',disp(get('total credit limit',0)),C.blue);card(394,159,140,56,'Available',disp(get('available credit',2)),C.green);card(546,159,142,56,'Target balance',disp(get('balance at selected target',3)),C.purple);break;
+      }
+      case 'capital-gains': {
+        head('Sale proceeds to estimated tax','Adjusted basis and costs determine the taxable gain or loss');
+        const rs=[get('sale proceeds',0),get('adjusted basis',1),get('estimated gain',2),get('estimated tax',3)];const colors=[C.blue,C.gold,val(rs[2])>=0?C.green:C.red,C.purple];
+        const xs=[22,198,374,550], labs=['Proceeds','Basis + costs','Gain / loss','Tax estimate'];rs.forEach((r,i)=>{stage(xs[i],102,148,labs[i],disp(r),colors[i]);if(i<3)arrow(xs[i]+150,150,xs[i]+172,150,C.muted);});txt(22,222,'Tax shown is an estimate based on the entered rate and positive gains.',12,C.muted,500);break;
+      }
+      case 'bond-yield': {
+        head('Bond coupon timeline','Coupon income arrives over the term while market price affects yield');
+        rect(30,89,225,116,C.pale,14,C.blue,1.6);rect(46,105,193,84,C.surface,8,C.line,1.1);txt(62,130,'BOND',13,C.blue,850);txt(62,155,'Face value',11,C.muted,600);txt(239,155,disp(get('face value',0)),12,C.ink,750,'end');txt(62,178,'Annual coupon',11,C.muted,600);txt(239,178,disp(get('annual coupon income',2)),12,C.green,750,'end');
+        line(299,151,680,151,C.line,4);const years=Math.min(7,Math.max(1,Math.floor(n('years'))));for(let i=0;i<=years;i++){const x=303+i*(370/Math.max(1,years));circle(x,151,7,i===years?C.purple:C.green);txt(x,129,i===years?'Maturity':'Coupon',10,C.muted,600,'middle');}txt(303,190,'Now',11,C.muted,600);txt(680,190,'End of term',11,C.muted,600,'end');rect(440,204,244,28,'#eee9ff',10,C.purple,1);txt(562,223,'Approx. YTM: '+disp(get('yield to maturity',3)),12,C.purple,800,'middle');break;
+      }
+      case 'portfolio-rebalance': {
+        head('Current vs target mix','Compare each asset class at the same portfolio scale');
+        const names=['Stocks','Bonds','Cash','Other'];const keys=['stock','bond','cash','other'];const current=keys.map(k=>Math.max(0,n(k+'Value')));const targets=keys.map(k=>Math.max(0,n(k+'Target')));const total=Math.max(1,current.reduce((a,b)=>a+b,0));const colors=[C.blue,C.gold,C.green,C.purple];
+        txt(25,91,'CURRENT VALUE',12,C.muted,750);let x=25;current.forEach((v,i)=>{const w=650*v/total;if(w>0){rect(x,103,w,28,colors[i],0,'none',0);x+=w;}});
+        txt(25,157,'TARGET ALLOCATION',12,C.muted,750);const ttotal=Math.max(1,targets.reduce((a,b)=>a+b,0));x=25;targets.forEach((v,i)=>{const w=650*v/ttotal;if(w>0){rect(x,169,w,28,colors[i],0,'none',0);x+=w;}});
+        names.forEach((name,i)=>{circle(32+i*165,222,5,colors[i]);txt(43+i*165,226,name,11,C.muted,650);});break;
+      }
+      case 'rental-yield': {
+        head('Rental income funnel','Vacancy and operating costs reduce gross rent to net cash flow');
+        const vals=[get('gross annual rent',1),get('net operating income',2),get('annual cash flow',3)];const colors=[C.blue,C.gold,C.green];const widths=[620,470,320];const xes=[50,125,200];
+        vals.forEach((r,i)=>{const w=widths[i],x=(720-w)/2,y=85+i*47;rect(x,y,w,33,colors[i],8,'none',0);txt(x+14,y+21,['Gross rent','Net operating income','After debt service'][i],12,C.white,750);txt(x+w-12,y+21,disp(r),12,C.white,800,'end');});const grossYield=n('price')>0?n('rent')*12/n('price')*100:0;txt(25,231,'Gross yield: '+percent(grossYield)+' · net income reflects vacancy and operating costs.',11,C.muted,500);break;
+      }
+      case 'npv-irr': {
+        head('Investment cash-flow timeline','Initial outlay is compared with discounted future cash flows');
+        const init=Math.max(0,n('initial')),rate=n('discountRate')/100,cfs=[1,2,3,4,5].map(i=>n('cf'+i));line(35,166,685,166,C.navy,2);circle(58,166,7,C.red);path('M 58 166 L 58 105',C.red,3,'none');path('M 50 114 L 58 105 L 66 114',C.red,3,'none');txt(58,91,'Initial outlay',11,C.muted,650,'middle');txt(58,193,disp({value:init,display:money(init)}),12,C.red,750,'middle');cfs.forEach((v,i)=>{const x=175+i*108,positive=v>=0;line(x,166,x,positive?108:214,positive?C.green:C.red,3);path(positive?`M ${x-7} 116 L ${x} 107 L ${x+7} 116`:`M ${x-7} 205 L ${x} 214 L ${x+7} 205`,positive?C.green:C.red,2.5,'none');circle(x,166,5,positive?C.green:C.red);txt(x,88,'Year '+(i+1),11,C.muted,650,'middle');txt(x,232,money(v),11,positive?C.green:C.red,700,'middle');});rect(530,70,158,37,'#e8f7f2',10,C.green,1);txt(609,93,'NPV: '+disp(get('net present value',2)),13,C.green,800,'middle');break;
+      }
+      case 'rent-vs-buy': {
+        head('Two paths to housing','Compare estimated rent totals with ownership outflows and sale equity');
+        rect(24,90,316,133,C.pale,16,C.blue,1.4);path('M 42 133 L 73 109 L 104 133',C.blue,3,'none');rect(51,132,44,32,C.surface,4,C.blue,1.2);txt(120,116,'RENT',13,C.blue,800);txt(120,139,'Total rent',11,C.muted,600);txt(120,160,disp(get('total rent over holding',0)),15,C.ink,750);txt(40,198,'No sale equity retained',11,C.muted,550);
+        rect(380,90,316,133,'#e8f7f2',16,C.green,1.4);path('M 398 133 L 429 109 L 460 133',C.green,3,'none');rect(407,132,44,32,C.surface,4,C.green,1.2);txt(476,116,'BUY',13,C.green,800);txt(476,139,'Net cost after equity',11,C.muted,600);txt(476,160,disp(get('owner net cost',3)),15,C.ink,750);txt(396,198,'Includes estimated sale equity',11,C.muted,550);line(350,105,350,213,C.line,1.2);break;
+      }
+      case 'emi': {
+        head('Loan repayment composition','Scheduled repayment is split into principal and interest');
+        const principal=Math.max(0,val(get('loan principal',0))),interest=Math.max(0,val(get('estimated total interest',1))),pay=Math.max(0,val(get('payment incl. extra',2))),total=principal+interest;
+        donut(166,154,58,[principal,interest],[C.blue,C.gold],Math.round(total?principal/total*100:0)+'%','principal');
+        card(275,95,194,58,'Loan principal',disp(get('loan principal',0)),C.blue);card(487,95,201,58,'Total interest',disp(get('estimated total interest',1)),C.gold);rect(275,170,413,48,C.pale,12,C.line,1.1);txt(292,190,'Payment incl. extra',12,C.ink,650);txt(671,201,disp(get('payment incl. extra',2)),19,C.ink,800,'end');txt(275,239,'Total repayment estimate:',11,C.muted,600);txt(671,239,disp(get('estimated total repayment',3)),12,C.ink,700,'end');break;
+      }
+      default: {
+        head('Live financial illustration','The graphic is recalculated when inputs change');
+        const a=rows.slice(0,4);a.forEach((r,i)=>card(20+i*175,102,158,94,r.label,disp(r),[C.blue,C.gold,C.purple,C.green][i]));break;
+      }
+    }
+    // CALULER-FINANCE-DIAGRAM-HEIGHT-TYPOGRAPHY-V1: scale SVG text after each unique scene is drawn.
+    financeScene.querySelectorAll('text').forEach((node) => {
+      const currentSize = Number(node.getAttribute('font-size'));
+      if (Number.isFinite(currentSize) && currentSize > 0) {
+        const adjustedSize = Math.round(currentSize * 1.18 * 100) / 100;
+        node.setAttribute('font-size', String(adjustedSize));
+        if (node.hasAttribute('data-caluler-base-font-size')) {
+          node.setAttribute('data-caluler-base-font-size', String(adjustedSize));
+        }
+      }
+    });
+    // CALULER-FINANCE-DIAGRAM-READABILITY-BALANCE-V2: keep diagram labels legible without competing with page typography.
+    if (kind !== 'profit-margin') {
+      financeScene.querySelectorAll('text').forEach((node) => {
+        const y = Number(node.getAttribute('y'));
+        if (Number.isFinite(y) && y <= 35) return; // Preserve the main diagram heading hierarchy.
+        if (node.hasAttribute('data-caluler-fit-width')) return; // Keep EMI auto-fitted text controls untouched.
+        const currentWeight = Number(node.getAttribute('font-weight'));
+        if (!Number.isFinite(currentWeight)) return;
+        if (currentWeight >= 750) node.setAttribute('font-weight', '650');
+        else if (currentWeight >= 650) node.setAttribute('font-weight', '600');
+      });
+    }
+    return svg;
+  }
+
+  function renderMobileBreakdown(rows) {
+    const host = document.createElement('div');
+    host.className = 'finance-mobile-breakdown';
+    host.setAttribute('role', 'list');
+    host.setAttribute('aria-label', 'Readable mobile view of this live financial diagram');
+
+    let mobileRows = rows;
+
+    // Preserve the Cash Flow waterfall sequence on phones, including each running balance.
+    if (panel.dataset.financeLiveKind === 'cash-flow' && rows.length >= 5) {
+      const opening = Number(rows[0].value) || 0;
+      const operating = Number(rows[1].value) || 0;
+      const investing = Number(rows[2].value) || 0;
+      const financing = Number(rows[3].value) || 0;
+      const afterOperating = opening + operating;
+      const afterInvesting = afterOperating + investing;
+      const ending = Number(rows[4].value) || 0;
+      const signed = value => (value > 0 ? '+' : value < 0 ? '−' : '') + money(Math.abs(value));
+      mobileRows = [
+        {label: 'Opening cash', value: opening, display: money(opening)},
+        {label: 'Net operating cash', value: operating, display: signed(operating)},
+        {label: 'Balance after operating', value: afterOperating, display: money(afterOperating)},
+        {label: 'Net investing cash', value: investing, display: signed(investing)},
+        {label: 'Balance after investing', value: afterInvesting, display: money(afterInvesting)},
+        {label: 'Net financing cash', value: financing, display: signed(financing)},
+        {label: 'Ending cash', value: ending, display: money(ending)}
+      ];
+    }
+
+    const maxValue = Math.max(0, ...mobileRows.map(item => Math.abs(Number(item.value) || 0)));
+
+    mobileRows.forEach((item, index) => {
+      const numericValue = Number(item.value) || 0;
+      const displayValue = String(item.display ?? money(numericValue));
+
+      const card = document.createElement('div');
+      card.className = 'finance-mobile-card';
+      card.setAttribute('role', 'listitem');
+
+      const head = document.createElement('div');
+      head.className = 'finance-mobile-card-head';
+
+      const label = document.createElement('span');
+      label.className = 'finance-mobile-label';
+      label.textContent = String(item.label ?? 'Value');
+
+      const value = document.createElement('output');
+      value.className = 'finance-mobile-value';
+      value.textContent = displayValue;
+
+      head.appendChild(label);
+      head.appendChild(value);
+
+      const track = document.createElement('div');
+      track.className = 'finance-mobile-track';
+      track.setAttribute('role', 'img');
+      track.setAttribute('aria-label', String(item.label ?? 'Value') + ': ' + displayValue);
+
+      const fill = document.createElement('span');
+      fill.className = 'finance-mobile-fill tone-' + (index % 4) +
+        (numericValue < 0 ? ' negative' : '');
+
+      const width = maxValue > 0
+        ? Math.min(100, Math.abs(numericValue) / maxValue * 100)
+        : 0;
+      fill.style.width = width.toFixed(2) + '%';
+
+      track.appendChild(fill);
+      card.appendChild(head);
+      card.appendChild(track);
+      host.appendChild(card);
+    });
+
+    return host;
+  }
+
+  const calculator=panel.closest('.calculator')||document.querySelector('.calculator');
+  const submitHost=calculator&&(calculator.querySelector('form')||calculator);
+  submitHost.calulerFinanceRead=()=>{const current=submitHost.calulerFinanceMotion?.current;return {inputs:financeCollectInputs(),data:{...calculateRows(),sweepPhase:current?Math.floor(current.data.sweepPhase||0)+1:0}};};
+  submitHost.calulerFinanceRender=(state,destination)=>{
+    financeFrameInputs=state.inputs;
+    try{destination.appendChild(renderPaycheckWaterfall(state.data.rows,state.data.sweepPhase));}
+    finally{financeFrameInputs=null;}
+  };
+  // Shared initialization renders valid defaults without submitting Results.
+  submitHost.calulerFinanceDraw=()=>{};
+})();
+/* END CALULER-FINANCE-LIVE-DIAGRAM-JS-V1 */
+</script>
+<script src="../assets/caluler-mobile-drawer-socials.js" defer data-caluler-drawer-socials="shared-v1"></script>
+</body></html>
