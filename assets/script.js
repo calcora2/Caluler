@@ -1194,61 +1194,11 @@ root.querySelectorAll('[data-calc-tool]').forEach(button => {
   if (window.__calulerHeaderV8Loaded) return;
   window.__calulerHeaderV8Loaded = true;
 
-  function flagSvg(country) {
-    const base = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20">';
-    const end = '<rect x=".5" y=".5" width="29" height="19" rx="1" fill="none" stroke="#cbd5e1" stroke-width=".7"/></svg>';
-
-    const flags = {
-      gb: '<rect width="30" height="20" fill="#012169"/><path d="M0 0L30 20M30 0L0 20" stroke="#fff" stroke-width="5"/><path d="M0 0L30 20M30 0L0 20" stroke="#c8102e" stroke-width="2"/><path d="M15 0V20M0 10H30" stroke="#fff" stroke-width="7"/><path d="M15 0V20M0 10H30" stroke="#c8102e" stroke-width="3"/>',
-      us: '<rect width="30" height="20" fill="#fff"/><path d="M0 0H30V2H0ZM0 4H30V6H0ZM0 8H30V10H0ZM0 12H30V14H0ZM0 16H30V18H0Z" fill="#b22234"/><path d="M0 0H13V11H0Z" fill="#3c3b6e"/>',
-      pk: '<rect width="30" height="20" fill="#01411c"/><rect width="7" height="20" fill="#fff"/><circle cx="18" cy="10" r="5.2" fill="#fff"/><circle cx="20" cy="8.5" r="4.5" fill="#01411c"/><path d="M23 4.5L24 6.8L26.5 7L24.6 8.6L25.2 11L23 9.7L20.9 11L21.4 8.6L19.5 7L22 6.8Z" fill="#fff"/>',
-      sa: '<rect width="30" height="20" fill="#006c35"/><path d="M7 13H23M8 15H22" stroke="#fff" stroke-width="1.4"/><path d="M8 6H22" stroke="#fff" stroke-width="1.1"/>',
-      in: '<rect width="30" height="6.67" fill="#ff9933"/><rect y="6.67" width="30" height="6.66" fill="#fff"/><rect y="13.33" width="30" height="6.67" fill="#138808"/><circle cx="15" cy="10" r="2.7" fill="none" stroke="#000080" stroke-width=".65"/>',
-      es: '<rect width="30" height="5" fill="#aa151b"/><rect y="5" width="30" height="10" fill="#f1bf00"/><rect y="15" width="30" height="5" fill="#aa151b"/>',
-      fr: '<rect width="10" height="20" fill="#0055a4"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#ef4135"/>',
-      de: '<rect width="30" height="6.67" fill="#000"/><rect y="6.67" width="30" height="6.66" fill="#dd0000"/><rect y="13.33" width="30" height="6.67" fill="#ffce00"/>',
-      it: '<rect width="10" height="20" fill="#009246"/><rect x="10" width="10" height="20" fill="#fff"/><rect x="20" width="10" height="20" fill="#ce2b37"/>',
-      pt: '<rect width="12" height="20" fill="#006600"/><rect x="12" width="18" height="20" fill="#ff0000"/><circle cx="12" cy="10" r="3.3" fill="#ffcc00"/>',
-      ru: '<rect width="30" height="6.67" fill="#fff"/><rect y="6.67" width="30" height="6.66" fill="#0039a6"/><rect y="13.33" width="30" height="6.67" fill="#d52b1e"/>',
-      cn: '<rect width="30" height="20" fill="#de2910"/><path d="M6 2L7.2 5.2L10.5 5.3L7.9 7.2L8.9 10.3L6 8.4L3.1 10.3L4.1 7.2L1.5 5.3L4.8 5.2Z" fill="#ffde00"/><circle cx="13" cy="4" r=".9" fill="#ffde00"/><circle cx="15" cy="7" r=".9" fill="#ffde00"/><circle cx="15" cy="11" r=".9" fill="#ffde00"/><circle cx="13" cy="14" r=".9" fill="#ffde00"/>',
-      jp: '<rect width="30" height="20" fill="#fff"/><circle cx="15" cy="10" r="5.2" fill="#bc002d"/>',
-      kr: '<rect width="30" height="20" fill="#fff"/><path d="M10 7A5 5 0 0 1 20 10A2.5 2.5 0 0 1 15 10A2.5 2.5 0 0 0 10 7Z" fill="#cd2e3a"/><path d="M10 7A5 5 0 0 0 20 10A2.5 2.5 0 0 1 15 10A2.5 2.5 0 0 0 10 7Z" fill="#0047a0"/>',
-      tr: '<rect width="30" height="20" fill="#e30a17"/><circle cx="12" cy="10" r="5" fill="#fff"/><circle cx="14" cy="9" r="4" fill="#e30a17"/><path d="M19 5L20.1 8.1L23.2 8.2L20.8 10.1L21.7 13.2L19 11.3L16.3 13.2L17.2 10.1L14.8 8.2L17.9 8.1Z" fill="#fff"/>',
-      id: '<rect width="30" height="10" fill="#ce1126"/><rect y="10" width="30" height="10" fill="#fff"/>',
-      bd: '<rect width="30" height="20" fill="#006a4e"/><circle cx="14" cy="10" r="5" fill="#f42a41"/>',
-      ir: '<rect width="30" height="6.67" fill="#239f40"/><rect y="6.67" width="30" height="6.66" fill="#fff"/><rect y="13.33" width="30" height="6.67" fill="#da0000"/><path d="M3 10H27" stroke="#da0000" stroke-width=".55"/>',
-      nl: '<rect width="30" height="6.67" fill="#ae1c28"/><rect y="6.67" width="30" height="6.66" fill="#fff"/><rect y="13.33" width="30" height="6.67" fill="#21468b"/>'
-    };
-
-    const art = flags[country] || '<rect width="30" height="20" fill="#e2e8f0"/><circle cx="15" cy="10" r="6" fill="none" stroke="#64748b" stroke-width="1.4"/><path d="M5 10H25M15 3C11 7 11 13 15 17M15 3C19 7 19 13 15 17" stroke="#64748b" stroke-width=".8" fill="none"/>';
-
-    return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(base + art + end);
-  }
-
   function cleanLanguageLabel(option) {
     return (option.textContent || option.value || 'Language')
       .replace(/^[\u{1F1E6}-\u{1F1FF}]{2}\s*/u, '')
       .replace(/^[A-Z]{2}\s+(?=[A-Za-z])/, '')
       .trim() || option.value || 'Language';
-  }
-
-  function flagCountry(option) {
-    const value = (option.value || '').toLowerCase().replace(/_/g, '-');
-
-    const map = {
-      'en-us': 'us', 'en-gb': 'gb', 'en': 'gb',
-      'ur': 'pk', 'ar': 'sa', 'hi': 'in',
-      'es': 'es', 'fr': 'fr', 'de': 'de', 'it': 'it',
-      'pt': 'pt', 'ru': 'ru', 'zh-cn': 'cn', 'zh': 'cn',
-      'ja': 'jp', 'ko': 'kr', 'tr': 'tr', 'id': 'id',
-      'bn': 'bd', 'pa': 'in', 'fa': 'ir',
-      'nl': 'nl', 'ta': 'in'
-    };
-
-    if (map[value]) return map[value];
-
-    const prefix = value.split('-')[0];
-    return map[prefix] || 'world';
   }
 
   function initLanguagePicker() {
@@ -1283,37 +1233,12 @@ root.querySelectorAll('[data-calc-tool]').forEach(button => {
 
     if (!options.length) return;
 
-    const flagCache = new Map();
-
-    function getFlag(option) {
-      const code = flagCountry(option);
-
-      if (!flagCache.has(code)) {
-        flagCache.set(code, flagSvg(code));
-      }
-
-      return flagCache.get(code);
-    }
-
-    function makeFlag(option) {
-      const img = document.createElement('img');
-      img.className = 'caluler-language-flag';
-      img.src = getFlag(option);
-      img.alt = '';
-      img.width = 30;
-      img.height = 20;
-      img.setAttribute('aria-hidden', 'true');
-      return img;
-    }
-
     function updateSelectedLabel() {
       const selected = options.find(function (option) {
         return option.value === select.value;
       }) || options[0];
 
       trigger.replaceChildren();
-
-      trigger.appendChild(makeFlag(selected));
 
       const label = document.createElement('span');
       label.className = 'caluler-language-trigger-label';
@@ -1379,6 +1304,19 @@ root.querySelectorAll('[data-calc-tool]').forEach(button => {
       menu.style.setProperty('bottom', 'auto', 'important');
     }
 
+    function revealOption(item) {
+      const menuRect = menu.getBoundingClientRect();
+      const itemRect = item.getBoundingClientRect();
+      const safeTop = menuRect.top + menu.clientTop + 4;
+      const safeBottom = menuRect.top + menu.clientTop + menu.clientHeight - 4;
+
+      if (itemRect.top < safeTop) {
+        menu.scrollTop -= safeTop - itemRect.top;
+      } else if (itemRect.bottom > safeBottom) {
+        menu.scrollTop += itemRect.bottom - safeBottom;
+      }
+    }
+
     function schedulePosition() {
       if (!menu.classList.contains('is-open') || positionFrame) return;
       positionFrame = window.requestAnimationFrame(function () {
@@ -1393,8 +1331,7 @@ root.querySelectorAll('[data-calc-tool]').forEach(button => {
       item.className = 'caluler-language-option';
       item.setAttribute('role', 'option');
       item.setAttribute('aria-selected', String(option.value === select.value));
-
-      item.appendChild(makeFlag(option));
+      item.dataset.languageCode = option.value;
 
       const text = document.createElement('span');
       text.textContent = cleanLanguageLabel(option);
@@ -1408,10 +1345,7 @@ root.querySelectorAll('[data-calc-tool]').forEach(button => {
         select.dispatchEvent(new Event('change', { bubbles: true }));
 
         menu.querySelectorAll('.caluler-language-option').forEach(function (button) {
-          button.setAttribute(
-            'aria-selected',
-            String(button.querySelector('span').textContent === cleanLanguageLabel(option))
-          );
+          button.setAttribute('aria-selected', String(button.dataset.languageCode === option.value));
         });
 
         updateSelectedLabel();
@@ -1420,6 +1354,29 @@ root.querySelectorAll('[data-calc-tool]').forEach(button => {
       });
 
       menu.appendChild(item);
+    });
+
+    menu.addEventListener('keydown', function (event) {
+      const key = event.key;
+      if (key !== 'ArrowDown' && key !== 'ArrowUp' && key !== 'Home' && key !== 'End') return;
+
+      const items = Array.from(menu.querySelectorAll('.caluler-language-option'));
+      if (!items.length) return;
+
+      const current = items.indexOf(document.activeElement);
+      const selected = items.findIndex(function (item) {
+        return item.getAttribute('aria-selected') === 'true';
+      });
+      let next;
+
+      if (key === 'Home') next = 0;
+      else if (key === 'End') next = items.length - 1;
+      else if (current < 0) next = selected >= 0 ? selected : (key === 'ArrowDown' ? 0 : items.length - 1);
+      else next = (current + (key === 'ArrowDown' ? 1 : -1) + items.length) % items.length;
+
+      event.preventDefault();
+      items[next].focus({ preventScroll: true });
+      revealOption(items[next]);
     });
 
     picker.appendChild(trigger);
@@ -1431,7 +1388,7 @@ root.querySelectorAll('[data-calc-tool]').forEach(button => {
     select.tabIndex = -1;
     select.dataset.calulerV8 = 'ready';
 
-    trigger.addEventListener('click', function () {
+    trigger.addEventListener('click', function (event) {
       const open = !picker.classList.contains('is-open');
 
       document.querySelectorAll('.caluler-language-picker.is-open').forEach(function (other) {
@@ -1450,12 +1407,39 @@ root.querySelectorAll('[data-calc-tool]').forEach(button => {
       menu.classList.toggle('is-open', open);
       if (open) {
         menu.classList.add('caluler-viewport-menu');
+        // Keep the popup outside the mobile drawer's overflow/scroll container.
+        if (menu.parentElement !== document.body) document.body.appendChild(menu);
         if (typeof menu.showPopover === 'function') menu.showPopover();
-        else if (menu.parentElement !== document.body) document.body.appendChild(menu);
         positionMenu();
+        const selectedItem = menu.querySelector('.caluler-language-option[aria-selected="true"]');
+        if (selectedItem) {
+          if (event.detail === 0) selectedItem.focus({ preventScroll: true });
+          revealOption(selectedItem);
+        }
       } else if (typeof menu.hidePopover === 'function' && menu.matches(':popover-open')) {
         menu.hidePopover();
       }
+    });
+
+    trigger.addEventListener('keydown', function (event) {
+      const key = event.key;
+      if (key !== 'ArrowDown' && key !== 'ArrowUp' && key !== 'Home' && key !== 'End') return;
+
+      event.preventDefault();
+      if (!picker.classList.contains('is-open')) trigger.click();
+
+      const items = Array.from(menu.querySelectorAll('.caluler-language-option'));
+      if (!items.length) return;
+      const selected = items.findIndex(function (item) {
+        return item.getAttribute('aria-selected') === 'true';
+      });
+      let index;
+      if (key === 'Home') index = 0;
+      else if (key === 'End') index = items.length - 1;
+      else if (selected >= 0) index = (selected + (key === 'ArrowDown' ? 0 : -1) + items.length) % items.length;
+      else index = key === 'ArrowDown' ? 0 : items.length - 1;
+      items[index].focus({ preventScroll: true });
+      revealOption(items[index]);
     });
 
     document.addEventListener('click', function (event) {
@@ -1472,7 +1456,11 @@ root.querySelectorAll('[data-calc-tool]').forEach(button => {
     });
 
     window.addEventListener('resize', schedulePosition, { passive: true });
-    window.addEventListener('scroll', schedulePosition, { passive: true, capture: true });
+    window.addEventListener('scroll', function (event) {
+      // Scrolling the popup itself must not reposition or interrupt its scroll.
+      if (menu.contains(event.target)) return;
+      schedulePosition();
+    }, { passive: true, capture: true });
     if (window.visualViewport) {
       window.visualViewport.addEventListener('resize', schedulePosition, { passive: true });
       window.visualViewport.addEventListener('scroll', schedulePosition, { passive: true });

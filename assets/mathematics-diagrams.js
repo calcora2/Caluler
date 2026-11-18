@@ -42,7 +42,7 @@
   function el(tag,attrs={},parent=svg){const n=document.createElementNS(NS,tag);Object.entries(attrs).forEach(([k,v])=>n.setAttribute(k,String(v)));parent.appendChild(n);return n;}
   function line(x1,y1,x2,y2,tone='muted',attrs={},parent=svg){return el('line',{x1,y1,x2,y2,stroke:C[tone],'stroke-width':1.6,'stroke-linecap':'round',...attrs},parent);}
   function text(x,y,value,anchor='middle',attrs={},parent=svg){const n=el('text',{x,y,'text-anchor':anchor,...attrs},parent);n.textContent=String(value);if(attrs.fill)n.style.fill=attrs.fill;return n;}
-  function shape(tag,attrs,tone='blue',parent=svg){return el(tag,{fill:C[tone],'fill-opacity':.12,stroke:C[tone],'stroke-width':1.8,...attrs},parent);}
+  function shape(tag,attrs,tone='blue',parent=svg){const opacity=Number(attrs['fill-opacity']??.12),depth=tag==='rect'&&Number(attrs.rx)>0&&opacity>=.12||tag==='circle'&&opacity>=.65,classes=[attrs.class,depth?'math-depth-surface':''].filter(Boolean).join(' ');return el(tag,{fill:C[tone],'fill-opacity':.12,stroke:C[tone],'stroke-width':1.8,...attrs,...(classes?{class:classes}:{})},parent);}
   const ink=tone=>'url(#caluler-math-fill-'+tone+')';
   function visualDefs(){
     const defs=el('defs');

@@ -32,10 +32,12 @@
  const [title,kind,outputLabel]=definitions[key],NS='http://www.w3.org/2000/svg';
  const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
  const speed=(n,ref=1)=>{const x=Math.min(Number.MAX_VALUE,Math.abs(n)/ref);return x===0?0:.12+2.4*Math.log1p(x)/Math.log(101+x);};
+ // Visual marker speed in rendered CSS px/s; this is schematic, not electron drift speed.
+ const currentFlowSpeed=currentA=>{if(!Number.isFinite(currentA)||currentA===0)return 0;const a=Math.abs(currentA),points=[[.1,20],[1,45],[5,100],[10,160],[20,230],[50,330],[100,450]];if(a<.1)return 200*a;if(a>=100)return 450;for(let i=1;i<points.length;i++){const [lo,v0]=points[i-1],[hi,v1]=points[i];if(a<=hi){const p=(Math.log10(a)-Math.log10(lo))/(Math.log10(hi)-Math.log10(lo));return v0+(v1-v0)*p;}}return 450;};
  const fmt=n=>{if(!Number.isFinite(n))return '—';if(n===0)return '0';if(Math.abs(n)>=.001&&Math.abs(n)<1e6)return n.toLocaleString('en-US',{maximumSignificantDigits:6});const [m,e]=n.toExponential(2).split('e'),sup={'-':'⁻','0':'⁰','1':'¹','2':'²','3':'³','4':'⁴','5':'⁵','6':'⁶','7':'⁷','8':'⁸','9':'⁹'};return m.replace('-','−')+' × 10'+String(Number(e)).split('').map(c=>sup[c]).join('');};
  const exact=n=>Number.isFinite(n)?n.toLocaleString('en-US',{maximumSignificantDigits:12}):'—';
  const tone={blue:'var(--ee-blue)',green:'var(--ee-green)',amber:'var(--ee-amber)',red:'var(--ee-red)',neutral:'var(--muted)'};
- let panel,svg,resultNode,metrics,readout,note,warning,tooltip,drawScene,displayed=null,target=null,from=null,started=0,raf=0,lastTime=0,phase=0,clock=0,visible=true,activeTip=null,pointer=null;
+ let panel,svg,resultNode,metrics,readout,note,warning,tooltip,drawScene,displayed=null,target=null,from=null,started=0,raf=0,lastTime=0,phase=0,visible=true,activeTip=null,pointer=null;
  const bindings=[],tracks=[],signalDots=[];
  let capacitorList,capacitorListTitle,capacitorListValues,lcMotion=null,transientMotion=null,transientPhase=0,kvlTraversal=null;
  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -395,7 +397,7 @@
   if(readout){setText(readout,fmt(s.result)+(s.unit?' '+s.unit:''));const outputTone=s.result<0?'red':'green';readout.style.color=tone[outputTone];bindings.find(b=>b.node===readout).color=outputTone;readout.style.setProperty('--ee-tip-color',tone[outputTone]);}
   if(note)setText(note,key==='voltage-current-resistance'?'Conventional current; speed and component bands are schematic, not electron drift velocity.':d.note);
   for(const b of bindings){const value=b.get(d);b.node.setAttribute('aria-label',b.label+': '+value);}
-  for(const t of tracks){const value=d.current??0;t.g.style.opacity=value===0?'0':'1';t.g.dataset.flowMagnitude=String(Math.abs(value));t.g.dataset.flowRate=String(speed(value,d.ref));t.g.dataset.flowDirection=value===0?'stopped':d.ac?'alternating':value<0?'reverse':'forward';}
+  for(const t of tracks){const value=d.current??0,pxPerSecond=currentFlowSpeed(value);t.g.style.opacity=pxPerSecond===0?'0':'1';t.g.dataset.flowMagnitude=String(Math.abs(value));t.g.dataset.flowSpeed=String(pxPerSecond);t.g.dataset.flowDirection=pxPerSecond===0?'stopped':d.ac?'alternating':value<0?'reverse':'forward';}
   refreshTip();
  }
  function hideTip(){activeTip=null;pointer=null;if(tooltip)tooltip.hidden=true;}
@@ -435,18 +437,18 @@
  function running(){if(!displayed||reduced.matches)return false;const d=describe(displayed);return tracks.length&&d.current!==null&&d.current!==0||signalDots.length&&d.frequency>0||lcMotion&&d.frequency>0||transientMotion&&d.tau>0||kvlTraversal;}
  function loop(){if(!raf&&!document.hidden&&visible&&(from||running()))raf=requestAnimationFrame(tick);}
  function tick(now){
-  raf=0;const dt=Math.min(80,lastTime?now-lastTime:0);lastTime=now;clock+=dt;
+  raf=0;const dt=Math.min(80,lastTime?now-lastTime:0);lastTime=now;
   if(from){const p=clamp((now-started)/1800,0,1),ease=(1-Math.cos(Math.PI*p))/2;const s=p===1?target:interpolateSnapshot(from,target,ease);if(!displayed&&p===0){loop();return;}if(!valid(s,p<1)){render(target);from=null;panel.dataset.calulerAnimating='false';}else render(s);if(p===1){from=null;panel.dataset.calulerAnimating='false';}}
   if(displayed&&!reduced.matches){const d=describe(displayed);
-   for(const t of tracks){const value=d.current??0,rate=speed(value,d.ref);if(!rate)continue;let dashOffset;
-    if(t.ac)dashOffset=-Math.sin(clock/800+t.slot*2*Math.PI/3)*22*rate*Math.sign(value);
-    else{t.offset+=dt/1000*22*rate*Math.sign(value);dashOffset=-t.offset;}
+   for(const t of tracks){const value=d.current??0,pxPerSecond=Number.parseFloat(t.g.dataset.flowSpeed);if(!Number.isFinite(pxPerSecond)||pxPerSecond<=0)continue;const dashValues=getComputedStyle(t.p).strokeDasharray.match(/[\d.]+/g)||[],cycle=dashValues.slice(0,2).reduce((sum,n)=>sum+Number(n),0)||32,totalLength=t.p.getTotalLength(),declaredLength=Number(t.p.getAttribute('pathLength'))||totalLength,ctm=t.p.getScreenCTM(),screenScale=ctm?(Math.hypot(ctm.a,ctm.b)+Math.hypot(ctm.c,ctm.d))/2:1,screenPathLength=totalLength*screenScale,offsetScale=screenPathLength/declaredLength;let dashOffset;
+    if(t.ac){const phaseRate=screenPathLength>0?2*pxPerSecond/screenPathLength:0;t.offset=((t.offset+dt/1000*phaseRate)%(2*Math.PI)+2*Math.PI)%(2*Math.PI);dashOffset=-Math.sin(t.offset+t.slot*2*Math.PI/3)*declaredLength/2*Math.sign(value);}
+    else{const offsetSpeed=offsetScale>0?pxPerSecond/offsetScale:0;t.offset=((t.offset+dt/1000*offsetSpeed*Math.sign(value))%cycle+cycle)%cycle;dashOffset=-t.offset;}
     t.p.style.strokeDashoffset=String(dashOffset);if(t.core)t.core.style.strokeDashoffset=String(dashOffset);
    }
    for(const dot of signalDots){if(!(d.frequency>0))continue;phase+=dt/1000*speed(d.frequency,50)/signalDots.length;const p=(phase%1+1)%1;attrs(dot.dot,{cx:dot.x0+dot.w*p,cy:dot.y0-dot.h*Math.sin(p*2*Math.PI)});if(dot.paint)dot.paint(Math.sin(p*2*Math.PI));}
-   if(lcMotion&&d.frequency>0){const normalizedRate=.2+.35*Math.log1p(d.frequency)/(1+Math.log1p(d.frequency));phase=(phase+dt/1000*normalizedRate)%1;lcMotion(phase*2*Math.PI,dt/1000);}
+   if(lcMotion&&d.frequency>0){phase=(phase+dt/10000)%1;lcMotion(phase*2*Math.PI,dt/1000);}
    if(kvlTraversal)kvlTraversal(dt/1000);
-   if(transientMotion&&d.tau>0){const rate=.11+.07/(1+Math.log1p(d.tau));transientPhase=(transientPhase+dt/1000*rate)%1;transientMotion(transientPhase*8,dt/1000);}
+   if(transientMotion&&d.tau>0){transientPhase=(transientPhase+dt/10000)%1;transientMotion(transientPhase*8,dt/1000);}
   }
   loop();
  }
@@ -464,7 +466,7 @@
  }
  function reset(){
   if(key!=='ohms-law'||!panel)return;
-  if(raf)cancelAnimationFrame(raf);raf=0;lastTime=0;phase=0;clock=0;from=null;target=null;displayed=null;
+  if(raf)cancelAnimationFrame(raf);raf=0;lastTime=0;phase=0;from=null;target=null;displayed=null;
   if(drawScene?.reset)drawScene.reset();
   if(readout)setText(readout,'—');
   if(note)note.textContent='Enter values and select Calculate. Geometry and component sizes are schematic.';
@@ -472,7 +474,7 @@
   const preview=describe({values:Array(6).fill(0),result:0,unit:''});
   slots.forEach((slot,i)=>{const m=preview.metrics[i];slot.host.hidden=!m;if(!m)return;setText(slot.label,m.label);setText(slot.value,'—');slot.host.style.color=tone[m.color];slot.binding.label=m.label;slot.binding.color=m.color;slot.host.style.setProperty('--ee-tip-color',tone[m.color]);});
   for(const binding of bindings)binding.node.setAttribute('aria-label',binding.label+' — Calculate to show a value');
-  tracks.forEach(track=>{track.g.style.opacity='0';track.g.dataset.flowMagnitude='0';track.g.dataset.flowRate='0';track.g.dataset.flowDirection='stopped';track.offset=0;track.p.style.strokeDashoffset='0';if(track.core)track.core.style.strokeDashoffset='0';});
+  tracks.forEach(track=>{track.g.style.opacity='0';track.g.dataset.flowMagnitude='0';track.g.dataset.flowSpeed='0';track.g.dataset.flowDirection='stopped';track.offset=0;track.p.style.strokeDashoffset='0';if(track.core)track.core.style.strokeDashoffset='0';});
   hideTip();panel.dataset.calulerAnimating='false';
  }
  function start(){

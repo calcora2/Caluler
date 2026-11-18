@@ -215,3 +215,28 @@ body.dark-mode .ee-panel .ee-flow .ee-flow-core {
  stroke:#F4FFE9!important;
 }
 /* END CALULER-ELECTRIC-LIME-CURRENT-V1 */
+
+/* CALULER-LIGHT-TEAL-CURRENT-V1: light-theme conductor paths only. */
+:root:not([data-theme="dark"]):not(.dark-mode) body:not(.dark-mode) .ee-panel {
+ --ee-flow-light-color:#087F8C;
+ --ee-flow-light-core:#E8F4F2;
+}
+:root:not([data-theme="dark"]):not(.dark-mode) body:not(.dark-mode) .ee-panel .ee-flow .ee-flow-trail,
+:root:not([data-theme="dark"]):not(.dark-mode) body:not(.dark-mode) .ee-transient-panel .ee-transient-current path,
+:root:not([data-theme="dark"]):not(.dark-mode) body:not(.dark-mode) .ee-lc-panel .ee-lc-current path {
+ stroke:var(--ee-flow-light-color)!important;
+ stroke-width:5.2!important;
+ stroke-dasharray:1.2 21!important;
+ stroke-linecap:round!important;
+ opacity:1!important;
+ filter:none!important;
+}
+:root:not([data-theme="dark"]):not(.dark-mode) body:not(.dark-mode) .ee-panel .ee-flow .ee-flow-core {
+ display:inline!important;
+ stroke:var(--ee-flow-light-core)!important;
+ stroke-width:2!important;
+ stroke-dasharray:1.2 21!important;
+ stroke-linecap:round!important;
+ opacity:1!important;
+}
+/* END CALULER-LIGHT-TEAL-CURRENT-V1 */

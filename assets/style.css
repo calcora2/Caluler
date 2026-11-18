@@ -3015,7 +3015,11 @@ body.dark-mode #advancedCalculator .calc-key.sign {
   max-width: min(84vw, 300px) !important;
   max-height: 310px !important;
   overflow-y: auto !important;
-  overscroll-behavior: contain !important;
+  overflow-x: hidden !important;
+  overscroll-behavior-y: contain !important;
+  -webkit-overflow-scrolling: touch !important;
+  touch-action: pan-y !important;
+  scrollbar-gutter: stable;
   padding: 6px !important;
   border: 1px solid var(--border, #d6e1ef) !important;
   border-radius: 13px !important;
@@ -3031,6 +3035,7 @@ body.dark-mode #advancedCalculator .calc-key.sign {
 
 .caluler-language-option {
   display: flex !important;
+  flex: 0 0 auto !important;
   align-items: center !important;
   gap: 10px !important;
   width: 100% !important;

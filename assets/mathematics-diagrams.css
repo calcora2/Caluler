@@ -31,6 +31,7 @@ html:root body[data-caluler-category="Mathematics"] .calculator.math-layout > :i
 .math-diagram .math-svg .math-marker-label { font-size:15px; font-weight:600; }
 .math-diagram .math-svg .math-bar-value { font-size:15px; font-weight:650; }
 .math-diagram .math-svg .math-placeholder { font-size:14px; fill:var(--muted); }
+.math-diagram .math-svg .math-depth-surface { filter:drop-shadow(0 1px 1.2px rgba(15,23,42,.16)); }
 .math-motion-root { position:relative; min-width:0; }
 .math-motion-scene { min-width:0; }
 .math-motion-root > .math-motion-copy {
@@ -90,6 +91,7 @@ html:root body[data-caluler-category="Mathematics"] .calculator.math-layout > :i
 :root[data-theme="dark"] .math-diagram,body.dark-mode .math-diagram {
   --math-blue:var(--caluler-brand-accent); --math-blue-end:var(--caluler-brand-accent); --math-green:#68E0A0; --math-amber:#FFC166; --math-red:#FF929B;
 }
+:root[data-theme="dark"] .math-diagram .math-svg .math-depth-surface,body.dark-mode .math-diagram .math-svg .math-depth-surface { filter:drop-shadow(0 1px 1.4px rgba(0,0,0,.3)); }
 @media(max-width:900px) {
   html:root body[data-caluler-category="Mathematics"] .calculator.math-layout { grid-template-columns:minmax(0,1fr)!important; }
 }
