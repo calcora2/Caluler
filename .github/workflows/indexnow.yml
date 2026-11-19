@@ -1,0 +1,107 @@
+
+name: IndexNow Changed Pages
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Submit updated calculator URLs
+        env:
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+        run: |
+          python3 - <<'PY'
+          import json
+          import os
+          import pathlib
+          import re
+          import subprocess
+          import time
+          import urllib.request
+          from urllib.parse import quote
+
+          before = os.environ["BEFORE"]
+          after = os.environ["AFTER"]
+
+          if before == "0" * 40:
+              print("Initial push skipped")
+              raise SystemExit(0)
+
+          changed = subprocess.check_output(
+              ["git", "diff", "--name-only",
+               "--diff-filter=ACMRT", before, after],
+              text=True
+          ).splitlines()
+
+          pages = sorted({
+              p for p in changed
+              if p.endswith(".html")
+              and pathlib.Path(p).is_file()
+              and (p.startswith("tools/") or "/" not in p)
+          })
+
+          if not pages:
+              print("No changed HTML pages")
+              raise SystemExit(0)
+
+          example = "9879bdd2638948e195029d262356f5c7"
+
+          keys = [
+              p for p in pathlib.Path(".").glob("*.txt")
+              if re.fullmatch(r"[A-Za-z0-9-]{8,128}", p.stem)
+              and p.stem != example
+              and p.read_text(
+                  encoding="utf-8-sig"
+              ).strip() == p.stem
+          ]
+
+          if len(keys) != 1:
+              raise SystemExit(
+                  "Unique IndexNow key file not found"
+              )
+
+          key = keys[0].stem
+
+          # Give GitHub Pages time to publish changes.
+          time.sleep(60)
+
+          payload = {
+              "host": "caluler.work",
+              "key": key,
+              "keyLocation":
+                  f"https://caluler.work/{key}.txt",
+              "urlList": [
+                  "https://caluler.work/" + quote(p, safe="/")
+                  for p in pages
+              ]
+          }
+
+          request = urllib.request.Request(
+              "https://api.indexnow.org/indexnow",
+              data=json.dumps(payload).encode("utf-8"),
+              headers={
+                  "Content-Type":
+                  "application/json; charset=utf-8"
+              },
+              method="POST"
+          )
+
+          with urllib.request.urlopen(
+              request, timeout=30
+          ) as response:
+              print("IndexNow HTTP Status:", response.status)
+
+          print("Submitted pages:", len(pages))
+          PY
