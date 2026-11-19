@@ -1200,9 +1200,17 @@ root.querySelectorAll('[data-calc-tool]').forEach(button => {
     ar: 'العربية', hi: 'हिन्दी', ur: 'اردو', tr: 'Türkçe', id: 'Bahasa Indonesia',
     nl: 'Nederlands', bn: 'বাংলা', pa: 'ਪੰਜਾਬੀ', fa: 'فارسی', ta: 'தமிழ்'
   });
+  const RTL_LANGUAGE_LABELS = new Set(['ar', 'fa', 'ur']);
 
-  function cleanLanguageLabel(option) {
-    return LANGUAGE_NATIVE_LABELS[option.value] || option.value || 'Language';
+  function protectNativeLanguageLabel(node, code) {
+    if (!node) return;
+    const label = LANGUAGE_NATIVE_LABELS[code] || code || 'Language';
+    const direction = RTL_LANGUAGE_LABELS.has(code) ? 'rtl' : 'ltr';
+    if (node.textContent !== label) node.textContent = label;
+    if (!node.classList.contains('notranslate')) node.classList.add('notranslate');
+    if (node.getAttribute('translate') !== 'no') node.setAttribute('translate', 'no');
+    if (node.getAttribute('lang') !== code) node.setAttribute('lang', code);
+    if (node.getAttribute('dir') !== direction) node.setAttribute('dir', direction);
   }
 
   function initLanguagePicker() {
@@ -1248,8 +1256,7 @@ root.querySelectorAll('[data-calc-tool]').forEach(button => {
 
       const label = document.createElement('span');
       label.className = 'caluler-language-trigger-label notranslate';
-      label.setAttribute('translate', 'no');
-      label.textContent = cleanLanguageLabel(selected);
+      protectNativeLanguageLabel(label, selected.value);
       trigger.appendChild(label);
 
       const arrow = document.createElement('span');
@@ -1335,15 +1342,15 @@ root.querySelectorAll('[data-calc-tool]').forEach(button => {
     options.forEach(function (option) {
       const item = document.createElement('button');
       item.type = 'button';
-      item.className = 'caluler-language-option';
+      item.className = 'caluler-language-option notranslate';
+      item.setAttribute('translate', 'no');
       item.setAttribute('role', 'option');
       item.setAttribute('aria-selected', String(option.value === select.value));
       item.dataset.languageCode = option.value;
 
       const text = document.createElement('span');
-      text.className = 'notranslate';
-      text.setAttribute('translate', 'no');
-      text.textContent = cleanLanguageLabel(option);
+      text.className = 'caluler-language-option-label notranslate';
+      protectNativeLanguageLabel(text, option.value);
       item.appendChild(text);
 
       item.addEventListener('click', function () {
@@ -1364,6 +1371,42 @@ root.querySelectorAll('[data-calc-tool]').forEach(button => {
 
       menu.appendChild(item);
     });
+
+    function restoreNativeLanguageLabels() {
+      const selected = options.find(function (option) {
+        return option.value === select.value;
+      }) || options[0];
+      let triggerLabel = trigger.querySelector('.caluler-language-trigger-label');
+      if (!triggerLabel) {
+        updateSelectedLabel();
+        triggerLabel = trigger.querySelector('.caluler-language-trigger-label');
+      }
+      protectNativeLanguageLabel(triggerLabel, selected.value);
+
+      menu.querySelectorAll('.caluler-language-option').forEach(function (item) {
+        const code = item.dataset.languageCode;
+        let label = item.querySelector('.caluler-language-option-label');
+        if (!label) {
+          label = document.createElement('span');
+          label.className = 'caluler-language-option-label notranslate';
+          item.replaceChildren(label);
+        }
+        protectNativeLanguageLabel(label, code);
+      });
+    }
+
+    if (window.MutationObserver) {
+      const nativeLabelObserver = new MutationObserver(restoreNativeLanguageLabels);
+      [trigger, menu].forEach(function (root) {
+        nativeLabelObserver.observe(root, {
+          subtree: true,
+          childList: true,
+          characterData: true,
+          attributes: true,
+          attributeFilter: ['class', 'translate', 'lang', 'dir']
+        });
+      });
+    }
 
     menu.addEventListener('keydown', function (event) {
       const key = event.key;
