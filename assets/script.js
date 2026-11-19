@@ -1194,11 +1194,15 @@ root.querySelectorAll('[data-calc-tool]').forEach(button => {
   if (window.__calulerHeaderV8Loaded) return;
   window.__calulerHeaderV8Loaded = true;
 
+  const LANGUAGE_NATIVE_LABELS = Object.freeze({
+    en: 'English', es: 'Español', fr: 'Français', de: 'Deutsch', pt: 'Português',
+    it: 'Italiano', 'zh-CN': '简体中文', ja: '日本語', ko: '한국어', ru: 'Русский',
+    ar: 'العربية', hi: 'हिन्दी', ur: 'اردو', tr: 'Türkçe', id: 'Bahasa Indonesia',
+    nl: 'Nederlands', bn: 'বাংলা', pa: 'ਪੰਜਾਬੀ', fa: 'فارسی', ta: 'தமிழ்'
+  });
+
   function cleanLanguageLabel(option) {
-    return (option.textContent || option.value || 'Language')
-      .replace(/^[\u{1F1E6}-\u{1F1FF}]{2}\s*/u, '')
-      .replace(/^[A-Z]{2}\s+(?=[A-Za-z])/, '')
-      .trim() || option.value || 'Language';
+    return LANGUAGE_NATIVE_LABELS[option.value] || option.value || 'Language';
   }
 
   function initLanguagePicker() {
@@ -1214,13 +1218,15 @@ root.querySelectorAll('[data-calc-tool]').forEach(button => {
 
     const trigger = document.createElement('button');
     trigger.type = 'button';
-    trigger.className = 'caluler-language-trigger';
+    trigger.className = 'caluler-language-trigger notranslate';
+    trigger.setAttribute('translate', 'no');
     trigger.setAttribute('aria-label', 'Choose language');
     trigger.setAttribute('aria-haspopup', 'listbox');
     trigger.setAttribute('aria-expanded', 'false');
 
     const menu = document.createElement('div');
-    menu.className = 'caluler-language-menu';
+    menu.className = 'caluler-language-menu notranslate';
+    menu.setAttribute('translate', 'no');
     menu.id = 'calulerLanguageMenu';
     menu.setAttribute('popover', 'manual');
     menu.setAttribute('role', 'listbox');
@@ -1241,7 +1247,8 @@ root.querySelectorAll('[data-calc-tool]').forEach(button => {
       trigger.replaceChildren();
 
       const label = document.createElement('span');
-      label.className = 'caluler-language-trigger-label';
+      label.className = 'caluler-language-trigger-label notranslate';
+      label.setAttribute('translate', 'no');
       label.textContent = cleanLanguageLabel(selected);
       trigger.appendChild(label);
 
@@ -1334,6 +1341,8 @@ root.querySelectorAll('[data-calc-tool]').forEach(button => {
       item.dataset.languageCode = option.value;
 
       const text = document.createElement('span');
+      text.className = 'notranslate';
+      text.setAttribute('translate', 'no');
       text.textContent = cleanLanguageLabel(option);
       item.appendChild(text);
 
